@@ -1,26 +1,26 @@
-// gatsby-browser
+// // gatsby-browser
 
-import React, { useState, useEffect } from 'react'
-import { useSpring, config } from 'react-spring'
-import Loading from './src/components/Loading'
-import { AnimatedBox } from './src/elements'
+// import React, { useState, useEffect } from 'react'
+// import { useSpring, config } from 'react-spring'
+// import Loading from './src/components/Loading'
+// import { AnimatedBox } from './src/components/ui'
 
-// ___________________________________________________________________
+// // ___________________________________________________________________
 
-const LoadAnimation = ({ children }) => {
-  const [loading, stillLoading] = useState(true)
-  useEffect(() => stillLoading(false))
+// const LoadAnimation = ({ children }) => {
+//   const [loading, stillLoading] = useState(true)
+//   useEffect(() => stillLoading(false))
 
-  const pageAnimation = useSpring({
-    config: config.molasses,
-    delay: 0,
-    from: { opacity: 0 },
-    to: { opacity: 1 }
-  })
+//   const pageAnimation = useSpring({
+//     config: config.molasses,
+//     delay: 0,
+//     from: { opacity: 0 },
+//     to: { opacity: 1 }
+//   })
 
-  return !loading && <AnimatedBox style={pageAnimation}>{children}</AnimatedBox>
-}
+//   return !loading && <AnimatedBox style={pageAnimation}>{children}</AnimatedBox>
+// }
 
-export const wrapRootElement = ({ element }) => (
-  <LoadAnimation>{element}</LoadAnimation>
-)
+// export const wrapRootElement = ({ element }) => (
+//   <LoadAnimation>{element}</LoadAnimation>
+// )
