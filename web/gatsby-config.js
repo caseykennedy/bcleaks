@@ -6,7 +6,7 @@ const config = require('./config')
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
 // Netlify instance for Identity
-const netlifyInstance = "https://bcleaks.netlify.com"
+const netlifyInstance = "https://bcleaks.netlify.app"
 
 // Get Sanity config
 const {
