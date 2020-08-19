@@ -23,5 +23,12 @@
   "devDependencies": {
     "lerna": "^3.14.1",
     "rimraf": "^2.6.3"
+  },
+  "dependencies": {
+    "@reach/dialog": "^0.10.5",
+    "@reach/tabs": "^0.10.5",
+    "@reach/visually-hidden": "^0.10.4",
+    "gatsby-plugin-netlify-identity": "0.0.3",
+    "react-netlify-identity-widget": "^0.2.7"
   }
 }

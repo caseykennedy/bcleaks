@@ -5,6 +5,9 @@ require('dotenv').config({
 const config = require('./config')
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
+// Netlify instance for Identity
+const netlifyInstance = "https://bcleaks.netlify.com"
+
 // Get Sanity config
 const {
   api: { projectId, dataset }
@@ -28,6 +31,16 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/app/*`] },
+    },
+    {
+      resolve: `gatsby-plugin-netlify-identity`,
+      options: {
+        url: netlifyInstance,
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-styled-components',

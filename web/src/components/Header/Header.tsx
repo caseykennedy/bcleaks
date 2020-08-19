@@ -4,7 +4,7 @@
 // ___________________________________________________________________
 
 import React, { useState } from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 // Theme + ui
 import theme from '../../../config/theme'
@@ -17,7 +17,11 @@ import NavLinks from './NavLinks'
 import Overlay from '../Overlay'
 import Icon from '../Icons'
 
-
+import {
+  IdentityModal,
+  useIdentityContext
+} from 'react-netlify-identity-widget'
+import 'react-netlify-identity-widget/styles.css' // delete if you want to bring your own CSS
 
 // ___________________________________________________________________
 
@@ -27,6 +31,9 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
   // Navigation toggle
   const [isNavOpen, setNavOpen] = useState(false)
   const toggleModal = () => setNavOpen(!isNavOpen)
+
+  const identity = useIdentityContext()
+  const [dialog, setDialog] = React.useState(false)
 
   return (
     <>
@@ -58,6 +65,13 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
           <S.Nav>
             {/* <Navigation /> */}
             Nav
+            <button onClick={() => setDialog(true)}>log in</button>
+            <IdentityModal
+              showDialog={dialog}
+              onCloseDialog={() => setDialog(false)}
+              onLogin={user => navigate('/app/profile')}
+              onSignup={user => navigate('/app/profile')}
+            />
           </S.Nav>
         </S.Tools>
       </S.Header>
