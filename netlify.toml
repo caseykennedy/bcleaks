@@ -1,5 +1,5 @@
 [build]
   base = "web/"
-  command = "yarn build"
+  command = "npm run build"
   functions = "functions-src"
   publish = "public"
