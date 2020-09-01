@@ -1,22 +1,22 @@
-import React from "react"
-import { Link, navigate } from "gatsby"
+import React from 'react'
+import { Link, navigate } from 'gatsby'
 
-import { useIdentityContext } from "react-netlify-identity-widget"
+import { useIdentityContext } from 'react-netlify-identity-widget'
 
 export default () => {
-  const { user, isLoggedIn, logoutUser } = useIdentityContext()
-  let message = isLoggedIn
+  const { user, isLoggedIn, logoutUser }: any = useIdentityContext()
+  const message: string = isLoggedIn
     ? `Hello, ${user.user_metadata && user.user_metadata.full_name}`
-    : "You are not logged in"
+    : 'You are not logged in'
 
   return (
     <div
       style={{
-        display: "flex",
-        flex: "1",
-        justifyContent: "space-between",
-        borderBottom: "1px solid #d1c1e0",
-        backgroundColor: "aliceblue",
+        display: 'flex',
+        flex: '1',
+        justifyContent: 'space-between',
+        borderBottom: '1px solid #d1c1e0',
+        backgroundColor: 'aliceblue'
       }}
     >
       <span>{message}</span>

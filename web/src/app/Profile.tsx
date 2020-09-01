@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react'
+import { useIdentityContext } from 'react-netlify-identity-widget'
 
-import { useIdentityContext } from "react-netlify-identity-widget"
 const Profile = () => {
-  const { user } = useIdentityContext()
+  const { user }: any = useIdentityContext()
   return (
     <>
       <h1>Your profile</h1>

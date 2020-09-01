@@ -3,9 +3,9 @@ import { Router } from '@reach/router'
 import Layout from '../components/Layout'
 import NavBar from './components/NavBar'
 import Profile from './profile'
-import Main from './main'
+import Main from './Main'
 import PrivateRoute from './components/PrivateRoute'
-import Login from './login'
+import Login from './Login'
 
 const App = () => {
   return (
@@ -21,7 +21,8 @@ const App = () => {
     </Layout>
   )
 }
-function PublicRoute(props) {
+
+const PublicRoute = (props: any) => {
   return <div>{props.children}</div>
 }
 
