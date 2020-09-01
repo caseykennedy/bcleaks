@@ -71,6 +71,7 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
               onCloseDialog={() => setDialog(false)}
               onLogin={user => navigate('/app/profile')}
               onSignup={user => navigate('/app/profile')}
+              aria-label="Log in"
             />
           </S.Nav>
         </S.Tools>

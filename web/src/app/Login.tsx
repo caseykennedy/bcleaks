@@ -20,6 +20,7 @@ const Login: React.FC<{ path: string }> = ({ path }) => {
         onCloseDialog={() => setDialog(false)}
         onLogin={user => navigate('/app/profile')}
         onSignup={user => navigate('/app/profile')}
+        aria-label="Log in"
       />
     </>
   )
