@@ -5,7 +5,7 @@ import { useIdentityContext } from 'react-netlify-identity-widget'
 const Main = () => {
   const [data, setData] = React.useState(null)
   const [loading, setLoading] = React.useState(false)
-  const { user } = useIdentityContext()
+  const { user }: any = useIdentityContext()
   const [err, setErr] = React.useState('')
 
   const handleClick = (e: any) => {
