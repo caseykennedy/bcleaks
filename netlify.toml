@@ -1,10 +1,5 @@
 [build]
   base = "web"
   command = "npm run build"
-  functions = "functions-src"
-  publish = "public"
-
-[[redirects]]
-  from = "/app/*"
-  to = "/app.html"
-  status = 200
+  functions = "web/functions-src"
+  publish = "web/public"

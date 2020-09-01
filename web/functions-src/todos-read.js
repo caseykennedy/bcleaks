@@ -1,6 +1,6 @@
 /* code from functions/todos-read.js */
-import faunadb from 'faunadb'
-import getId from './utils/getId'
+const faunadb = require('faunadb')
+const getId = require('./utils/getIdnadb')
 
 const q = faunadb.query
 const client = new faunadb.Client({
