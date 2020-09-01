@@ -1,6 +1,6 @@
 /* code from functions/todos-update.js */
 const faunadb = require('faunadb')
-const getId = require('./utils/getIdnadb')
+const getId = require('./utils/getId')
 
 const q = faunadb.query
 const client = new faunadb.Client({
