@@ -2,4 +2,4 @@
   base = "web/"
   command = "npm run build"
   publish = "public/"
-  functions = "web/functions-src"
+  functions = "functions-src"

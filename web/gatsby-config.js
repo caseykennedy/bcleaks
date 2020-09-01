@@ -8,6 +8,9 @@ const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 // Netlify instance for Identity
 const netlifyInstance = "https://bcleaks.netlify.app"
 
+// FaunaDB Key:
+// fnAD0oxsu0ACCDlse35dLqC4sEBwj7d89gST5_am
+
 // Get Sanity config
 const {
   api: { projectId, dataset }
