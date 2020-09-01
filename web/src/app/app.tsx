@@ -1,11 +1,16 @@
 import React from 'react'
 import { Router } from '@reach/router'
-import Layout from '../components/Layout'
+import fetch from 'node-fetch'
+
+// Components
 import NavBar from './components/NavBar'
 import Profile from './Profile'
 import Main from './Main'
 import PrivateRoute from './components/PrivateRoute'
 import Login from './Login'
+
+// Web Components
+import Layout from '../components/Layout'
 
 type TodoData = {
   title: string

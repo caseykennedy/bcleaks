@@ -66,6 +66,7 @@
     "google-map-react": "^1.1.7",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
+    "node-fetch": "^2.6.0",
     "polished": "^3.6.5",
     "react": "^16.13.1",
     "react-anchor-link-smooth-scroll": "^1.0.12",
