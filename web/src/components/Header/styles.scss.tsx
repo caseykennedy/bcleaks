@@ -18,16 +18,30 @@ import { Box, Flex, AnimatedFlex } from '../ui'
 export const Header = styled(Flex)`
   flex-direction: row;
   flex-wrap: wrap;
-  padding: ${theme.space[5]};
+
+  border-bottom: ${theme.border};
+  padding: ${theme.space[4]};
   position: relative;
   z-index: 99;
 
   @media ${theme.mq.tablet} {
-    padding: ${theme.space[7]};
+    padding: ${theme.space[6]};
+  }
+`
+
+export const TopBar = styled(Flex)`
+  justify-content: space-between;
+  width: 100%;
+  
+  button {
+    padding: ${theme.space[3]};
   }
 `
 
 export const Logo = styled(Box)`
+  padding: ${theme.space[4]} 0;
+  width: 100%;
+  
   h1 {
     font-size: ${theme.fontSizes[2]};
     font-family: ${theme.fonts.code};

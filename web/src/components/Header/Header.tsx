@@ -27,6 +27,39 @@ import 'react-netlify-identity-widget/styles.css' // delete if you want to bring
 
 type HeaderShape = { mainRef: React.RefObject<HTMLDivElement> }
 
+const GetDate = () => {
+  const d = new Date()
+  const days = [
+    'SUNDAY',
+    'MONDAY',
+    'TUESDAY',
+    'WEDNESDAY',
+    'THURSDAY',
+    'FRIDAY',
+    'SATURDAY'
+  ]
+  const months = [
+    'JANUARY',
+    'FEBRUARY',
+    'MARCH',
+    'APRIL',
+    'MAY',
+    'JUNE',
+    'JULY',
+    'AUGUST',
+    'SEPTEMBER',
+    'OCTOBER',
+    'NOVEMBER',
+    'DECEMBER'
+  ]
+  return (
+    <>
+      {days[d.getDay()]}, {months[d.getMonth()]} {d.getDate()},{' '}
+      {d.getFullYear()}
+    </>
+  )
+}
+
 const Header: React.FC<HeaderShape> = ({ mainRef }) => {
   // Navigation toggle
   const [isNavOpen, setNavOpen] = useState(false)
@@ -47,9 +80,26 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       >
         <NavLinks handleExit={() => setNavOpen(false)} isNavOpen={isNavOpen} />
       </Overlay> */}
+      <IdentityModal
+        showDialog={dialog}
+        onCloseDialog={() => setDialog(false)}
+        onLogin={user => navigate('/app/profile')}
+        onSignup={user => navigate('/app/profile')}
+        aria-label="Log in"
+      />
 
       <S.Header as="header">
-        <S.Logo className="logo--dark">
+        <S.TopBar>
+          <Box color="tertiary">
+            <GetDate />
+          </Box>
+          <Box>
+            <button onClick={() => setDialog(true)}>log in</button>
+            <button onClick={() => setDialog(true)}>sign up</button>
+          </Box>
+        </S.TopBar>
+
+        <S.Logo>
           <Heading as="h1">
             <Link to="/" aria-label="BC Leaks, back to home">
               BC Leaks
@@ -65,14 +115,6 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
           <S.Nav>
             {/* <Navigation /> */}
             Nav
-            <button onClick={() => setDialog(true)}>log in</button>
-            <IdentityModal
-              showDialog={dialog}
-              onCloseDialog={() => setDialog(false)}
-              onLogin={user => navigate('/app/profile')}
-              onSignup={user => navigate('/app/profile')}
-              aria-label="Log in"
-            />
           </S.Nav>
         </S.Tools>
       </S.Header>

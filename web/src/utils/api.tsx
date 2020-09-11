@@ -1,7 +1,7 @@
 /* Frontend code from src/utils/api.js */
 /* Api methods to call /functions */
 
-const create = data => {
+const create = (data: any) => {
   return fetch('/.netlify/functions/todos-create', {
     body: JSON.stringify(data),
     method: 'POST'
@@ -16,7 +16,7 @@ const readAll = () => {
   })
 }
 
-const update = (todoId, data) => {
+const update = (todoId: any, data: any) => {
   return fetch(`/.netlify/functions/todos-update/${todoId}`, {
     body: JSON.stringify(data),
     method: 'POST'
@@ -25,7 +25,7 @@ const update = (todoId, data) => {
   })
 }
 
-const deleteTodo = todoId => {
+const deleteTodo = (todoId: any) => {
   return fetch(`/.netlify/functions/todos-delete/${todoId}`, {
     method: 'POST'
   }).then(response => {
@@ -33,7 +33,7 @@ const deleteTodo = todoId => {
   })
 }
 
-const batchDeleteTodo = todoIds => {
+const batchDeleteTodo = (todoIds: any) => {
   return fetch(`/.netlify/functions/todos-delete-batch`, {
     body: JSON.stringify({
       ids: todoIds

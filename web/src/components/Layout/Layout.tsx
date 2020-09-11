@@ -33,7 +33,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   // eslint-disable-next-line no-console
   console.log(
-    `%c Site by CaseyKennedy.me `,
+    `%c BC Leaks `,
     `background: #2cc48a; color: #000000`
   )
   return (
