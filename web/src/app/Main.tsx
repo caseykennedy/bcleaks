@@ -110,9 +110,9 @@ const Main = () => {
       <button onClick={handleClick}>
         {loading ? 'Loading...' : 'Call Lambda Function'}
       </button>
-      <button onClick={handleDelete}>
+      {/* <button onClick={handleDelete}>
         {loading ? 'Loading...' : 'delete'}
-      </button>
+      </button> */}
       {err && <pre>{JSON.stringify(err, null, 2)}</pre>}
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </>

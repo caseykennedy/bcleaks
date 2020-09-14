@@ -1,4 +1,4 @@
-// Layout Styles:
+// Ticker Styles:
 
 // ___________________________________________________________________
 
@@ -12,44 +12,45 @@ import theme from '../../../config/theme'
 
 export const Ticker = styled(Flex)`
   background-color: black;
-  border-bottom: 1px solid #545454;
-  white-space: nowrap;
+  border-bottom: 1px solid ${theme.colors.tertiary};
+  max-width: 100vw;
   overflow: hidden;
   padding: ${theme.space[3]};
+  font-size: ${theme.fontSizes[1]};
+
+  .ticker {
+    &__inner {
+      /* display: flex;
+      white-space: nowrap;
+      overflow: hidden; */
+    }
+  }
+`
+
+export const Coin = styled(Box)`
+  margin-right: ${theme.space[6]};
 
   .coin {
-    
-  }
+    &-title {
+      color: ${theme.colors.tertiary};
+      
+      &__name {
+      }
+      &__marker {
+        color: ${theme.colors.tertiary};
+        vertical-align: super;
+        font-size: calc(${theme.fontSizes[1]} / 1.15);
+      }
+    }
 
-  .set1 {
-    display: inline-block;
-    position: relative;
-    left: 0px;
-  }
-
-  .set2 {
-    display: inline-block;
-    position: relative;
-    left: -1580px;
-  }
-
-  .coinHeader * {
-    display: inline-block;
-    color: #989898;
-    font-size: 14px;
-  }
-
-  .hourMarker {
-    font-size: 8px;
-  }
-
-  .priceHeader * {
-    display: inline-block;
-    font-size: 14px;
-  }
-
-  .currentPrice {
-    padding-right: 5px;
+    &-info {
+      &__price {
+        margin-right: ${theme.space[2]};
+      }
+      &__change {
+        
+      }
+    }
   }
 `
 

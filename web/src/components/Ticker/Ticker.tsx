@@ -1,13 +1,16 @@
-// Billboard Component:
+// Ticker Component:
 
 // ___________________________________________________________________
 
 import React, { useEffect, useState } from 'react'
-
 import CoinGecko from 'coingecko-api'
 
+// Libraries
+import Swiper from 'react-id-swiper'
+import ReactTicker from 'react-ticker'
+
 // ui
-import { Box, Flex } from '../ui'
+import { Box, Flex, Text } from '../ui'
 
 // Theme + Styles
 import * as S from './styles.scss'
@@ -26,7 +29,7 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
   if (typeof parseFloat(currentChange) === 'number') {
     const currentChangeFixed = currentChange.toFixed(2)
     if (currentChangeFixed.toString(10).startsWith('-')) {
-      color = theme.colors.quaternary
+      color = theme.colors.red
     } else {
       color = theme.colors.primary
     }
@@ -36,25 +39,26 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
       {!color ? (
         'Loading...'
       ) : (
-        <div className="coin">
-          <div className="coinHeader">
-            <div className="coinName">{coinName}</div>
-            <div className="hourMarker">24h</div>
-          </div>
-          <div className="priceHeader" style={{ color: `${color}` }}>
-            <div className="currentPrice">${currentPrice.toFixed(2)}</div>
-            <div className="currentChange">({currentChange}%)</div>
-          </div>
-        </div>
+        <S.Coin>
+          <Flex className="coin-title">
+            <div className="coin-title__name">{coinName}</div>
+            <div className="coin-title__marker">24h</div>
+          </Flex>
+          <Flex color={color} className="coin-info">
+            <div className="coin-info__price">${currentPrice.toFixed(2)}</div>
+            <div className="coin-info__change">({currentChange}%)</div>
+          </Flex>
+        </S.Coin>
       )}
     </>
   )
 }
 
-const Ticker: React.FC<Props> = () => {
+const GetCoinGecko = () => {
   const CoinGeckoClient = new CoinGecko()
-  const [data, setData] = useState(null)
 
+  // Fetch Coin data
+  const [data, setData] = useState(null)
   const getCoins = async () => {
     const results = await CoinGeckoClient.coins.markets({
       vs_currency: 'usd',
@@ -96,10 +100,13 @@ const Ticker: React.FC<Props> = () => {
     }
   }
 
+  return data ? <>{coins}</> : <Box>Loading...</Box>
+}
+
+const Ticker: React.FC<Props> = () => {
   return (
     <S.Ticker>
-      <div className="set1">{coins}</div>
-      <div className="set2">{coins}</div>
+      <GetCoinGecko />
     </S.Ticker>
   )
 }

@@ -96,14 +96,14 @@ export const Nav = styled(Flex)`
   display: none;
   justify-content: flex-end;
 
-  @media ${theme.mq.desktop} {
+  @media ${theme.mq.tablet} {
     display: flex;
   }
 
   .cta {
     /* display: none; */
 
-    @media ${theme.mq.desktop} {
+    @media ${theme.mq.tablet} {
       display: initial;
     }
   }
@@ -120,7 +120,7 @@ export const Toggle = styled.div`
   font-weight: 400;
   cursor: pointer;
 
-  @media ${theme.mq.desktop} {
+  @media ${theme.mq.tablet} {
     display: none;
   }
 
