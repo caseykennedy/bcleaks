@@ -25,23 +25,53 @@ export const Header = styled(Flex)`
   z-index: 99;
 
   @media ${theme.mq.tablet} {
-    padding: ${theme.space[6]};
+    padding: ${theme.space[4]} ${theme.space[6]};
   }
 `
 
-export const TopBar = styled(Flex)`
+export const Utilities = styled(Flex)`
+  align-items: center;
   justify-content: space-between;
   width: 100%;
-  
+
   button {
-    padding: ${theme.space[3]};
+    background: ${theme.colors.black};
+    border: none;
+    color: ${theme.colors.text};
+    cursor: pointer;
+    text-transform: capitalize;
+
+    margin-left: ${theme.space[2]};
+    position: relative;
+    padding: ${theme.space[4]} ${theme.space[3]} ${theme.space[3]};
+    transition: border-color 0.111s ease-in-out;
+
+    &:before {
+      background: ${theme.colors.primary};
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: ${theme.space[2]};
+      top: 0;
+      right: 0;
+      transition: width ${theme.transition.global};
+    }
+
+    &:hover {
+      border-color: ${theme.colors.primary};
+
+      &:before {
+        left: 0;
+        width: 100%;
+      }
+    }
   }
 `
 
 export const Logo = styled(Box)`
   padding: ${theme.space[4]} 0;
   width: 100%;
-  
+
   h1 {
     font-size: ${theme.fontSizes[2]};
     font-family: ${theme.fonts.code};

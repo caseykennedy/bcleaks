@@ -14,6 +14,7 @@ declare module 'gatsby-plugin-transition-link'
 declare module 'react-scroll-parallax'
 declare module 'react-image-lightbox'
 declare module 'react-responsive-embed'
+declare module 'coingecko-api'
 
 function createRef<T>(): RefObject<T>
 interface RefObject<T> {

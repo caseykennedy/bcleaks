@@ -89,7 +89,7 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       />
 
       <S.Header as="header">
-        <S.TopBar>
+        <S.Utilities>
           <Box color="tertiary">
             <GetDate />
           </Box>
@@ -97,7 +97,7 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
             <button onClick={() => setDialog(true)}>log in</button>
             <button onClick={() => setDialog(true)}>sign up</button>
           </Box>
-        </S.TopBar>
+        </S.Utilities>
 
         <S.Logo>
           <Heading as="h1">
