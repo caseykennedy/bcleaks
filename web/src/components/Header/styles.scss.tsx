@@ -20,12 +20,10 @@ export const Header = styled(Flex)`
   flex-wrap: wrap;
 
   border-bottom: ${theme.border};
-  padding: ${theme.space[4]};
   position: relative;
   z-index: 99;
 
   @media ${theme.mq.tablet} {
-    padding: ${theme.space[4]} ${theme.space[6]};
   }
 `
 
@@ -33,6 +31,8 @@ export const Utilities = styled(Flex)`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+
+  padding: ${theme.space[4]} ${theme.space[6]};
 
   button {
     background: ${theme.colors.black};
@@ -68,43 +68,51 @@ export const Utilities = styled(Flex)`
   }
 `
 
-export const Logo = styled(Box)`
-  padding: ${theme.space[4]} 0;
+export const Logo = styled(Flex)`
+  align-items: center;
+  padding: ${theme.space[4]} ${theme.space[6]};
   width: 100%;
 
-  h1 {
-    font-size: ${theme.fontSizes[2]};
-    font-family: ${theme.fonts.code};
-  }
-
   @media ${theme.mq.tablet} {
   }
 
-  svg {
-    fill: ${theme.colors.secondary};
-    width: 100%;
+  a {
+    svg {
+      width: calc(${theme.space[3]} * 5);
+    }
+  }
+
+  .logo-lettermark {
+    margin-left: ${theme.space[5]};
+
+    svg {
+      width: calc(${theme.space[6]} * 10);
+    }
   }
 `
 
-export const Tools = styled(Flex)`
-  justify-content: space-between;
+export const Menu = styled(Flex)`
   flex: 1;
-`
+  border-top: 1px solid ${theme.colors.tertiary};
 
-export const Nav = styled(Flex)`
-  flex: 1;
-  display: none;
-  justify-content: flex-end;
-
-  @media ${theme.mq.tablet} {
+  .page-title {
     display: flex;
+    align-items: center;
+    border-right: 1px solid ${theme.colors.tertiary};
+    padding: ${theme.space[2]} ${theme.space[6]};
+
+    font-size: ${theme.fontSizes[4]};
+    text-transform: uppercase;
   }
 
-  .cta {
-    /* display: none; */
+  .navigation {
+    display: none;
+    flex: 1;
+    padding: 0 ${theme.space[6]};
+    width: 100%;
 
     @media ${theme.mq.tablet} {
-      display: initial;
+      display: flex;
     }
   }
 `

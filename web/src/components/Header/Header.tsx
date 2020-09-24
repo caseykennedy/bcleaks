@@ -11,7 +11,8 @@ import theme from '../../../config/theme'
 import * as S from './styles.scss'
 import { Box, Flex, Text, Heading } from '../ui'
 
-import Logo from '../Logo'
+import Symbol from '../Symbol'
+import Lettermark from '../Lettermark'
 import Navigation from './Navigation'
 import NavLinks from './NavLinks'
 import Overlay from '../Overlay'
@@ -100,23 +101,23 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
         </S.Utilities>
 
         <S.Logo>
-          <Heading as="h1">
-            <Link to="/" aria-label="BC Leaks, back to home">
-              BC Leaks
-            </Link>
-          </Heading>
+          <Link to="/" aria-label="BC Leaks, back to home">
+            <Symbol />
+          </Link>
+          <div className="logo-lettermark">
+            <Lettermark />
+          </div>
         </S.Logo>
 
-        <S.Tools>
-          <S.Toggle onClick={toggleModal} aria-label="toggle menu">
-            <Icon name="hamburger" color="black" />
-          </S.Toggle>
-
-          <S.Nav>
-            {/* <Navigation /> */}
-            Nav
-          </S.Nav>
-        </S.Tools>
+        <S.Menu>
+          <div className="page-title">Good evening.</div>
+          <div className="navigation">
+            <S.Toggle onClick={toggleModal} aria-label="toggle menu">
+              <Icon name="hamburger" color="black" />
+            </S.Toggle>
+            <Navigation />
+          </div>
+        </S.Menu>
       </S.Header>
     </>
   )

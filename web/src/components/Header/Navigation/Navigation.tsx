@@ -33,7 +33,7 @@ const Navigation = () => {
               {item.name}
             </Link>
           )}
-          {item.subPage && (
+          {/* {item.subPage && (
             <Box className="sub-nav">
               {item.subPage.map((subItem, idx) => (
                 <Link
@@ -46,7 +46,7 @@ const Navigation = () => {
                 </Link>
               ))}
             </Box>
-          )}
+          )} */}
         </Box>
       ))}
     </S.Nav>
@@ -59,44 +59,44 @@ export default Navigation
 
 const data = [
   {
-    name: 'rethink',
-    link: '/rethink'
+    name: 'videos',
+    link: '/videos'
   },
   {
-    name: 'about oic',
-    link: '/about'
+    name: 'articles',
+    link: '/articles'
   },
   {
-    name: 'implants',
-    subPage: [
-      {
-        name: 'External Fixation',
-        link: '/implants/external-fixation'
-      },
-      {
-        name: 'Hip Fractures',
-        link: '/implants/hip-fractures'
-      },
-      {
-        name: 'IM Nails',
-        link: '/implants/im-nails'
-      },
-      {
-        name: 'Plates and Screws',
-        link: '/implants/plates-and-screws'
-      },
-      {
-        name: 'Sports Medicine',
-        link: '/implants/sports-medicine'
-      },
-    ]
+    name: 'community',
+    link: '/community'
   },
   {
-    name: 'news',
-    link: '/blog'
+    name: 'store',
+    link: '/store'
   },
-  {
-    name: 'contact',
-    link: '/contact'
-  }
+  // {
+  //   name: 'implants',
+  //   subPage: [
+  //     {
+  //       name: 'External Fixation',
+  //       link: '/implants/external-fixation'
+  //     },
+  //     {
+  //       name: 'Hip Fractures',
+  //       link: '/implants/hip-fractures'
+  //     },
+  //     {
+  //       name: 'IM Nails',
+  //       link: '/implants/im-nails'
+  //     },
+  //     {
+  //       name: 'Plates and Screws',
+  //       link: '/implants/plates-and-screws'
+  //     },
+  //     {
+  //       name: 'Sports Medicine',
+  //       link: '/implants/sports-medicine'
+  //     },
+  //   ]
+  // },
 ]

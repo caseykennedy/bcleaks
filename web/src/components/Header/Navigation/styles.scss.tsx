@@ -13,27 +13,20 @@ import theme from '../../../../config/theme'
 
 export const Nav = styled.nav`
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   z-index: 999;
 
   width: 100%;
-  height: ${theme.headerHeight};
-  padding: ${theme.space[5]} ${theme.space[5]};
-  background: ${theme.colors.background};
 
   @media ${theme.mq.desktop} {
   }
 
   .nav-link {
     font-family: ${theme.fonts.heading};
-    font-size: ${theme.fontSizes[2]};
+    font-size: calc(${theme.fontSizes[2]} * 1.25);
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-
-    margin-left: ${theme.space[5]};
-    position: relative;
-    cursor: pointer;
 
     transition: ${theme.transition.all};
 

@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react'
 import CoinGecko from 'coingecko-api'
 
 // Libraries
-import Swiper from 'react-id-swiper'
 import ReactTicker from 'react-ticker'
 
 // ui
@@ -15,10 +14,45 @@ import { Box, Flex, Text } from '../ui'
 // Theme + Styles
 import * as S from './styles.scss'
 import theme from '../../../config/theme'
+import { AnyARecord } from 'dns'
 
 // ___________________________________________________________________
 
-type Props = {}
+type CoinShape = {
+  node: {
+    props: {
+      coin: {
+        ath: number
+        ath_change_percentage: number
+        ath_date: string
+        atl: number
+        atl_change_percentage: number
+        atl_date: string
+        circulating_supply: number
+        current_price: number
+        fully_diluted_valuation: number
+        high_24h: number
+        id: string
+        image: string
+        last_updated: string
+        low_24h: number
+        market_cap: number
+        market_cap_change_24h: number
+        market_cap_change_percentage_24h: number
+        market_cap_rank: number
+        max_supply: number
+        name: string
+        price_change_24h: number
+        price_change_percentage_24h: number
+        price_change_percentage_24h_in_currency: number
+        roi: null
+        symbol: string
+        total_supply: number
+        total_volume: number
+      }
+    }
+  }
+}
 
 const Coin: React.FC<{ coin: any }> = ({ coin }) => {
   const coinName = coin.name
@@ -56,7 +90,6 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
 
 const GetCoinGecko = () => {
   const CoinGeckoClient = new CoinGecko()
-
   // Fetch Coin data
   const [data, setData] = useState(null)
   const getCoins = async () => {
@@ -100,10 +133,12 @@ const GetCoinGecko = () => {
     }
   }
 
+  console.log(coins)
+
   return data ? <>{coins}</> : <Box>Loading...</Box>
 }
 
-const Ticker: React.FC<Props> = () => {
+const Ticker = () => {
   return (
     <S.Ticker>
       <GetCoinGecko />
@@ -112,9 +147,3 @@ const Ticker: React.FC<Props> = () => {
 }
 
 export default Ticker
-
-// ___________________________________________________________________
-
-const defaultProps = {}
-
-Ticker.defaultProps = defaultProps
