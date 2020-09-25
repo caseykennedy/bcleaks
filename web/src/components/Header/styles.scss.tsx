@@ -5,7 +5,7 @@
 // Core
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { readableColor, darken } from 'polished'
+import { lighten } from 'polished'
 
 // Theme
 import theme from '../../../config/theme'
@@ -44,7 +44,7 @@ export const Utilities = styled(Flex)`
     margin-left: ${theme.space[2]};
     position: relative;
     padding: ${theme.space[4]} ${theme.space[3]} ${theme.space[3]};
-    transition: border-color 0.111s ease-in-out;
+    transition: border-color 0.111s ease-in-out, background 0.111s ease-in-out;
 
     &:before {
       background: ${theme.colors.primary};
@@ -58,6 +58,7 @@ export const Utilities = styled(Flex)`
     }
 
     &:hover {
+      background: ${lighten(0.05, theme.colors.background)};
       border-color: ${theme.colors.primary};
 
       &:before {
@@ -76,36 +77,43 @@ export const Logo = styled(Flex)`
   @media ${theme.mq.tablet} {
   }
 
-  a {
-    svg {
-      width: calc(${theme.space[3]} * 5);
+  .logo {
+    &-symbol {
+      svg {
+        width: calc(${theme.space[3]} * 5);
+      }
     }
-  }
 
-  .logo-lettermark {
-    margin-left: ${theme.space[5]};
+    &-lettermark {
+      margin-left: ${theme.space[5]};
+      margin-bottom: ${theme.space[4]};
 
-    svg {
-      width: calc(${theme.space[6]} * 10);
+      svg {
+        width: calc(${theme.space[5]} * 13);
+      }
     }
   }
 `
 
 export const Menu = styled(Flex)`
   flex: 1;
-  border-top: 1px solid ${theme.colors.tertiary};
+  flex-wrap: wrap;
+  border-top: 1px solid ${theme.colors.quaternary};
 
   .page-title {
     display: flex;
     align-items: center;
-    border-right: 1px solid ${theme.colors.tertiary};
-    padding: ${theme.space[2]} ${theme.space[6]};
+    border-right: 1px solid ${theme.colors.quaternary};
+    padding: ${theme.space[3]} ${theme.space[6]};
 
-    font-size: ${theme.fontSizes[4]};
+    color: ${theme.colors.quaternary};
+    font-family: ${theme.fonts.display};
+    font-size: ${theme.fontSizes[3]};
+    font-weight: 600;
     text-transform: uppercase;
   }
 
-  .navigation {
+  .nav-outer {
     display: none;
     flex: 1;
     padding: 0 ${theme.space[6]};

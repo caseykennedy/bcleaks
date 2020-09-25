@@ -27,7 +27,6 @@ const HomePage: React.FC = () => {
   return (
     <S.HomePage>
       <Section>
-        <Heading as="h1">Crypto</Heading>
       </Section>
     </S.HomePage>
   )

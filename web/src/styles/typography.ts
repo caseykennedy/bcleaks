@@ -6,100 +6,100 @@ import { css } from 'styled-components'
 import theme from '../../config/theme'
 import { darken, lighten } from 'polished'
 
-// Helvetica Neue Condensed Regular
-import HelveticaNeueLTStdCnEot from './fonts/HelveticaNeueLTStd-Cn.eot'
-import HelveticaNeueLTStdCnWoff2 from './fonts/HelveticaNeueLTStd-Cn.woff2'
-import HelveticaNeueLTStdCnWoff from './fonts/HelveticaNeueLTStd-Cn.woff'
-import HelveticaNeueLTStdCnOtf from './fonts/HelveticaNeueLTStd-Cn.otf'
+// Rubik Bold
+import RubikBoldEot from './fonts/Rubik-Bold.eot'
+import RubikBoldWoff2 from './fonts/Rubik-Bold.woff2'
+import RubikBoldWoff from './fonts/Rubik-Bold.woff'
+import RubikBoldOtf from './fonts/Rubik-Bold.otf'
 
-// Helvetica Neue Condensed Medium
-import HelveticaNeueLTStdMdCnEot from './fonts/HelveticaNeueLTStd-MdCn.eot'
-import HelveticaNeueLTStdMdCnWoff2 from './fonts/HelveticaNeueLTStd-MdCn.woff2'
-import HelveticaNeueLTStdMdCnWoff from './fonts/HelveticaNeueLTStd-MdCn.woff'
-import HelveticaNeueLTStdMdCnOtf from './fonts/HelveticaNeueLTStd-MdCn.otf'
+// Suisse Regular
+import SuisseIntlRegularEot from './fonts/SuisseIntl-Regular.eot'
+import SuisseIntlRegularWoff2 from './fonts/SuisseIntl-Regular.woff2'
+import SuisseIntlRegularWoff from './fonts/SuisseIntl-Regular.woff'
+import SuisseIntlRegularOtf from './fonts/SuisseIntl-Regular.otf'
 
-// Helvetica Neue Light
-import HelveticaNeueLTStdLtEot from './fonts/HelveticaNeueLTStd-Lt.eot'
-import HelveticaNeueLTStdLtWoff2 from './fonts/HelveticaNeueLTStd-Lt.woff2'
-import HelveticaNeueLTStdLtWoff from './fonts/HelveticaNeueLTStd-Lt.woff'
-import HelveticaNeueLTStdLtOtf from './fonts/HelveticaNeueLTStd-Lt.otf'
+// Suisse Mono Regular
+import SuisseIntlMonoRegularEot from './fonts/SuisseIntlMono-Regular.eot'
+import SuisseIntlMonoRegularWoff2 from './fonts/SuisseIntlMono-Regular.woff2'
+import SuisseIntlMonoRegularWoff from './fonts/SuisseIntlMono-Regular.woff'
+import SuisseIntlMonoRegularOtf from './fonts/SuisseIntlMono-Regular.otf'
 
-// Helvetica Neue Roman
-import HelveticaNeueLTStdRomanEot from './fonts/HelveticaNeueLTStd-Roman.eot'
-import HelveticaNeueLTStdRomanWoff2 from './fonts/HelveticaNeueLTStd-Roman.woff2'
-import HelveticaNeueLTStdRomanWoff from './fonts/HelveticaNeueLTStd-Roman.woff'
-import HelveticaNeueLTStdRomanOtf from './fonts/HelveticaNeueLTStd-Roman.otf'
+// Suisse Mono Thin
+import SuisseIntlMonoThinEot from './fonts/SuisseIntlMono-Thin.eot'
+import SuisseIntlMonoThinWoff2 from './fonts/SuisseIntlMono-Thin.woff2'
+import SuisseIntlMonoThinWoff from './fonts/SuisseIntlMono-Thin.woff'
+import SuisseIntlMonoThinOtf from './fonts/SuisseIntlMono-Thin.otf'
 
-// Helvetica Monospace Regular
-import HelveticaMonospacedProRgEot from './fonts/HelveticaMonospacedPro-Rg.eot'
-import HelveticaMonospacedProRgWoff2 from './fonts/HelveticaMonospacedPro-Rg.woff2'
-import HelveticaMonospacedProRgWoff from './fonts/HelveticaMonospacedPro-Rg.woff'
-import HelveticaMonospacedProRgOtf from './fonts/HelveticaMonospacedPro-Rg.otf'
+// Suisse Mono Bold
+import SuisseIntlMonoBoldEot from './fonts/SuisseIntlMono-Bold.eot'
+import SuisseIntlMonoBoldWoff2 from './fonts/SuisseIntlMono-Bold.woff2'
+import SuisseIntlMonoBoldWoff from './fonts/SuisseIntlMono-Bold.woff'
+import SuisseIntlMonoBoldOtf from './fonts/SuisseIntlMono-Bold.otf'
 
 // ___________________________________________________________________
 
 const Typography = css`
-  /* Helvetica Neue Condensed Regular */
+  /* Rubik Bold */
   @font-face {
-    font-family: 'HelveticaCondensed';
-    src: url(${HelveticaNeueLTStdCnEot});
-    src: url(${HelveticaNeueLTStdCnWoff2}) format('woff2'),
-      url(${HelveticaNeueLTStdCnWoff}) format('woff'),
-      url(${HelveticaNeueLTStdCnOtf}) format('opentype'),
-      url(${HelveticaNeueLTStdCnEot}?#iefix) format('embedded-opentype');
+    font-family: 'Rubik';
+    src: url(${RubikBoldEot});
+    src: url(${RubikBoldWoff2}) format('woff2'),
+      url(${RubikBoldWoff}) format('woff'),
+      url(${RubikBoldOtf}) format('opentype'),
+      url(${RubikBoldEot}?#iefix) format('embedded-opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Suisse Regular */
+  @font-face {
+    font-family: 'Suisse';
+    src: url(${SuisseIntlRegularEot});
+    src: url(${SuisseIntlRegularWoff2}) format('woff2'),
+      url(${SuisseIntlRegularWoff}) format('woff'),
+      url(${SuisseIntlRegularOtf}) format('opentype'),
+      url(${SuisseIntlRegularEot}?#iefix) format('embedded-opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
 
-  /* Helvetica Neue Condensed Medium */
+  /* Suisse Mono Thin */
   @font-face {
-    font-family: 'HelveticaCondensed';
-    src: url(${HelveticaNeueLTStdMdCnEot});
-    src: url(${HelveticaNeueLTStdMdCnWoff2}) format('woff2'),
-      url(${HelveticaNeueLTStdMdCnWoff}) format('woff'),
-      url(${HelveticaNeueLTStdMdCnOtf}) format('opentype'),
-      url(${HelveticaNeueLTStdMdCnEot}?#iefix) format('embedded-opentype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  /* Helvetica Neue Light */
-  @font-face {
-    font-family: 'Helvetica';
-    src: url(${HelveticaNeueLTStdLtEot});
-    src: url(${HelveticaNeueLTStdLtWoff2}) format('woff2'),
-      url(${HelveticaNeueLTStdLtWoff}) format('woff'),
-      url(${HelveticaNeueLTStdLtOtf}) format('opentype'),
-      url(${HelveticaNeueLTStdLtEot}?#iefix) format('embedded-opentype');
+    font-family: 'SuisseMono';
+    src: url(${SuisseIntlMonoThinEot});
+    src: url(${SuisseIntlMonoThinWoff2}) format('woff2'),
+      url(${SuisseIntlMonoThinWoff}) format('woff'),
+      url(${SuisseIntlMonoThinOtf}) format('opentype'),
+      url(${SuisseIntlMonoThinEot}?#iefix) format('embedded-opentype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
   }
 
-  /* Helvetica Neue Roman */
+  /* Suisse Mono Regular */
   @font-face {
-    font-family: 'Helvetica';
-    src: url(${HelveticaNeueLTStdRomanEot});
-    src: url(${HelveticaNeueLTStdRomanWoff2}) format('woff2'),
-      url(${HelveticaNeueLTStdRomanWoff}) format('woff'),
-      url(${HelveticaNeueLTStdRomanOtf}) format('opentype'),
-      url(${HelveticaNeueLTStdRomanEot}?#iefix) format('embedded-opentype');
+    font-family: 'SuisseMono';
+    src: url(${SuisseIntlMonoRegularEot});
+    src: url(${SuisseIntlMonoRegularWoff2}) format('woff2'),
+      url(${SuisseIntlMonoRegularWoff}) format('woff'),
+      url(${SuisseIntlMonoRegularOtf}) format('opentype'),
+      url(${SuisseIntlMonoRegularEot}?#iefix) format('embedded-opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
 
-  /* Helvetica Monospace Regular */
+  /* Suisse Mono Bold */
   @font-face {
-    font-family: 'HelveticaMono';
-    src: url(${HelveticaMonospacedProRgEot});
-    src: url(${HelveticaMonospacedProRgWoff2}) format('woff2'),
-      url(${HelveticaMonospacedProRgWoff}) format('woff'),
-      url(${HelveticaMonospacedProRgOtf}) format('opentype'),
-      url(${HelveticaMonospacedProRgEot}?#iefix) format('embedded-opentype');
-    font-weight: 400;
+    font-family: 'SuisseMono';
+    src: url(${SuisseIntlMonoBoldEot});
+    src: url(${SuisseIntlMonoBoldWoff2}) format('woff2'),
+      url(${SuisseIntlMonoBoldWoff}) format('woff'),
+      url(${SuisseIntlMonoBoldOtf}) format('opentype'),
+      url(${SuisseIntlMonoBoldEot}?#iefix) format('embedded-opentype');
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
   }
@@ -115,7 +115,7 @@ const Typography = css`
   }
 
   html {
-    font-size: 15px;
+    font-size: 16px;
     box-sizing: border-box;
     border: 0;
     margin: 0;
@@ -152,7 +152,7 @@ const Typography = css`
     font-family: ${theme.fonts.heading};
     font-weight: ${theme.fontWeights.medium};
     line-height: ${theme.root.font.headingLineHeight};
-    letter-spacing: 0.5px;
+    /* letter-spacing: 0.5px; */
     margin: 0 0 0.25em;
     transition: ${theme.transition.all};
   }
@@ -288,7 +288,9 @@ const Typography = css`
 
   mark {
     background-color: ${theme.colors.primary};
-    padding: ${theme.space[2]} ${theme.space[2]} ${theme.space[0]} ${theme.space[2]};
+    padding: ${theme.space[2]} ${theme.space[2]} ${theme.space[0]} ${
+  theme.space[2]
+};
   }
 
   .t--link {

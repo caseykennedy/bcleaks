@@ -18,6 +18,8 @@ import NavLinks from './NavLinks'
 import Overlay from '../Overlay'
 import Icon from '../Icons'
 
+import Typist from 'react-typist'
+
 import {
   IdentityModal,
   useIdentityContext
@@ -27,6 +29,14 @@ import 'react-netlify-identity-widget/styles.css' // delete if you want to bring
 // ___________________________________________________________________
 
 type HeaderShape = { mainRef: React.RefObject<HTMLDivElement> }
+
+const cursorProps = {
+  show: true,
+  blink: true,
+  element: '|',
+  hideWhenDone: false,
+  hideWhenDoneDelay: 1000
+}
 
 const GetDate = () => {
   const d = new Date()
@@ -101,7 +111,11 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
         </S.Utilities>
 
         <S.Logo>
-          <Link to="/" aria-label="BC Leaks, back to home">
+          <Link
+            to="/"
+            className="logo-symbol"
+            aria-label="BC Leaks, back to home"
+          >
             <Symbol />
           </Link>
           <div className="logo-lettermark">
@@ -111,7 +125,7 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
 
         <S.Menu>
           <div className="page-title">Good evening.</div>
-          <div className="navigation">
+          <div className="nav-outer">
             <S.Toggle onClick={toggleModal} aria-label="toggle menu">
               <Icon name="hamburger" color="black" />
             </S.Toggle>

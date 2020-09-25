@@ -83,7 +83,8 @@ const theme: ThemeShape = {
     
     primary: '#2cc48a',
     secondary: '#0d0d0d',
-    tertiary: '#919191',
+    tertiary: '#808080',
+    quaternary: '#545454',
 
     black: '#000000',
     white: '#ffffff',
@@ -121,9 +122,10 @@ const theme: ThemeShape = {
   // ___________________________________________________________________
 
   fonts: {
-    body: `"HelveticaMono", Consolas, Liberation Mono, Menlo, Courier, monospace`,
-    heading: `"HelveticaMono", Consolas, Liberation Mono, Menlo, Courier, monospace`,
-    code: `"HelveticaMono", Consolas, Liberation Mono, Menlo, Courier, monospace`
+    body: `"SuisseMono", Consolas, Liberation Mono, Menlo, Courier, monospace`,
+    heading: `"SuisseMono", Consolas, Liberation Mono, Menlo, Courier, monospace`,
+    sans: `"Suisse", Consolas, Liberation Mono, Menlo, Courier, monospace`,
+    display: `"Ruibik", Arial`,
   },
 
   fontSizes: [
@@ -175,7 +177,7 @@ const theme: ThemeShape = {
     }
   },
 
-  border: '1px solid #919191',
+  border: '1px solid #545454',
   shadow: '2rem 1.5rem 1rem #8a8a7c',
 
   root: {

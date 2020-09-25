@@ -12,7 +12,7 @@ import theme from '../../../config/theme'
 
 export const Ticker = styled(Flex)`
   background-color: black;
-  border-bottom: 1px solid ${theme.colors.tertiary};
+  border-bottom: 1px solid ${theme.colors.quaternary};
   max-width: 100vw;
   overflow: hidden;
   padding: ${theme.space[3]};
@@ -33,8 +33,10 @@ export const Coin = styled(Box)`
   .coin {
     &-title {
       color: ${theme.colors.tertiary};
+      font-size: ${theme.fontSizes[2]};
       
       &__name {
+        font-weight: 600;
       }
       &__marker {
         color: ${theme.colors.tertiary};
