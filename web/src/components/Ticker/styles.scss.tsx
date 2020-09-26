@@ -15,7 +15,7 @@ export const Ticker = styled(Flex)`
   border-bottom: 1px solid ${theme.colors.quaternary};
   max-width: 100vw;
   overflow: hidden;
-  padding: ${theme.space[3]};
+  padding: ${theme.space[4]} ${theme.space[3]};
   font-size: ${theme.fontSizes[1]};
 
   .ticker {
@@ -33,7 +33,7 @@ export const Coin = styled(Box)`
   .coin {
     &-title {
       color: ${theme.colors.tertiary};
-      font-size: ${theme.fontSizes[2]};
+      font-size: font-size: calc(${theme.fontSizes[1]} * 1.15);;
       
       &__name {
         font-weight: 600;
@@ -46,6 +46,8 @@ export const Coin = styled(Box)`
     }
 
     &-info {
+      font-size: calc(${theme.fontSizes[1]} / 1.15);
+
       &__price {
         margin-right: ${theme.space[2]};
       }

@@ -28,11 +28,21 @@ export const Header = styled(Flex)`
 `
 
 export const Utilities = styled(Flex)`
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   width: 100%;
 
-  padding: ${theme.space[4]} ${theme.space[6]};
+  padding: ${theme.space[3]} ${theme.space[6]};
+
+  .utils {
+    &-account {
+      align-items: center;
+
+      &__login {
+        margin-right: ${theme.space[3]};
+      }
+    }
+  }
 
   button {
     background: ${theme.colors.black};
@@ -43,7 +53,7 @@ export const Utilities = styled(Flex)`
 
     margin-left: ${theme.space[2]};
     position: relative;
-    padding: ${theme.space[4]} ${theme.space[3]} ${theme.space[3]};
+    padding: ${theme.space[3]} ${theme.space[4]};
     transition: border-color 0.111s ease-in-out, background 0.111s ease-in-out;
 
     &:before {
@@ -51,7 +61,7 @@ export const Utilities = styled(Flex)`
       content: '';
       position: absolute;
       width: 0%;
-      height: ${theme.space[2]};
+      height: ${theme.space[1]};
       top: 0;
       right: 0;
       transition: width ${theme.transition.global};
@@ -71,7 +81,7 @@ export const Utilities = styled(Flex)`
 
 export const Logo = styled(Flex)`
   align-items: center;
-  padding: ${theme.space[4]} ${theme.space[6]};
+  /* padding: ${theme.space[4]} ${theme.space[6]}; */
   width: 100%;
 
   @media ${theme.mq.tablet} {
@@ -80,16 +90,16 @@ export const Logo = styled(Flex)`
   .logo {
     &-symbol {
       svg {
-        width: calc(${theme.space[3]} * 5);
+        width: calc(${theme.space[3]} * 4);
       }
     }
 
     &-lettermark {
-      margin-left: ${theme.space[5]};
-      margin-bottom: ${theme.space[4]};
+      margin-left: ${theme.space[3]};
+      /* margin-bottom: ${theme.space[2]}; */
 
       svg {
-        width: calc(${theme.space[5]} * 13);
+        width: calc(${theme.space[5]} * 10);
       }
     }
   }
@@ -108,7 +118,7 @@ export const Menu = styled(Flex)`
 
     color: ${theme.colors.quaternary};
     font-family: ${theme.fonts.display};
-    font-size: ${theme.fontSizes[3]};
+    font-size: calc(${theme.fontSizes[3]} / 1.15);
     font-weight: 600;
     text-transform: uppercase;
   }

@@ -12,12 +12,12 @@ export const Footer = styled(Flex)`
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
-  padding: ${theme.space[5]};
+  padding: ${theme.space[7]} ${theme.space[5]};
 
   background: ${theme.colors.black};
 
   @media ${theme.mq.tablet} {
-    padding: ${theme.space[7]};
+    padding: ${theme.space[8]} ${theme.space[6]};
   }
 `
 
@@ -27,7 +27,6 @@ export const Nav = styled(Flex)`
   justify-content: space-between;
 
   @media ${theme.mq.desktop} {
-
   }
 
   a {
@@ -63,4 +62,3 @@ export const Social = styled(Flex)`
     }
   }
 `
-

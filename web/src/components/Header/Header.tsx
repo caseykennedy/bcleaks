@@ -30,14 +30,6 @@ import 'react-netlify-identity-widget/styles.css' // delete if you want to bring
 
 type HeaderShape = { mainRef: React.RefObject<HTMLDivElement> }
 
-const cursorProps = {
-  show: true,
-  blink: true,
-  element: '|',
-  hideWhenDone: false,
-  hideWhenDoneDelay: 1000
-}
-
 const GetDate = () => {
   const d = new Date()
   const days = [
@@ -102,29 +94,34 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       <S.Header as="header">
         <S.Utilities>
           <Box color="tertiary">
-            <GetDate />
+            <S.Logo>
+              <Link
+                to="/"
+                className="logo-symbol"
+                aria-label="BC Leaks, back to home"
+              >
+                <Symbol />
+              </Link>
+              <div className="logo-lettermark">
+                <Lettermark />
+              </div>
+            </S.Logo>
           </Box>
-          <Box>
-            <button onClick={() => setDialog(true)}>log in</button>
+          <Flex className="utils-account">
+            <div
+              onClick={() => setDialog(true)}
+              className="utils-account__login"
+            >
+              log in
+            </div>
             <button onClick={() => setDialog(true)}>sign up</button>
-          </Box>
+          </Flex>
         </S.Utilities>
 
-        <S.Logo>
-          <Link
-            to="/"
-            className="logo-symbol"
-            aria-label="BC Leaks, back to home"
-          >
-            <Symbol />
-          </Link>
-          <div className="logo-lettermark">
-            <Lettermark />
-          </div>
-        </S.Logo>
-
         <S.Menu>
-          <div className="page-title">Good evening.</div>
+          <div className="page-title">
+            <Typist cursor={cursorProps}>Good evening.</Typist>
+          </div>
           <div className="nav-outer">
             <S.Toggle onClick={toggleModal} aria-label="toggle menu">
               <Icon name="hamburger" color="black" />
@@ -138,3 +135,11 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
 }
 
 export default Header
+
+const cursorProps = {
+  show: false,
+  blink: true,
+  element: '|',
+  hideWhenDone: false,
+  hideWhenDoneDelay: 1000
+}

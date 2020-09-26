@@ -10,13 +10,11 @@ import * as S from './styles.scss'
 
 // UI
 import { Box, Flex, Heading, Text } from '../ui'
-import Divider from '../ui/Divider'
-
-// Components
-import ImgMatch from '../ImgMatch'
-import Section from '../Section'
 
 // Sections
+import Hero from './Hero'
+import Articles from './Articles'
+import Community from './Community'
 
 // import Hero from './Hero'
 
@@ -26,8 +24,9 @@ const HomePage: React.FC = () => {
   // const data = useHomePage()
   return (
     <S.HomePage>
-      <Section>
-      </Section>
+      <Hero />
+      <Articles />
+      <Community />
     </S.HomePage>
   )
 }

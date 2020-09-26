@@ -64,10 +64,10 @@ export default Section
 // ___________________________________________________________________
 
 const defaultProps = {
-  pt: theme.gutter.axis,
-  pb: theme.gutter.axis,
-  pr: theme.gutter.axis,
-  pl: theme.gutter.axis,
+  pt: theme.gutter.y,
+  pb: theme.gutter.y,
+  pr: theme.gutter.x,
+  pl: theme.gutter.x,
   width: 1
 }
 
@@ -79,15 +79,4 @@ const Container = styled(Box)<{ border?: boolean, overflow?: string }>`
   border-top: ${p => (!p.border ? 'none' : `${theme.border}`)};
   position: relative;
   overflow: ${p => (!p.overflow ? 'visible' : p.overflow)};
-
-  .cta {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 9;
-
-    @media ${theme.mq.tablet} {
-      right: ${theme.space[7]};
-    }
-  }
 `
