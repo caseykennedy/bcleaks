@@ -12,8 +12,9 @@ import { Box, Flex } from '../../ui'
 export const Hero = styled(Flex)`
   background: ${theme.colors.black};
   margin-top: ${theme.space[3]};
-  padding: ${theme.space[7]} 0;
   width: 100%;
+
+  padding: ${theme.space[7]} 0;
 
   @media ${theme.mq.tablet} {
     padding: ${theme.space[8]} 0;
@@ -26,6 +27,12 @@ export const Hero = styled(Flex)`
 
     @media ${theme.mq.tablet} {
       padding: 0 ${theme.space[6]};
+    }
+
+    &__meta {
+      display: flex;
+      justify-content: space-between;
+      width: 1;
     }
   }
 `

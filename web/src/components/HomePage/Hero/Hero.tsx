@@ -17,22 +17,22 @@ type Props = {}
 const Hero: React.FC<Props> = () => {
   return (
     <S.Hero bg="black">
-      <Box width={1} className="hero-inner">
+      <div className="hero-inner">
         <Box width={[1, 8 / 10]}>
           <div className="text--md">A fine day to live</div>
           <h1 className="t--uppercase">
             Welcome to BCLeaks, a new era in crypto news begins.
           </h1>
         </Box>
-        <Flex width={1} justifyContent="space-between">
+        <div className="hero-inner__meta">
           <Text as="p" color="tertiary">
             OCT 1, 2020 at 8:43 AM
             <br />
             Tyler Swope #BLOCKCHAIN #WATCHOUT
           </Text>
           <Button to="/">read</Button>
-        </Flex>
-      </Box>
+        </div>
+      </div>
     </S.Hero>
   )
 }
