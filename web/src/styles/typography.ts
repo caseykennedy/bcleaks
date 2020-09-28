@@ -153,7 +153,7 @@ const Typography = css`
     font-weight: ${theme.fontWeights.medium};
     line-height: ${theme.root.font.headingLineHeight};
     /* letter-spacing: 0.5px; */
-    margin: 0 0 0.25em;
+    margin: 0 0 ${theme.space[3]};
     transition: ${theme.transition.all};
   }
 
@@ -162,17 +162,17 @@ const Typography = css`
     line-height: calc(${theme.root.font.headingLineHeight} / 1);
 
     @media ${theme.mq.tablet} {
-      font-size: calc(${theme.root.font.xxxl} * 1.25);
+      font-size: calc(${theme.root.font.xxxl} / 1.25);
     }
   }
 
   h1,
   .text--xxl {
     font-size: calc(${theme.root.font.lg} * 1.15);
-    font-weight: 500;
+    font-weight: 400;
 
     @media ${theme.mq.tablet} {
-      font-size: ${theme.root.font.xl};
+      font-size: ${theme.root.font.xxl};
     }
   }
 
@@ -190,7 +190,6 @@ const Typography = css`
   .text--lg {
     font-size: ${theme.root.font.md};
     /* line-height: ${theme.root.font.bodyLineHeight}; */
-    margin: 0 0 0.5em;
 
     @media ${theme.mq.tablet} {
       font-size: ${theme.root.font.lg};
@@ -203,6 +202,7 @@ const Typography = css`
     font-weight: 500;
     /* line-height: ${theme.root.font.bodyLineHeight}; */
     text-transform: uppercase;
+    text-decoration: underline;
     margin: 0 0 0.5em;
 
     @media ${theme.mq.tablet} {

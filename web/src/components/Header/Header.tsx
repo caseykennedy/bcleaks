@@ -93,6 +93,17 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
 
       <S.Header as="header">
         <S.Utilities>
+          <div className="page-title">
+            <GetDate />
+          </div>
+
+          <Flex className="account">
+            <button onClick={() => setDialog(true)}>log in</button>
+            <button onClick={() => setDialog(true)}>sign up</button>
+          </Flex>
+        </S.Utilities>
+
+        <S.Menu>
           <Box color="tertiary">
             <S.Logo>
               <Link
@@ -102,32 +113,17 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
               >
                 <Symbol />
               </Link>
-              <div className="logo-lettermark">
+              {/* <div className="logo-lettermark">
                 <Lettermark />
-              </div>
+              </div> */}
             </S.Logo>
           </Box>
-          <Flex className="utils-account">
-            <div
-              onClick={() => setDialog(true)}
-              className="utils-account__login"
-            >
-              log in
-            </div>
-            <button onClick={() => setDialog(true)}>sign up</button>
-          </Flex>
-        </S.Utilities>
-
-        <S.Menu>
-          <div className="page-title">
-            <Typist cursor={cursorProps}>Good evening.</Typist>
-          </div>
-          <div className="nav-outer">
+          <Box>
             <S.Toggle onClick={toggleModal} aria-label="toggle menu">
               <Icon name="hamburger" color="black" />
             </S.Toggle>
             <Navigation />
-          </div>
+          </Box>
         </S.Menu>
       </S.Header>
     </>

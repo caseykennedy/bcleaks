@@ -27,10 +27,17 @@ export const Nav = styled.nav`
     font-size: calc(${theme.fontSizes[2]} * 1);
     text-transform: uppercase;
     color: ${theme.colors.white};
-    padding: 0 ${theme.space[4]};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-left: ${theme.border};
+    height: ${theme.headerHeight};
+    padding: 0 ${theme.space[5]};
 
     &:last-child {
-      padding-right: 0;
+      border-right: ${theme.border};
     }
 
     &::before {

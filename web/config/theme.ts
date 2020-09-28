@@ -83,7 +83,7 @@ const theme: ThemeShape = {
     text: '#ffffff',
     background: '#171717',
 
-    primary: '#2cc48a',
+    primary: '#00ff9b',
     secondary: '#0d0d0d',
     tertiary: '#808080',
     quaternary: '#545454',
@@ -154,8 +154,8 @@ const theme: ThemeShape = {
 
   maxWidth: '1680px',
   siteWidth: '100vw',
-  logoWidth: '225px',
-  headerHeight: '180px',
+  logoWidth: '',
+  headerHeight: '88px',
   iconWidth: '18px',
 
   // Base

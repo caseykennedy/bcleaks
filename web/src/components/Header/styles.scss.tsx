@@ -19,69 +19,29 @@ export const Header = styled(Flex)`
   flex-direction: row;
   flex-wrap: wrap;
 
+  /* border-top: ${theme.border}; */
   border-bottom: ${theme.border};
   position: relative;
+  width: 100%;
   z-index: 99;
 
   @media ${theme.mq.tablet} {
   }
 `
 
-export const Utilities = styled(Flex)`
-  align-items: flex-start;
-  justify-content: space-between;
+export const Menu = styled(Flex)`
+  align-items: center;
+  flex-direction: row;
+
+  /* padding: 0 ${theme.space[6]}; */
   width: 100%;
-
-  padding: ${theme.space[3]} ${theme.space[6]};
-
-  .utils {
-    &-account {
-      align-items: center;
-
-      &__login {
-        margin-right: ${theme.space[3]};
-      }
-    }
-  }
-
-  button {
-    background: ${theme.colors.black};
-    border: none;
-    color: ${theme.colors.text};
-    cursor: pointer;
-    text-transform: capitalize;
-
-    margin-left: ${theme.space[2]};
-    position: relative;
-    padding: ${theme.space[3]} ${theme.space[4]};
-    transition: border-color 0.111s ease-in-out, background 0.111s ease-in-out;
-
-    &:before {
-      background: ${theme.colors.primary};
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: ${theme.space[1]};
-      top: 0;
-      right: 0;
-      transition: width ${theme.transition.global};
-    }
-
-    &:hover {
-      background: ${lighten(0.05, theme.colors.background)};
-      border-color: ${theme.colors.primary};
-
-      &:before {
-        left: 0;
-        width: 100%;
-      }
-    }
-  }
 `
 
 export const Logo = styled(Flex)`
   align-items: center;
-  /* padding: ${theme.space[4]} ${theme.space[6]}; */
+
+  /* background: ${theme.colors.black}; */
+  padding: 0 ${theme.space[9]} 0 ${theme.space[6]};
   width: 100%;
 
   @media ${theme.mq.tablet} {
@@ -89,8 +49,11 @@ export const Logo = styled(Flex)`
 
   .logo {
     &-symbol {
+      position: relative;
+      top: ${theme.space[1]};
+
       svg {
-        width: calc(${theme.space[3]} * 4);
+        width: calc(${theme.space[4]} * 2);
       }
     }
 
@@ -105,32 +68,69 @@ export const Logo = styled(Flex)`
   }
 `
 
-export const Menu = styled(Flex)`
+export const Utilities = styled(Flex)`
   flex: 1;
   flex-wrap: wrap;
-  border-top: 1px solid ${theme.colors.quaternary};
+  border-bottom: 1px solid ${theme.colors.quaternary};
 
   .page-title {
     display: flex;
     align-items: center;
-    border-right: 1px solid ${theme.colors.quaternary};
-    padding: ${theme.space[3]} ${theme.space[6]};
+    /* border-right: 1px solid ${theme.colors.quaternary}; */
+    padding: ${theme.space[2]} ${theme.space[6]};
 
     color: ${theme.colors.quaternary};
     font-family: ${theme.fonts.display};
-    font-size: calc(${theme.fontSizes[3]} / 1.15);
+    font-size: calc(${theme.fontSizes[2]} / 1.25);
     font-weight: 600;
     text-transform: uppercase;
   }
 
-  .nav-outer {
-    display: none;
+  .account {
+    align-items: center;
     flex: 1;
-    padding: 0 ${theme.space[6]};
-    width: 100%;
+    justify-content: flex-end;
 
-    @media ${theme.mq.tablet} {
-      display: flex;
+    height: 100%;
+    padding: 0 ${theme.space[6]};
+
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      
+      color: ${theme.colors.tertiary};
+      font-family: ${theme.fonts.display};
+      font-size: calc(${theme.fontSizes[2]} / 1.25);
+      font-weight: 600;
+      text-transform: uppercase;
+
+      /* margin-left: ${theme.space[2]}; */
+      position: relative;
+      padding: ${theme.space[4]} ${theme.space[3]};
+      transition: border-color 0.111s ease-in-out, background 0.111s ease-in-out;
+
+      &:before {
+        background: ${theme.colors.primary};
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: calc(${theme.space[1]} / 1.5);
+        top: 0;
+        right: 0;
+        transition: width ${theme.transition.global};
+      }
+
+      &:hover {
+        background: ${lighten(0.05, theme.colors.background)};
+        border-color: ${theme.colors.primary};
+        color: ${theme.colors.white};
+
+        &:before {
+          left: 0;
+          width: 100%;
+        }
+      }
     }
   }
 `

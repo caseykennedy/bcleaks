@@ -26,7 +26,7 @@ export const Button = styled(Box)<{ invert?: boolean }>`
   line-height: 0.5;
   text-transform: uppercase;
 
-  background: ${p => !p.invert ? theme.colors.primary : theme.colors.secondary};
+  background: ${p => !p.invert ? theme.colors.quaternary : theme.colors.secondary};
   border-bottom: ${theme.border};
   transition: ${theme.transition.all};
 

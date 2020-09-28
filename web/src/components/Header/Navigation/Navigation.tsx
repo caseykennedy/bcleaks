@@ -19,7 +19,6 @@ const Navigation = () => {
       {data.map((item, idx) => (
         <Link
           to={item.link}
-          className="nav-link__title"
           activeClassName="active"
           partiallyActive={true}
           key={idx}
@@ -51,7 +50,7 @@ const data = [
   {
     name: 'store',
     link: '/store'
-  }
+  },
   // {
   //   name: 'implants',
   //   subPage: [
