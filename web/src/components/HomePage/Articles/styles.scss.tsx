@@ -15,7 +15,7 @@ export const Articles = styled(Section)`
 
   h2,
   h4 {
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
 
   .articles {

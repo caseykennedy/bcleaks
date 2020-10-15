@@ -83,7 +83,7 @@ const Articles = () => {
             ))}
           </Box>
           <Box>
-            {posts.map(({ node: post }, idx) => (
+            {posts.slice(0, 3).map(({ node: post }, idx) => (
               <Flex className="post post--horizontal" key={idx}>
                 <Box width={[1 / 4]} pr={5}>
                   {post.figure && (
@@ -122,7 +122,7 @@ const Articles = () => {
           </Box>
         </Box>
         <Box width={[1, 1 / 3]} className="articles__aside">
-          {posts.map(({ node: post }, idx) => (
+          {posts.slice(1, 4).map(({ node: post }, idx) => (
             <Box className="post" key={idx}>
               {post.figure && (
                 <Box className="post__figure">
@@ -146,6 +146,31 @@ const Articles = () => {
             </Box>
           ))}
         </Box>
+      </Flex>
+      <Flex width={1} className="articles__featured" mt={7}>
+        {posts.map(({ node: post }, idx) => (
+          <Box width={[1 / 2, 1 / 4]} pr={4} key={idx} className="post">
+            {post.figure && (
+              <Box className="post__figure">
+                <Img
+                  fluid={post.figure.asset.fluid}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  alt={post.title}
+                />
+              </Box>
+            )}
+            <Heading as="h4">{post.title}</Heading>
+            <Text as="p" color={theme.colors.tertiary} className="post__meta">
+              <small>
+                {post.publishedAt}
+                <br />
+                {post.authors && post.authors.name} in{' '}
+                {post.categories && post.categories[0].title}
+              </small>
+            </Text>
+          </Box>
+        ))}
       </Flex>
     </S.Articles>
   )

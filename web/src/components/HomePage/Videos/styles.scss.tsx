@@ -31,7 +31,7 @@ export const Videos = styled(Section)`
 
         .lead {
           font-size: calc(${theme.fontSizes[3]} / 1);
-          text-transform: uppercase;
+          text-transform: capitalize;
 
           @media ${theme.mq.tablet} {
             font-size: calc(${theme.fontSizes[3]} / 1.25);
