@@ -59,7 +59,7 @@ type ThemeShape = {
 // Begin theme
 // ___________________________________________________________________
 
-const breakpoints: string[] = ['780px', '1024px']
+const breakpoints: string[] = ['600px', '1024px']
 // Aliases - FUTURE ENHANCEMENT
 // breakpoints.xs = breakpoints[0];
 // breakpoints.sm = breakpoints[1];
@@ -87,6 +87,7 @@ const theme: ThemeShape = {
     secondary: '#0d0d0d',
     tertiary: '#808080',
     quaternary: '#545454',
+    quinary: '#121212',
 
     black: '#000000',
     white: '#ffffff',
@@ -126,7 +127,7 @@ const theme: ThemeShape = {
     body: `"SuisseMono", Consolas, Liberation Mono, Menlo, Courier, monospace`,
     heading: `"SuisseMono", Consolas, Liberation Mono, Menlo, Courier, monospace`,
     sans: `"Suisse", Consolas, Liberation Mono, Menlo, Courier, monospace`,
-    display: `"Ruibik", Arial`
+    display: `"Rubik", Arial`
   },
 
   fontSizes: [
@@ -152,7 +153,7 @@ const theme: ThemeShape = {
 
   strokeWidth: '2px',
 
-  maxWidth: '1680px',
+  maxWidth: '1440px',
   siteWidth: '100vw',
   logoWidth: '',
   headerHeight: '88px',

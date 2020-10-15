@@ -25,26 +25,26 @@ export default {
       type: 'datetime'
     },
     {
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'blockText'
-    },
-    {
       name: 'authors',
       title: 'Authors',
       type: 'reference',
       to: [{ type: 'person' }]
     },
     {
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'mainImage'
-    },
-    {
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'postCategory' } }]
+    },
+    {
+      name: 'figure',
+      title: 'Figure',
+      type: 'figure'
+    },
+    {
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'blockText'
     },
     {
       name: 'body',
@@ -68,7 +68,7 @@ export default {
     select: {
       title: 'title',
       publishedAt: 'publishedAt',
-      image: 'mainImage'
+      image: 'figure'
     },
     prepare ({ title = 'No title', publishedAt, image }) {
       return {

@@ -28,12 +28,33 @@ export default () =>
         )
         .icon(MdSettings),
 
-      // Home page
+      // People
       // _________________________________________________________________
 
-     
+      S.listItem()
+        .title("People")
+        .schemaType("person")
+        .child(S.documentTypeList("person").title("People")),
 
-      
+      // Post Category
+      // _________________________________________________________________
+
+      S.listItem()
+        .title("Post Categories")
+        .schemaType("postCategory")
+        .child(S.documentTypeList("postCategory").title("Post Category"))
+
+        .icon(MdStop),
+
+      // Post
+      // _________________________________________________________________
+
+      S.listItem()
+        .title("Posts")
+        .schemaType("post")
+        .child(S.documentTypeList("post").title("Post"))
+
+        .icon(GoFile)
 
       // End
       // _________________________________________________________________

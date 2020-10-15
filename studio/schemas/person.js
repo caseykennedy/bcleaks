@@ -1,62 +1,49 @@
-import { MdPerson } from 'react-icons/md'
+import { MdPerson } from "react-icons/md";
 
 export default {
-  name: 'person',
-  title: 'Person',
-  type: 'document',
+  name: "person",
+  title: "Person",
+  type: "document",
   icon: MdPerson,
   liveEdit: false,
   fields: [
     {
-      name: 'name',
-      title: 'Name',
-      type: 'string'
+      name: "name",
+      title: "Name",
+      type: "string"
     },
     {
-      name: 'jobTitle',
-      title: 'Job Title',
-      type: 'string'
-    },
-    {
-      title: 'Board Member',
-      name: 'boardMember',
-      type: 'boolean'
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      description: 'Some frontend will require a slug to be set to be able to show the person',
+      name: "role",
+      title: "Role",
+      type: "array",
+      of: [{ type: "string" }],
       options: {
-        source: 'name',
+        list: [{ title: "Admin", value: "admin" }, { title: "Author", value: "author" }]
+      }
+    },
+    {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: "Some frontend will require a slug to be set to be able to show the person",
+      options: {
+        source: "name",
         maxLength: 96
       }
     },
     {
-      name: 'headshot',
-      title: 'Headshot',
-      type: 'image',
+      name: "avatar",
+      title: "Avatar",
+      type: "image",
       options: {
         hotspot: true
       }
-    },
-    {
-      name: 'lead',
-      title: 'Lead',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{ title: 'Normal', value: 'normal' }],
-          lists: []
-        }
-      ]
-    },
-    {
-      name: 'bio',
-      title: 'Bio',
-      type: 'blockContent',
-    },
+    }
   ],
-}
+  preview: {
+    select: {
+      title: "name",
+      media: "avatar"
+    }
+  }
+};

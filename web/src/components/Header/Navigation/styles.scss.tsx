@@ -58,6 +58,7 @@ export const Nav = styled.nav`
     &.active,
     &:hover {
       color: ${theme.colors.primary};
+      background: ${theme.colors.black};
 
       /* &::before {
         width: 100%;

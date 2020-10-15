@@ -77,7 +77,7 @@ type ElementProps = SpaceProps &
 export const Box = styled.div<ElementProps>`
   box-sizing: border-box;
   height: auto;
-  transition: ${theme.transition.all};
+  /* transition: ${theme.transition.all}; */
 
   ${space}
   ${width}
@@ -175,7 +175,7 @@ Btn.displayName = 'Btn'
 export const Heading = styled.div<ElementProps>`
   box-sizing: border-box;
   display: block;
-  transition: ${theme.transition.all};
+  /* transition: ${theme.transition.all}; */
 
   ${space}
   ${color}
@@ -202,7 +202,7 @@ Box.displayName = 'Heading'
 export const Text = styled.div<ElementProps>`
   box-sizing: border-box;
   display: block;
-  transition: ${theme.transition.all};
+  /* transition: ${theme.transition.all}; */
 
   ${space}
   ${color}

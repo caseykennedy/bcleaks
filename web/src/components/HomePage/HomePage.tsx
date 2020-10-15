@@ -13,6 +13,7 @@ import { Box, Flex, Heading, Text } from '../ui'
 
 // Sections
 import Hero from './Hero'
+import Videos from './Videos'
 import Articles from './Articles'
 import Community from './Community'
 
@@ -25,6 +26,7 @@ const HomePage: React.FC = () => {
   return (
     <S.HomePage>
       <Hero />
+      <Videos />
       <Articles />
       <Community />
     </S.HomePage>

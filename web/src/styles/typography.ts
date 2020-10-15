@@ -188,7 +188,9 @@ const Typography = css`
 
   h3,
   .text--lg {
+    font-family: ${theme.fonts.display};
     font-size: ${theme.root.font.md};
+    text-transform: uppercase;
     /* line-height: ${theme.root.font.bodyLineHeight}; */
 
     @media ${theme.mq.tablet} {
@@ -199,14 +201,10 @@ const Typography = css`
   h4,
   .text--md {
     font-size: ${theme.fontSizes[2]};
-    font-weight: 500;
-    /* line-height: ${theme.root.font.bodyLineHeight}; */
-    text-transform: uppercase;
-    text-decoration: underline;
-    margin: 0 0 0.5em;
+    font-weight: 400;
+    line-height: ${theme.root.font.bodyLineHeight};
 
     @media ${theme.mq.tablet} {
-      margin: 0 0 1.5em;
     }
   }
 
@@ -223,10 +221,6 @@ const Typography = css`
     }
   }
 
-  small {
-    font-size: ${theme.root.font.sm};
-  }
-
   .text--xs {
     font-size: ${theme.root.font.xs};
   }
@@ -234,7 +228,7 @@ const Typography = css`
   p {
     font-size: ${theme.root.font.baseSize};
     line-height: ${theme.root.font.bodyLineHeight};
-    margin-bottom: 1.5em;
+    margin: 0 0 ${theme.space[4]};
 
     @media ${theme.mq.tablet} {
       font-size: ${theme.fontSizes[2]};
@@ -249,8 +243,16 @@ const Typography = css`
     font-weight: 500;
   }
 
-  .t--small {
-    font-size: calc(${theme.fontSizes[1]} / 1.1);
+  small {
+    font-size: calc(${theme.fontSizes[1]} / 1.15);
+  }
+
+  .t--lead {
+    font-size: calc(${theme.fontSizes[3]} / 1.25);
+
+    @media ${theme.mq.tablet} {
+      font-size: ${theme.fontSizes[3]};
+    }
   }
 
   .t-underline {
@@ -282,7 +284,7 @@ const Typography = css`
     &:hover,
     &:focus {
       text-decoration: none;
-      color: ${lighten(0.15, `${theme.colors.primary}`)};
+      color: ${lighten(0.15, theme.colors.primary)};
     }
   }
 

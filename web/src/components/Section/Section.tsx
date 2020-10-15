@@ -12,6 +12,7 @@ import styled from 'styled-components'
 
 // Theme
 import theme from '../../../config/theme'
+import * as S from './styles.scss'
 
 // ___________________________________________________________________
 
@@ -19,11 +20,12 @@ type Props = {
   bg?: string
   border?: boolean
   children: React.ReactNode
+  className: string
   color?: string
-  pt?: number | number[] | string
-  pb?: number | number[] | string
-  pr?: number | number[] | string
-  pl?: number | number[] | string
+  pt?: number | number[] | string | string[]
+  pb?: number | number[] | string | string[]
+  pr?: number | number[] | string | string[]
+  pl?: number | number[] | string | string[]
   id?: string
   width?: number | number[] | string | string[]
   overflow?: string
@@ -33,6 +35,7 @@ const Section: React.FC<Props> = ({
   bg,
   border,
   children,
+  className,
   color,
   pt,
   pb,
@@ -42,7 +45,7 @@ const Section: React.FC<Props> = ({
   width,
   overflow
 }) => (
-  <Container
+  <S.Section
     as="section"
     border={border}
     bg={bg}
@@ -52,11 +55,12 @@ const Section: React.FC<Props> = ({
     id={id}
     width={width}
     overflow={overflow}
+    className={className}
   >
-    <Box width={1} maxWidth={theme.maxWidth} pr={pr} pl={pl} m="0 auto">
+    <Box pr={pr} pl={pl} className="section__inner">
       {children}
     </Box>
-  </Container>
+  </S.Section>
 )
 
 export default Section
@@ -72,11 +76,3 @@ const defaultProps = {
 }
 
 Section.defaultProps = defaultProps
-
-// ___________________________________________________________________
-
-const Container = styled(Box)<{ border?: boolean, overflow?: string }>`
-  border-top: ${p => (!p.border ? 'none' : `${theme.border}`)};
-  position: relative;
-  overflow: ${p => (!p.overflow ? 'visible' : p.overflow)};
-`
