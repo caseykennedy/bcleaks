@@ -147,31 +147,39 @@ const Articles = () => {
           ))}
         </Box>
       </Flex>
-      <Flex width={1} className="articles__featured" mt={7}>
-        {posts.map(({ node: post }, idx) => (
-          <Box width={[1 / 2, 1 / 4]} pr={4} key={idx} className="post">
-            {post.figure && (
-              <Box className="post__figure">
-                <Img
-                  fluid={post.figure.asset.fluid}
-                  objectFit="cover"
-                  objectPosition="50% 50%"
-                  alt={post.title}
-                />
-              </Box>
-            )}
-            <Heading as="h4">{post.title}</Heading>
-            <Text as="p" color={theme.colors.tertiary} className="post__meta">
-              <small>
-                {post.publishedAt}
-                <br />
-                {post.authors && post.authors.name} in{' '}
-                {post.categories && post.categories[0].title}
-              </small>
-            </Text>
-          </Box>
-        ))}
-      </Flex>
+      <Box width={1} className="articles__featured" mt={7}>
+        <Flex className="articles__header" justifyContent="space-between">
+          <Heading as="h3" fontFamily="display">
+            Featured
+          </Heading>
+          <Link to="/">View All</Link>
+        </Flex>
+        <Flex>
+          {posts.map(({ node: post }, idx) => (
+            <Box width={[1 / 2, 1 / 4]} pr={4} key={idx} className="post">
+              {post.figure && (
+                <Box className="post__figure">
+                  <Img
+                    fluid={post.figure.asset.fluid}
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                    alt={post.title}
+                  />
+                </Box>
+              )}
+              <Heading as="h4">{post.title}</Heading>
+              <Text as="p" color={theme.colors.tertiary} className="post__meta">
+                <small>
+                  {post.publishedAt}
+                  <br />
+                  {post.authors && post.authors.name} in{' '}
+                  {post.categories && post.categories[0].title}
+                </small>
+              </Text>
+            </Box>
+          ))}
+        </Flex>
+      </Box>
     </S.Articles>
   )
 }

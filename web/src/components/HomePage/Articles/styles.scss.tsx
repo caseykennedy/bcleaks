@@ -20,11 +20,15 @@ export const Articles = styled(Section)`
 
   .articles {
     &__header {
-      display: flex;
+      align-items: center;
       justify-content: space-between;
 
       margin-bottom: ${theme.space[6]};
       width: 100%;
+
+      h3 {
+        margin-bottom: 0;
+      }
     }
 
     &__aside {
@@ -67,7 +71,6 @@ export const Author = styled(Flex)`
       border-radius: 100rem;
     }
     &__name {
-
       span {
       }
     }
