@@ -40,11 +40,6 @@ const Author: React.FC<{ author: PostAuthor }> = ({ author }) => {
 
 const Articles = () => {
   const posts = usePost()
-  console.log(posts)
-  console.log(posts)
-
-  // const category = posts.node.categories.map(cat => <li>{cat}</li>)
-
   return (
     <S.Articles>
       <Flex className="articles__header" justifyContent="space-between">
@@ -53,36 +48,80 @@ const Articles = () => {
         </Heading>
         <Link to="/">View All</Link>
       </Flex>
-      <Flex className="articles__main">
-        <Box width={[1, 3 / 4]} pr={7}>
-          {posts.slice(0, 1).map(({ node: post }, idx) => (
-            <Box className="post" key={idx}>
-              {post.figure && (
-                <Box className="post__figure">
-                  <Img
-                    fluid={post.figure.asset.fluid}
-                    objectFit="cover"
-                    objectPosition="50% 50%"
-                    alt={post.title}
-                  />
+      <Flex flexWrap={['wrap', 'nowrap']}>
+        <Box width={[1, 2 / 3]} className="articles__main">
+          <Box>
+            {posts.slice(0, 1).map(({ node: post }, idx) => (
+              <Box className="post" key={idx}>
+                {post.figure && (
+                  <Box className="post__figure">
+                    <Img
+                      fluid={post.figure.asset.fluid}
+                      objectFit="cover"
+                      objectPosition="50% 50%"
+                      alt={post.title}
+                    />
+                  </Box>
+                )}
+                <Heading as="h2">{post.title}</Heading>
+                {post._rawExcerpt && (
+                  <BlockContent blocks={post._rawExcerpt || []} />
+                )}
+                <Text
+                  as="p"
+                  color={theme.colors.tertiary}
+                  className="post__meta"
+                >
+                  <small>
+                    {post.publishedAt}
+                    <br />
+                    {post.authors && post.authors.name} in{' '}
+                    {post.categories && post.categories[0].title}
+                  </small>
+                </Text>
+              </Box>
+            ))}
+          </Box>
+          <Box>
+            {posts.map(({ node: post }, idx) => (
+              <Flex className="post post--horizontal" key={idx}>
+                <Box width={[1 / 4]} pr={5}>
+                  {post.figure && (
+                    <Box className="post__figure">
+                      <Img
+                        fluid={post.figure.asset.fluid}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        alt={post.title}
+                      />
+                    </Box>
+                  )}
                 </Box>
-              )}
-              <Heading as="h2">{post.title}</Heading>
-              {post._rawExcerpt && (
-                <BlockContent blocks={post._rawExcerpt || []} />
-              )}
-              <Text as="p" color={theme.colors.tertiary} className="post__meta">
-                <small>
-                  {post.publishedAt}
-                  <br />
-                  {post.authors && post.authors.name} in{' '}
-                  {post.categories && post.categories[0].title}
-                </small>
-              </Text>
-            </Box>
-          ))}
+                <Box width={[3 / 4]}>
+                  <Heading as="h4" fontSize={3}>
+                    {post.title}
+                  </Heading>
+                  {post._rawExcerpt && (
+                    <BlockContent blocks={post._rawExcerpt || []} />
+                  )}
+                  <Text
+                    as="p"
+                    color={theme.colors.tertiary}
+                    className="post__meta"
+                  >
+                    <small>
+                      {post.publishedAt}
+                      <br />
+                      {post.authors && post.authors.name} in{' '}
+                      {post.categories && post.categories[0].title}
+                    </small>
+                  </Text>
+                </Box>
+              </Flex>
+            ))}
+          </Box>
         </Box>
-        <Box width={[1, 1 / 4]}>
+        <Box width={[1, 1 / 3]} className="articles__aside">
           {posts.map(({ node: post }, idx) => (
             <Box className="post" key={idx}>
               {post.figure && (

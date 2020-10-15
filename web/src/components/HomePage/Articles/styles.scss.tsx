@@ -26,6 +26,15 @@ export const Articles = styled(Section)`
       margin-bottom: ${theme.space[6]};
       width: 100%;
     }
+
+    &__aside {
+      border-bottom: ${theme.border};
+    }
+
+    &__main {
+      border-bottom: ${theme.border};
+      margin-right: ${theme.space[7]};
+    }
   }
 
   .post {
@@ -33,6 +42,11 @@ export const Articles = styled(Section)`
 
     &__figure {
       margin-bottom: ${theme.space[5]};
+    }
+
+    &--horizontal {
+      border-top: ${theme.border};
+      padding-top: ${theme.space[6]};
     }
   }
 `

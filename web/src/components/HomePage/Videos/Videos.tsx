@@ -23,7 +23,10 @@ const ReviewSlider: React.FC = ({ children }) => {
     spaceBetween: 32,
     pagination: {
       el: '.swiper-pagination',
-      clickable: true
+      clickable: true,
+      renderBullet: (index: any, className: string) => {
+        return `<span class="${className}">${index + 1}</span>`
+      }
     },
     breakpoints: {
       1024: {
@@ -52,7 +55,7 @@ const ReviewSlider: React.FC = ({ children }) => {
 
 const Videos = () => {
   return (
-    <S.Videos bg="quinary" className="videos">
+    <S.Videos bg="quinary" overflow="hidden">
       <Flex className="videos__header" justifyContent="space-between">
         <Heading as="h3" fontFamily="display">
           Videos
@@ -102,5 +105,23 @@ const data = [
     author: 'Chris Jones',
     category: 'crypto',
     title: "Let's raise the quality of the information: IQ"
+  },
+  {
+    date: 'SEP 29, 2020 at 3:13 PM',
+    author: 'Taylor Johnson',
+    category: 'block chain',
+    title: 'Taking a monkey wrench to the game'
+  },
+  {
+    date: 'SEP 29, 2020 at 3:13 PM',
+    author: 'Taylor Johnson',
+    category: 'block chain',
+    title: 'Taking a monkey wrench to the game'
+  },
+  {
+    date: 'SEP 29, 2020 at 3:13 PM',
+    author: 'Taylor Johnson',
+    category: 'block chain',
+    title: 'Taking a monkey wrench to the game'
   },
 ]

@@ -20,7 +20,7 @@ type Props = {
   bg?: string
   border?: boolean
   children: React.ReactNode
-  className: string
+  className?: string
   color?: string
   pt?: number | number[] | string | string[]
   pb?: number | number[] | string | string[]

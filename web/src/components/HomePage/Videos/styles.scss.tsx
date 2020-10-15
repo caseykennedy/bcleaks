@@ -40,4 +40,62 @@ export const Videos = styled(Section)`
       }
     }
   }
+
+  .swiper-container {
+    overflow: visible;
+    padding-bottom: ${theme.space[9]};
+
+    .parallax-bg {
+      background: yellow;
+    }
+
+    .swiper-wrapper {
+      .swiper-slide {
+        transition: ${theme.transition.all};
+
+        &:hover {
+          /* cursor: pointer; */
+        }
+
+        &.swiper-slide-active {
+          /* background: ${theme.colors.primary}; */
+        }
+      }
+    }
+
+    .swiper-pagination {
+      bottom: -${theme.space[7]};
+      left: 0;
+      text-align: left;
+
+      @media ${theme.mq.tablet} {
+        display: inherit;
+      }
+
+      &.swiper-pagination-bullets {
+        .swiper-pagination-bullet {
+          background: transparent;
+          cursor: pointer;
+          opacity: 0.75;
+
+          color: ${theme.colors.primary};
+          font-size: ${theme.fontSizes[2]};
+
+          margin-right: ${theme.space[3]};
+          padding: 0;
+          height: auto;
+
+          transition: opacity 0.222s ease-in-out 0s;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &-active {
+            color: ${theme.colors.white};
+          }
+        }
+      }
+    }
+  }
 `
