@@ -63,7 +63,9 @@ const Articles = () => {
                     />
                   </Box>
                 )}
-                <Heading as="h2">{post.title}</Heading>
+                <Link to={`/blog/${post.slug.current}`}>
+                  <Heading as="h2">{post.title}</Heading>
+                </Link>
                 {post._rawExcerpt && (
                   <BlockContent blocks={post._rawExcerpt || []} />
                 )}
@@ -98,9 +100,12 @@ const Articles = () => {
                   )}
                 </Box>
                 <Box width={[3 / 4]}>
-                  <Heading as="h4" fontSize={3}>
-                    {post.title}
-                  </Heading>
+                  <Link to={`/blog/${post.slug.current}`}>
+                    <Heading as="h4" fontSize={3}>
+                      {post.title}
+                    </Heading>
+                  </Link>
+
                   {post._rawExcerpt && (
                     <BlockContent blocks={post._rawExcerpt || []} />
                   )}
@@ -134,7 +139,9 @@ const Articles = () => {
                   />
                 </Box>
               )}
-              <Heading as="h4">{post.title}</Heading>
+              <Link to={`/blog/${post.slug.current}`}>
+                <Heading as="h4">{post.title}</Heading>
+              </Link>
               <Text as="p" color={theme.colors.tertiary} className="post__meta">
                 <small>
                   {post.publishedAt}

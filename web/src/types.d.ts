@@ -76,7 +76,7 @@ type PostAuthor = {
 
 type PostContextShape = {
   pageContext: {
-    page: PostQuery
+    post: PostQuery
     prev: {
       _rawExcerpt: string
       title: string
