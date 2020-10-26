@@ -133,7 +133,7 @@ const GetCoinGecko = () => {
     }
   }
 
-  console.log(coins)
+  // console.log(coins)
 
   return data ? <>{coins}</> : <Box>Loading...</Box>
 }

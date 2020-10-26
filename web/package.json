@@ -40,6 +40,7 @@
     "@types/auth0-js": "^9.14.0",
     "@types/google-map-react": "^1.1.8",
     "@types/lodash": "^4.14.162",
+    "@types/netlify-identity-widget": "^1.9.0",
     "@types/react-typist": "^2.0.1",
     "@types/rebass": "^3.0.4",
     "auth0-js": "^9.14.0",

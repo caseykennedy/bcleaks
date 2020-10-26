@@ -3,6 +3,9 @@ import { Link, navigate } from 'gatsby'
 
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
+import { Box, Flex, Heading, Text, AnimatedBox } from '../../components/ui'
+import theme from '../../../config/theme'
+
 export default () => {
   const { user, isLoggedIn, logoutUser }: any = useIdentityContext()
   const message: string = isLoggedIn
@@ -10,20 +13,20 @@ export default () => {
     : 'You are not logged in'
 
   return (
-    <div
+    <Flex
+      bg="black"
+      p={5}
       style={{
         display: 'flex',
         flex: '1',
-        justifyContent: 'space-between',
-        borderBottom: '1px solid #d1c1e0',
-        backgroundColor: 'aliceblue'
+        justifyContent: 'space-between'
       }}
     >
       <span>{message}</span>
 
       <nav>
-        <span>Navigate the app: </span>
-        <Link to="/app/">Main</Link>
+        <span>test nav: </span>
+        <Link to="/app/">Dashboard</Link>
         {` `}
         <Link to="/app/profile">Profile</Link>
         {` `}
@@ -42,6 +45,6 @@ export default () => {
           <Link to="/app/login">Login</Link>
         )}
       </nav>
-    </div>
+    </Flex>
   )
 }

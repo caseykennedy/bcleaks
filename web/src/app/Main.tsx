@@ -4,6 +4,8 @@ import fetch from 'node-fetch'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
 import api from '../utils/api'
+import { Box, Flex, Heading, Text, AnimatedBox } from '../components/ui'
+import theme from '../../config/theme'
 
 type TodoData = {
   title: string
@@ -12,6 +14,9 @@ type TodoData = {
 
 const Main = () => {
   const [data, setData] = React.useState(null)
+  const [testData, setTestData] = React.useState(null)
+  console.log('------ testi -------')
+  console.log(testData)
   const [loading, setLoading] = React.useState(false)
   const { user }: any = useIdentityContext()
   const [err, setErr] = React.useState('')
@@ -42,10 +47,13 @@ const Main = () => {
 
     fetch('/.netlify/functions/token-hider')
       .then(response => response.json())
-      .then(console.log)
+      // .then(console.log)
 
     fetch('/.netlify/functions/todos-read-all')
       .then(response => response.json())
+      .then(json => {
+        setTestData(json)
+      })
       .then(console.log)
 
     // Function using fetch to POST to our API endpoint
@@ -60,7 +68,7 @@ const Main = () => {
 
     // Todo data
     const myTodo = {
-      title: 'My Community Article',
+      title: 'My Community Article 222',
       completed: false
     }
 
@@ -99,12 +107,13 @@ const Main = () => {
   }
 
   return (
-    <>
-      <h1>Your Main App</h1>
+    <Box p={5}>
+      <h2>Dashboard</h2>
       <ul>
         <li>API: {user.api && user.api.apiURL}</li>
         <li>ID: {user.id}</li>
       </ul>
+
       <hr />
 
       <button onClick={handleClick}>
@@ -115,7 +124,13 @@ const Main = () => {
       </button> */}
       {err && <pre>{JSON.stringify(err, null, 2)}</pre>}
       <pre>{JSON.stringify(data, null, 2)}</pre>
-    </>
+
+      <hr />
+
+      <div>
+      <pre>{JSON.stringify(testData, null, 2)}</pre>
+      </div>
+    </Box>
   )
 }
 
