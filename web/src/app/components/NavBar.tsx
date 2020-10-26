@@ -28,7 +28,7 @@ export default () => {
         <span>test nav: </span>
         <Link to="/app/">Dashboard</Link>
         {` `}
-        <Link to="/app/profile">Profile</Link>
+        <Link to="/app/profile">account</Link>
         {` `}
         {isLoggedIn ? (
           <a
