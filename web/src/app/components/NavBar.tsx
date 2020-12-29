@@ -4,7 +4,7 @@ import { Link, navigate } from 'gatsby'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
 import { Box, Flex, Heading, Text, AnimatedBox } from '../../components/ui'
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 
 export default () => {
   const { user, isLoggedIn, logoutUser }: any = useIdentityContext()

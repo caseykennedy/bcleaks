@@ -5,11 +5,11 @@
 import React from 'react'
 
 // Theme + Styles
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
 
 // UI
-import { Box, Flex, Heading, Text } from '../ui'
+import { Box, Flex, Heading, Text } from '../../components/ui'
 
 // Sections
 import Hero from './Hero'

@@ -5,9 +5,10 @@
 
 import styled from 'styled-components'
 import { animated } from 'react-spring'
+import { darken, transparentize } from 'polished'
 
 // Theme
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 
 import {
   space,
@@ -151,31 +152,12 @@ export const AnimatedFlex = styled(animated.div)<ElementProps>`
 
 AnimatedFlex.displayName = 'AnimatedFlex'
 
-// Button
-
-export const Btn = styled.button<ElementProps>`
-  border: none;
-  font-weight: inherit;
-  font-size: 0.8em;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
-  cursor: pointer;
-
-  ${space}
-  ${width}
-  ${color}
-  ${overflow}
-  ${textAlign}
-`
-
-Btn.displayName = 'Btn'
-
 // Typography
 
 export const Heading = styled.div<ElementProps>`
   box-sizing: border-box;
   display: block;
-  /* transition: ${theme.transition.all}; */
+  transition: ${theme.transition.all};
 
   ${space}
   ${color}
@@ -189,7 +171,7 @@ export const Heading = styled.div<ElementProps>`
   ${width}
 `
 
-Box.displayName = 'Heading'
+Heading.displayName = 'Heading'
 
 // export const HeadingStroked = styled(Heading)<ElementProps>`
 //   -webkit-text-fill-color: ${theme.colors.background};
@@ -202,7 +184,7 @@ Box.displayName = 'Heading'
 export const Text = styled.div<ElementProps>`
   box-sizing: border-box;
   display: block;
-  /* transition: ${theme.transition.all}; */
+  transition: ${theme.transition.all};
 
   ${space}
   ${color}
@@ -216,7 +198,7 @@ export const Text = styled.div<ElementProps>`
   ${width}
 `
 
-Box.displayName = 'Text'
+Text.displayName = 'Text'
 
 // ___________________________________________________________________
 // End Component

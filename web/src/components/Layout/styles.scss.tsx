@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { animated } from 'react-spring'
 
 import { Box, Flex } from '../ui'
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 

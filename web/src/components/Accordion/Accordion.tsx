@@ -8,7 +8,7 @@ import { Box, Flex, Text, Heading } from '../ui'
 
 import Icon from '../Icons'
 
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
 
 // ___________________________________________________________________

@@ -8,11 +8,10 @@ import * as React from 'react'
 
 // Components
 import { Box, Flex } from '../ui'
-import styled from 'styled-components'
 
 // Theme
-import theme from '../../../config/theme'
 import * as S from './styles.scss'
+import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
@@ -22,12 +21,12 @@ type Props = {
   children: React.ReactNode
   className?: string
   color?: string
-  pt?: number | number[] | string | string[]
-  pb?: number | number[] | string | string[]
-  pr?: number | number[] | string | string[]
-  pl?: number | number[] | string | string[]
+  maxWidth?: number | number[] | string | string[]
+  pt?: number | number[] | string
+  pb?: number | number[] | string
+  pr?: number | number[] | string
+  pl?: number | number[] | string
   id?: string
-  width?: number | number[] | string | string[]
   overflow?: string
 }
 
@@ -37,12 +36,12 @@ const Section: React.FC<Props> = ({
   children,
   className,
   color,
+  maxWidth,
   pt,
   pb,
   pr,
   pl,
   id,
-  width,
   overflow
 }) => (
   <S.Section
@@ -53,11 +52,16 @@ const Section: React.FC<Props> = ({
     pt={pt}
     pb={pb}
     id={id}
-    width={width}
     overflow={overflow}
+    width={1}
     className={className}
   >
-    <Box pr={pr} pl={pl} className="section__inner">
+    <Box
+      pr={pr}
+      pl={pl}
+      m="0 auto"
+      maxWidth={maxWidth ? maxWidth : theme.maxWidth}
+    >
       {children}
     </Box>
   </S.Section>
@@ -68,11 +72,10 @@ export default Section
 // ___________________________________________________________________
 
 const defaultProps = {
-  pt: theme.gutter.y,
-  pb: theme.gutter.y,
-  pr: theme.gutter.x,
-  pl: theme.gutter.x,
-  width: 1
+  pt: [4, 5, 6],
+  pb: [4, 5, 6],
+  pr: theme.gutter.axis,
+  pl: theme.gutter.axis
 }
 
 Section.defaultProps = defaultProps

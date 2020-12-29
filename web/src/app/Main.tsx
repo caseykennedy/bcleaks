@@ -5,7 +5,7 @@ import { useIdentityContext } from 'react-netlify-identity-widget'
 
 import api from '../utils/api'
 import { Box, Flex, Heading, Text, AnimatedBox } from '../components/ui'
-import theme from '../../config/theme'
+import theme from '../gatsby-plugin-theme-ui'
 
 type TodoData = {
   title: string

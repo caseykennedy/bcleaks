@@ -3,7 +3,7 @@
 // ___________________________________________________________________
 
 import { css } from 'styled-components'
-import theme from '../../config/theme'
+import theme from '../gatsby-plugin-theme-ui'
 import { darken, lighten } from 'polished'
 
 // Rubik Bold
@@ -122,6 +122,8 @@ const Typography = css`
   }
 
   body {
+    color: ${theme.colors.text};
+
     font-size: ${theme.root.font.baseSize};
     font-family: ${theme.fonts.body};
     font-weight: ${theme.fontWeights.regular};
@@ -150,74 +152,77 @@ const Typography = css`
   h5,
   h6 {
     font-family: ${theme.fonts.heading};
-    font-weight: ${theme.fontWeights.medium};
+    font-weight: ${theme.fontWeights.regular};
     line-height: ${theme.root.font.headingLineHeight};
-    /* letter-spacing: 0.5px; */
+    letter-spacing: ${theme.root.font.baseLetterSpacing};
     margin: 0 0 ${theme.space[3]};
     transition: ${theme.transition.all};
   }
 
   .text--xxxl {
-    font-size: calc(${theme.root.font.xxxl} / 1.25);
-    line-height: calc(${theme.root.font.headingLineHeight} / 1);
+    font-size: calc(${theme.root.font.xl});
+    line-height: ${theme.root.font.headingLineHeight};
 
     @media ${theme.mq.tablet} {
-      font-size: calc(${theme.root.font.xxxl} / 1.25);
+      font-size: calc(${theme.root.font.xxl} / 1.25);
+    }
+
+    @media ${theme.mq.desktop} {
+      font-size: calc(${theme.root.font.xxxl} / 1.5);
     }
   }
 
   h1,
   .text--xxl {
-    font-size: calc(${theme.root.font.lg} * 1.15);
-    font-weight: 400;
+    font-size: calc(${theme.fontSizes[4]});
 
     @media ${theme.mq.tablet} {
-      font-size: ${theme.root.font.xxl};
+      font-size: calc(${theme.fontSizes[6]} / 1.25);
+    }
+
+    @media ${theme.mq.desktop} {
+      font-size: ${theme.fontSizes[6]};
     }
   }
 
   h2,
   .text--xl {
-    font-size: ${theme.root.font.lg};
-    font-weight: 400;
+    font-size: calc(${theme.fontSizes[4]} / 1.15);
 
     @media ${theme.mq.tablet} {
-      font-size: calc(${theme.root.font.lg} * 1.25);
+      font-size: calc(${theme.fontSizes[5]} / 1.25);
+    }
+
+    @media ${theme.mq.desktop} {
+      font-size: ${theme.fontSizes[5]};
     }
   }
 
   h3,
   .text--lg {
-    font-family: ${theme.fonts.display};
-    font-size: ${theme.root.font.md};
-    text-transform: uppercase;
-    /* line-height: ${theme.root.font.bodyLineHeight}; */
+    font-size: calc(${theme.fontSizes[3]});
 
     @media ${theme.mq.tablet} {
-      font-size: ${theme.root.font.lg};
+      font-size: calc(${theme.fontSizes[4]});
     }
   }
 
   h4,
   .text--md {
-    font-size: ${theme.fontSizes[2]};
-    font-weight: 400;
-    line-height: ${theme.root.font.bodyLineHeight};
+    font-size: calc(${theme.fontSizes[3]} / 1.25);
+    margin: 0 0 ${theme.space[4]};
 
     @media ${theme.mq.tablet} {
+      font-size: calc(${theme.fontSizes[3]});
     }
   }
 
   h5,
   .text--sm {
-    font-size: ${theme.fontSizes[1]};
-    /* font-weight: 400; */
-    line-height: ${theme.root.font.bodyLineHeight};
-    text-transform: uppercase;
-    margin: 0 0 1em;
+    font-size: calc(${theme.fontSizes[2]} / 1.25);
 
     @media ${theme.mq.tablet} {
-      margin: 0 0 1.5em;
+      font-size: calc(${theme.fontSizes[2]});
     }
   }
 
@@ -225,13 +230,15 @@ const Typography = css`
     font-size: ${theme.root.font.xs};
   }
 
-  p {
-    font-size: ${theme.root.font.baseSize};
+  p,
+  .text--base {
+    font-size: ${theme.fontSizes[2]};
+    /* font-weight: ${theme.fontWeights.medium}; */
     line-height: ${theme.root.font.bodyLineHeight};
     margin: 0 0 ${theme.space[4]};
 
     @media ${theme.mq.tablet} {
-      font-size: ${theme.fontSizes[1]};
+      font-size: calc(${theme.fontSizes[2]} * 1.15);
     }
 
     &:last-child {
@@ -240,19 +247,11 @@ const Typography = css`
   }
 
   strong {
-    font-weight: 500;
+    font-weight: 600;
   }
 
-  small {
-    font-size: calc(${theme.fontSizes[1]} / 1.15);
-  }
-
-  .t--lead {
-    font-size: calc(${theme.fontSizes[3]} / 1.25);
-
-    @media ${theme.mq.tablet} {
-      font-size: ${theme.fontSizes[3]};
-    }
+  .t--small {
+    font-size: calc(${theme.fontSizes[2]});
   }
 
   .t-underline {
@@ -284,66 +283,15 @@ const Typography = css`
     &:hover,
     &:focus {
       text-decoration: none;
-      color: ${lighten(0.15, theme.colors.primary)};
+      color: ${theme.colors.text};
     }
   }
 
   mark {
-    background-color: ${theme.colors.primary};
-    padding: ${theme.space[2]} ${theme.space[2]} ${theme.space[0]} ${
-  theme.space[2]
-};
-  }
-
-  .t--link {
-    position: relative;
-
-    &::before {
-      content: '';
-      background: ${theme.colors.secondary};
-      width: 0;
-      height: 6px;
-
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 0;
-
-      transition: width 0.222s ease-in-out;
-    }
-
-    /* &:hover {
-      &::before {
-        width: 100%;
-      }
-    } */
-
-    &:active {
-      &::after {
-        mix-blend-mode: difference;
-      }
-    }
-
-    &:hover {
-      span {
-        margin-left: calc(${theme.space[5]} * 1.5);
-      }
-    }
-
-    span {
-      margin-left: ${theme.space[5]};
-      transition: ${theme.transition.all};
-
-      svg {
-        width: ${theme.iconWidth};
-      }
-    }
-
-    h4 {
-      display: flex;
-    }
+    background-color: transparent;
+    border: 2px solid red;
+    color: inherit;
+    padding: 0 calc(${theme.space[1]} / 1.5);
   }
 
   ul {
@@ -352,11 +300,16 @@ const Typography = css`
 
     li {
       list-style-position: outside;
-      /* font-size: calc(${theme.root.font.baseSize} / 1); */
-      line-height: ${theme.root.font.bodyLineHeight};
+      font-size: ${theme.fontSizes[2]};
+      line-height: 1.5;
+      margin-bottom: ${theme.space[3]};
 
       @media ${theme.mq.tablet} {
-        /* font-size: calc(${theme.root.font.baseSize} / 1.25); */
+        /* font-size: calc(${theme.fontSizes[2]} * 1.5); */
+      }
+
+      &:last-child {
+        margin-bottom: 0;
       }
     }
   }

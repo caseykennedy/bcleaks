@@ -18,7 +18,7 @@ import PrevNext from './PrevNext'
 import { Box, Flex, Text, Heading } from '../../components/ui'
 
 // Theme
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 

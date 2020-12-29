@@ -6,13 +6,13 @@ import styled from 'styled-components'
 import { animated } from 'react-spring'
 
 import { Box, Flex } from '../ui'
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
 export const Ticker = styled(Flex)`
   background-color: black;
-  border-bottom: 1px solid ${theme.colors.quaternary};
+  border-bottom: ${theme.border};
   max-width: 100vw;
   overflow: hidden;
   padding: ${theme.space[4]} ${theme.space[3]};

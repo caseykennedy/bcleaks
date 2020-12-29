@@ -7,10 +7,10 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
 
 import * as S from './styles.scss'
-import { Box, Flex, Heading, Text, AnimatedBox } from '../../ui'
-import theme from '../../../../config/theme'
+import { Box, Flex, Heading, Text, AnimatedBox } from '../../../components/ui'
+import theme from '../../../gatsby-plugin-theme-ui'
 
-import BlockContent from '../../BlockContent'
+import BlockContent from '../../../components/BlockContent'
 
 // Hooks
 import usePost from '../../../hooks/usePost'

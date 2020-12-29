@@ -7,15 +7,13 @@ import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
 
 // Theme + ui
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
-import { Box, Flex, Text, Heading } from '../ui'
+import { Box, Flex } from '../ui'
 
 import Symbol from '../Symbol'
 import Lettermark from '../Lettermark'
 import Navigation from './Navigation'
-import NavLinks from './NavLinks'
-import Overlay from '../Overlay'
 import Icon from '../Icons'
 
 import Typist from 'react-typist'
@@ -73,16 +71,6 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
 
   return (
     <>
-      {/* <Overlay
-        id="nav-root"
-        root="root"
-        isOpen={isNavOpen}
-        handleExit={() => setNavOpen(false)}
-        mainRef={mainRef}
-        className={`nav-bg ${isNavOpen ? 'nav-bg--open' : 'nav-bg--closed'}`}
-      >
-        <NavLinks handleExit={() => setNavOpen(false)} isNavOpen={isNavOpen} />
-      </Overlay> */}
       <IdentityModal
         showDialog={dialog}
         onCloseDialog={() => setDialog(false)}
@@ -93,38 +81,44 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
 
       <S.Header as="header">
         <S.Utilities>
-          <div className="page-title">
-            <GetDate />
-          </div>
+          <Flex className="utilities__inner">
+            <div className="page-title">
+              <GetDate />
+            </div>
 
-          <Flex className="account">
-            <button onClick={() => setDialog(true)}>log in</button>
-            <button onClick={() => setDialog(true)}>sign up</button>
+            <Flex className="account">
+              <button onClick={() => setDialog(true)}>log in</button>
+              <button onClick={() => setDialog(true)}>sign up</button>
+            </Flex>
           </Flex>
         </S.Utilities>
 
-        <S.Menu>
-          <Box color="tertiary">
-            <S.Logo>
-              <Link
-                to="/"
-                className="logo-symbol"
-                aria-label="BC Leaks, back to home"
-              >
-                <Symbol />
-              </Link>
-              {/* <div className="logo-lettermark">
+        <Flex className="header__inner">
+          <S.Logo>
+            <Link
+              to="/"
+              className="logo-symbol"
+              aria-label="BC Leaks, back to home"
+            >
+              <Symbol />
+            </Link>
+            {/* <div className="logo-lettermark">
                 <Lettermark />
               </div> */}
-            </S.Logo>
-          </Box>
-          <Box>
-            <S.Toggle onClick={toggleModal} aria-label="toggle menu">
-              <Icon name="hamburger" color="black" />
-            </S.Toggle>
-            <Navigation />
-          </Box>
-        </S.Menu>
+          </S.Logo>
+          
+          <S.Menu>
+            <Box>
+              <S.Toggle onClick={toggleModal} aria-label="toggle menu">
+                <Icon name="hamburger" color="black" />
+              </S.Toggle>
+              <Navigation />
+            </Box>
+            <Box>search</Box>
+            <Box>search</Box>
+            <Box>search</Box>
+          </S.Menu>
+        </Flex>
       </S.Header>
     </>
   )

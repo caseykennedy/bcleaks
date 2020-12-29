@@ -13,7 +13,7 @@ import { Box, Flex, Text } from '../ui'
 
 // Theme + Styles
 import * as S from './styles.scss'
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 import { AnyARecord } from 'dns'
 
 // ___________________________________________________________________

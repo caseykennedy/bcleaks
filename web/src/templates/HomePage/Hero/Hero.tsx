@@ -5,10 +5,10 @@
 import React from 'react'
 
 import * as S from './styles.scss'
-import theme from '../../../../config/theme'
+import theme from '../../../gatsby-plugin-theme-ui'
 
-import Button from '../../ui/Button'
-import { Box, Flex, Heading, Text, AnimatedBox } from '../../ui'
+import Button from '../../../components/ui/Button'
+import { Box, Flex, Heading, Text, AnimatedBox } from '../../../components/ui'
 
 // ___________________________________________________________________
 
@@ -30,7 +30,9 @@ const Hero: React.FC<Props> = () => {
             <br />
             Tyler Swope #BLOCKCHAIN #WATCHOUT
           </Text>
-          <Button to="/">read</Button>
+          <Box>
+            <Button>full article</Button>
+          </Box>
         </div>
       </div>
     </S.Hero>

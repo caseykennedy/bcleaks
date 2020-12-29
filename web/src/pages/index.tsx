@@ -12,10 +12,10 @@ import { AnimatedBox } from '../components/ui'
 // Components
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import HomePage from '../components/HomePage'
+import HomePage from '../templates/HomePage'
 
 // Theme
-import theme from '../../config/theme'
+import theme from '../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 

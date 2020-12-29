@@ -7,7 +7,7 @@ import { Link } from 'gatsby'
 
 import { Box, Flex, Text } from '../../ui'
 
-import theme from '../../../../config/theme'
+import theme from '../../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 

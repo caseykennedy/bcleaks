@@ -15,7 +15,7 @@ import IllustrationOne from '../IllustrationOne'
 
 import * as S from './styles.scss'
 import { Box, Flex, Heading, Text, AnimatedBox } from '../ui'
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 

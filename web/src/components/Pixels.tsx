@@ -4,7 +4,7 @@
 // ___________________________________________________________________
 
 import * as React from 'react'
-import theme from '../../config/theme'
+import theme from '../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 

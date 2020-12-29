@@ -8,7 +8,7 @@ import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
 
 import * as S from './styles.scss'
-import theme from '../../../config/theme'
+import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 

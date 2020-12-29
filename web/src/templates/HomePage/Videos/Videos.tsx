@@ -9,8 +9,8 @@ import { Link } from 'gatsby'
 import Swiper from 'react-id-swiper'
 
 import * as S from './styles.scss'
-import { Box, Flex, Heading, Text, AnimatedBox } from '../../ui'
-import theme from '../../../../config/theme'
+import { Box, Flex, Heading, Text, AnimatedBox } from '../../../components/ui'
+import theme from '../../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
@@ -123,5 +123,5 @@ const data = [
     author: 'Taylor Johnson',
     category: 'block chain',
     title: 'Taking a monkey wrench to the game'
-  },
+  }
 ]

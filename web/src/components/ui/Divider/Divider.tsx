@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Box } from 'rebass'
-import theme from '../../../../config/theme'
+import theme from '../../../gatsby-plugin-theme-ui'
 
 type Props = {
   bg?: any

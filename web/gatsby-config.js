@@ -25,12 +25,13 @@ module.exports = {
     titleAlt: config.siteTitleAlt,
     description: config.siteDescription,
     logo: config.siteLogo,
+    defaultBanner: config.banner,
     headline: config.siteHeadline,
     siteLanguage: config.siteLanguage,
     ogLanguage: config.ogLanguage,
     author: config.author,
     twitter: config.userTwitter,
-    facebook: config.ogSiteName
+    facebook: config.ogSiteName,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -47,6 +48,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-theme-ui',
     // `gatsby-plugin-transition-link`,
     'gatsby-plugin-sitemap',
     'gatsby-plugin-typescript',
