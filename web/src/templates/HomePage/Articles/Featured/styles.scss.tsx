@@ -20,14 +20,29 @@ export const Featured = styled(Box)`
     }
 
     &__posts {
+      max-width: 700px;
+      
       .post {
         .figure {
           background: ${theme.colors.secondary};
           border: ${theme.border};
           margin-bottom: ${theme.space[4]};
-          max-height: 500px;
           width: 100%;
           overflow: hidden;
+
+          transition: border-color ${theme.transition.global};
+
+          &:hover {
+            border-color: ${theme.colors.primary};
+          }
+
+          /* img {
+            transition: ${theme.transition.all};
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          } */
         }
 
         .lead {
@@ -101,6 +116,25 @@ export const Featured = styled(Box)`
           }
         }
       }
+    }
+  }
+`
+
+export const PillBox = styled(Flex)`
+  display: flex;
+  margin-bottom: ${theme.space[4]};
+
+  div {
+    display: flex;
+    align-items: center;
+    border: ${theme.border};
+    border-radius: ${theme.borderRadius};
+    margin-right: ${theme.space[2]};
+    padding: ${theme.space[1]} ${theme.space[2]};
+
+    span {
+      color: ${theme.colors.primary};
+      font-size: ${theme.fontSizes[0]};
     }
   }
 `

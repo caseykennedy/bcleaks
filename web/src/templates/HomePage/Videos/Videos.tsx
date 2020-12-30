@@ -34,7 +34,7 @@ const ReviewSlider: React.FC = ({ children }) => {
     },
     breakpoints: {
       1024: {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 32
       },
       768: {
@@ -65,36 +65,59 @@ const Videos = () => {
         <Heading fontFamily="display" className="text--lg">
           Videos
         </Heading>
+
         <Link to="/">View All</Link>
       </Flex>
+
       <Box className="videos__posts">
         <ReviewSlider>
-          {posts.map(({node: post}, idx) => (
+          {posts.map(({ node: post }, idx) => (
             <Box className="post" key={idx}>
-            {post.figure && (
-              <Box className="figure">
-                <Img
-                  fluid={post.figure.asset.fluid}
-                  objectFit="cover"
-                  objectPosition="50% 50%"
-                  alt={post.title}
-                />
-              </Box>
-            )}
-            <Link to={`/blog/${post.slug.current}`}>
+              {post.figure && (
+                <Link to={`/blog/${post.slug.current}`}>
+                  <Box className="figure">
+                    <Img
+                      fluid={post.figure.asset.fluid}
+                      objectFit="cover"
+                      objectPosition="50% 50%"
+                      alt={post.title}
+                    />
+                  </Box>
+                </Link>
+              )}
+
+              <S.PillBox>
+                <Box>
+                  <span>#featured</span>
+                </Box>
+                <Box>
+                  <span>#stateMachine</span>
+                </Box>
+                <Box>
+                  <span>#ETH</span>
+                </Box>
+              </S.PillBox>
+
+              <Link to={`/blog/${post.slug.current}`}>
                 <Heading as="h4">{post.title}</Heading>
               </Link>
-            <Text
-              as="p"
-              color={theme.colors.tertiary}
-              className="meta  t--small"
-            >
-              {post.publishedAt}
-              <br />
-              {post.authors && post.authors.name} in{' '}
-              {post.categories && post.categories[0].title}
-            </Text>
-          </Box>
+
+              <Text
+                as="p"
+                color={theme.colors.tertiary}
+                className="meta  t--small"
+              >
+                <Text as="span" color="white" mb={0}>
+                  {post.publishedAt}
+                </Text>
+                by {post.authors && post.authors.name} in{' '}
+                <Link to={``}>
+                  <Box as="span" color="primary">
+                    {post.categories && post.categories[0].title}
+                  </Box>
+                </Link>
+              </Text>
+            </Box>
           ))}
         </ReviewSlider>
       </Box>

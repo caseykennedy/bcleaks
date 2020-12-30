@@ -32,21 +32,41 @@ export const Articles = styled(Section)`
 
         @media ${theme.mq.tablet} {
           flex-direction: row;
+          padding: ${theme.space[5]} 0;
         }
 
-        &__figure {
-          img {
-            
+        .figure {
+          background: ${theme.colors.secondary};
+          border: ${theme.border};
+          width: 100%;
+          overflow: hidden;
+
+          transition: border-color ${theme.transition.global};
+
+          &:hover {
+            border-color: ${theme.colors.primary};
           }
+
+          /* img {
+            transition: ${theme.transition.all};
+
+            &:hover {
+              mix-blend-mode: luminosity;
+            }
+          } */
         }
 
         &__details {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          height: auto;
           padding-right: ${theme.space[5]};
 
           @media ${theme.mq.tablet} {
             padding-right: 0;
             padding-left: ${theme.space[5]};
-            max-height: 150px;
           }
         }
 
@@ -75,6 +95,25 @@ export const Author = styled(Flex)`
     &__name {
       span {
       }
+    }
+  }
+`
+
+export const PillBox = styled(Flex)`
+  display: flex;
+  margin-bottom: ${theme.space[4]};
+
+  div {
+    display: flex;
+    align-items: center;
+    border: ${theme.border};
+    border-radius: ${theme.borderRadius};
+    margin-right: ${theme.space[2]};
+    padding: ${theme.space[1]} ${theme.space[2]};
+
+    span {
+      color: ${theme.colors.primary};
+      font-size: ${theme.fontSizes[0]};
     }
   }
 `

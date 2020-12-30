@@ -26,6 +26,12 @@ export const Videos = styled(Section)`
           border: ${theme.border};
           margin-bottom: ${theme.space[4]};
           width: 100%;
+
+          transition: border-color ${theme.transition.global};
+
+          &:hover {
+            border-color: ${theme.colors.primary};
+          }
         }
 
         .lead {
@@ -99,6 +105,25 @@ export const Videos = styled(Section)`
           }
         }
       }
+    }
+  }
+`
+
+export const PillBox = styled(Flex)`
+  display: flex;
+  margin-bottom: ${theme.space[4]};
+
+  div {
+    display: flex;
+    align-items: center;
+    border: ${theme.border};
+    border-radius: ${theme.borderRadius};
+    margin-right: ${theme.space[2]};
+    padding: ${theme.space[1]} ${theme.space[2]};
+
+    span {
+      color: ${theme.colors.primary};
+      font-size: ${theme.fontSizes[0]};
     }
   }
 `
