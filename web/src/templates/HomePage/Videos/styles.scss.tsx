@@ -21,11 +21,10 @@ export const Videos = styled(Section)`
 
     &__posts {
       .post {
-        .video {
+        .figure {
           background: ${theme.colors.secondary};
           border: ${theme.border};
           margin-bottom: ${theme.space[4]};
-          height: 300px;
           width: 100%;
         }
 

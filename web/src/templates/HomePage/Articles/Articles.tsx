@@ -87,7 +87,7 @@ const Articles = () => {
               </Box>
               <Box width={[2 / 3, 1 / 2, 1 / 2]} className="post__details">
                 <Link to={`/blog/${post.slug.current}`}>
-                  <Heading as="h3">{post.title}</Heading>
+                  <Heading as="h4">{post.title}</Heading>
                 </Link>
 
                 {/* {post._rawExcerpt && (

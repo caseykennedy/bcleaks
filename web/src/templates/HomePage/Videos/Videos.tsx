@@ -3,7 +3,11 @@
 // ___________________________________________________________________
 
 import React from 'react'
+import Img from 'gatsby-image/withIEPolyfill'
 import { Link } from 'gatsby'
+
+// Hooks
+import usePost from '../../../hooks/usePost'
 
 // Libraries
 import Swiper from 'react-id-swiper'
@@ -20,7 +24,7 @@ const ReviewSlider: React.FC = ({ children }) => {
     // centeredSlides: true,
     // effect: 'fade',
     slidesPerView: 1,
-    spaceBetween: 32,
+    spaceBetween: 8,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -35,17 +39,17 @@ const ReviewSlider: React.FC = ({ children }) => {
       },
       768: {
         slidesPerView: 2,
-        spaceBetween: 32,
+        spaceBetween: 16,
         grabCursor: true
       },
       640: {
         slidesPerView: 1,
-        spaceBetween: 32,
+        spaceBetween: 8,
         grabCursor: true
       },
       320: {
         slidesPerView: 1,
-        spaceBetween: 32,
+        spaceBetween: 8,
         grabCursor: true
       }
     }
@@ -54,6 +58,7 @@ const ReviewSlider: React.FC = ({ children }) => {
 }
 
 const Videos = () => {
+  const posts = usePost()
   return (
     <S.Videos bg="quinary" border={true} overflow="hidden">
       <Flex className="videos__header" justifyContent="space-between">
@@ -64,18 +69,32 @@ const Videos = () => {
       </Flex>
       <Box className="videos__posts">
         <ReviewSlider>
-          {data.map((post, idx) => (
+          {posts.map(({node: post}, idx) => (
             <Box className="post" key={idx}>
-              <Box className="video" />
-              <Text as="p">
-                <Link to={`/`}>{post.title}</Link>
-              </Text>
-              <Text as="p" color={theme.colors.tertiary} className="meta  t--small">
-                {post.date}
-                <br />
-                {post.author}
-              </Text>
-            </Box>
+            {post.figure && (
+              <Box className="figure">
+                <Img
+                  fluid={post.figure.asset.fluid}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  alt={post.title}
+                />
+              </Box>
+            )}
+            <Link to={`/blog/${post.slug.current}`}>
+                <Heading as="h4">{post.title}</Heading>
+              </Link>
+            <Text
+              as="p"
+              color={theme.colors.tertiary}
+              className="meta  t--small"
+            >
+              {post.publishedAt}
+              <br />
+              {post.authors && post.authors.name} in{' '}
+              {post.categories && post.categories[0].title}
+            </Text>
+          </Box>
           ))}
         </ReviewSlider>
       </Box>

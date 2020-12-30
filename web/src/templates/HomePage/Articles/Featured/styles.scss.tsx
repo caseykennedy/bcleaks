@@ -21,12 +21,13 @@ export const Featured = styled(Box)`
 
     &__posts {
       .post {
-        .video {
+        .figure {
           background: ${theme.colors.secondary};
           border: ${theme.border};
           margin-bottom: ${theme.space[4]};
-          height: 300px;
+          max-height: 500px;
           width: 100%;
+          overflow: hidden;
         }
 
         .lead {

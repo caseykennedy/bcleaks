@@ -28,9 +28,11 @@ const HomePage: React.FC = () => {
     <S.HomePage>
       <Hero />
       <Videos />
-      <Section bg="quaternary" color="black" border={true}>
-        <Text as="p" textAlign="center">Ad space</Text>
-      </Section>
+      <Box bg="black" py={6} style={{ borderTop: theme.border }}>
+        <Text as="p" textAlign="center">
+          Ad space
+        </Text>
+      </Box>
       <Articles />
       <Community />
     </S.HomePage>
