@@ -12,14 +12,15 @@ import theme from '../../../gatsby-plugin-theme-ui'
 // ___________________________________________________________________
 
 export const Nav = styled.nav`
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   z-index: 999;
 
   width: 100%;
 
-  @media ${theme.mq.desktop} {
+  @media (min-width: 800px) {
+    display: flex;
   }
 
   a {
@@ -35,6 +36,7 @@ export const Nav = styled.nav`
     border-left: ${theme.border};
     height: ${theme.headerHeight};
     padding: 0 ${theme.space[5]};
+    width: 100%;
 
     &:last-child {
       border-right: ${theme.border};

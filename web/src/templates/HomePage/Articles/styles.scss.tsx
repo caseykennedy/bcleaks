@@ -37,7 +37,7 @@ export const Articles = styled(Section)`
 
     &__main {
       border-bottom: ${theme.border};
-      margin-right: ${theme.space[7]};
+      margin-right: ${theme.space[5]};
     }
   }
 

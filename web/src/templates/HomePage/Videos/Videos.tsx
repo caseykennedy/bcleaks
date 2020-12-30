@@ -31,7 +31,7 @@ const ReviewSlider: React.FC = ({ children }) => {
     breakpoints: {
       1024: {
         slidesPerView: 3,
-        spaceBetween: 64
+        spaceBetween: 32
       },
       768: {
         slidesPerView: 2,

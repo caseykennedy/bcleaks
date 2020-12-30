@@ -50,30 +50,5 @@ const data = [
   {
     name: 'store',
     link: '/store'
-  },
-  // {
-  //   name: 'implants',
-  //   subPage: [
-  //     {
-  //       name: 'External Fixation',
-  //       link: '/implants/external-fixation'
-  //     },
-  //     {
-  //       name: 'Hip Fractures',
-  //       link: '/implants/hip-fractures'
-  //     },
-  //     {
-  //       name: 'IM Nails',
-  //       link: '/implants/im-nails'
-  //     },
-  //     {
-  //       name: 'Plates and Screws',
-  //       link: '/implants/plates-and-screws'
-  //     },
-  //     {
-  //       name: 'Sports Medicine',
-  //       link: '/implants/sports-medicine'
-  //     },
-  //   ]
-  // },
+  }
 ]

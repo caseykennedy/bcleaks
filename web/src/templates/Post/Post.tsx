@@ -7,18 +7,16 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
 
+// Theme + UI
+import theme from '../../gatsby-plugin-theme-ui'
+import { Box, Flex, Text, Heading } from '../../components/ui'
+
 // Components
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
 import Section from '../../components/Section'
 import BlockContent from '../../components/BlockContent'
 import PrevNext from './PrevNext'
-
-// UI
-import { Box, Flex, Text, Heading } from '../../components/ui'
-
-// Theme
-import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
@@ -32,16 +30,18 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
         pathname={`/implants/${post.slug.current}`}
         title={`${post.title} | `}
         desc={`${post.title} | `}
-        individual={false}
+        article={true}
       />
+
       <Section>
         <Box width={1} mb={5}>
           <Text as="p" fontSize={1} fontWeight={500}>
             {post.publishedAt}
           </Text>
         </Box>
-        <Flex>
-          <Box flex={1} mr={6}>
+
+        <Flex flexDirection="column">
+          <Box>
             {post.figure && (
               <Img
                 fluid={post.figure.asset.fluid}
@@ -52,7 +52,8 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
               />
             )}
           </Box>
-          <Box flex={1}>
+
+          <Box>
             <Heading as="h4" mb={4} className="text--xl">
               {post.title}
             </Heading>

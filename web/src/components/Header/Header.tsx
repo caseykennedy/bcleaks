@@ -9,7 +9,7 @@ import { Link, navigate } from 'gatsby'
 // Theme + ui
 import theme from '../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
-import { Box, Flex } from '../ui'
+import { Box, Flex, Text } from '../ui'
 
 import Symbol from '../Symbol'
 import Lettermark from '../Lettermark'
@@ -74,51 +74,47 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       <IdentityModal
         showDialog={dialog}
         onCloseDialog={() => setDialog(false)}
-        onLogin={user => navigate('/app/profile')}
-        onSignup={user => navigate('/app/profile')}
+        onLogin={() => navigate('/app/profile')}
+        onSignup={() => navigate('/app/profile')}
         aria-label="Log in"
       />
 
-      <S.Header as="header">
-        <S.Utilities>
-          <Flex className="utilities__inner">
-            <div className="page-title">
-              <GetDate />
-            </div>
-
-            <Flex className="account">
-              <button onClick={() => setDialog(true)}>log in</button>
-              <button onClick={() => setDialog(true)}>sign up</button>
-            </Flex>
-          </Flex>
-        </S.Utilities>
-
-        <Flex className="header__inner">
-          <S.Logo>
-            <Link
-              to="/"
-              className="logo-symbol"
-              aria-label="BC Leaks, back to home"
-            >
-              <Symbol />
-            </Link>
-            {/* <div className="logo-lettermark">
-                <Lettermark />
-              </div> */}
-          </S.Logo>
-          
-          <S.Menu>
-            <Box>
-              <S.Toggle onClick={toggleModal} aria-label="toggle menu">
-                <Icon name="hamburger" color="black" />
-              </S.Toggle>
-              <Navigation />
-            </Box>
-            <Box>search</Box>
-            <Box>search</Box>
-            <Box>search</Box>
-          </S.Menu>
+      <S.Announcement>
+        <Flex className="announcement__inner">
+          <div className="page-title">
+            <Text as="span" color="">
+              WELCOME TO BLOCKCHAIN LEAKS
+            </Text>{' '}
+            <GetDate />
+          </div>
         </Flex>
+      </S.Announcement>
+
+      <S.Header as="header">
+        <S.Logo>
+          <Link
+            to="/"
+            className="logo-symbol"
+            aria-label="BC Leaks, back to home"
+          >
+            <Symbol />
+          </Link>
+          <Flex className="logo-lettermark">
+            <Lettermark />
+          </Flex>
+        </S.Logo>
+
+        <S.Menu>
+          <S.Toggle onClick={toggleModal} aria-label="toggle menu">
+            <Icon name="hamburger" color="white" />
+          </S.Toggle>
+          <Navigation />
+        </S.Menu>
+
+        <S.Account>
+          <button onClick={() => setDialog(true)}>log in</button>
+          <button onClick={() => setDialog(true)}>sign up</button>
+        </S.Account>
       </S.Header>
     </>
   )

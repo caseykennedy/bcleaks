@@ -59,7 +59,7 @@ const Section: React.FC<Props> = ({
     <Box
       pr={pr}
       pl={pl}
-      m="0 auto"
+      mr="auto"
       maxWidth={maxWidth ? maxWidth : theme.maxWidth}
     >
       {children}

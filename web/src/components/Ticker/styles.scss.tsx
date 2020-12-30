@@ -15,7 +15,7 @@ export const Ticker = styled(Flex)`
   border-bottom: ${theme.border};
   max-width: 100vw;
   overflow: hidden;
-  padding: ${theme.space[4]} ${theme.space[3]};
+  padding: ${theme.space[3]} ${theme.space[3]};
   font-size: ${theme.fontSizes[1]};
 
   .ticker {
