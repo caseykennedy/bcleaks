@@ -10,14 +10,6 @@ import { Box, Flex } from '../../../components/ui'
 // ___________________________________________________________________
 
 export const Articles = styled(Section)`
-  @media ${theme.mq.tablet} {
-  }
-
-  h2,
-  h4 {
-    text-transform: capitalize;
-  }
-
   .articles {
     &__header {
       align-items: center;
@@ -31,26 +23,36 @@ export const Articles = styled(Section)`
       }
     }
 
-    &__aside {
-      border-bottom: ${theme.border};
-    }
-
     &__main {
-      border-bottom: ${theme.border};
-      margin-right: ${theme.space[5]};
-    }
-  }
+      .post {
+        display: flex;
+        flex-direction: row-reverse;
+        border-top: ${theme.border};
+        padding: ${theme.space[4]} 0;
 
-  .post {
-    margin-bottom: ${theme.space[6]};
+        @media ${theme.mq.tablet} {
+          flex-direction: row;
+        }
 
-    &__figure {
-      margin-bottom: ${theme.space[5]};
-    }
+        &__figure {
+          img {
+            
+          }
+        }
 
-    &--horizontal {
-      border-top: ${theme.border};
-      padding-top: ${theme.space[6]};
+        &__details {
+          padding-right: ${theme.space[5]};
+
+          @media ${theme.mq.tablet} {
+            padding-right: 0;
+            padding-left: ${theme.space[5]};
+            max-height: 150px;
+          }
+        }
+
+        &--horizontal {
+        }
+      }
     }
   }
 `

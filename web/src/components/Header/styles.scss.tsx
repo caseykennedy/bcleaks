@@ -42,8 +42,11 @@ export const Menu = styled(Flex)`
   flex-direction: row;
 
   flex: 1;
+  display: none;
 
-  /* padding: 0 ${theme.space[6]}; */
+  @media (min-width: 800px) {
+    display: flex;
+  }
 `
 
 export const Logo = styled(Flex)`
@@ -86,13 +89,24 @@ export const Logo = styled(Flex)`
 `
 
 export const Account = styled(Flex)`
-  display: flex;
   align-items: center;
   justify-content: flex-end;
   flex: 1;
 
   padding-left: ${theme.space[5]};
   height: 100%;
+
+  .span {
+    display: flex;
+
+    @media ${theme.mq.tablet} {
+      display: none;
+    }
+
+    svg {
+
+    }
+  }
 
   button {
     background: transparent;

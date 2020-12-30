@@ -117,9 +117,10 @@ const theme: ThemeShape = {
 
   // Left/Right gutter
   gutter: {
+    mobile: 4,
     tablet: 5,
     desktop: 6,
-    vertical: [5, 5, 6],
+    vertical: [4, 5, 6],
     axis: [4, 5, 6]
   },
 

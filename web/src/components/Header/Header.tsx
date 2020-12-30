@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
+import HamburgerMenu from 'react-hamburger-menu'
 
 // Theme + ui
 import theme from '../../gatsby-plugin-theme-ui'
@@ -62,9 +63,16 @@ const GetDate = () => {
 }
 
 const Header: React.FC<HeaderShape> = ({ mainRef }) => {
-  // Navigation toggle
+  // Navigation portal
   const [isNavOpen, setNavOpen] = useState(false)
-  const toggleModal = () => setNavOpen(!isNavOpen)
+  const toggleMenu = () => {
+    setNavOpen(!isNavOpen)
+    // gtag.event({
+    //   category: 'Header utilities',
+    //   action: 'Click',
+    //   label: 'Header hamburger toggle'
+    // })
+  }
 
   const identity = useIdentityContext()
   const [dialog, setDialog] = React.useState(false)
@@ -102,12 +110,22 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
           <Flex className="logo-lettermark">
             <Lettermark />
           </Flex>
+          <S.Toggle onClick={toggleMenu} aria-label="toggle menu">
+          <HamburgerMenu
+            isOpen={!isNavOpen ? false : true}
+            menuClicked={toggleMenu}
+            width={32}
+            height={12}
+            strokeWidth={1.5}
+            rotate={0}
+            color="white"
+            borderRadius={0}
+            animationDuration={0.333}
+          />
+        </S.Toggle>
         </S.Logo>
 
         <S.Menu>
-          <S.Toggle onClick={toggleModal} aria-label="toggle menu">
-            <Icon name="hamburger" color="white" />
-          </S.Toggle>
           <Navigation />
         </S.Menu>
 

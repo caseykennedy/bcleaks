@@ -157,6 +157,8 @@ const Typography = css`
     letter-spacing: ${theme.root.font.baseLetterSpacing};
     margin: 0 0 ${theme.space[3]};
     transition: ${theme.transition.all};
+
+    text-transform: capitalize;
   }
 
   .text--xxxl {
@@ -251,7 +253,7 @@ const Typography = css`
   }
 
   .t--small {
-    font-size: calc(${theme.fontSizes[2]});
+    font-size: calc(${theme.fontSizes[1]});
   }
 
   .t-underline {
@@ -278,12 +280,12 @@ const Typography = css`
 
     transition: ${theme.transition.all};
 
-    color: ${theme.colors.primary};
+    color: ${theme.colors.text};
 
     &:hover,
     &:focus {
       text-decoration: none;
-      color: ${theme.colors.text};
+      color: ${theme.colors.primary};
     }
   }
 

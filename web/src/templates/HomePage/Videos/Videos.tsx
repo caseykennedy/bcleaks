@@ -57,7 +57,7 @@ const Videos = () => {
   return (
     <S.Videos bg="quinary" overflow="hidden">
       <Flex className="videos__header" justifyContent="space-between">
-        <Heading as="h3" fontFamily="display">
+        <Heading fontFamily="display" className="text--lg">
           Videos
         </Heading>
         <Link to="/">View All</Link>
@@ -67,15 +67,13 @@ const Videos = () => {
           {data.map((post, idx) => (
             <Box className="post" key={idx}>
               <Box className="video" />
-              <Text as="p" className="lead">
-                {post.title}
+              <Text as="p">
+                <Link to={`/`}>{post.title}</Link>
               </Text>
-              <Text as="p" color={theme.colors.tertiary} className="meta">
-                <small>
-                  {post.date}
-                  <br />
-                  {post.author}
-                </small>
+              <Text as="p" color={theme.colors.tertiary} className="meta  t--small">
+                {post.date}
+                <br />
+                {post.author}
               </Text>
             </Box>
           ))}

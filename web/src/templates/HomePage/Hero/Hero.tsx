@@ -16,24 +16,28 @@ type Props = {}
 
 const Hero: React.FC<Props> = () => {
   return (
-    <S.Hero bg="black">
-      <div className="hero-inner">
-        <Box width={[1, 8 / 10]}>
-          <div className="text--md">A fine day to live</div>
-          <h1 className="t--uppercase">
-            Welcome to BCLeaks, a new era in crypto news begins.
-          </h1>
-        </Box>
-        <div className="hero-inner__meta">
-          <Text as="p" color="tertiary">
-            OCT 1, 2020 at 8:43 AM
-            <br />
-            Tyler Swope #BLOCKCHAIN #WATCHOUT
-          </Text>
-          <Box>
-            <Button>full article</Button>
+    <S.Hero bg="black" pt={9}>
+      <div className="hero__inner">
+        <Box width={[1, 1 / 2]}>
+          <Box width={[1]}>
+            <Text mb={4} color="primary" className="text--sm">
+              #featured
+            </Text>
+            <h2 className="t--uppercase">
+              Welcome to BCLeaks, a new era in crypto news begins.
+            </h2>
           </Box>
-        </div>
+          <div className="meta">
+            <Text as="p" color="tertiary" mb={0}>
+              OCT 1, 2020 at 8:43 AM
+              <br />
+              Tyler Swope
+            </Text>
+            <Box>
+              <Button>full article</Button>
+            </Box>
+          </div>
+        </Box>
       </div>
     </S.Hero>
   )

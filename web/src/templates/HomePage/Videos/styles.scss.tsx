@@ -24,7 +24,7 @@ export const Videos = styled(Section)`
         .video {
           background: ${theme.colors.secondary};
           border: ${theme.border};
-          margin-bottom: ${theme.space[6]};
+          margin-bottom: ${theme.space[4]};
           height: ${theme.space[11]};
           width: 100%;
         }
@@ -35,6 +35,10 @@ export const Videos = styled(Section)`
 
           @media ${theme.mq.tablet} {
             font-size: calc(${theme.fontSizes[3]} / 1.25);
+          }
+
+          .meta {
+
           }
         }
       }

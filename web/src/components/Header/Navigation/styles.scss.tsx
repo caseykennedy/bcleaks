@@ -12,16 +12,12 @@ import theme from '../../../gatsby-plugin-theme-ui'
 // ___________________________________________________________________
 
 export const Nav = styled.nav`
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 999;
 
   width: 100%;
-
-  @media (min-width: 800px) {
-    display: flex;
-  }
 
   a {
     font-family: ${theme.fonts.heading};

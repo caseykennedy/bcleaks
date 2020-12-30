@@ -12,12 +12,8 @@ import { Box, Flex } from '../../../components/ui'
 export const Hero = styled(Section)`
   background: ${theme.colors.black};
 
-  @media ${theme.mq.tablet} {
-    padding: ${theme.space[8]} 0;
-  }
-
-  .hero-inner {
-    &__meta {
+  .hero__inner {
+    .meta {
       display: flex;
       justify-content: space-between;
       width: 1;

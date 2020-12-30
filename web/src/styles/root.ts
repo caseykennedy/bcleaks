@@ -40,7 +40,7 @@ const RootVariables = css`
     @media ${theme.mq.tablet} {
       :root {
         --text-base-size: 0.95em;
-        --body-line-height: 1.75;
+        --body-line-height: 1.6;
         --heading-line-height: 1.15;
       }
     }
