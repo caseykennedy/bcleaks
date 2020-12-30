@@ -268,7 +268,7 @@ const Typography = css`
     }
   }
 
-  .t--uppercase {
+  .text--uppercase {
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }

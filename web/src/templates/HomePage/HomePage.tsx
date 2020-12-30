@@ -17,7 +17,8 @@ import Videos from './Videos'
 import Articles from './Articles'
 import Community from './Community'
 
-// import Hero from './Hero'
+// Components
+import Section from '../../components/Section'
 
 // ___________________________________________________________________
 
@@ -27,6 +28,9 @@ const HomePage: React.FC = () => {
     <S.HomePage>
       <Hero />
       <Videos />
+      <Section bg="quaternary" color="black" border={true}>
+        <Text as="p" textAlign="center">Ad space</Text>
+      </Section>
       <Articles />
       <Community />
     </S.HomePage>

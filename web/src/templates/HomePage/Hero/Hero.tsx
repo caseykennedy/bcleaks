@@ -23,7 +23,7 @@ const Hero: React.FC<Props> = () => {
             <Text mb={4} color="primary" className="text--sm">
               #featured
             </Text>
-            <h2 className="t--uppercase">
+            <h2 className="text--uppercase">
               Welcome to BCLeaks, a new era in crypto news begins.
             </h2>
           </Box>

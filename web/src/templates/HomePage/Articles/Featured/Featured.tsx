@@ -1,4 +1,4 @@
-// Videos Section:
+// Featured Section:
 
 // ___________________________________________________________________
 
@@ -9,12 +9,12 @@ import { Link } from 'gatsby'
 import Swiper from 'react-id-swiper'
 
 import * as S from './styles.scss'
-import { Box, Flex, Heading, Text, AnimatedBox } from '../../../components/ui'
-import theme from '../../../gatsby-plugin-theme-ui'
+import { Box, Flex, Heading, Text, AnimatedBox } from '../../../../components/ui'
+import theme from '../../../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-const ReviewSlider: React.FC = ({ children }) => {
+const FeaturedSlider: React.FC = ({ children }) => {
   const params = {
     // loop: true,
     // centeredSlides: true,
@@ -53,17 +53,11 @@ const ReviewSlider: React.FC = ({ children }) => {
   return <Swiper {...params}>{children}</Swiper>
 }
 
-const Videos = () => {
+const Featured = () => {
   return (
-    <S.Videos bg="quinary" border={true} overflow="hidden">
-      <Flex className="videos__header" justifyContent="space-between">
-        <Heading fontFamily="display" className="text--lg">
-          Videos
-        </Heading>
-        <Link to="/">View All</Link>
-      </Flex>
+    <S.Featured>
       <Box className="videos__posts">
-        <ReviewSlider>
+        <FeaturedSlider>
           {data.map((post, idx) => (
             <Box className="post" key={idx}>
               <Box className="video" />
@@ -77,13 +71,13 @@ const Videos = () => {
               </Text>
             </Box>
           ))}
-        </ReviewSlider>
+        </FeaturedSlider>
       </Box>
-    </S.Videos>
+    </S.Featured>
   )
 }
 
-export default Videos
+export default Featured
 
 const data = [
   {

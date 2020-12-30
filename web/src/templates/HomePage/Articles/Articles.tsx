@@ -11,6 +11,7 @@ import { Box, Flex, Heading, Text, AnimatedBox } from '../../../components/ui'
 import theme from '../../../gatsby-plugin-theme-ui'
 
 import BlockContent from '../../../components/BlockContent'
+import Featured from './Featured'
 
 // Hooks
 import usePost from '../../../hooks/usePost'
@@ -41,13 +42,33 @@ const Author: React.FC<{ author: PostAuthor }> = ({ author }) => {
 const Articles = () => {
   const posts = usePost()
   return (
-    <S.Articles>
-      <Flex className="articles__header" justifyContent="space-between">
-        <Heading fontFamily="display" className="text--lg">
+    <S.Articles border={true} overflow="visible">
+      <Flex
+        justifyContent="space-between"
+        width={1}
+        className="articles__header"
+      >
+        <Heading fontFamily="display" className="text--lg  text--uppercase">
           Articles
         </Heading>
         <Link to="/">View All</Link>
       </Flex>
+
+      <Box width={1}>
+        <Featured />
+      </Box>
+
+      <Flex
+        justifyContent="space-between"
+        mt={8}
+        width={1}
+        className="articles__header"
+      >
+        <Heading as="h4" fontFamily="display" mb={0} className="text--uppercase">
+          Latest Leaks
+        </Heading>
+      </Flex>
+
       <Box width={[1, 1, 6 / 8]} className="articles__main">
         <Box>
           {posts.map(({ node: post }, idx) => (
@@ -66,9 +87,7 @@ const Articles = () => {
               </Box>
               <Box width={[2 / 3, 1 / 2, 1 / 2]} className="post__details">
                 <Link to={`/blog/${post.slug.current}`}>
-                  <Heading as="h3">
-                    {post.title}
-                  </Heading>
+                  <Heading as="h3">{post.title}</Heading>
                 </Link>
 
                 {/* {post._rawExcerpt && (

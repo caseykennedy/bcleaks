@@ -20,7 +20,7 @@ const Hero: React.FC<Props> = () => {
       <div className="hero-inner">
         <Box width={[1, 8 / 10]}>
           <div className="text--md">A fine day to live</div>
-          <h1 className="t--uppercase">
+          <h1 className="text--uppercase">
             Welcome to BCLeaks, a new era in crypto news begins.
           </h1>
         </Box>
