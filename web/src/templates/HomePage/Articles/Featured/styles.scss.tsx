@@ -82,7 +82,7 @@ export const Featured = styled(Box)`
 
   .swiper-container {
     overflow: visible;
-    padding-bottom: ${theme.space[7]};
+    /* padding-bottom: ${theme.space[7]}; */
 
     .parallax-bg {
       background: yellow;

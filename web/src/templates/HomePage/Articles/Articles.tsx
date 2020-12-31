@@ -71,11 +71,11 @@ const Articles = () => {
           mb={0}
           className="text--uppercase"
         >
-          Latest Leaks
+          Latest
         </Heading>
       </Flex>
 
-      <Box width={[1, 8 / 10]} className="articles__main">
+      <Box width={[1, 6 / 8]} className="articles__main">
         <Box>
           {posts.map(({ node: post }, idx) => (
             <Flex className="post post--horizontal" key={idx}>
@@ -108,7 +108,7 @@ const Articles = () => {
                     </Pill>
                   </Flex>
 
-                  <Heading as="h4">
+                  <Heading as="h4" pr={7}>
                     <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
                   </Heading>
                 </Box>

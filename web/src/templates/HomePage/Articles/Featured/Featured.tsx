@@ -25,13 +25,13 @@ const FeaturedSlider: React.FC = ({ children }) => {
     // effect: 'fade',
     slidesPerView: 1,
     spaceBetween: 8,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      renderBullet: (index: any, className: string) => {
-        return `<span class="${className}">${index + 1}</span>`
-      }
-    },
+    // pagination: {
+    //   el: '.swiper-pagination',
+    //   clickable: true,
+    //   renderBullet: (index: any, className: string) => {
+    //     return `<span class="${className}">${index + 1}</span>`
+    //   }
+    // },
     breakpoints: {
       1024: {
         slidesPerView: 2,
@@ -63,7 +63,7 @@ const Featured = () => {
     <S.Featured>
       <Box className="videos__posts">
         <FeaturedSlider>
-          {posts.slice(1, 4).map(({ node: post }, idx) => (
+          {posts.slice(2, 4).map(({ node: post }, idx) => (
             <Box className="post" key={idx}>
               {post.figure && (
                 <Link to={`/blog/${post.slug.current}`}>
@@ -92,7 +92,7 @@ const Featured = () => {
                 </Pill>
               </Flex>
 
-              <Heading as="h3">
+              <Heading as="h4" pr={7}>
                 <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
               </Heading>
 
