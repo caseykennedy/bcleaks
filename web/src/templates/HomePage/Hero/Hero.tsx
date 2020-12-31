@@ -24,11 +24,11 @@ type Props = {}
 const Hero: React.FC<Props> = () => {
   const posts = usePost()
   return (
-    <S.Hero bg="black" pt={9}>
+    <S.Hero bg="black">
       <div className="hero__inner">
         {posts.slice(0, 1).map(({ node: post }, idx) => (
-          <Box width={[1, 2 / 3]} key={idx}>
-            <Box width={[1]}>
+          <Box width={[1]} key={idx}>
+            <Box width={[1, 2 / 3]}>
               <Heading as="h1" className="text--uppercase">
                 <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
               </Heading>
@@ -47,7 +47,12 @@ const Hero: React.FC<Props> = () => {
             </Flex>
 
             <Flex justifyContent="space-between">
-              <Text as="p" color={theme.colors.tertiary} className="t--small">
+              <Text
+                as="p"
+                color={theme.colors.tertiary}
+                mb={0}
+                className="t--small"
+              >
                 <Text as="span" color="white" mb={0}>
                   {post.publishedAt}
                 </Text>

@@ -28,12 +28,17 @@ const HomePage: React.FC = () => {
     <S.HomePage>
       <Hero />
       <Videos />
-      <Box bg="black" px={theme.gutter.axis} py={6} style={{ borderTop: theme.border }}>
+      <Box bg="black" px={theme.gutter.axis} py={6}>
         <Text as="p" color="tertiary">
           Ad space
         </Text>
       </Box>
       <Articles />
+      <Box bg="black" px={theme.gutter.axis} py={6}>
+        <Text as="p" color="tertiary">
+          Ad space
+        </Text>
+      </Box>
       <Community />
     </S.HomePage>
   )

@@ -11,12 +11,14 @@ import theme from '../../gatsby-plugin-theme-ui'
 // ___________________________________________________________________
 
 export const Ticker = styled(Flex)`
+  align-items: center;
   background-color: black;
   border-bottom: ${theme.border};
-  max-width: 100vw;
+  font-size: ${theme.fontSizes[1]};
   overflow: hidden;
   padding: ${theme.space[3]} ${theme.space[3]};
-  font-size: ${theme.fontSizes[1]};
+  height: 64px;
+  width: 100%;
 
   .ticker {
     &__inner {

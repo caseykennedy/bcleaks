@@ -84,12 +84,6 @@ const Featured = () => {
                 <Pill>
                   <span>#featured</span>
                 </Pill>
-                <Pill>
-                  <span>#stateMachine</span>
-                </Pill>
-                <Pill>
-                  <span>#ETH</span>
-                </Pill>
               </Flex>
 
               <Heading as="h4" pr={7}>

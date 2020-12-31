@@ -46,8 +46,6 @@ export const Videos = styled(Section)`
 
         .bg {
           position: relative;
-          height: 100%;
-          width: 100%;
           
           &::before {
             background: ${theme.colors.primary};

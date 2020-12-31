@@ -62,7 +62,7 @@ const ReviewSlider: React.FC = ({ children }) => {
 const Videos = () => {
   const posts = usePost()
   return (
-    <S.Videos bg="quinary" border={true} overflow="hidden">
+    <S.Videos bg="quinary" border={false} overflow="hidden">
       <Flex className="videos__header" justifyContent="space-between">
         <Heading fontFamily="display" className="text--lg  text--uppercase">
           Videos

@@ -43,7 +43,7 @@ const Author: React.FC<{ author: PostAuthor }> = ({ author }) => {
 const Articles = () => {
   const posts = usePost()
   return (
-    <S.Articles border={true} overflow="hidden">
+    <S.Articles border={false} overflow="hidden">
       <Flex
         justifyContent="space-between"
         width={1}
@@ -98,7 +98,7 @@ const Articles = () => {
                 <Box>
                   <Flex flexWrap="wrap" mb={4}>
                     <Pill>
-                      <span>#featured</span>
+                      <span>#BTC</span>
                     </Pill>
                     <Pill>
                       <span>#stateMachine</span>
