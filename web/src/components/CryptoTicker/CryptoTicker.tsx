@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import CoinGecko from 'coingecko-api'
 
 // Libraries
-import ReactTicker from 'react-ticker'
+import Ticker from 'react-ticker'
 
 // ui
 import { Box, Flex, Text } from '../ui'
@@ -91,37 +91,37 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
 const GetCoinGecko = () => {
   const CoinGeckoClient = new CoinGecko()
   // Fetch Coin data
-  const [data, setData] = useState(null)
-  const getCoins = async () => {
-    const results = await CoinGeckoClient.coins.markets({
-      vs_currency: 'usd',
-      order: 'market_cap_desc',
-      per_page: 15,
-      page: 1,
-      ids: [
-        'bitcoin',
-        'ethereum',
-        'chainlink',
-        'maker',
-        'litecoin',
-        'unibright',
-        '0x',
-        'republic-protocol',
-        'tezos',
-        'stellar',
-        'monero',
-        'zcash',
-        'cosmos',
-        'handshake',
-        'digibyte'
-      ],
-      sparkline: false,
-      price_change_percentage: '24h'
-    })
-    setData(results.data)
-  }
+  const [data, setData] = useState<any>(null)
 
   useEffect(() => {
+    async function getCoins() {
+      const results = await CoinGeckoClient.coins.markets({
+        vs_currency: 'usd',
+        order: 'market_cap_desc',
+        per_page: 15,
+        page: 1,
+        ids: [
+          'bitcoin',
+          'ethereum',
+          'chainlink',
+          'maker',
+          'litecoin',
+          'unibright',
+          '0x',
+          'republic-protocol',
+          'tezos',
+          'stellar',
+          'monero',
+          'zcash',
+          'cosmos',
+          'handshake',
+          'digibyte'
+        ],
+        sparkline: false,
+        price_change_percentage: '24h'
+      })
+      setData(results.data)
+    }
     getCoins()
   }, [])
 
@@ -138,12 +138,15 @@ const GetCoinGecko = () => {
   return data ? <>{coins}</> : <Box>Loading...</Box>
 }
 
-const Ticker = () => {
+const CryptoTicker = () => {
   return (
-    <S.Ticker>
+    <S.CryptoTicker>
+      {/* <Ticker offset={2} speed={10}>
+        {() => <GetCoinGecko />}
+      </Ticker> */}
       <GetCoinGecko />
-    </S.Ticker>
+    </S.CryptoTicker>
   )
 }
 
-export default Ticker
+export default CryptoTicker

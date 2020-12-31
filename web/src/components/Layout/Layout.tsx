@@ -13,7 +13,7 @@ import { ParallaxProvider } from 'react-scroll-parallax'
 // Components
 import Header from '../Header'
 import Footer from '../Footer'
-import Ticker from '../Ticker'
+import CryptoTicker from '../CryptoTicker'
 
 // Styles + Theme
 import theme from '../../gatsby-plugin-theme-ui'
@@ -46,7 +46,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <ParallaxProvider>
           <S.Wrapper>
             <Header mainRef={mainRef} />
-            <Ticker />
+            <CryptoTicker />
             <S.Main ref={mainRef}>{children}</S.Main>
             <Footer />
           </S.Wrapper>

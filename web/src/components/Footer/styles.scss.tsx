@@ -19,6 +19,35 @@ export const Footer = styled(Flex)`
   @media ${theme.mq.tablet} {
     padding: ${theme.space[8]} ${theme.space[6]};
   }
+
+  .logo {
+    &-symbol {
+      position: relative;
+      top: ${theme.space[1]};
+
+      svg {
+        width: calc(${theme.space[5]} * 1);
+
+        @media ${theme.mq.tablet} {
+          width: calc(${theme.space[7]} * 1);
+        }
+      }
+    }
+
+    &-lettermark {
+      display: none;
+      align-items: center;
+      margin-left: ${theme.space[5]};
+
+      @media ${theme.mq.desktop} {
+        display: flex;
+      }
+
+      svg {
+        width: calc(${theme.space[8]} * 1.15);
+      }
+    }
+  }
 `
 
 export const Nav = styled(Flex)`

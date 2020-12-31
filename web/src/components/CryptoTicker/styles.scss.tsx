@@ -1,4 +1,4 @@
-// Ticker Styles:
+// CryptoTicker Styles:
 
 // ___________________________________________________________________
 
@@ -10,7 +10,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-export const Ticker = styled(Flex)`
+export const CryptoTicker = styled(Flex)`
   align-items: center;
   background-color: black;
   border-bottom: ${theme.border};
@@ -35,7 +35,7 @@ export const Coin = styled(Box)`
   .coin {
     &-title {
       color: ${theme.colors.tertiary};
-      font-size: font-size: calc(${theme.fontSizes[1]} * 1.15);;
+      font-size: font-size: calc(${theme.fontSizes[1]} * 1.15);
       
       &__name {
         font-weight: 600;
