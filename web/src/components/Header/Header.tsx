@@ -12,10 +12,11 @@ import theme from '../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
 import { Box, Flex, Text } from '../ui'
 
+// Components
 import Symbol from '../Symbol'
 import Lettermark from '../Lettermark'
 import Navigation from './Navigation'
-import Icon from '../Icons'
+import GetDate from '../GetDate'
 
 import Typist from 'react-typist'
 
@@ -28,39 +29,6 @@ import 'react-netlify-identity-widget/styles.css' // delete if you want to bring
 // ___________________________________________________________________
 
 type HeaderShape = { mainRef: React.RefObject<HTMLDivElement> }
-
-const GetDate = () => {
-  const d = new Date()
-  const days = [
-    'SUNDAY',
-    'MONDAY',
-    'TUESDAY',
-    'WEDNESDAY',
-    'THURSDAY',
-    'FRIDAY',
-    'SATURDAY'
-  ]
-  const months = [
-    'JANUARY',
-    'FEBRUARY',
-    'MARCH',
-    'APRIL',
-    'MAY',
-    'JUNE',
-    'JULY',
-    'AUGUST',
-    'SEPTEMBER',
-    'OCTOBER',
-    'NOVEMBER',
-    'DECEMBER'
-  ]
-  return (
-    <>
-      {days[d.getDay()]}, {months[d.getMonth()]} {d.getDate()},{' '}
-      {d.getFullYear()}
-    </>
-  )
-}
 
 const Header: React.FC<HeaderShape> = ({ mainRef }) => {
   // Navigation portal
