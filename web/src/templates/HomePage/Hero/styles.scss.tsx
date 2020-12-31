@@ -12,6 +12,9 @@ import { Box, Flex } from '../../../components/ui'
 export const Hero = styled(Section)`
   background: ${theme.colors.black};
 
+  h1 a:hover {
+  }
+
   .hero__inner {
     .meta {
       display: flex;

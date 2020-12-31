@@ -154,7 +154,7 @@ const Typography = css`
     font-family: ${theme.fonts.heading};
     font-weight: ${theme.fontWeights.regular};
     line-height: ${theme.root.font.headingLineHeight};
-    letter-spacing: ${theme.root.font.baseLetterSpacing};
+    letter-spacing: ${theme.root.font.headingLetterSpacing};
     margin: 0 0 ${theme.space[3]};
     transition: ${theme.transition.all};
 
@@ -180,6 +180,7 @@ const Typography = css`
 
     @media ${theme.mq.tablet} {
       font-size: calc(${theme.fontSizes[6]} / 1.25);
+      line-height: calc(${theme.root.font.headingLineHeight} / 1.15);
     }
 
     @media ${theme.mq.desktop} {
@@ -193,6 +194,7 @@ const Typography = css`
 
     @media ${theme.mq.tablet} {
       font-size: calc(${theme.fontSizes[5]} / 1.25);
+      line-height: calc(${theme.root.font.headingLineHeight} / 1.15);
     }
 
     @media ${theme.mq.desktop} {
@@ -285,7 +287,7 @@ const Typography = css`
     &:hover,
     &:focus {
       text-decoration: none;
-      color: ${theme.colors.primary};
+      color: ${darken(0.15, theme.colors.white)};
     }
   }
 

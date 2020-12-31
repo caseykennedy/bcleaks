@@ -26,6 +26,8 @@ export const Featured = styled(Box)`
         .figure {
           background: ${theme.colors.secondary};
           border: ${theme.border};
+          border-color: transparent;
+          border-radius: ${theme.borderRadius};
           margin-bottom: ${theme.space[4]};
           width: 100%;
           overflow: hidden;
@@ -116,25 +118,6 @@ export const Featured = styled(Box)`
           }
         }
       }
-    }
-  }
-`
-
-export const PillBox = styled(Flex)`
-  display: flex;
-  margin-bottom: ${theme.space[4]};
-
-  div {
-    display: flex;
-    align-items: center;
-    border: ${theme.border};
-    border-radius: ${theme.borderRadius};
-    margin-right: ${theme.space[2]};
-    padding: ${theme.space[1]} ${theme.space[2]};
-
-    span {
-      color: ${theme.colors.primary};
-      font-size: ${theme.fontSizes[0]};
     }
   }
 `

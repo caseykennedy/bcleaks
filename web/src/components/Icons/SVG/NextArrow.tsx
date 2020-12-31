@@ -1,16 +1,16 @@
 // Arrow Icon:
 // Next Arrow (>) icon.
 
-// Core
 import React from 'react'
+import theme from '../../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
 const Next = () => (
-  <svg width="94.32" viewBox="0 0 94.32 76.15">
-    <g>
-      <path d="M94.32,38.07,56.4,76.15l-4.71-4.71,30-30H0v-6.9H81.68L51.69,4.7,56.4,0Z" />
-    </g>
+  <svg width="100%" viewBox="0 0 46.43 34.82">
+    <polygon
+      points="26.5 32.3 29.02 34.82 46.43 17.41 29.02 0 26.5 2.52 39.61 15.63 0 15.63 0 19.19 39.61 19.19 26.5 32.3"
+    />
   </svg>
 )
 

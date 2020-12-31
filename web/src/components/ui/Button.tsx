@@ -24,19 +24,18 @@ const Button = styled(Flex)<ButtonProps>`
   align-items: center;
   justify-content: space-between;
 
-  padding: calc(${theme.space[3]}) ${theme.space[4]};
+  padding: ${theme.space[2]} ${theme.space[4]};
   width: 100%;
 
-  color: ${p => (!p.color ? theme.colors.white : p.color)} !important;
+  color: ${p => (!p.color ? theme.colors.white : p.color)};
   font-size: calc(${theme.fontSizes[2]});
-  font-weight: 500;
-  letter-spacing: 1px;
-  /* line-height: 1; */
+  /* font-weight: 500; */
   text-transform: uppercase;
 
   background: ${p => p.bg};
   border: ${theme.border};
-  border-color: ${p => p.bg};
+  border-color: ${theme.colors.primary};
+  border-radius: ${theme.borderRadius};
 
   cursor: pointer;
   outline: none;
@@ -50,42 +49,41 @@ const Button = styled(Flex)<ButtonProps>`
   span {
     font-size: calc(${theme.fontSizes[1]});
 
-    margin-left: ${theme.space[4]};
+    margin-left: ${theme.space[5]};
     transition: ${theme.transition.all};
 
     position: relative;
 
-    /* display: none; */
+    display: none;
 
     @media ${theme.mq.tablet} {
       display: block;
-      margin-left: ${theme.space[7]};
-      /* right: ${theme.space[2]}; */
+      right: ${theme.space[2]};
     }
 
     @media ${theme.mq.desktop} {
-      margin-left: ${theme.space[9]};
+
     }
 
     svg {
-      width: calc(${theme.space[4]} * 1.25);
-      fill: ${theme.colors.white};
+      width: ${theme.space[4]};
+      fill: ${theme.colors.primary};
 
       @media ${theme.mq.desktop} {
-        width: calc(${theme.space[5]} / 1);
+        width: ${theme.space[4]};
       }
     }
   }
 
   &:hover {
-    /* background: ${p => darken(0.05, p.bg)}; */
-    color: ${theme.colors.white};
+    background: ${theme.colors.primary};
+    color: ${theme.colors.black};
 
     span {
       right: 0;
 
       svg {
-        fill: ${theme.colors.white};
+        fill: ${theme.colors.black};
       }
     }
   }

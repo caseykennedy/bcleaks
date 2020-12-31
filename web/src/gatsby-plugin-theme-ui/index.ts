@@ -172,8 +172,8 @@ const theme: ThemeShape = {
   },
 
   transition: {
-    all: 'all 0.222s ease-in-out',
-    global: '0.222s ease-in-out'
+    all: 'all 0.155s ease-in-out',
+    global: '0.155s ease-in-out'
   },
 
   transform: {
@@ -184,7 +184,7 @@ const theme: ThemeShape = {
   },
 
   border: '1px solid #545454',
-  borderRadius: '3px',
+  borderRadius: '4px',
   shadow: '2rem 1.5rem 1rem #9D9FA2',
 
   root: {
@@ -194,7 +194,6 @@ const theme: ThemeShape = {
       // Base sizing
       baseSize: 'var(--text-base-size)',
       scaleRatio: 'var(--text-scale-ratio)',
-      baseLetterSpacing: 'var(--text-base-letter-spacing)',
 
       // Type scale
       xs: 'var(--text-xs)',
@@ -207,7 +206,11 @@ const theme: ThemeShape = {
 
       // Line height
       headingLineHeight: 'var(--heading-line-height)',
-      bodyLineHeight: 'var(--body-line-height)'
+      bodyLineHeight: 'var(--body-line-height)',
+
+      // Letter spacing
+      headingLetterSpacing: 'var(--heading-letter-spacing)',
+      baseLetterSpacing: 'var(--body-letter-spacing)',
     },
     space: {
       xxs: 'var(--space-xxs)',

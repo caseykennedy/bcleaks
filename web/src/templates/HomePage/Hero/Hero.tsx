@@ -3,41 +3,70 @@
 // ___________________________________________________________________
 
 import React from 'react'
+import { Link } from 'gatsby'
 
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
 
-import Button from '../../../components/ui/Button'
 import { Box, Flex, Heading, Text, AnimatedBox } from '../../../components/ui'
+import Button from '../../../components/ui/Button'
+import Pill from '../../../components/ui/Pill'
+
+import Icon from '../../../components/Icons'
+
+// Data
+import usePost from '../../../hooks/usePost'
 
 // ___________________________________________________________________
 
 type Props = {}
 
 const Hero: React.FC<Props> = () => {
+  const posts = usePost()
   return (
     <S.Hero bg="black" pt={9}>
       <div className="hero__inner">
-        <Box width={[1, 1 / 2]}>
-          <Box width={[1]}>
-            <Text mb={4} color="primary" className="text--sm">
-              #featured
-            </Text>
-            <h2 className="text--uppercase">
-              Welcome to BCLeaks, a new era in crypto news begins.
-            </h2>
-          </Box>
-          <div className="meta">
-            <Text as="p" color="tertiary" mb={0}>
-              OCT 1, 2020 at 8:43 AM
-              <br />
-              Tyler Swope
-            </Text>
-            <Box>
-              <Button>full article</Button>
+        {posts.slice(0, 1).map(({ node: post }, idx) => (
+          <Box width={[1, 2 / 3]} key={idx}>
+            <Box width={[1]}>
+              <Heading as="h1" className="text--uppercase">
+                <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
+              </Heading>
             </Box>
-          </div>
-        </Box>
+
+            <Flex mb={4}>
+              <Pill>
+                <span>#smartContracts</span>
+              </Pill>
+              <Pill>
+                <span>#whatsNew</span>
+              </Pill>
+              <Pill>
+                <span>#BTC</span>
+              </Pill>
+            </Flex>
+
+            <Flex justifyContent="space-between">
+              <Text as="p" color={theme.colors.tertiary} className="t--small">
+                <Text as="span" color="white" mb={0}>
+                  {post.publishedAt}
+                </Text>
+                by {post.authors && post.authors.name} in{' '}
+                <Link to={``}>
+                  <Box as="span" color="primary">
+                    {post.categories && post.categories[0].title}
+                  </Box>
+                </Link>
+              </Text>
+
+              <Link to={`/blog/${post.slug.current}`}>
+                <Button bg="transparent" color="primary">
+                  Read Article <Icon name="arrow" />
+                </Button>
+              </Link>
+            </Flex>
+          </Box>
+        ))}
       </div>
     </S.Hero>
   )

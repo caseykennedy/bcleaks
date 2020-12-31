@@ -13,7 +13,7 @@ import ArticlesPage from '../templates/ArticlesPage'
 // Theme
 import theme from '../gatsby-plugin-theme-ui'
 
-// Hooks
+// Data
 import useSiteSettings from '../hooks/useSiteSettings'
 
 // ___________________________________________________________________

@@ -19,7 +19,7 @@ const ArticlesPage = () => {
   return (
     <S.ArticlesPage>
       <Section>
-        <Heading as="h2">Articles</Heading>
+        <Heading as="h1">Articles</Heading>
         <Text as="p">This page is in development.</Text>
       </Section>
     </S.ArticlesPage>

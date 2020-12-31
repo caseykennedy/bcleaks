@@ -5,22 +5,16 @@
 import React from 'react'
 import Img from 'gatsby-image/withIEPolyfill'
 import { Link } from 'gatsby'
-
-// Libraries
 import Swiper from 'react-id-swiper'
 
-// Hooks
+// Data
 import usePost from '../../../../hooks/usePost'
 
+// Theme + ui
 import * as S from './styles.scss'
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  AnimatedBox
-} from '../../../../components/ui'
 import theme from '../../../../gatsby-plugin-theme-ui'
+import { Box, Flex, Heading, Text } from '../../../../components/ui'
+import Pill from '../../../../components/ui/Pill'
 
 // ___________________________________________________________________
 
@@ -69,7 +63,7 @@ const Featured = () => {
     <S.Featured>
       <Box className="videos__posts">
         <FeaturedSlider>
-          {posts.slice(0, 3).map(({ node: post }, idx) => (
+          {posts.slice(1, 4).map(({ node: post }, idx) => (
             <Box className="post" key={idx}>
               {post.figure && (
                 <Link to={`/blog/${post.slug.current}`}>
@@ -84,21 +78,21 @@ const Featured = () => {
                 </Link>
               )}
 
-              <S.PillBox>
-                <Box>
+              <Flex mb={4}>
+                <Pill>
                   <span>#featured</span>
-                </Box>
-                <Box>
+                </Pill>
+                <Pill>
                   <span>#stateMachine</span>
-                </Box>
-                <Box>
+                </Pill>
+                <Pill>
                   <span>#ETH</span>
-                </Box>
-              </S.PillBox>
+                </Pill>
+              </Flex>
 
-              <Link to={`/blog/${post.slug.current}`}>
-                <Heading as="h3">{post.title}</Heading>
-              </Link>
+              <Heading as="h2">
+                <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
+              </Heading>
 
               <Text
                 as="p"

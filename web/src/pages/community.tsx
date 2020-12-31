@@ -13,7 +13,7 @@ import CommunityPage from '../templates/CommunityPage'
 // Theme
 import theme from '../gatsby-plugin-theme-ui'
 
-// Hooks
+// Data
 import useSiteSettings from '../hooks/useSiteSettings'
 
 // ___________________________________________________________________

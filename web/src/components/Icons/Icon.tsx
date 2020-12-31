@@ -13,7 +13,7 @@ import IconStyle from './styles.scss'
 import Hamburger from './SVG/Hamburger'
 import Carat from './SVG/Carat'
 import Facebook from './SVG/Facebook'
-import LinkedIn from './SVG/LinkedIn'
+import Bag from './SVG/Bag'
 import Instagram from './SVG/Instagram'
 import Twitter from './SVG/Twitter'
 import NextArrow from './SVG/NextArrow'
@@ -27,6 +27,8 @@ import Pdf from './SVG/Pdf'
 import Plus from './SVG/Plus'
 import Pin from './SVG/Pin'
 
+import Youtube from './SVG/Youtube'
+
 // ___________________________________________________________________
 
 type Props = {
@@ -38,6 +40,12 @@ type Props = {
 
 const Icon: React.FC<Props> = ({ name, className, color, fas }) => {
   switch (name) {
+    case 'arrow':
+      return (
+        <IconStyle color={color} className={className}>
+          <NextArrow />
+        </IconStyle>
+      )
     case 'carat':
       return (
         <IconStyle color={color} className={className}>
@@ -58,13 +66,13 @@ const Icon: React.FC<Props> = ({ name, className, color, fas }) => {
       )
     case 'facebook':
       return (
-        <IconStyle color={color} className="ico ico__facebook">
+        <IconStyle color={color} className={className}>
           <Facebook />
         </IconStyle>
       )
     case 'gridView':
       return (
-        <IconStyle color={color} className="ico ico__grid-view">
+        <IconStyle color={color} className={className}>
           <GridView />
         </IconStyle>
       )
@@ -76,50 +84,50 @@ const Icon: React.FC<Props> = ({ name, className, color, fas }) => {
       )
     case 'instagram':
       return (
-        <IconStyle color={color} className="ico ico__instagram">
+        <IconStyle color={color} className={className}>
           <Instagram />
         </IconStyle>
       )
-    case 'linkedIn':
+    case 'bag':
       return (
-        <IconStyle color={color} className="ico ico__linkedin">
-          <LinkedIn />
+        <IconStyle color={color} className={className}>
+          <Bag />
         </IconStyle>
       )
     case 'listView':
       return (
-        <IconStyle color={color} className="ico ico__list-view">
-          <ListView />
-        </IconStyle>
-      )
-    case 'nextArrow':
-      return (
         <IconStyle color={color} className={className}>
-          <NextArrow />
+          <ListView />
         </IconStyle>
       )
     case 'pdf':
       return (
-        <IconStyle className="ico ico__pdf">
+        <IconStyle color={color} className={className}>
           <Pdf />
         </IconStyle>
       )
     case 'plus':
       return (
-        <IconStyle className="ico ico__pdf">
+        <IconStyle color={color} className={className}>
           <Plus />
         </IconStyle>
       )
     case 'pin':
       return (
-        <IconStyle className="ico ico__pin">
+        <IconStyle color={color} className={className}>
           <Pin />
         </IconStyle>
       )
     case 'twitter':
       return (
-        <IconStyle color={color} className="ico ico__twitter">
+        <IconStyle color={color} className={className}>
           <Twitter />
+        </IconStyle>
+      )
+    case 'youtube':
+      return (
+        <IconStyle color={color} className={className}>
+          <Youtube />
         </IconStyle>
       )
     default:

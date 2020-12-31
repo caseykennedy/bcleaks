@@ -31,11 +31,14 @@ const RootVariables = css`
     /* set base values */
     --text-base-size: 1em;
     --text-scale-ratio: 1.414;
-    --text-base-letter-spacing: 0px;
 
     /* line-height */
     --heading-line-height: 1.25;
     --body-line-height: 1.5;
+
+    /* letter-spacing */
+    --heading-letter-spacing: -1px;
+    --body-letter-spacing: -0.5px;
 
     @media ${theme.mq.tablet} {
       :root {

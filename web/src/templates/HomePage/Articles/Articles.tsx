@@ -7,13 +7,14 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
 
 import * as S from './styles.scss'
-import { Box, Flex, Heading, Text, AnimatedBox } from '../../../components/ui'
 import theme from '../../../gatsby-plugin-theme-ui'
+import { Box, Flex, Heading, Text } from '../../../components/ui'
+import Pill from '../../../components/ui/Pill'
 
 import BlockContent from '../../../components/BlockContent'
 import Featured from './Featured'
 
-// Hooks
+// Data
 import usePost from '../../../hooks/usePost'
 
 // ___________________________________________________________________
@@ -42,7 +43,7 @@ const Author: React.FC<{ author: PostAuthor }> = ({ author }) => {
 const Articles = () => {
   const posts = usePost()
   return (
-    <S.Articles border={true}>
+    <S.Articles border={true} overflow="hidden">
       <Flex
         justifyContent="space-between"
         width={1}
@@ -54,7 +55,7 @@ const Articles = () => {
         <Link to="/">View All</Link>
       </Flex>
 
-      <Box width={1}>
+      <Box width={1} overflow="hidden">
         <Featured />
       </Box>
 
@@ -95,21 +96,21 @@ const Articles = () => {
 
               <Flex width={[2 / 3, 1 / 2, 1 / 2]} className="post__details">
                 <Box>
-                  <S.PillBox>
-                    <Box>
+                  <Flex mb={4}>
+                    <Pill>
                       <span>#featured</span>
-                    </Box>
-                    <Box>
+                    </Pill>
+                    <Pill>
                       <span>#stateMachine</span>
-                    </Box>
-                    <Box>
+                    </Pill>
+                    <Pill>
                       <span>#ETH</span>
-                    </Box>
-                  </S.PillBox>
+                    </Pill>
+                  </Flex>
 
-                  <Link to={`/blog/${post.slug.current}`}>
-                    <Heading as="h3">{post.title}</Heading>
-                  </Link>
+                  <Heading as="h3">
+                    <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
+                  </Heading>
                 </Box>
 
                 <Text
