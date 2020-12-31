@@ -34,11 +34,11 @@ const FeaturedSlider: React.FC = ({ children }) => {
     },
     breakpoints: {
       1024: {
-        slidesPerView: 1,
-        spaceBetween: 32
+        slidesPerView: 2,
+        spaceBetween: 24
       },
       768: {
-        slidesPerView: 1,
+        slidesPerView: 2,
         spaceBetween: 16,
         grabCursor: true
       },
@@ -67,13 +67,15 @@ const Featured = () => {
             <Box className="post" key={idx}>
               {post.figure && (
                 <Link to={`/blog/${post.slug.current}`}>
-                  <Box className="figure">
-                    <Img
-                      fluid={post.figure.asset.fluid}
-                      objectFit="cover"
-                      objectPosition="50% 50%"
-                      alt={post.title}
-                    />
+                  <Box className="bg">
+                    <Box className="figure">
+                      <Img
+                        fluid={post.figure.asset.fluid}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        alt={post.title}
+                      />
+                    </Box>
                   </Box>
                 </Link>
               )}
@@ -90,7 +92,7 @@ const Featured = () => {
                 </Pill>
               </Flex>
 
-              <Heading as="h2">
+              <Heading as="h3">
                 <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
               </Heading>
 

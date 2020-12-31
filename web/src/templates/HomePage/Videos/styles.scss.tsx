@@ -25,14 +25,40 @@ export const Videos = styled(Section)`
           background: ${theme.colors.secondary};
           border: ${theme.border};
           border-color: transparent;
-          border-radius: ${theme.borderRadius};
+
           margin-bottom: ${theme.space[4]};
           width: 100%;
 
-          transition: border-color ${theme.transition.global};
+          position: relative;
+          transform: matrix(1, 0, 0, 1, 0, 0);
+          top: 0;
+          right: 0;
+
+          transition: all 0.222s ease-in-out 0s;
 
           &:hover {
-            border-color: ${theme.colors.primary};
+            /* border-color: ${theme.colors.tertiary}; */
+            @media ${theme.mq.tablet} {
+              transform: matrix(1, 0, 0, 1, 4, -4);
+            }
+          }
+        }
+
+        .bg {
+          position: relative;
+          height: 100%;
+          width: 100%;
+          
+          &::before {
+            background: ${theme.colors.primary};
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
           }
         }
 

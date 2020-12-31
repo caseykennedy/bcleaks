@@ -255,7 +255,11 @@ const Typography = css`
   }
 
   .t--small {
-    font-size: calc(${theme.fontSizes[1]});
+    font-size: calc(${theme.fontSizes[0]});
+
+    @media ${theme.mq.tablet} {
+      font-size: calc(${theme.fontSizes[1]});
+    }
   }
 
   .t-underline {

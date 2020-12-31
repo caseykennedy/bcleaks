@@ -17,7 +17,7 @@ const Pill = styled(Flex)<PillProps>`
   display: flex;
   align-items: center;
 
-  background-color: ${theme.colors.black};
+  /* background-color: ${theme.colors.black}; */
   border: ${theme.border};
   border-radius: ${theme.borderRadius};
   margin-right: ${theme.space[2]};
@@ -25,7 +25,6 @@ const Pill = styled(Flex)<PillProps>`
 
   color: ${theme.colors.primary};
   font-size: ${theme.fontSizes[0]};
-  font-weight: 500;
 
   transition: all ${theme.transition.global};
 

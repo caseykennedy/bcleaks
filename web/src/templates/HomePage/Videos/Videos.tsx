@@ -37,7 +37,7 @@ const ReviewSlider: React.FC = ({ children }) => {
     breakpoints: {
       1024: {
         slidesPerView: 3,
-        spaceBetween: 32
+        spaceBetween: 24
       },
       768: {
         slidesPerView: 2,
@@ -77,13 +77,15 @@ const Videos = () => {
             <Box className="post" key={idx}>
               {post.figure && (
                 <Link to={`/blog/${post.slug.current}`}>
-                  <Box className="figure">
-                    <Img
-                      fluid={post.figure.asset.fluid}
-                      objectFit="cover"
-                      objectPosition="50% 50%"
-                      alt={post.title}
-                    />
+                  <Box className="bg">
+                    <Box className="figure">
+                      <Img
+                        fluid={post.figure.asset.fluid}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        alt={post.title}
+                      />
+                    </Box>
                   </Box>
                 </Link>
               )}

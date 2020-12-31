@@ -75,11 +75,11 @@ const Articles = () => {
         </Heading>
       </Flex>
 
-      <Box width={[1, 1, 6 / 8]} className="articles__main">
+      <Box width={[1, 8 / 10]} className="articles__main">
         <Box>
           {posts.map(({ node: post }, idx) => (
             <Flex className="post post--horizontal" key={idx}>
-              <Box width={[1 / 3, 1 / 2, 1 / 2]}>
+              <Box width={[1 / 3]}>
                 {post.figure && (
                   <Link to={`/blog/${post.slug.current}`}>
                     <Box className="figure">
@@ -94,9 +94,9 @@ const Articles = () => {
                 )}
               </Box>
 
-              <Flex width={[2 / 3, 1 / 2, 1 / 2]} className="post__details">
+              <Flex width={[2 / 3]} className="post__details">
                 <Box>
-                  <Flex mb={4}>
+                  <Flex flexWrap="wrap" mb={4}>
                     <Pill>
                       <span>#featured</span>
                     </Pill>
@@ -108,7 +108,7 @@ const Articles = () => {
                     </Pill>
                   </Flex>
 
-                  <Heading as="h3">
+                  <Heading as="h4">
                     <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
                   </Heading>
                 </Box>
