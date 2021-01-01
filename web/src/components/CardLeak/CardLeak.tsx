@@ -10,7 +10,6 @@ import Img from 'gatsby-image/withIEPolyfill'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../ui'
 import Pill from '../ui/Pill'
-
 import Card from '../ui/Card'
 
 // ___________________________________________________________________
@@ -29,7 +28,7 @@ const CardLeak: React.FC<Props> = ({ bg, video, post }) => {
           <Box className="bg">
             <Box className="figure">
               <Img
-                fluid={post.figure.asset.fluid}
+                fluid={{ ...post.figure.asset.fluid, aspectRatio: 20 / 9 }}
                 objectFit="cover"
                 objectPosition="50% 50%"
                 alt={post.title}

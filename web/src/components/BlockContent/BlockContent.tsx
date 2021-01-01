@@ -1,5 +1,6 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
+import { Text } from '../ui'
 
 type BlockShape = {
   blocks: any
@@ -25,7 +26,11 @@ const serializers = {
           return <blockquote>{props.children}</blockquote>
 
         case 'a':
-          return <a rel="noopener" target="_blank">{props.children}</a>
+          return (
+            <a rel="noopener" target="_blank">
+              {props.children}
+            </a>
+          )
 
         case 'ul':
           return <ul>{props.children}</ul>
@@ -34,7 +39,11 @@ const serializers = {
           return <li>{props.children}</li>
 
         default:
-          return <p>{props.children}</p>
+          return (
+            <Text as="p" color="#ccc" fontFamily="sans" letterSpacing={0}>
+              {props.children}
+            </Text>
+          )
       }
     }
   }

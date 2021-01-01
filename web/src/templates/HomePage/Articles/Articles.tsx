@@ -52,7 +52,7 @@ const Articles = () => {
         <Heading fontFamily="display" className="text--lg  text--uppercase">
           Articles
         </Heading>
-        <Link to="/">View All</Link>
+        <Link to={`/articles`}>View All</Link>
       </Flex>
 
       <Box width={1} overflow="hidden">

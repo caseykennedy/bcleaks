@@ -8,6 +8,7 @@ import React from 'react'
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../../components/ui'
+import HeadingStroked from '../../components/ui/HeadingStroked'
 
 // Components
 import Section from '../../components/Section'
@@ -26,7 +27,7 @@ const VideosPage = () => {
     <S.VideosPage>
       <S.PageTitle px={theme.gutter.axis} py={4}>
         <Heading
-          as="h4"
+          as="h3"
           fontFamily="display"
           mb={0}
           className="text--uppercase"
@@ -35,11 +36,20 @@ const VideosPage = () => {
         </Heading>
       </S.PageTitle>
 
-      <Section border={true} overflow="hidden">
+      <Section bg="black" border={true} overflow="hidden">
+        <Heading
+          as="h4"
+          color="tertiary"
+          fontFamily="display"
+          className="text--uppercase"
+        >
+          Latest
+        </Heading>
+
         <CardSlider pagination={true} slidesPerView={3}>
           {posts.map(({ node: post }, idx) => (
             <Box key={idx}>
-              <CardLeak post={post} key={idx} />
+              <CardLeak post={post} video={true} key={idx} />
             </Box>
           ))}
         </CardSlider>
@@ -58,7 +68,7 @@ const VideosPage = () => {
       <Section>
         <S.AllPosts>
           {posts.map(({ node: post }, idx) => (
-            <CardLeak post={post} key={idx} />
+            <CardLeak post={post} video={true} key={idx} />
           ))}
         </S.AllPosts>
       </Section>

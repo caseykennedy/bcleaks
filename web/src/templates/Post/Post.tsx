@@ -53,11 +53,13 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
             )}
           </Box>
 
-          <Box>
+          <Box fontFamily="sans">
             <Heading as="h4" mb={4} className="text--xl">
               {post.title}
             </Heading>
-            {post._rawBody && <BlockContent blocks={post._rawBody || []} />}
+            <Box fontFamily="sans">
+              {post._rawBody && <BlockContent blocks={post._rawBody || []} />}
+            </Box>
           </Box>
         </Flex>
       </Section>

@@ -28,7 +28,7 @@ const ArticlesPage = () => {
     <S.ArticlesPage>
       <S.PageTitle px={theme.gutter.axis} py={4}>
         <Heading
-          as="h4"
+          as="h3"
           fontFamily="display"
           mb={0}
           className="text--uppercase"
@@ -37,7 +37,7 @@ const ArticlesPage = () => {
         </Heading>
       </S.PageTitle>
 
-      <Section border={true} overflow="hidden">
+      <Section bg="black" border={true} overflow="hidden">
         <Featured />
       </Section>
 
@@ -54,7 +54,7 @@ const ArticlesPage = () => {
       <Section>
         <S.AllPosts>
           {posts.map(({ node: post }, idx) => (
-            <CardLeak post={post} key={idx} />
+            <CardLeak post={post} video={true} key={idx} />
           ))}
         </S.AllPosts>
       </Section>

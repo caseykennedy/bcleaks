@@ -28,14 +28,14 @@ export const Card = styled(Flex)`
 
     position: relative;
     transform: matrix(1, 0, 0, 1, 0, 0);
-    top: 0;
-    right: 0;
 
     transition: all 0.222s ease-in-out 0s;
 
     &:hover {
+      border-color: ${theme.colors.primary};
+
       @media ${theme.mq.tablet} {
-        transform: matrix(1, 0, 0, 1, 4, -4);
+        transform: matrix(1, 0, 0, 1, 5, -5);
       }
     }
   }

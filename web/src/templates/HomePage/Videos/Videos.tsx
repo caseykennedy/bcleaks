@@ -28,7 +28,7 @@ const Videos = () => {
           Videos
         </Heading>
 
-        <Link to="/">View All</Link>
+        <Link to={`/videos`}>View All</Link>
       </Flex>
 
       <Box className="videos__posts">

@@ -25,7 +25,8 @@ export const PageTitle = styled(Box)`
   align-items: center;
   justify-content: space-between;
 
-  height: ${theme.headerHeight};
+  background: ${theme.colors.black};
+  height: ${theme.tickerHeight};
   width: 100%;
 
   @media ${theme.mq.tablet} {
