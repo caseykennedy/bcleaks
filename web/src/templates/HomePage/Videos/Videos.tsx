@@ -35,7 +35,7 @@ const Videos = () => {
         <CardSlider pagination={true} slidesPerView={3}>
           {posts.map(({ node: post }, idx) => (
             <Box key={idx}>
-              <CardLeak post={post} />
+              <CardLeak post={post} video={true} />
             </Box>
           ))}
         </CardSlider>

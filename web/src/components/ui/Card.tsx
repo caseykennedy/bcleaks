@@ -3,16 +3,20 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { darken } from 'polished'
-
 import { Box, Flex } from '.'
-
 import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-export const Card = styled(Box)`
-  
+export const Card = styled(Flex)`
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   .figure {
     background: ${theme.colors.secondary};
@@ -33,6 +37,15 @@ export const Card = styled(Box)`
       @media ${theme.mq.tablet} {
         transform: matrix(1, 0, 0, 1, 4, -4);
       }
+    }
+  }
+
+  .title {
+    font-size: calc(${theme.fontSizes[2]});
+    margin: 0 0 ${theme.space[4]};
+
+    @media ${theme.mq.tablet} {
+      font-size: calc(${theme.fontSizes[3]} / 1.25);
     }
   }
 

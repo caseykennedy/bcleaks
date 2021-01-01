@@ -39,6 +39,10 @@ const GlobalStyles = createGlobalStyle`
     z-index: 100;
   }
 
+  .headroom[style] {
+    z-index: 999999 !important;
+  }
+
   .swiper-container {
     overflow: visible;
 

@@ -2,8 +2,6 @@
 
 // ___________________________________________________________________
 
-// Core
-import { Link } from 'gatsby'
 import styled from 'styled-components'
 import { lighten } from 'polished'
 
@@ -11,7 +9,7 @@ import { lighten } from 'polished'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // Elements
-import { Box, Flex, AnimatedFlex } from '../ui'
+import { Box, Flex } from '../ui'
 
 // ___________________________________________________________________
 
@@ -20,13 +18,15 @@ export const Header = styled(Box)`
   align-items: center;
   justify-content: space-between;
 
+  background: ${theme.colors.background};
   border-bottom: ${theme.border};
   margin: 0 auto;
   padding: 0 ${theme.space[4]};
-  position: relative;
-  /* max-width: ${theme.maxWidth}; */
+  position: sticky;
+  top: 0;
+
   width: 100%;
-  z-index: 99;
+  z-index: 999999;
 
   @media ${theme.mq.tablet} {
     padding: 0 ${theme.space[5]};
@@ -104,7 +104,6 @@ export const Account = styled(Flex)`
     }
 
     svg {
-
     }
   }
 
@@ -112,7 +111,7 @@ export const Account = styled(Flex)`
     background: transparent;
     border: none;
     cursor: pointer;
-    
+
     color: ${theme.colors.tertiary};
     font-family: ${theme.fonts.display};
     font-size: calc(${theme.fontSizes[2]} / 1.25);
@@ -120,10 +119,10 @@ export const Account = styled(Flex)`
     text-transform: uppercase;
     white-space: nowrap;
 
-    /* margin-left: ${theme.space[2]}; */
     position: relative;
     padding: ${theme.space[4]} ${theme.space[3]};
-    transition: border-color 0.111s ease-in-out, background-color 0.111s ease-in-out;
+    transition: border-color 0.111s ease-in-out,
+      background-color 0.111s ease-in-out;
 
     &:before {
       background: ${theme.colors.primary};
@@ -137,7 +136,6 @@ export const Account = styled(Flex)`
     }
 
     &:hover {
-      /* background: ${lighten(0.05, theme.colors.background)}; */
       border-color: ${theme.colors.primary};
       color: ${theme.colors.white};
 
@@ -150,6 +148,7 @@ export const Account = styled(Flex)`
 `
 
 export const Announcement = styled(Flex)`
+  background: ${theme.colors.background};
   border-bottom: ${theme.border};
   flex: 1;
 
@@ -158,9 +157,9 @@ export const Announcement = styled(Flex)`
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      
+
       margin: 0 auto;
-      /* max-width: ${theme.maxWidth}; */
+
       width: 100%;
 
       padding: 0 ${theme.space[4]};
@@ -176,7 +175,7 @@ export const Announcement = styled(Flex)`
       .page-title {
         display: flex;
         align-items: center;
-        /* border-right: ${theme.border}; */
+
         padding: ${theme.space[2]} 0;
 
         color: ${theme.colors.quaternary};

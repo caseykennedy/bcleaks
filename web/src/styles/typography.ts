@@ -282,7 +282,7 @@ const Typography = css`
   a {
     text-decoration: none;
     position: relative;
-    z-index: 1;
+    /* z-index: 1; */
 
     transition: ${theme.transition.all};
 

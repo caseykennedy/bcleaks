@@ -5,6 +5,8 @@
 
 import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
+
+import Headroom from 'react-headroom'
 import HamburgerMenu from 'react-hamburger-menu'
 
 // Theme + ui
@@ -79,18 +81,18 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
             <Lettermark />
           </Flex>
           <S.Toggle onClick={toggleMenu} aria-label="toggle menu">
-          <HamburgerMenu
-            isOpen={!isNavOpen ? false : true}
-            menuClicked={toggleMenu}
-            width={32}
-            height={12}
-            strokeWidth={1.5}
-            rotate={0}
-            color="white"
-            borderRadius={0}
-            animationDuration={0.333}
-          />
-        </S.Toggle>
+            <HamburgerMenu
+              isOpen={!isNavOpen ? false : true}
+              menuClicked={toggleMenu}
+              width={32}
+              height={12}
+              strokeWidth={1.5}
+              rotate={0}
+              color="white"
+              borderRadius={0}
+              animationDuration={0.333}
+            />
+          </S.Toggle>
         </S.Logo>
 
         <S.Menu>

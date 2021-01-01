@@ -12,7 +12,7 @@ import { Box, Flex, Heading, Text } from '../../../components/ui'
 import Pill from '../../../components/ui/Pill'
 
 import BlockContent from '../../../components/BlockContent'
-import Featured from './Featured'
+import Featured from '../../../components/Featured'
 
 // Data
 import usePost from '../../../hooks/usePost'

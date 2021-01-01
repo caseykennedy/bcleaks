@@ -17,10 +17,11 @@ import Card from '../ui/Card'
 
 type Props = {
   bg?: any
+  video?: boolean
   post: PostQuery
 }
 
-const CardLeak: React.FC<Props> = ({ bg, post }) => {
+const CardLeak: React.FC<Props> = ({ bg, video, post }) => {
   return (
     <Card>
       {post.figure && (
@@ -38,33 +39,39 @@ const CardLeak: React.FC<Props> = ({ bg, post }) => {
         </Link>
       )}
 
-      <Flex mb={4}>
-        <Pill>
-          <span>#featured</span>
-        </Pill>
-      </Flex>
+      <Flex className="content">
+        <Box>
+          <Flex mb={4}>
+            <Pill>
+              <span>#featured</span>
+            </Pill>
+          </Flex>
 
-      <Heading as="h4" pr={7}>
-        <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
-      </Heading>
+          <Heading className={`${!video ? 'text--md' : 'title'}`}>
+            <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
+          </Heading>
+        </Box>
 
-      <Text as="p" color={theme.colors.tertiary} className="meta  t--small">
-        <Text as="span" color="white" mb={0}>
-          {post.publishedAt}
+        <Text as="p" color={theme.colors.tertiary} className="meta  t--small">
+          <Text as="span" color="white" mb={0}>
+            {post.publishedAt}
+          </Text>
+          by {post.authors && post.authors.name} in{' '}
+          <Link to={``}>
+            <Box as="span" color="primary">
+              {post.categories && post.categories[0].title}
+            </Box>
+          </Link>
         </Text>
-        by {post.authors && post.authors.name} in{' '}
-        <Link to={``}>
-          <Box as="span" color="primary">
-            {post.categories && post.categories[0].title}
-          </Box>
-        </Link>
-      </Text>
+      </Flex>
     </Card>
   )
 }
 
+export default CardLeak
+
+// ___________________________________________________________________
+
 CardLeak.defaultProps = {
   bg: theme.colors.background
 }
-
-export default CardLeak

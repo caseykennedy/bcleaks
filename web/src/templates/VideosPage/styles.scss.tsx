@@ -14,6 +14,69 @@ import theme from '../../gatsby-plugin-theme-ui'
 export const VideosPage = styled(Box)`
   width: 100%;
 
+  .swiper-container {
+    overflow: visible;
+    padding-bottom: ${theme.space[7]};
+  }
+`
+
+export const PageTitle = styled(Box)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: ${theme.headerHeight};
+  width: 100%;
+
+  @media ${theme.mq.tablet} {
+  }
+`
+
+export const FilterNav = styled(Flex)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: ${theme.colors.black};
+  color: ${theme.colors.tertiary};
+
+  height: calc(${theme.headerHeight});
+  width: 100%;
+
+  position: sticky;
+  top: ${theme.headerHeight};
+  z-index: 99999;
+
+  .inner {
+    display: flex;
+    margin-right: auto;
+    max-width: ${theme.maxWidth};
+    width: 100%;
+
+    .criteria {
+      color: ${theme.colors.tertiary};
+      cursor: pointer;
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: color ${theme.transition.global};
+
+      &:hover {
+        color: ${theme.colors.primary};
+      }
+    }
+  }
+`
+
+export const AllPosts = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  > * {
+    flex: 0 0 33.3333%;
+  }
+
   @media ${theme.mq.tablet} {
   }
 `

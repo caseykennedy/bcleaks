@@ -17,7 +17,8 @@ export const CryptoTicker = styled(Flex)`
   font-size: ${theme.fontSizes[1]};
   overflow: hidden;
   padding: ${theme.space[3]} ${theme.space[3]};
-  height: 64px;
+  
+  height: ${theme.tickerHeight};
   width: 100%;
 
   .ticker {
@@ -35,7 +36,7 @@ export const Coin = styled(Box)`
   .coin {
     &-title {
       color: ${theme.colors.tertiary};
-      font-size: font-size: calc(${theme.fontSizes[1]} * 1.15);
+      font-size: calc(${theme.fontSizes[1]} * 1.15);
       
       &__name {
         font-weight: 600;

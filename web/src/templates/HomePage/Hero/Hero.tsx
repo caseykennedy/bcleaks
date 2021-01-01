@@ -24,7 +24,7 @@ type Props = {}
 const Hero: React.FC<Props> = () => {
   const posts = usePost()
   return (
-    <S.Hero bg="black">
+    <S.Hero bg="black" pt={[6, 7, 8]}>
       <div className="hero__inner">
         {posts.slice(0, 1).map(({ node: post }, idx) => (
           <Box width={[1]} key={idx}>
