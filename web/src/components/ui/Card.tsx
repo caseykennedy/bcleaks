@@ -11,24 +11,29 @@ import theme from '../../gatsby-plugin-theme-ui'
 export const Card = styled(Flex)`
   display: flex;
   flex-direction: column;
+  border: ${theme.border};
+  border-color: ${theme.colors.background};
+  border-radius: ${theme.borderRadius};
 
   .content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: ${theme.space[4]};
   }
 
   .figure {
     background: ${theme.colors.secondary};
     border: ${theme.border};
     border-color: transparent;
+    border-radius: ${theme.borderRadius};
+
     margin-bottom: ${theme.space[4]};
-    width: 100%;
     overflow: hidden;
+    width: 100%;
 
     position: relative;
     transform: matrix(1, 0, 0, 1, 0, 0);
-
     transition: all 0.222s ease-in-out 0s;
 
     &:hover {
@@ -54,6 +59,7 @@ export const Card = styled(Flex)`
 
     &::before {
       background: ${theme.colors.primary};
+      border-radius: ${theme.borderRadius};
       content: '';
       position: absolute;
       top: 0;

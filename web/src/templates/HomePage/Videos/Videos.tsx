@@ -22,7 +22,7 @@ import usePost from '../../../hooks/usePost'
 const Videos = () => {
   const posts = usePost()
   return (
-    <S.Videos bg="quinary" border={false} overflow="hidden">
+    <S.Videos bg="black" border={true} overflow="hidden">
       <Flex className="videos__header" justifyContent="space-between">
         <Heading fontFamily="display" className="text--lg  text--uppercase">
           Videos

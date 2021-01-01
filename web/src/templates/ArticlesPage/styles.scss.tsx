@@ -71,9 +71,11 @@ export const AllPosts = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  margin: -12px;
 
   > * {
     flex: 0 0 33.3333%;
+    padding: 12px;
   }
 
   @media ${theme.mq.tablet} {
