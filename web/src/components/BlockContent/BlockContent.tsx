@@ -1,6 +1,6 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
-import { Text } from '../ui'
+import { Heading, Text } from '../ui'
 
 type BlockShape = {
   blocks: any
@@ -14,13 +14,25 @@ const serializers = {
           return <h1>{props.children}</h1>
 
         case 'h2':
-          return <h2>{props.children}</h2>
+          return (
+            <Heading as="h2" mt={4}>
+              {props.children}
+            </Heading>
+          )
 
         case 'h3':
-          return <h3>{props.children}</h3>
+          return (
+            <Heading as="h3" mt={4}>
+              {props.children}
+            </Heading>
+          )
 
         case 'h4':
-          return <h4>{props.children}</h4>
+          return (
+            <Heading as="h4" mt={4}>
+              {props.children}
+            </Heading>
+          )
 
         case 'blockquote':
           return <blockquote>{props.children}</blockquote>
@@ -39,11 +51,7 @@ const serializers = {
           return <li>{props.children}</li>
 
         default:
-          return (
-            <Text as="p" color="#ccc" fontFamily="sans" letterSpacing={0}>
-              {props.children}
-            </Text>
-          )
+          return <Text as="p">{props.children}</Text>
       }
     }
   }

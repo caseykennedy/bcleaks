@@ -1,83 +1,93 @@
 export default {
-  name: 'post',
-  title: 'Blog Post',
-  type: 'document',
+  name: "post",
+  title: "Blog Post",
+  type: "document",
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string'
+      name: "title",
+      title: "Title",
+      type: "string"
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      description: 'Some frontend will require a slug to be set to be able to show the post',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: "Some frontend will require a slug to be set to be able to show the post",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96
       }
     },
     {
-      name: 'publishedAt',
-      title: 'Published at',
-      description: 'You can use this field to schedule post where you show them',
-      type: 'datetime'
+      name: "publishedAt",
+      title: "Published at",
+      description: "You can use this field to schedule post where you show them",
+      type: "datetime"
     },
     {
-      name: 'authors',
-      title: 'Authors',
-      type: 'reference',
-      to: [{ type: 'person' }]
+      name: "authors",
+      title: "Authors",
+      type: "reference",
+      to: [{ type: "person" }]
     },
     {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'postCategory' } }]
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{ type: "reference", to: { type: "postCategory" } }]
     },
     {
-      name: 'figure',
-      title: 'Figure',
-      type: 'figure'
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [
+        {
+          type: "tag"
+        }
+      ]
     },
     {
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'blockText'
+      name: "figure",
+      title: "Figure",
+      type: "figure"
     },
     {
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent'
+      name: "excerpt",
+      title: "Excerpt",
+      type: "blockText"
+    },
+    {
+      name: "body",
+      title: "Body",
+      type: "blockContent"
     }
   ],
   orderings: [
     {
-      title: 'Publishing date new–>old',
-      name: 'publishingDateAsc',
-      by: [{ field: 'publishedAt', direction: 'asc' }, { field: 'title', direction: 'asc' }]
+      title: "Publishing date new–>old",
+      name: "publishingDateAsc",
+      by: [{ field: "publishedAt", direction: "asc" }, { field: "title", direction: "asc" }]
     },
     {
-      title: 'Publishing date old->new',
-      name: 'publishingDateDesc',
-      by: [{ field: 'publishedAt', direction: 'desc' }, { field: 'title', direction: 'asc' }]
+      title: "Publishing date old->new",
+      name: "publishingDateDesc",
+      by: [{ field: "publishedAt", direction: "desc" }, { field: "title", direction: "asc" }]
     }
   ],
   preview: {
     select: {
-      title: 'title',
-      publishedAt: 'publishedAt',
-      image: 'figure'
+      title: "title",
+      publishedAt: "publishedAt",
+      image: "figure"
     },
-    prepare ({ title = 'No title', publishedAt, image }) {
+    prepare({ title = "No title", publishedAt, image }) {
       return {
         title,
         subtitle: publishedAt
           ? new Date(publishedAt).toLocaleDateString()
-          : 'Missing publishing date',
+          : "Missing publishing date",
         media: image
-      }
+      };
     }
   }
-}
+};

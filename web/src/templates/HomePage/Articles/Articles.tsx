@@ -12,7 +12,8 @@ import { Box, Flex, Heading, Text } from '../../../components/ui'
 import Pill from '../../../components/ui/Pill'
 
 import BlockContent from '../../../components/BlockContent'
-import Featured from '../../../components/Featured'
+import Featured from '../../../components/FeaturedArticles'
+import CardLeak from '../../../components/CardLeak'
 
 // Data
 import usePost from '../../../hooks/usePost'
@@ -75,61 +76,10 @@ const Articles = () => {
         </Heading>
       </Flex>
 
-      <Box width={[1, 6 / 8]} className="articles__main">
+      <Box width={[1, 1, 6 / 8]} className="articles__main">
         <Box>
           {posts.map(({ node: post }, idx) => (
-            <Flex className="post post--horizontal" key={idx}>
-              <Box width={[1 / 3]}>
-                {post.figure && (
-                  <Link to={`/blog/${post.slug.current}`}>
-                    <Box className="figure">
-                      <Img
-                        fluid={post.figure.asset.fluid}
-                        objectFit="cover"
-                        objectPosition="50% 50%"
-                        alt={post.title}
-                      />
-                    </Box>
-                  </Link>
-                )}
-              </Box>
-
-              <Flex width={[2 / 3]} className="post__details">
-                <Box>
-                  <Flex flexWrap="wrap" mb={4}>
-                    <Pill>
-                      <span>#BTC</span>
-                    </Pill>
-                    <Pill>
-                      <span>#stateMachine</span>
-                    </Pill>
-                    <Pill>
-                      <span>#ETH</span>
-                    </Pill>
-                  </Flex>
-
-                  <Heading as="h4" pr={7}>
-                    <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
-                  </Heading>
-                </Box>
-
-                <Text
-                  as="p"
-                  color={theme.colors.tertiary}
-                  className="meta  t--small"
-                >
-                  <Text as="span" color="white" mb={0}>
-                    {post.publishedAt}
-                  </Text>
-                  by {post.authors && post.authors.name} in{' '}
-                  <Link to={``}>
-                    <Box as="span" color="primary">
-                      {post.categories && post.categories[0].title}
-                    </Box>
-                  </Link>
-                </Text>
-              </Flex>
-            </Flex>
+            <CardLeak aspectRatio={3 / 2} post={post} inline={true} key={idx} />
           ))}
         </Box>
       </Box>

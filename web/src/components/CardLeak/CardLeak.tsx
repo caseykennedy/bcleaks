@@ -15,36 +15,53 @@ import Card from '../ui/Card'
 // ___________________________________________________________________
 
 type Props = {
+  aspectRatio?: number
   bg?: any
-  video?: boolean
+  inline?: boolean
   post: PostQuery
+  video?: boolean
 }
 
-const CardLeak: React.FC<Props> = ({ bg, video, post }) => {
+const CardLeak: React.FC<Props> = ({
+  aspectRatio,
+  bg,
+  inline,
+  post,
+  video
+}) => {
   return (
-    <Card>
-      {post.figure && (
-        <Link to={`/blog/${post.slug.current}`}>
-          <Box className="bg">
-            <Box className="figure">
-              <Img
-                fluid={{ ...post.figure.asset.fluid, aspectRatio: 20 / 9 }}
-                objectFit="cover"
-                objectPosition="50% 50%"
-                alt={post.title}
-              />
+    <Card inline={inline}>
+      <Box width={!inline ? 1 : 1 / 3}>
+        {post.figure && (
+          <Link to={`/blog/${post.slug.current}`}>
+            <Box className="bg">
+              <Box className="figure">
+                <Img
+                  fluid={{
+                    ...post.figure.asset.fluid,
+                    aspectRatio: `${aspectRatio}`
+                  }}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  alt={post.title}
+                />
+              </Box>
             </Box>
-          </Box>
-        </Link>
-      )}
+          </Link>
+        )}
+      </Box>
 
-      <Flex className="content">
+      <Flex width={!inline ? 1 : 2 / 3} className="content">
         <Box>
-          <Flex mb={4}>
-            <Pill>
-              <span>#featured</span>
-            </Pill>
-          </Flex>
+          {post.tags && (
+            <Flex mb={4}>
+              {post.tags.map((item, idx) => (
+                <Pill key={idx}>
+                  <span>#{item.tag}</span>
+                </Pill>
+              ))}
+            </Flex>
+          )}
 
           <Heading className={`${!video ? 'text--md' : 'title'}`}>
             <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
@@ -72,5 +89,6 @@ export default CardLeak
 // ___________________________________________________________________
 
 CardLeak.defaultProps = {
+  aspectRatio: 20 / 9,
   bg: theme.colors.background
 }

@@ -31,7 +31,6 @@ export const Articles = styled(Section)`
         padding: ${theme.space[4]} 0;
 
         @media ${theme.mq.tablet} {
-          flex-direction: row;
           padding: ${theme.space[5]} 0;
         }
 
@@ -64,11 +63,18 @@ export const Articles = styled(Section)`
           justify-content: space-between;
 
           height: auto;
-          padding-right: ${theme.space[5]};
+          padding-right: ${theme.space[3]};
 
           @media ${theme.mq.tablet} {
-            padding-right: 0;
-            padding-left: ${theme.space[5]};
+            padding-right: ${theme.space[5]};
+          }
+
+          .title {
+            font-size: ${theme.fontSizes[2]};
+
+            @media ${theme.mq.tablet} {
+              font-size: ${theme.fontSizes[3]};
+            }
           }
         }
 

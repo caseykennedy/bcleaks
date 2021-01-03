@@ -15,11 +15,12 @@ exports.createPages = ({ graphql, actions }) => {
             _rawExcerpt
             _rawBody
             _id
-            publishedAt(formatString: "dddd — MMMM DD, yyyy")
+            publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
             slug {
               current
             }
             figure {
+              alt
               asset {
                 fluid(maxWidth: 800) {
                   srcWebp
@@ -31,6 +32,7 @@ exports.createPages = ({ graphql, actions }) => {
                   aspectRatio
                 }
               }
+              caption
             }
             categories {
               title

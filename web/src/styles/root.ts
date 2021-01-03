@@ -50,7 +50,7 @@ const RootVariables = css`
 
     @media ${theme.mq.desktop} {
       :root {
-        --text-base-size: 1em;
+        --text-base-size: 0.95em;
       }
     }
 

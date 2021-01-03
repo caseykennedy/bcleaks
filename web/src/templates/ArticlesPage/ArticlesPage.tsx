@@ -15,7 +15,8 @@ import { Grid } from 'theme-ui'
 import Section from '../../components/Section'
 import CardLeak from '../../components/CardLeak'
 import CardSlider from '../../components/CardSlider'
-import Featured from '../../components/Featured'
+import FeaturedArticles from '../../components/FeaturedArticles'
+import TopArticles from '../../components/TopArticles'
 
 // Data
 import usePost from '../../hooks/usePost'
@@ -38,7 +39,19 @@ const ArticlesPage = () => {
       </S.PageTitle>
 
       <Section bg="black" border={true} overflow="hidden">
-        <Featured />
+        <FeaturedArticles />
+      </Section>
+
+      <Section bg="black" border={true} overflow="hidden">
+        <Heading
+          as="h4"
+          color="tertiary"
+          fontFamily="display"
+          className="text--uppercase"
+        >
+          Latest Articles
+        </Heading>
+        <TopArticles />
       </Section>
 
       <S.FilterNav px={theme.gutter.axis}>
@@ -52,11 +65,11 @@ const ArticlesPage = () => {
       </S.FilterNav>
 
       <Section>
-        <S.AllPosts>
+        <Box width={[1, 1, 6 / 8]}>
           {posts.map(({ node: post }, idx) => (
-            <CardLeak post={post} video={true} key={idx} />
+            <CardLeak aspectRatio={3 / 2} post={post} inline={true} key={idx} />
           ))}
-        </S.AllPosts>
+        </Box>
       </Section>
     </S.ArticlesPage>
   )
@@ -65,6 +78,9 @@ const ArticlesPage = () => {
 export default ArticlesPage
 
 const data = [
+  {
+    criteria: 'All'
+  },
   {
     criteria: 'blockchain'
   },

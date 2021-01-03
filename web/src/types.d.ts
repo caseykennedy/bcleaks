@@ -37,7 +37,11 @@ type PostQuery = {
   slug: {
     current: string
   }
+  tags: {
+    tag: string
+  }[]
   figure: {
+    alt: string
     asset: {
       fluid: {
         src: string
@@ -49,6 +53,7 @@ type PostQuery = {
         srcWebp: string
       }
     }
+    caption: string
   }
   categories: {
     title: string

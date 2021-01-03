@@ -14,7 +14,7 @@ import HeadingStroked from '../../components/ui/HeadingStroked'
 import Section from '../../components/Section'
 import CardLeak from '../../components/CardLeak'
 import CardSlider from '../../components/CardSlider'
-import Featured from '../../components/Featured'
+import Featured from '../../components/FeaturedArticles'
 
 // Data
 import usePost from '../../hooks/usePost'

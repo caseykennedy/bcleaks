@@ -3,23 +3,44 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
+import { darken } from 'polished'
 import { Box, Flex } from '.'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-export const Card = styled(Flex)`
+export const Card = styled(Flex)<{ inline?: boolean }>`
   display: flex;
-  flex-direction: column;
-  border: ${theme.border};
-  border-color: ${theme.colors.background};
-  border-radius: ${theme.borderRadius};
+  align-items: center;
+  flex-direction: ${p => (!p.inline ? `column` : `row-reverse`)};
+  /* justify-content: flex-end; */
+
+  ${p =>
+    !p.inline ? `border: ${theme.border};` : `border-top: ${theme.border};`}
+  border-color: ${p =>
+    !p.inline ? theme.colors.background : darken(0.15, theme.colors.tertiary)};
+  border-radius: ${p => (!p.inline ? theme.borderRadius : 0)};
+
+  padding: ${p => (!p.inline ? 0 : `${theme.space[5]} 0`)};
 
   .content {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: ${theme.space[4]};
+    
+    height: 100%;
+    margin-top: ${p => (!p.inline ? theme.space[4] : 0)};
+    padding: ${p => (!p.inline ? theme.space[4] : `0 ${theme.space[4]} 0 0`)};
+
+    @media ${theme.mq.tablet} {
+      padding: ${p => (!p.inline ? theme.space[4] : `0 ${theme.space[6]} 0 0`)};
+    }
+  }
+
+  a {
+    flex: 1;
+    width: 100%;
   }
 
   .figure {
@@ -28,8 +49,6 @@ export const Card = styled(Flex)`
     border-color: transparent;
     border-radius: ${theme.borderRadius};
 
-    margin-bottom: ${theme.space[4]};
-    overflow: hidden;
     width: 100%;
 
     position: relative;
@@ -71,45 +90,7 @@ export const Card = styled(Flex)`
     }
   }
 
-  .hor {
-    display: flex;
-    flex-direction: row-reverse;
-    border-top: ${theme.border};
-    padding: ${theme.space[4]} 0;
-
-    @media ${theme.mq.tablet} {
-      flex-direction: row;
-      padding: ${theme.space[5]} 0;
-    }
-
-    .figure {
-      background: ${theme.colors.secondary};
-      border: ${theme.border};
-      border-color: transparent;
-      border-radius: ${theme.borderRadius};
-      width: 100%;
-      overflow: hidden;
-
-      transition: border-color ${theme.transition.global};
-
-      &:hover {
-        border-color: ${theme.colors.primary};
-      }
-    }
-
-    .details {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      height: auto;
-      padding-right: ${theme.space[5]};
-
-      @media ${theme.mq.tablet} {
-        padding-right: 0;
-        padding-left: ${theme.space[5]};
-      }
-    }
+  .horizontal {
   }
 `
 

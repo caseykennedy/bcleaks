@@ -162,15 +162,14 @@ const Typography = css`
   }
 
   .text--xxxl {
-    font-size: calc(${theme.root.font.xl});
-    line-height: ${theme.root.font.headingLineHeight};
+    font-size: calc(${theme.fontSizes[4]});
 
     @media ${theme.mq.tablet} {
-      font-size: calc(${theme.root.font.xxl} / 1.25);
+      font-size: calc(${theme.fontSizes[6]} / 1);
     }
 
     @media ${theme.mq.desktop} {
-      font-size: calc(${theme.root.font.xxxl} / 1.5);
+      font-size: calc(${theme.fontSizes[7]} / 1);
     }
   }
 
