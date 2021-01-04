@@ -57,7 +57,7 @@ const CardLeak: React.FC<Props> = ({
       <Flex width={!inline ? 1 : 2 / 3} className="content">
         <Box>
           {post.tags && (
-            <Flex mb={4}>
+            <Flex mb={4} width={1}>
               {post.tags.map((item, idx) => (
                 <Pill key={idx}>
                   <span>#{item.tag}</span>

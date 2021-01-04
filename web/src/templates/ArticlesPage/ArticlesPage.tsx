@@ -18,6 +18,8 @@ import CardSlider from '../../components/CardSlider'
 import FeaturedArticles from '../../components/FeaturedArticles'
 import TopArticles from '../../components/TopArticles'
 
+import Hero from './Hero'
+
 // Data
 import usePost from '../../hooks/usePost'
 
@@ -29,7 +31,8 @@ const ArticlesPage = () => {
     <S.ArticlesPage>
       <S.PageTitle px={theme.gutter.axis} py={4}>
         <Heading
-          as="h3"
+          as="h4"
+          color="tertiary"
           fontFamily="display"
           mb={0}
           className="text--uppercase"
@@ -38,9 +41,7 @@ const ArticlesPage = () => {
         </Heading>
       </S.PageTitle>
 
-      <Section bg="black" border={true} overflow="hidden">
-        <FeaturedArticles />
-      </Section>
+      <Hero />
 
       <Section bg="black" border={true} overflow="hidden">
         <Heading

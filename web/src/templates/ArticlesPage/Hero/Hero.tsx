@@ -24,25 +24,25 @@ type Props = {}
 const Hero: React.FC<Props> = () => {
   const posts = usePost()
   return (
-    <S.Hero bg="black" pt={[6, 7, 8]}>
-      <div className="hero__inner">
-        {posts.slice(3, 4).map(({ node: post }, idx) => (
-          <Box width={[1]} key={idx}>
-            <Box width={[1, 2 / 3]}>
-              <Heading as="h1" className="text--uppercase">
+    <S.Hero>
+      <Flex className="hero__inner">
+        {posts.slice(1, 3).map(({ node: post }, idx) => (
+          <Box flex={1} p={theme.gutter.axis} className="panel" key={idx}>
+            <Box width={1}>
+              {post.tags && (
+                <Flex mb={4} width={1}>
+                  {post.tags.map((item, idx) => (
+                    <Pill key={idx}>
+                      <span>#{item.tag}</span>
+                    </Pill>
+                  ))}
+                </Flex>
+              )}
+
+              <Heading as="h1" className="text--xl  text--uppercase">
                 <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
               </Heading>
             </Box>
-
-            {post.tags && (
-              <Flex mb={4} width={1}>
-                {post.tags.map((item, idx) => (
-                  <Pill key={idx}>
-                    <span>#{item.tag}</span>
-                  </Pill>
-                ))}
-              </Flex>
-            )}
 
             <Flex justifyContent="space-between">
               <Text
@@ -70,7 +70,7 @@ const Hero: React.FC<Props> = () => {
             </Flex>
           </Box>
         ))}
-      </div>
+      </Flex>
     </S.Hero>
   )
 }
