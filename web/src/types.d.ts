@@ -170,7 +170,7 @@ type VideoAuthor = {
 
 type VideoContextShape = {
   pageContext: {
-    post: PostQuery
+    post: VideoQuery
     prev: {
       _rawExcerpt: string
       title: string

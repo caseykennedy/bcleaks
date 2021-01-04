@@ -2,7 +2,8 @@
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  const PostTemplate = require.resolve('./src/templates/Post/index.ts')
+  const PostTemplate = require.resolve('./src/templates/Post/Article/index.tsx')
+  const VideoTemplate = require.resolve('./src/templates/Post/Video/index.tsx')
 
   // Articles
   // ___________________________________________________________________
@@ -166,7 +167,7 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.posts.edges.forEach(edge => {
       createPage({
         path: `/videos/${edge.node.slug.current}`,
-        component: PostTemplate,
+        component: VideoTemplate,
         context: {
           slug: edge.node.slug.current,
           post: edge.node,

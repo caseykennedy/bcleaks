@@ -178,9 +178,9 @@ export const Announcement = styled(Flex)`
 
         padding: ${theme.space[2]} 0;
 
-        color: ${theme.colors.quaternary};
+        color: ${theme.colors.tertiary};
         font-family: ${theme.fonts.display};
-        font-size: calc(${theme.fontSizes[2]} / 1.25);
+        font-size: calc(${theme.fontSizes[1]} / 1);
         text-transform: uppercase;
       }
     }

@@ -1,4 +1,4 @@
-// Post template
+// Article template
 
 // ___________________________________________________________________
 
@@ -9,24 +9,24 @@ import Img from 'gatsby-image/withIEPolyfill'
 
 // Theme + UI
 import * as S from './styles.scss'
-import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Text, Heading } from '../../components/ui'
+import theme from '../../../gatsby-plugin-theme-ui'
+import { Box, Flex, Text, Heading } from '../../../components/ui'
 
 // Components
-import Layout from '../../components/Layout'
-import SEO from '../../components/SEO'
-import Section from '../../components/Section'
-import BlockContent from '../../components/BlockContent'
-import PrevNext from './PrevNext'
-import CardLeak from '../../components/CardLeak'
-import CardSlider from '../../components/CardSlider'
+import Layout from '../../../components/Layout'
+import SEO from '../../../components/SEO'
+import Section from '../../../components/Section'
+import BlockContent from '../../../components/BlockContent'
+import PrevNext from '../PrevNext'
+import CardLeak from '../../../components/CardLeak'
+import CardSlider from '../../../components/CardSlider'
 
 // Data
-import usePost from '../../hooks/usePost'
+import usePost from '../../../hooks/usePost'
 
 // ___________________________________________________________________
 
-const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
+const Article: React.FC<PostContextShape> = ({ pageContext }) => {
   const post = pageContext.post
   const posts = usePost()
   return (
@@ -37,13 +37,12 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
         desc={`${post.title} | `}
         article={true}
       />
-      <S.Post>
+      <S.Article>
         <Section>
           <Box width={1} mb={5}>
             <Text
               as="p"
-              fontSize={1}
-              className="text--uppercase"
+              className="text--small  text--uppercase"
             >
               {post.publishedAt}
             </Text>
@@ -82,7 +81,7 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
             </Box>
 
             <Flex flexDirection={[`column`, `row`]}>
-              <Box flex={1}>
+              <Box flex={1} mb={4}>
                 <Text
                   as="p"
                   color={theme.colors.tertiary}
@@ -131,11 +130,11 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
           </Box>
         </Section>
         {/* <PrevNext pageContext={pageContext} /> */}
-      </S.Post>
+      </S.Article>
     </Layout>
   )
 }
 
-export default PostTemplate
+export default Article
 
 // ___________________________________________________________________

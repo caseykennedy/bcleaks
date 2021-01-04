@@ -60,9 +60,6 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       <S.Announcement>
         <Flex className="announcement__inner">
           <div className="page-title">
-            <Text as="span" color="">
-              WELCOME TO BLOCKCHAIN LEAKS
-            </Text>{' '}
             <GetDate />
           </div>
         </Flex>

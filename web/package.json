@@ -83,6 +83,7 @@
     "react-headroom": "^3.1.0",
     "react-helmet": "^5.2.1",
     "react-id-swiper": "^3.0.0",
+    "react-iframe": "^1.8.0",
     "react-image-lightbox": "^5.1.1",
     "react-intersection-observer": "^8.31.0",
     "react-is": "^16.13.1",
