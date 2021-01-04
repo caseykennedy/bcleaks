@@ -54,6 +54,16 @@ export default () =>
         .schemaType("post")
         .child(S.documentTypeList("post").title("Post"))
 
+        .icon(GoFile),
+
+      // Post
+      // _________________________________________________________________
+
+      S.listItem()
+        .title("Videos")
+        .schemaType("video")
+        .child(S.documentTypeList("video").title("Video"))
+
         .icon(GoFile)
 
       // End

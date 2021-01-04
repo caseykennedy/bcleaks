@@ -83,7 +83,7 @@ const theme: ThemeShape = {
 
   colors: {
     text: '#ffffff',
-    background: '#171717',
+    background: '#111111',
 
     primary: '#00ff9b',
     secondary: '#0d0d0d',
@@ -185,7 +185,7 @@ const theme: ThemeShape = {
     }
   },
 
-  border: '1px solid #545454',
+  border: '1px solid #303030',
   borderRadius: '4px',
   shadow: '2rem 1.5rem 1rem #9D9FA2',
 

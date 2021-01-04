@@ -141,9 +141,6 @@ const GetCoinGecko = () => {
 const CryptoTicker = () => {
   return (
     <S.CryptoTicker>
-      {/* <Ticker offset={2} speed={10}>
-        {() => <GetCoinGecko />}
-      </Ticker> */}
       <GetCoinGecko />
     </S.CryptoTicker>
   )

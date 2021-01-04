@@ -9,7 +9,7 @@ import { Box, Flex } from '../../../components/ui'
 
 // ___________________________________________________________________
 
-export const Articles = styled(Section)`
+export const Articles = styled(Box)`
   .articles {
     &__header {
       align-items: center;

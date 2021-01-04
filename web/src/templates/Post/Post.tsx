@@ -42,14 +42,13 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
           <Box width={1} mb={5}>
             <Text
               as="p"
-              fontSize={2}
-              fontWeight={500}
+              fontSize={1}
               className="text--uppercase"
             >
               {post.publishedAt}
             </Text>
 
-            <Heading as="h1" mb={4} className="text--xxxl  text--uppercase">
+            <Heading as="h1" mb={4} className="text--xxl  text--uppercase">
               {post.title}
             </Heading>
             <Text fontSize={2} width={[1, 2 / 3]}>
@@ -87,7 +86,7 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
                 <Text
                   as="p"
                   color={theme.colors.tertiary}
-                  className="meta  t--small"
+                  className="meta  text--small"
                 >
                   <Text as="span" color="white" mb={0}>
                     {post.publishedAt}
@@ -125,7 +124,7 @@ const PostTemplate: React.FC<PostContextShape> = ({ pageContext }) => {
             <CardSlider pagination={true} slidesPerView={3}>
               {posts.map(({ node: post }, idx) => (
                 <Box key={idx}>
-                  <CardLeak post={post} video={true} />
+                  <CardLeak post={post} small={true} />
                 </Box>
               ))}
             </CardSlider>

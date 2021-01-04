@@ -25,7 +25,7 @@ const TopArticles = () => {
       <CardSlider pagination={true} slidesPerView={3}>
         {posts.map(({ node: post }, idx) => (
           <Box key={idx}>
-            <CardLeak post={post} video={true} />
+            <CardLeak post={post} small={true} />
           </Box>
         ))}
       </CardSlider>

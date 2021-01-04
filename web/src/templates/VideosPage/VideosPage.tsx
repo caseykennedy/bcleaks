@@ -18,11 +18,13 @@ import Featured from '../../components/FeaturedArticles'
 
 // Data
 import usePost from '../../hooks/usePost'
+import useVideo from '../../hooks/useVideo'
 
 // ___________________________________________________________________
 
 const VideosPage = () => {
   const posts = usePost()
+  const videos = useVideo()
   return (
     <S.VideosPage>
       <S.PageTitle px={theme.gutter.axis} py={4}>
@@ -47,9 +49,9 @@ const VideosPage = () => {
         </Heading>
 
         <CardSlider pagination={true} slidesPerView={3}>
-          {posts.map(({ node: post }, idx) => (
+          {videos.map(({ node: post }, idx) => (
             <Box key={idx}>
-              <CardLeak post={post} video={true} key={idx} />
+              <CardLeak post={post} small={true} video={true} key={idx} />
             </Box>
           ))}
         </CardSlider>
@@ -68,7 +70,7 @@ const VideosPage = () => {
       <Section>
         <S.AllPosts>
           {posts.map(({ node: post }, idx) => (
-            <CardLeak post={post} video={true} key={idx} />
+            <CardLeak post={post} small={true} key={idx} />
           ))}
         </S.AllPosts>
       </Section>

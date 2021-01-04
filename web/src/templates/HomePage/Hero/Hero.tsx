@@ -51,7 +51,7 @@ const Hero: React.FC<Props> = () => {
                 as="p"
                 color={theme.colors.tertiary}
                 mb={0}
-                className="t--small"
+                className="text--small"
               >
                 <Text as="span" color="white" mb={0}>
                   {post.publishedAt}

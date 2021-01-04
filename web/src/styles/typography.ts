@@ -253,7 +253,7 @@ const Typography = css`
     font-weight: 600;
   }
 
-  .t--small {
+  .text--small {
     font-size: calc(${theme.fontSizes[0]});
 
     @media ${theme.mq.tablet} {

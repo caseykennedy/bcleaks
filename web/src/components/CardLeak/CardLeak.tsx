@@ -19,6 +19,7 @@ type Props = {
   bg?: any
   inline?: boolean
   post: PostQuery
+  small?: boolean
   video?: boolean
 }
 
@@ -27,13 +28,15 @@ const CardLeak: React.FC<Props> = ({
   bg,
   inline,
   post,
+  small,
   video
 }) => {
+  const pagePrefix = !video ? `articles` : `videos`
   return (
     <Card inline={inline}>
       <Box width={!inline ? 1 : 1 / 3}>
         {post.figure && (
-          <Link to={`/blog/${post.slug.current}`}>
+          <Link to={`/${pagePrefix}/${post.slug.current}`}>
             <Box className="bg">
               <Box className="figure">
                 <Img
@@ -63,12 +66,16 @@ const CardLeak: React.FC<Props> = ({
             </Flex>
           )}
 
-          <Heading className={`${!video ? 'text--md' : 'title'}`}>
-            <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
+          <Heading className={`title  ${!small ? `text--md` : `title--small`}`}>
+            <Link to={`/${pagePrefix}/${post.slug.current}`}>{post.title}</Link>
           </Heading>
         </Box>
 
-        <Text as="p" color={theme.colors.tertiary} className="meta  t--small">
+        <Text
+          as="p"
+          color={theme.colors.tertiary}
+          className="meta  text--small"
+        >
           <Text as="span" color="white" mb={0}>
             {post.publishedAt}
           </Text>
@@ -90,5 +97,6 @@ export default CardLeak
 
 CardLeak.defaultProps = {
   aspectRatio: 20 / 9,
-  bg: theme.colors.background
+  bg: theme.colors.background,
+  small: false
 }

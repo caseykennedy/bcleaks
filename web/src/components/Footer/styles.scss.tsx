@@ -11,6 +11,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 export const Footer = styled(Flex)`
   flex-direction: row;
   flex-wrap: wrap;
+
   position: relative;
   padding: ${theme.space[7]} ${theme.space[5]};
 

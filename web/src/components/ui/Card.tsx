@@ -13,13 +13,10 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
   display: flex;
   align-items: center;
   flex-direction: ${p => (!p.inline ? `column` : `row-reverse`)};
-  /* justify-content: flex-end; */
 
-  ${p =>
-    !p.inline ? `border: ${theme.border};` : `border-top: ${theme.border};`}
-  border-color: ${p =>
-    !p.inline ? theme.colors.background : darken(0.15, theme.colors.tertiary)};
-  border-radius: ${p => (!p.inline ? theme.borderRadius : 0)};
+  border-bottom: ${theme.border};
+
+  /* border-radius: ${p => (!p.inline ? theme.borderRadius : 0)}; */
 
   padding: ${p => (!p.inline ? 0 : `${theme.space[5]} 0`)};
 
@@ -30,11 +27,10 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
     justify-content: space-between;
     
     height: 100%;
-    margin-top: ${p => (!p.inline ? theme.space[4] : 0)};
-    padding: ${p => (!p.inline ? theme.space[4] : `0 ${theme.space[4]} 0 0`)};
+    padding: ${p => (!p.inline ? `${theme.space[4]} ${theme.space[3]}` : `0 ${theme.space[4]} 0 0`)};
 
     @media ${theme.mq.tablet} {
-      padding: ${p => (!p.inline ? theme.space[4] : `0 ${theme.space[6]} 0 0`)};
+      padding: ${p => (!p.inline ? `${theme.space[5]} ${theme.space[3]}` : `0 ${theme.space[5]} 0 0`)};
     }
   }
 
@@ -47,7 +43,6 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
     background: ${theme.colors.secondary};
     border: ${theme.border};
     border-color: transparent;
-    border-radius: ${theme.borderRadius};
 
     width: 100%;
 
@@ -65,11 +60,15 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
   }
 
   .title {
-    font-size: calc(${theme.fontSizes[2]});
-    margin: 0 0 ${theme.space[4]};
+    padding-bottom: ${theme.space[4]};
+    
+    &--small {
+      font-size: calc(${theme.fontSizes[2]});
+      margin: 0 0 ${theme.space[4]};
 
-    @media ${theme.mq.tablet} {
-      font-size: calc(${theme.fontSizes[3]} / 1.25);
+      @media ${theme.mq.tablet} {
+        font-size: calc(${theme.fontSizes[3]} / 1.25);
+      }
     }
   }
 
@@ -78,7 +77,6 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
 
     &::before {
       background: ${theme.colors.primary};
-      border-radius: ${theme.borderRadius};
       content: '';
       position: absolute;
       top: 0;

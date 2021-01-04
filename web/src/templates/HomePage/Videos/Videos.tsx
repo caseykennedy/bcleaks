@@ -15,12 +15,12 @@ import CardSlider from '../../../components/CardSlider'
 import CardLeak from '../../../components/CardLeak'
 
 // Data
-import usePost from '../../../hooks/usePost'
+import useVideo from '../../../hooks/useVideo'
 
 // ___________________________________________________________________
 
 const Videos = () => {
-  const posts = usePost()
+  const videos = useVideo()
   return (
     <S.Videos bg="black" border={true} overflow="hidden">
       <Flex className="videos__header" justifyContent="space-between">
@@ -33,9 +33,9 @@ const Videos = () => {
 
       <Box className="videos__posts">
         <CardSlider pagination={true} slidesPerView={3}>
-          {posts.map(({ node: post }, idx) => (
+          {videos.map(({ node: post }, idx) => (
             <Box key={idx}>
-              <CardLeak post={post} video={true} />
+              <CardLeak post={post} small={true} video={true} />
             </Box>
           ))}
         </CardSlider>

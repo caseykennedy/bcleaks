@@ -10,6 +10,8 @@ import { Box, Flex } from '../../components/ui'
 // ___________________________________________________________________
 
 export const Post = styled.div`
+  background: ${theme.colors.black};
+  
   .swiper-container {
     overflow: visible;
     padding-bottom: ${theme.space[7]};
