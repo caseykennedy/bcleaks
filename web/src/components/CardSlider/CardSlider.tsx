@@ -26,6 +26,7 @@ const CardSlider: React.FC<Props> = ({
   const params = {
     slidesPerView: 1,
     spaceBetween: 8,
+    grabCursor: true,
     breakpoints: {
       1024: {
         slidesPerView: `${slidesPerView}`,

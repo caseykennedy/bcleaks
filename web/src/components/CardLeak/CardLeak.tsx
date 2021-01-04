@@ -81,7 +81,7 @@ const CardLeak: React.FC<Props> = ({
           </Text>
           by {post.authors && post.authors.name} in{' '}
           <Link to={``}>
-            <Box as="span" color="primary">
+            <Box as="span" className="category">
               {post.categories && post.categories[0].title}
             </Box>
           </Link>

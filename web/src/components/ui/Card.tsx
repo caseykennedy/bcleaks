@@ -15,22 +15,41 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
   flex-direction: ${p => (!p.inline ? `column` : `row-reverse`)};
 
   border-bottom: ${theme.border};
+  padding: ${p => (!p.inline ? 0 : `${theme.space[5]} 0`)};
 
   /* border-radius: ${p => (!p.inline ? theme.borderRadius : 0)}; */
-
-  padding: ${p => (!p.inline ? 0 : `${theme.space[5]} 0`)};
 
   .content {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+
     height: 100%;
-    padding: ${p => (!p.inline ? `${theme.space[4]} ${theme.space[3]}` : `0 ${theme.space[4]} 0 0`)};
+    padding: ${p =>
+      !p.inline
+        ? `${theme.space[4]} ${theme.space[3]}`
+        : `0 ${theme.space[4]} 0 0`};
 
     @media ${theme.mq.tablet} {
-      padding: ${p => (!p.inline ? `${theme.space[5]} ${theme.space[3]}` : `0 ${theme.space[5]} 0 0`)};
+      padding: ${p =>
+        !p.inline
+          ? `${theme.space[5]} ${theme.space[3]}`
+          : `0 ${theme.space[5]} 0 0`};
+    }
+
+    .category {
+      background: ${theme.colors.primary};
+      border-radius: ${theme.borderRadius};
+      color: ${theme.colors.black};
+      font-size: ${theme.fontSizes[0]};
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 0 ${theme.space[1]};
+
+      @media ${theme.mq.tablet} {
+        font-size: ${theme.fontSizes[1]};
+      }
     }
   }
 
@@ -49,8 +68,10 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
     position: relative;
     transform: matrix(1, 0, 0, 1, 0, 0);
     transition: all 0.222s ease-in-out 0s;
+  }
 
-    &:hover {
+  &:hover {
+    .figure {
       border-color: ${theme.colors.primary};
 
       @media ${theme.mq.tablet} {
@@ -61,7 +82,7 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
 
   .title {
     padding-bottom: ${theme.space[4]};
-    
+
     &--small {
       font-size: calc(${theme.fontSizes[2]});
       margin: 0 0 ${theme.space[4]};

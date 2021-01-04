@@ -43,44 +43,42 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
           <Flex flexDirection="column">
             <Box mb={6}>
               {post.videoUrl && (
-                <ResponsiveEmbed
-                  src={post.videoUrl}
-                  allowFullScreen={true}
-                />
+                <ResponsiveEmbed src={post.videoUrl} allowFullScreen={true} />
               )}
             </Box>
-
-            <Flex flexDirection={[`column`, `row`]}>
-              <Box flex={1}>
-                <Text
-                  as="p"
-                  color={theme.colors.tertiary}
-                  className="meta  text--small"
-                >
-                  <Text as="span" color="white" mb={0}>
-                    {post.publishedAt}
-                  </Text>
-                  by {post.authors && post.authors.name} in{' '}
-                  <Link to={``}>
-                    <Box as="span" color="primary">
-                      {post.categories && post.categories[0].title}
-                    </Box>
-                  </Link>
-                </Text>
-              </Box>
-            </Flex>
           </Flex>
 
-          <Box width={1} mt={5}>
-            <Heading as="h1" mb={4} className="text--xxl  text--uppercase">
-              {post.title}
-            </Heading>
-            <Text fontSize={2} width={[1, 2 / 3]}>
-              {post._rawExcerpt && (
-                <BlockContent blocks={post._rawExcerpt || []} />
-              )}
-            </Text>
-          </Box>
+          <Flex flexDirection={[`column`, `row`]}>
+            <Box flex={1} mb={4}>
+              <Text
+                as="p"
+                color={theme.colors.tertiary}
+                className="meta  text--small"
+              >
+                <Text as="span" color="white" mb={0}>
+                  {post.publishedAt}
+                </Text>
+                by {post.authors && post.authors.name} in{' '}
+                <Link to={``}>
+                  <Box as="span" color="primary">
+                    {post.categories && post.categories[0].title}
+                  </Box>
+                </Link>
+              </Text>
+            </Box>
+
+            <Box flex={[1, 2]}>
+              <Heading as="h1" mb={4} className="text--xl  text--uppercase">
+                {post.title}
+              </Heading>
+
+              <Text color="#ccc" fontFamily="sans" letterSpacing={0}>
+                {post._rawExcerpt && (
+                  <BlockContent blocks={post._rawExcerpt || []} />
+                )}
+              </Text>
+            </Box>
+          </Flex>
         </Section>
 
         <Section border={true} overflow="hidden">

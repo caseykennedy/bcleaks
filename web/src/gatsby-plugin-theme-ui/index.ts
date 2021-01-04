@@ -93,7 +93,10 @@ const theme: ThemeShape = {
 
     black: '#000000',
     white: '#ffffff',
-    red: '#FF0000'
+    red: '#FF0000',
+
+    moss: '#a8ffdc',
+    blue: '#7df2ff',
   },
 
   // Space

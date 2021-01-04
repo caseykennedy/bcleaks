@@ -40,7 +40,7 @@ const Hero: React.FC<Props> = () => {
               )}
 
               <Heading as="h1" className="text--xl  text--uppercase">
-                <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
+                <Link to={`/articles/${post.slug.current}`}>{post.title}</Link>
               </Heading>
             </Box>
 
@@ -62,7 +62,7 @@ const Hero: React.FC<Props> = () => {
                 </Link>
               </Text>
 
-              <Link to={`/blog/${post.slug.current}`}>
+              <Link to={`/articles/${post.slug.current}`}>
                 <Button bg="transparent" color="primary">
                   Read Article <Icon name="arrow" />
                 </Button>
