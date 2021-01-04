@@ -5,14 +5,16 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+// Theme + ui
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
-
 import { Box, Flex, Heading, Text, AnimatedBox } from '../../../components/ui'
+
+// Components
 import Button from '../../../components/ui/Button'
 import Pill from '../../../components/ui/Pill'
-
 import Icon from '../../../components/Icons'
+import PostMeta from '../../../components/PostMeta'
 
 // Data
 import usePost from '../../../hooks/usePost'
@@ -45,22 +47,11 @@ const Hero: React.FC<Props> = () => {
             </Box>
 
             <Flex justifyContent="space-between">
-              <Text
-                as="p"
-                color={theme.colors.tertiary}
-                mb={0}
-                className="text--small"
-              >
-                <Text as="span" color="white" mb={0}>
-                  {post.publishedAt}
-                </Text>
-                by {post.authors && post.authors.name} in{' '}
-                <Link to={``}>
-                  <Box as="span" color="primary">
-                    {post.categories && post.categories[0].title}
-                  </Box>
-                </Link>
-              </Text>
+              <PostMeta
+                authors={post.authors}
+                categories={post.categories}
+                publishedAt={post.publishedAt}
+              />
 
               <Link to={`/articles/${post.slug.current}`}>
                 <Button bg="transparent" color="primary">

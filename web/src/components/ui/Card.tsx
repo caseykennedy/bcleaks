@@ -37,20 +37,6 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
           ? `${theme.space[5]} ${theme.space[3]}`
           : `0 ${theme.space[5]} 0 0`};
     }
-
-    .category {
-      background: ${theme.colors.primary};
-      border-radius: ${theme.borderRadius};
-      color: ${theme.colors.black};
-      font-size: ${theme.fontSizes[0]};
-      font-weight: 500;
-      text-transform: uppercase;
-      padding: 0 ${theme.space[1]};
-
-      @media ${theme.mq.tablet} {
-        font-size: ${theme.fontSizes[1]};
-      }
-    }
   }
 
   a {

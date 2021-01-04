@@ -20,6 +20,9 @@ exports.createPages = ({ graphql, actions }) => {
             slug {
               current
             }
+            tags {
+              tag
+            }
             figure {
               alt
               asset {
@@ -106,6 +109,9 @@ exports.createPages = ({ graphql, actions }) => {
             publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
             slug {
               current
+            }
+            tags {
+              tag
             }
             figure {
               alt

@@ -27,6 +27,7 @@ const CardSlider: React.FC<Props> = ({
     slidesPerView: 1,
     spaceBetween: 8,
     grabCursor: true,
+    freeMode: true,
     breakpoints: {
       1024: {
         slidesPerView: `${slidesPerView}`,
@@ -35,17 +36,14 @@ const CardSlider: React.FC<Props> = ({
       768: {
         slidesPerView: 2,
         spaceBetween: 16,
-        grabCursor: true
       },
       640: {
         slidesPerView: 1,
         spaceBetween: 8,
-        grabCursor: true
       },
       320: {
         slidesPerView: 1,
         spaceBetween: 8,
-        grabCursor: true
       }
     }
   }

@@ -31,7 +31,7 @@ const ArticlesPage = () => {
     <S.ArticlesPage>
       <S.PageTitle px={theme.gutter.axis} py={4}>
         <Heading
-          as="h4"
+          as="h3"
           color="tertiary"
           fontFamily="display"
           mb={0}

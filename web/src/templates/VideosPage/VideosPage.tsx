@@ -30,6 +30,7 @@ const VideosPage = () => {
       <S.PageTitle px={theme.gutter.axis} py={4}>
         <Heading
           as="h3"
+          color="tertiary"
           fontFamily="display"
           mb={0}
           className="text--uppercase"
@@ -41,7 +42,6 @@ const VideosPage = () => {
       <Section bg="black" border={true} overflow="hidden">
         <Heading
           as="h4"
-          color="tertiary"
           fontFamily="display"
           className="text--uppercase"
         >

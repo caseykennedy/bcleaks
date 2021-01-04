@@ -13,6 +13,8 @@ import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex, Text, Heading } from '../../../components/ui'
 
 // Components
+import Button from '../../../components/ui/Button'
+import Pill from '../../../components/ui/Pill'
 import Layout from '../../../components/Layout'
 import SEO from '../../../components/SEO'
 import Section from '../../../components/Section'
@@ -20,6 +22,8 @@ import BlockContent from '../../../components/BlockContent'
 import PrevNext from '../PrevNext'
 import CardLeak from '../../../components/CardLeak'
 import CardSlider from '../../../components/CardSlider'
+import Icon from '../../../components/Icons'
+import PostMeta from '../../../components/PostMeta'
 
 // Data
 import usePost from '../../../hooks/usePost'
@@ -38,23 +42,55 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
         article={true}
       />
       <S.Article>
-        <Section>
+        {post.categories && (
+          <S.PageTitle px={theme.gutter.axis} py={4}>
+            <Heading as="h4" color="white" mb={0}>
+              {post.categories[0].title}
+            </Heading>
+            {post.tags && (
+              <Flex
+                ml={4}
+                pl={4}
+                width={1}
+                style={{ borderLeft: theme.border }}
+              >
+                {post.tags.map((item, idx) => (
+                  <Pill key={idx}>
+                    <span>#{item.tag}</span>
+                  </Pill>
+                ))}
+              </Flex>
+            )}
+          </S.PageTitle>
+        )}
+
+        <Section border={true}>
           <Box width={1} mb={5}>
-            <Text
-              as="p"
-              className="text--small  text--uppercase"
-            >
+            <Text as="p" className="text--small  text--uppercase">
               {post.publishedAt}
             </Text>
 
             <Heading as="h1" mb={4} className="text--xxl  text--uppercase">
               {post.title}
             </Heading>
-            <Text fontSize={2} width={[1, 2 / 3]}>
-              {post._rawExcerpt && (
-                <BlockContent blocks={post._rawExcerpt || []} />
-              )}
-            </Text>
+
+            <Flex flexDirection={[`column`, `row`]}>
+              <Box flex={[1, 2]}>
+                <Text fontSize={2}>
+                  {post._rawExcerpt && (
+                    <BlockContent blocks={post._rawExcerpt || []} />
+                  )}
+                </Text>
+              </Box>
+
+              <Flex flex={1} ml={8}>
+                <Box>
+                  <Button bg="transparent" color="primary">
+                    Sources <Icon name="arrow" />
+                  </Button>
+                </Box>
+              </Flex>
+            </Flex>
           </Box>
 
           <Flex flexDirection="column">
@@ -82,21 +118,11 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
 
             <Flex flexDirection={[`column`, `row`]}>
               <Box flex={1} mb={4}>
-                <Text
-                  as="p"
-                  color={theme.colors.tertiary}
-                  className="meta  text--small"
-                >
-                  <Text as="span" color="white" mb={0}>
-                    {post.publishedAt}
-                  </Text>
-                  by {post.authors && post.authors.name} in{' '}
-                  <Link to={``}>
-                    <Box as="span" color="primary">
-                      {post.categories && post.categories[0].title}
-                    </Box>
-                  </Link>
-                </Text>
+                <PostMeta
+                  authors={post.authors}
+                  categories={post.categories}
+                  publishedAt={post.publishedAt}
+                />
               </Box>
 
               <Box flex={[1, 2]}>
@@ -105,6 +131,18 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                     <BlockContent blocks={post._rawBody || []} />
                   )}
                 </Text>
+
+                <Box mt={6}>
+                  {post.tags && (
+                    <Flex mb={4} width={1}>
+                      {post.tags.map((item, idx) => (
+                        <Pill key={idx}>
+                          <span>#{item.tag}</span>
+                        </Pill>
+                      ))}
+                    </Flex>
+                  )}
+                </Box>
               </Box>
             </Flex>
           </Flex>

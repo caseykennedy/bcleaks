@@ -11,6 +11,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../ui'
 import Pill from '../ui/Pill'
 import Card from '../ui/Card'
+import PostMeta from '../PostMeta'
 
 // ___________________________________________________________________
 
@@ -71,21 +72,11 @@ const CardLeak: React.FC<Props> = ({
           </Heading>
         </Box>
 
-        <Text
-          as="p"
-          color={theme.colors.tertiary}
-          className="meta  text--small"
-        >
-          <Text as="span" color="white" mb={0}>
-            {post.publishedAt}
-          </Text>
-          by {post.authors && post.authors.name} in{' '}
-          <Link to={``}>
-            <Box as="span" className="category">
-              {post.categories && post.categories[0].title}
-            </Box>
-          </Link>
-        </Text>
+        <PostMeta
+          authors={post.authors}
+          categories={post.categories}
+          publishedAt={post.publishedAt}
+        />
       </Flex>
     </Card>
   )
