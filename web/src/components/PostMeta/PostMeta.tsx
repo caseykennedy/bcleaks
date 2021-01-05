@@ -27,6 +27,17 @@ const PostMeta: React.FC<MetaShape> = ({
   categories,
   publishedAt
 }) => {
+  let pillColor
+  if (categories[0].title === 'Crypto') {
+    pillColor = theme.colors.primary
+  } else if (categories[0].title === 'Bitcoin') {
+    pillColor = theme.colors.bitcoin
+  } else if (categories[0].title === 'Videos') {
+    pillColor = theme.colors.purple
+  } else {
+    pillColor = theme.colors.tertiary
+  }
+
   return (
     <Meta as="p" className="text--small">
       <Text as="span" color="white" mb={0}>
@@ -34,7 +45,7 @@ const PostMeta: React.FC<MetaShape> = ({
       </Text>
       by {authors && authors.name} in{' '}
       <Link to={``}>
-        <Box as="span" className="category">
+        <Box as="span" bg={pillColor} className="category">
           {categories && categories[0].title}
         </Box>
       </Link>
@@ -53,7 +64,7 @@ const Meta = styled(Text)`
   margin-bottom: 0;
 
   .category {
-    background: ${theme.colors.primary};
+    /* background: ${theme.colors.primary}; */
     border-radius: 2px;
 
     color: ${theme.colors.black};

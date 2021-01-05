@@ -84,11 +84,11 @@ const Button = styled(Flex)<ButtonProps>`
     color: ${theme.colors.black};
 
     span {
-      background: transparent;
+      background: ${p => (!p.fill ? theme.colors.black : p.fill)};
       right: 0;
 
       svg {
-        fill: ${theme.colors.black};
+        fill: ${p => (!p.fill ? theme.colors.primary : p.fill)};
       }
     }
   }
