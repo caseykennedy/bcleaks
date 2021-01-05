@@ -54,11 +54,13 @@ const Meta = styled(Text)`
 
   .category {
     background: ${theme.colors.primary};
-    border-radius: ${theme.borderRadius};
+    border-radius: 2px;
+
     color: ${theme.colors.black};
     font-size: ${theme.fontSizes[0]};
     font-weight: 500;
     text-transform: uppercase;
+
     padding: 0 ${theme.space[1]};
 
     @media ${theme.mq.tablet} {

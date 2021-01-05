@@ -57,6 +57,10 @@ const usePost = () => {
                 }
               }
             }
+            sources {
+              title
+              url
+            }
           }
           previous {
             slug {

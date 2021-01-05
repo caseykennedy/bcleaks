@@ -14,6 +14,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 type ButtonProps = {
   bg?: string
   color?: string
+  fill?: string
 }
 
 const Button = styled(Flex)<ButtonProps>`
@@ -25,16 +26,17 @@ const Button = styled(Flex)<ButtonProps>`
   justify-content: space-between;
 
   padding: ${theme.space[2]} ${theme.space[4]};
+  position: relative;
   width: 100%;
 
-  color: ${p => (!p.color ? theme.colors.white : p.color)};
+  color: ${p => (!p.color ? theme.colors.primary : p.color)};
   font-size: calc(${theme.fontSizes[2]});
-  /* font-weight: 500; */
+  line-height: 2;
   text-transform: uppercase;
 
   background: ${p => p.bg};
   border: ${theme.border};
-  border-color: ${theme.colors.primary};
+  border-color: ${p => (!p.color ? theme.colors.primary : p.color)};
   border-radius: ${theme.borderRadius};
 
   cursor: pointer;
@@ -47,27 +49,28 @@ const Button = styled(Flex)<ButtonProps>`
   }
 
   span {
+    background: ${p => (!p.color ? theme.colors.primary : p.color)};
+    border-radius: ${theme.borderRadius};
     font-size: calc(${theme.fontSizes[1]});
 
-    margin-left: ${theme.space[5]};
-    transition: ${theme.transition.all};
+    margin-right: ${theme.space[4]};
+    margin-left: -7px;
+    padding: calc(${theme.space[1]} * 1.25);
 
     position: relative;
-
-    display: none;
+    transform: scale(1.15);
+    transition: ${theme.transition.all};
 
     @media ${theme.mq.tablet} {
       display: block;
-      right: ${theme.space[2]};
     }
 
     @media ${theme.mq.desktop} {
-
     }
 
     svg {
       width: ${theme.space[4]};
-      fill: ${theme.colors.primary};
+      fill: ${p => (!p.fill ? theme.colors.black : p.fill)};
 
       @media ${theme.mq.desktop} {
         width: ${theme.space[4]};
@@ -77,9 +80,11 @@ const Button = styled(Flex)<ButtonProps>`
 
   &:hover {
     background: ${theme.colors.primary};
+    border-color: ${theme.colors.primary};
     color: ${theme.colors.black};
 
     span {
+      background: transparent;
       right: 0;
 
       svg {
@@ -89,15 +94,15 @@ const Button = styled(Flex)<ButtonProps>`
   }
 
   &:disabled {
-    background: ${theme.colors.black};
-    border-color: ${theme.colors.black};
+    background: ${theme.colors.tertiary};
+    border-color: ${theme.colors.tertiary};
     color: ${theme.colors.white};
   }
 
   &:active {
-    background: ${theme.colors.black};
-    color: ${theme.colors.white};
-    border-color: ${theme.colors.black};
+    background: ${darken(0.1, theme.colors.primary)};
+    color: ${theme.colors.black};
+    border-color: ${darken(0.1, theme.colors.primary)};
   }
 
   .inner {
@@ -106,7 +111,6 @@ const Button = styled(Flex)<ButtonProps>`
   .smiley {
     display: block;
     margin-left: ${theme.space[3]};
-    /* width: calc(${theme.space[5]}); */
   }
 `
 

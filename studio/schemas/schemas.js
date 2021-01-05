@@ -14,6 +14,7 @@ import pageTitle from './pageTitle'
 import person from './person'
 import post from './post'
 import siteSettings from './siteSettings'
+import source from './source'
 import tag from './tag'
 import video from './video'
 
@@ -36,6 +37,7 @@ export default createSchema({
     post,
     postCategory,
     siteSettings,
+    source,
     tag,
     video,
 

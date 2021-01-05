@@ -29,16 +29,12 @@ type PostData = {
 }
 
 type PostQuery = {
-  title: string
   _rawExcerpt: string
   _rawBody: string
   _id: string
-  publishedAt: string
-  slug: {
-    current: string
-  }
-  tags: {
-    tag: string
+  authors: PostAuthor
+  categories: {
+    title: string
   }[]
   figure: {
     alt: string
@@ -55,10 +51,18 @@ type PostQuery = {
     }
     caption: string
   }
-  categories: {
-    title: string
+  title: string
+  publishedAt: string
+  slug: {
+    current: string
+  }
+  tags: {
+    tag: string
   }[]
-  authors: PostAuthor
+  sources: {
+    title
+    url
+  }[]
 }
 
 type PostAuthor = {

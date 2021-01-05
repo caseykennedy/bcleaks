@@ -33,6 +33,7 @@ import usePost from '../../../hooks/usePost'
 const Article: React.FC<PostContextShape> = ({ pageContext }) => {
   const post = pageContext.post
   const posts = usePost()
+  console.log(posts)
   return (
     <Layout>
       <SEO
@@ -44,7 +45,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
       <S.Article>
         {post.categories && (
           <S.PageTitle px={theme.gutter.axis} py={4}>
-            <Heading as="h4" color="white" mb={0}>
+            <Heading as="h4" color="white" mb={0} className="text--uppercase">
               {post.categories[0].title}
             </Heading>
             {post.tags && (
@@ -84,11 +85,15 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
               </Box>
 
               <Flex flex={1} ml={8}>
-                <Box>
-                  <Button bg="transparent" color="primary">
-                    Sources <Icon name="arrow" />
-                  </Button>
-                </Box>
+                {post.sources && (
+                  <Box>
+                    <Link to={`#sources`}>
+                      <Button bg="transparent" color={theme.colors.tertiary}>
+                        <Icon name="document" /> View Sources
+                      </Button>
+                    </Link>
+                  </Box>
+                )}
               </Flex>
             </Flex>
           </Box>
@@ -126,7 +131,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
               </Box>
 
               <Box flex={[1, 2]}>
-                <Text color="#ccc" fontFamily="sans" letterSpacing={0}>
+                <Text color="gray" fontFamily="sans">
                   {post._rawBody && (
                     <BlockContent blocks={post._rawBody || []} />
                   )}
@@ -146,7 +151,31 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
               </Box>
             </Flex>
           </Flex>
+          <a id="sources" />
         </Section>
+
+        {post.sources && (
+          <Section border={true} maxWidth={theme.maxWidth}>
+            <Heading
+              as="h4"
+              color="tertiary"
+              fontFamily="display"
+              className="text--uppercase"
+            >
+              Sources
+            </Heading>
+            <Box width={1}>
+              {post.sources.map((source, idx) => (
+                <Box key={idx}>
+                  <Heading as="h5">{source.title}</Heading>
+                  <Text as="a" href={source.url} target="_blank">
+                    {source.url}
+                  </Text>
+                </Box>
+              ))}
+            </Box>
+          </Section>
+        )}
 
         <Section border={true} overflow="hidden">
           <Heading

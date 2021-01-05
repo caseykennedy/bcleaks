@@ -32,7 +32,7 @@ const Hero: React.FC<Props> = () => {
           <Box width={[1]} key={idx}>
             <Box width={[1, 2 / 3]}>
               <Heading as="h1" className="text--uppercase">
-                <Link to={`/blog/${post.slug.current}`}>{post.title}</Link>
+                <Link to={`/articles/${post.slug.current}`}>{post.title}</Link>
               </Heading>
             </Box>
 
@@ -53,9 +53,9 @@ const Hero: React.FC<Props> = () => {
                 publishedAt={post.publishedAt}
               />
 
-              <Link to={`/blog/${post.slug.current}`}>
-                <Button bg="transparent" color="primary">
-                  Read Article <Icon name="arrow" />
+              <Link to={`/articles/${post.slug.current}`}>
+                <Button bg="transparent" color={theme.colors.primary}>
+                  <Icon name="arrow" /> Read Article
                 </Button>
               </Link>
             </Flex>

@@ -60,7 +60,17 @@ export default {
       name: "body",
       title: "Body",
       type: "blockContent"
-    }
+    },
+    {
+      name: "sources",
+      title: "Sources",
+      type: "array",
+      of: [
+        {
+          type: "source"
+        }
+      ]
+    },
   ],
   orderings: [
     {

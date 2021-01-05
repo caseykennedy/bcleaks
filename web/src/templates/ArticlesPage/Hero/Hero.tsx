@@ -54,8 +54,8 @@ const Hero: React.FC<Props> = () => {
               />
 
               <Link to={`/articles/${post.slug.current}`}>
-                <Button bg="transparent" color="primary">
-                  Read Article <Icon name="arrow" />
+                <Button bg="transparent" color={theme.colors.primary}>
+                  <Icon name="arrow" /> Read Article
                 </Button>
               </Link>
             </Flex>
