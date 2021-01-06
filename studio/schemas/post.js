@@ -39,7 +39,7 @@ export default {
     {
       name: "tags",
       title: "Tags",
-      type: "array",
+      type: "array", 
       of: [
         {
           type: "tag"
@@ -70,7 +70,7 @@ export default {
           type: "source"
         }
       ]
-    },
+    }
   ],
   orderings: [
     {

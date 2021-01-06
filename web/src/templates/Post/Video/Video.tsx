@@ -6,18 +6,19 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import ResponsiveEmbed from 'react-responsive-embed'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 // Theme + UI
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex, Text, Heading } from '../../../components/ui'
+import Pill from '../../../components/ui/Pill'
 
 // Components
 import Layout from '../../../components/Layout'
 import SEO from '../../../components/SEO'
 import Section from '../../../components/Section'
 import BlockContent from '../../../components/BlockContent'
-import PrevNext from '../PrevNext'
 import CardLeak from '../../../components/CardLeak'
 import CardSlider from '../../../components/CardSlider'
 
@@ -39,7 +40,29 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
         article={true}
       />
       <S.Video>
-        <Section>
+        {post.categories && (
+          <S.PageTitle px={theme.gutter.axis} py={4}>
+            <Heading as="h4" color="white" mb={0} className="text--uppercase">
+              {post.categories[0].title}
+            </Heading>
+            {post.tags && (
+              <Flex
+                ml={4}
+                pl={4}
+                width={1}
+                style={{ borderLeft: theme.border }}
+              >
+                {post.tags.map((item, idx) => (
+                  <Pill key={idx}>
+                    <span>#{item.tag}</span>
+                  </Pill>
+                ))}
+              </Flex>
+            )}
+          </S.PageTitle>
+        )}
+
+        <Section border={true}>
           <Flex flexDirection="column">
             <Box mb={6}>
               {post.videoUrl && (
@@ -81,6 +104,29 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
           </Flex>
         </Section>
 
+        {post.sources && (
+          <Section border={true} maxWidth={theme.maxWidth}>
+            <Heading
+              as="h4"
+              color="tertiary"
+              fontFamily="display"
+              className="text--uppercase"
+            >
+              Sources
+            </Heading>
+            <Box width={1}>
+              {post.sources.map((source, idx) => (
+                <Box key={idx}>
+                  <Heading as="h5">{source.title}</Heading>
+                  <Text as="a" href={source.url} target="_blank">
+                    {source.url}
+                  </Text>
+                </Box>
+              ))}
+            </Box>
+          </Section>
+        )}
+
         <Section border={true} overflow="hidden">
           <Heading
             as="h4"
@@ -100,7 +146,6 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
             </CardSlider>
           </Box>
         </Section>
-        {/* <PrevNext pageContext={pageContext} /> */}
       </S.Video>
     </Layout>
   )

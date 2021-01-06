@@ -6,6 +6,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 // Theme + UI
 import * as S from './styles.scss'
@@ -19,7 +20,6 @@ import Layout from '../../../components/Layout'
 import SEO from '../../../components/SEO'
 import Section from '../../../components/Section'
 import BlockContent from '../../../components/BlockContent'
-import PrevNext from '../PrevNext'
 import CardLeak from '../../../components/CardLeak'
 import CardSlider from '../../../components/CardSlider'
 import Icon from '../../../components/Icons'
@@ -84,15 +84,13 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                 </Text>
               </Box>
 
-              <Flex flex={1} ml={8}>
+              <Flex flex={1} mt={[4, 0, 0]} ml={[0, 6, 8]}>
                 {post.sources && (
-                  <Box>
-                    <Link to={`#sources`}>
-                      <Button bg="transparent" color={theme.colors.tertiary}>
-                        <Icon name="document" /> View Sources
-                      </Button>
-                    </Link>
-                  </Box>
+                  <AnchorLink offset={theme.headerHeight} href={`#sources`}>
+                    <Button bg="transparent" color={theme.colors.tertiary}>
+                      <Icon name="document" /> View Sources
+                    </Button>
+                  </AnchorLink>
                 )}
               </Flex>
             </Flex>

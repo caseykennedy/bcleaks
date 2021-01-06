@@ -134,6 +134,10 @@ type VideoQuery = {
   tags: {
     tag: string
   }[]
+  sources: {
+    title
+    url
+  }[]
   figure: {
     alt: string
     asset: {

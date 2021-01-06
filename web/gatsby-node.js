@@ -152,6 +152,10 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
+            sources {
+              title
+              url
+            }
           }
           previous {
             slug {

@@ -15,7 +15,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/dashboard",
-    "@sanity/vision"
+    "@sanity/vision",
+    "asset-source-unsplash"
   ],
   "parts": [
     {
