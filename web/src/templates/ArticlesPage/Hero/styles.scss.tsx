@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Section from '../../../components/Section'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex } from '../../../components/ui'
+import { darken } from 'polished'
 
 // ___________________________________________________________________
 
@@ -31,6 +32,7 @@ export const Hero = styled(Box)`
       flex-direction: column;
       justify-content: space-between;
 
+      cursor: pointer;
       height: auto;
       width: 100%;
 
@@ -47,6 +49,27 @@ export const Hero = styled(Box)`
 
       @media (min-width: ${theme.maxWidth}) {
         border-right: ${theme.border};
+      }
+
+      &:hover {
+        a {
+          color: ${darken(0.25, theme.colors.white)};
+        }
+
+        .button {
+          span > svg {
+            stroke: ${theme.colors.primary};
+          }
+        }
+      }
+
+      .button {
+        padding: 0 ${theme.space[4]};
+
+        span > svg {
+          stroke: ${theme.colors.white};
+          width: ${theme.space[4]};
+        }
       }
     }
 

@@ -7,7 +7,7 @@ import React from 'react'
 // Theme + ui
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box } from '../ui'
+import { Flex } from '../ui'
 
 // Components
 import CardSlider from '../CardSlider'
@@ -24,9 +24,9 @@ const Featured = () => {
     <S.Featured>
       <CardSlider pagination={false} slidesPerView={2}>
         {posts.slice(2, 4).map(({ node: post }, idx) => (
-          <Box key={idx}>
+          <Flex key={idx}>
             <CardLeak post={post} />
-          </Box>
+          </Flex>
         ))}
       </CardSlider>
     </S.Featured>

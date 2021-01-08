@@ -46,17 +46,15 @@ const Hero: React.FC<Props> = () => {
               </Heading>
             </Box>
 
-            <Flex justifyContent="space-between">
+            <Flex alignItems="center" justifyContent="space-between">
               <PostMeta
                 authors={post.authors}
                 categories={post.categories}
                 publishedAt={post.publishedAt}
               />
 
-              <Link to={`/articles/${post.slug.current}`}>
-                <Button bg="transparent" color={theme.colors.tertiary}>
-                  <Icon name="arrow" /> Read Article
-                </Button>
+              <Link to={`/articles/${post.slug.current}`} className="button">
+                <Icon name="carat" />
               </Link>
             </Flex>
           </Box>

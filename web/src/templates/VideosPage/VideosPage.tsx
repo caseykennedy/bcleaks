@@ -48,11 +48,11 @@ const VideosPage = () => {
           Latest
         </Heading>
 
-        <CardSlider pagination={true} slidesPerView={3}>
-          {videos.map(({ node: post }, idx) => (
-            <Box key={idx}>
+        <CardSlider pagination={false} slidesPerView={2}>
+          {videos.slice(0, 2).map(({ node: post }, idx) => (
+            <Flex key={idx}>
               <CardLeak post={post} small={true} video={true} key={idx} />
-            </Box>
+            </Flex>
           ))}
         </CardSlider>
       </Section>
@@ -70,7 +70,9 @@ const VideosPage = () => {
       <Section>
         <S.AllPosts>
           {posts.map(({ node: post }, idx) => (
-            <CardLeak post={post} small={true} key={idx} />
+            <Flex key={idx}>
+              <CardLeak post={post} small={true} />
+            </Flex>
           ))}
         </S.AllPosts>
       </Section>

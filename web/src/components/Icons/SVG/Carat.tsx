@@ -3,16 +3,18 @@
 
 // Core
 import React from 'react'
+import theme from '../../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
 const Carat = () => (
-  <svg width="100%" viewBox="0 0 13 22">
-    <g fillRule="evenodd">
-      <g transform="translate(-488.000000, -591.000000)" fillRule="nonzero">
-        <polygon points="488.428658 592.571342 489.571342 591.428658 500.142685 602 489.571342 612.571342 488.428658 611.428658 497.857315 602" />
-      </g>
-    </g>
+  <svg width="18px" viewBox="0 0 35.46 111.79">
+    <polyline
+      fill="none"
+      strokeMiterlimit="10"
+      strokeWidth="4px"
+      points="1.31 111.01 33.72 58.08 1.31 0.74"
+    />
   </svg>
 )
 

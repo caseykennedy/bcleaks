@@ -37,7 +37,7 @@ const CardLeak: React.FC<Props> = ({
     <Card inline={inline}>
       <Box width={!inline ? 1 : 1 / 3}>
         {post.figure && (
-          <Link to={`/${pagePrefix}/${post.slug.current}`}>
+          <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
             <Box className="bg">
               <Box className="figure">
                 <Img
@@ -59,7 +59,7 @@ const CardLeak: React.FC<Props> = ({
         <Box>
           {post.tags && (
             <Flex mb={4} width={1}>
-              {post.tags.map((item, idx) => (
+              {post.tags.slice(0, 3).map((item, idx) => (
                 <Pill key={idx}>
                   <span>#{item.tag}</span>
                 </Pill>
@@ -68,7 +68,11 @@ const CardLeak: React.FC<Props> = ({
           )}
 
           <Heading className={`title  ${!small ? `text--md` : `title--small`}`}>
-            <Link to={`/${pagePrefix}/${post.slug.current}`}>{post.title}</Link>
+            <Link
+              to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}
+            >
+              {post.title && post.title}
+            </Link>
           </Heading>
         </Box>
 
