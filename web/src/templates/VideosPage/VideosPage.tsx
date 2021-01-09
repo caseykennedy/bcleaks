@@ -69,7 +69,7 @@ const VideosPage = () => {
 
       <Section>
         <S.AllPosts>
-          {posts.map(({ node: post }, idx) => (
+          {videos.map(({ node: post }, idx) => (
             <Flex key={idx}>
               <CardLeak post={post} small={true} />
             </Flex>

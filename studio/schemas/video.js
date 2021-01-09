@@ -6,7 +6,8 @@ export default {
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
+      validation: Rule => Rule.required()
     },
     {
       name: "slug",
@@ -16,25 +17,29 @@ export default {
       options: {
         source: "title",
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: "publishedAt",
       title: "Published at",
       description: "You can use this field to schedule post where you show them",
-      type: "datetime"
+      type: "datetime",
+      validation: Rule => Rule.required()
     },
     {
       name: "authors",
       title: "Authors",
       type: "reference",
-      to: [{ type: "person" }]
+      to: [{ type: "person" }],
+      validation: Rule => Rule.required()
     },
     {
       name: "categories",
       title: "Categories",
       type: "array",
-      of: [{ type: "reference", to: { type: "postCategory" } }]
+      of: [{ type: "reference", to: { type: "postCategory" } }],
+      validation: Rule => Rule.required()
     },
     {
       name: "tags",
@@ -49,21 +54,18 @@ export default {
     {
       name: "figure",
       title: "Figure",
-      type: "figure"
+      type: "figure",
+      validation: Rule => Rule.required()
     },
     {
       name: 'videoUrl',
       title: 'Video URL',
-      type: 'url'
-    },
-    {
-      name: "excerpt",
-      title: "Excerpt",
-      type: "blockText"
+      type: 'url',
+      validation: Rule => Rule.required()
     },
     {
       name: "body",
-      title: "Body",
+      title: "Description",
       type: "blockContent"
     },
     {

@@ -1,5 +1,6 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
+import theme from '../../gatsby-plugin-theme-ui'
 import { Heading, Text } from '../ui'
 
 type BlockShape = {
@@ -11,18 +12,22 @@ const serializers = {
     block(props: any) {
       switch (props.node.style) {
         case 'h1':
-          return <h1>{props.children}</h1>
+          return (
+            <Heading as="h1" color="white">
+              {props.children}
+            </Heading>
+          )
 
         case 'h2':
           return (
-            <Heading as="h2" mt={4}>
+            <Heading as="h2" color="white" mt={4}>
               {props.children}
             </Heading>
           )
 
         case 'h3':
           return (
-            <Heading as="h3" mt={4}>
+            <Heading as="h3" color="white" mt={4}>
               {props.children}
             </Heading>
           )

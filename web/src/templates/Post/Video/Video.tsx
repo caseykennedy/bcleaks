@@ -21,6 +21,7 @@ import Section from '../../../components/Section'
 import BlockContent from '../../../components/BlockContent'
 import CardLeak from '../../../components/CardLeak'
 import CardSlider from '../../../components/CardSlider'
+import PostMeta from '../../../components/PostMeta'
 
 // Data
 import useVideo from '../../../hooks/useVideo'
@@ -52,7 +53,7 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
                 width={1}
                 style={{ borderLeft: theme.border }}
               >
-                {post.tags.map((item, idx) => (
+                {post.tags.slice(0, 3).map((item, idx) => (
                   <Pill key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>
@@ -73,21 +74,11 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
 
           <Flex flexDirection={[`column`, `row`]}>
             <Box flex={1} mb={4}>
-              <Text
-                as="p"
-                color={theme.colors.tertiary}
-                className="meta  text--small"
-              >
-                <Text as="span" color="white" mb={0}>
-                  {post.publishedAt}
-                </Text>
-                by {post.authors && post.authors.name} in{' '}
-                <Link to={``}>
-                  <Box as="span" color="primary">
-                    {post.categories && post.categories[0].title}
-                  </Box>
-                </Link>
-              </Text>
+              <PostMeta
+                authors={post.authors}
+                categories={post.categories}
+                publishedAt={post.publishedAt}
+              />
             </Box>
 
             <Box flex={[1, 2]}>
@@ -95,16 +86,26 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
                 {post.title}
               </Heading>
 
-              <Text color="#ccc" fontFamily="sans" letterSpacing={0}>
-                {post._rawExcerpt && (
-                  <BlockContent blocks={post._rawExcerpt || []} />
-                )}
+              <Text color="lightgray" fontFamily="sans" letterSpacing={0}>
+                {post._rawBody && <BlockContent blocks={post._rawBody || []} />}
               </Text>
+
+              <Box mt={6}>
+                {post.tags && (
+                  <Flex flexWrap="wrap" mb={4} width={1}>
+                    {post.tags.map((item, idx) => (
+                      <Pill key={idx}>
+                        <span>#{item.tag}</span>
+                      </Pill>
+                    ))}
+                  </Flex>
+                )}
+              </Box>
             </Box>
           </Flex>
         </Section>
 
-        {post.sources && (
+        {post.sources[0] && (
           <Section border={true} maxWidth={theme.maxWidth}>
             <Heading
               as="h4"

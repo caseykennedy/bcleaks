@@ -55,7 +55,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                 width={1}
                 style={{ borderLeft: theme.border }}
               >
-                {post.tags.map((item, idx) => (
+                {post.tags.slice(0, 3).map((item, idx) => (
                   <Pill key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>
@@ -129,7 +129,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
               </Box>
 
               <Box flex={[1, 2]}>
-                <Text color="gray" fontFamily="sans">
+                <Text color="lightgray" fontFamily="sans">
                   {post._rawBody && (
                     <BlockContent blocks={post._rawBody || []} />
                   )}
@@ -152,7 +152,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
           <a id="sources" />
         </Section>
 
-        {post.sources && (
+        {post.sources[0] && (
           <Section border={true} maxWidth={theme.maxWidth}>
             <Heading
               as="h4"

@@ -23,7 +23,7 @@ const TopArticles = () => {
   return (
     <S.TopArticles>
       <CardSlider pagination={true} slidesPerView={3}>
-        {posts.map(({ node: post }, idx) => (
+        {posts.slice(0, 4).map(({ node: post }, idx) => (
           <Flex key={idx}>
             <CardLeak post={post} small={true} />
           </Flex>

@@ -91,7 +91,7 @@ export default CardLeak
 // ___________________________________________________________________
 
 CardLeak.defaultProps = {
-  aspectRatio: 20 / 9,
+  aspectRatio: 16 / 9,
   bg: theme.colors.background,
   small: false
 }
