@@ -124,7 +124,6 @@ type VideoData = {
 type VideoQuery = {
   videoUrl: string
   title: string
-  _rawExcerpt: string
   _rawBody: string
   _id: string
   publishedAt: string

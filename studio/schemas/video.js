@@ -58,9 +58,9 @@ export default {
       validation: Rule => Rule.required()
     },
     {
-      name: 'videoUrl',
-      title: 'Video URL',
-      type: 'url',
+      name: "videoUrl",
+      title: "Video URL",
+      type: "url",
       validation: Rule => Rule.required()
     },
     {
