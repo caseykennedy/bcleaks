@@ -64,14 +64,12 @@ const useVideo = () => {
               current
             }
             title
-            _rawExcerpt
           }
           next {
             slug {
               current
             }
             title
-            _rawExcerpt
           }
         }
       }
