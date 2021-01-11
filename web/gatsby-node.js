@@ -107,7 +107,6 @@ exports.createPages = ({ graphql, actions }) => {
           node {
             videoUrl
             title
-            _rawExcerpt
             _rawBody
             _id
             publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
