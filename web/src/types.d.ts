@@ -179,14 +179,12 @@ type VideoContextShape = {
   pageContext: {
     post: VideoQuery
     prev: {
-      _rawExcerpt: string
       title: string
       slug: {
         current: string
       }
     }
     next: {
-      _rawExcerpt: string
       title: string
       slug: {
         current: string

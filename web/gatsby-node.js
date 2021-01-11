@@ -161,14 +161,12 @@ exports.createPages = ({ graphql, actions }) => {
               current
             }
             title
-            _rawExcerpt
           }
           next {
             slug {
               current
             }
             title
-            _rawExcerpt
           }
         }
       }
