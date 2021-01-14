@@ -87,7 +87,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
               </Box>
 
               <Flex flex={1} mt={[4, 0, 0]} ml={[0, 6, 8]}>
-                {post.sources && (
+                {post.sources[0] && (
                   <AnchorLink offset={theme.headerHeight} href={`#sources`}>
                     <Button bg="transparent" color={theme.colors.tertiary}>
                       <Icon name="document" /> View Sources
@@ -113,7 +113,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                     className="article__img"
                   />
                   {post.figure.caption && (
-                    <Text color="tertiary" fontSize={0} mt={2}>
+                    <Text as="figcaption" color="tertiary" fontSize={0} mt={2}>
                       {post.figure.caption}
                     </Text>
                   )}
@@ -122,7 +122,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
             </Box>
 
             <Flex flexDirection={[`column`, `row`]}>
-              <Box flex={1} mb={4}>
+              <Box flex={1} mb={4} width={1}>
                 <PostMeta
                   authors={post.authors}
                   categories={post.categories}
@@ -130,7 +130,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                 />
               </Box>
 
-              <Box flex={[1, 2]}>
+              <Box flex={[1, 2]} width={1}>
                 <Text color="lightgray" fontFamily="sans">
                   {post._rawBody && (
                     <BlockContent blocks={post._rawBody || []} />
@@ -189,9 +189,9 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
           <Box width={1}>
             <CardSlider pagination={true} slidesPerView={3}>
               {posts.map(({ node: post }, idx) => (
-                <Box key={idx}>
+                <Flex key={idx}>
                   <CardLeak post={post} small={true} />
-                </Box>
+                </Flex>
               ))}
             </CardSlider>
           </Box>

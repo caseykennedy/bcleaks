@@ -237,16 +237,30 @@ const Typography = css`
   .text--base {
     color: ${theme.colors.gray};
     font-size: ${theme.fontSizes[2]};
-    /* font-weight: ${theme.fontWeights.medium}; */
     line-height: ${theme.root.font.bodyLineHeight};
     margin: 0 0 ${theme.space[4]};
 
     @media ${theme.mq.tablet} {
-      font-size: calc(${theme.fontSizes[2]} * 1.15);
+      font-size: calc(${theme.fontSizes[2]} * 1.25);
     }
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    a {
+      text-decoration: underline;
+      color: ${theme.colors.primary};
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: ${theme.colors.primary};
+      }
+    }
+
+    strong {
+      color: ${theme.colors.white};
     }
   }
 
@@ -282,7 +296,6 @@ const Typography = css`
   a {
     text-decoration: none;
     position: relative;
-    /* z-index: 1; */
 
     transition: ${theme.transition.all};
 
@@ -291,7 +304,7 @@ const Typography = css`
     &:hover,
     &:focus {
       text-decoration: none;
-      color: ${darken(0.25, theme.colors.white)};
+      color: ${darken(0.15, theme.colors.white)};
     }
   }
 
@@ -303,21 +316,35 @@ const Typography = css`
   }
 
   ul {
-    margin: 0 0 1.5em 1.15rem;
+    margin: 0 0 ${theme.space[6]};
     list-style-type: disc;
 
     li {
-      list-style-position: outside;
+      color: ${darken(0.15, theme.colors.white)};
       font-size: ${theme.fontSizes[2]};
-      line-height: 1.5;
-      margin-bottom: ${theme.space[3]};
+      margin: 0 0 ${theme.space[4]};
 
       @media ${theme.mq.tablet} {
-        /* font-size: calc(${theme.fontSizes[2]} * 1.5); */
+        font-size: calc(${theme.fontSizes[2]} * 1.25);
       }
 
       &:last-child {
         margin-bottom: 0;
+      }
+
+      a {
+        text-decoration: underline;
+        color: ${theme.colors.primary};
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          color: ${theme.colors.primary};
+        }
+      }
+
+      strong {
+        color: ${theme.colors.white};
       }
     }
   }

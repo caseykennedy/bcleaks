@@ -16,6 +16,7 @@ declare module 'react-image-lightbox'
 declare module 'react-responsive-embed'
 declare module 'coingecko-api'
 declare module 'react-ticker'
+declare module 'gatsby-source-sanity'
 
 function createRef<T>(): RefObject<T>
 interface RefObject<T> {

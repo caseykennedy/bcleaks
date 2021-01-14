@@ -22,7 +22,7 @@ export const Hero = styled(Section)`
       
       &:hover {
         a {
-          color: ${darken(0.25, theme.colors.white)};
+          color: ${darken(0.15, theme.colors.white)};
         }
 
         .button {

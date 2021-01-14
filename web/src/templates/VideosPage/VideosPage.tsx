@@ -51,7 +51,7 @@ const VideosPage = () => {
         <CardSlider pagination={false} slidesPerView={2}>
           {videos.slice(0, 2).map(({ node: post }, idx) => (
             <Flex key={idx}>
-              <CardLeak post={post} small={true} video={true} key={idx} />
+              <CardLeak post={post} video={true} key={idx} />
             </Flex>
           ))}
         </CardSlider>
@@ -71,7 +71,7 @@ const VideosPage = () => {
         <S.AllPosts>
           {videos.map(({ node: post }, idx) => (
             <Flex key={idx}>
-              <CardLeak post={post} small={true} />
+              <CardLeak post={post} video={true} small={true} />
             </Flex>
           ))}
         </S.AllPosts>

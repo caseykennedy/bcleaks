@@ -39,7 +39,7 @@ const PostMeta: React.FC<MetaShape> = ({
   }
 
   return (
-    <Meta as="p" className="text--small">
+    <Meta as="span" className="text--small">
       <Text as="span" color="white" mb={0}>
         {publishedAt}
       </Text>

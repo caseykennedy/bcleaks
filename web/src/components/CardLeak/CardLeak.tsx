@@ -34,10 +34,10 @@ const CardLeak: React.FC<Props> = ({
 }) => {
   const pagePrefix = !video ? `articles` : `videos`
   return (
-    <Card inline={inline}>
-      <Box width={!inline ? 1 : 1 / 3}>
-        {post.figure && (
-          <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
+    <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
+      <Card inline={inline}>
+        <Box width={!inline ? 1 : 1 / 3}>
+          {post.figure && (
             <Box className="bg">
               <Box className="figure">
                 <Img
@@ -51,38 +51,36 @@ const CardLeak: React.FC<Props> = ({
                 />
               </Box>
             </Box>
-          </Link>
-        )}
-      </Box>
-
-      <Flex width={!inline ? 1 : 2 / 3} className="content">
-        <Box>
-          {post.tags && (
-            <Flex mb={4} width={1}>
-              {post.tags.slice(0, 3).map((item, idx) => (
-                <Pill key={idx}>
-                  <span>#{item.tag}</span>
-                </Pill>
-              ))}
-            </Flex>
           )}
-
-          <Heading className={`title  ${!small ? `text--md` : `title--small`}`}>
-            <Link
-              to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}
-            >
-              {post.title && post.title}
-            </Link>
-          </Heading>
         </Box>
 
-        <PostMeta
-          authors={post.authors}
-          categories={post.categories}
-          publishedAt={post.publishedAt}
-        />
-      </Flex>
-    </Card>
+        <Flex width={!inline ? 1 : 2 / 3} className="content">
+          <Box>
+            {post.tags && (
+              <Flex mb={4} width={1}>
+                {post.tags.slice(0, 3).map((item, idx) => (
+                  <Pill key={idx}>
+                    <span>#{item.tag}</span>
+                  </Pill>
+                ))}
+              </Flex>
+            )}
+
+            <Heading
+              className={`title  ${!small ? `text--md` : `title--small`}`}
+            >
+              {post.title && post.title}
+            </Heading>
+          </Box>
+
+          <PostMeta
+            authors={post.authors}
+            categories={post.categories}
+            publishedAt={post.publishedAt}
+          />
+        </Flex>
+      </Card>
+    </Link>
   )
 }
 

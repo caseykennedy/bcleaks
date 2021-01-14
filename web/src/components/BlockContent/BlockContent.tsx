@@ -8,7 +8,6 @@ import Figure from './Figure'
 
 type BlockShape = {
   blocks: any
-  figure: any
 }
 
 const serializers = {
