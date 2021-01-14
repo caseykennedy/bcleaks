@@ -23,22 +23,24 @@ import CardLeak from '../../../components/CardLeak'
 import CardSlider from '../../../components/CardSlider'
 import PostMeta from '../../../components/PostMeta'
 
-// Data
+// Hooks
 import useVideo from '../../../hooks/useVideo'
+import useSiteSettings from '../../../hooks/useSiteSettings'
 
 // ___________________________________________________________________
 
 const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
   const post = pageContext.post
   const videos = useVideo()
-  console.log(post)
+  const siteSettings = useSiteSettings()
   return (
     <Layout>
       <SEO
-        pathname={`/implants/${post.slug.current}`}
-        title={`${post.title} | `}
-        desc={`${post.title} | `}
         article={true}
+        banner={`${post.figure.asset.fluid.src}`}
+        title={`${post.title} | ${siteSettings.titleShort}`}
+        desc={`${post.title}`}
+        pathname={`/videos/${post.slug.current}`}
       />
       <S.Video>
         {post.categories && (

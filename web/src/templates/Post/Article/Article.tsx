@@ -27,20 +27,22 @@ import PostMeta from '../../../components/PostMeta'
 
 // Data
 import usePost from '../../../hooks/usePost'
+import useSiteSettings from '../../../hooks/useSiteSettings'
 
 // ___________________________________________________________________
 
 const Article: React.FC<PostContextShape> = ({ pageContext }) => {
   const post = pageContext.post
   const posts = usePost()
-  console.log(posts)
+  const siteSettings = useSiteSettings()
   return (
     <Layout>
       <SEO
-        pathname={`/implants/${post.slug.current}`}
-        title={`${post.title} | `}
-        desc={`${post.title} | `}
         article={true}
+        banner={`${post.figure.asset.fluid.src}`}
+        title={`${post.title} | ${siteSettings.titleShort}`}
+        desc={`${post.title}`}
+        pathname={`/articles/${post.slug.current}`}
       />
       <S.Article>
         {post.categories && (
@@ -164,12 +166,12 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
             </Heading>
             <Box width={1}>
               {post.sources.map((source, idx) => (
-                <Box key={idx}>
+                <S.Source key={idx}>
                   <Heading as="h5">{source.title}</Heading>
                   <Text as="a" href={source.url} target="_blank">
                     {source.url}
                   </Text>
-                </Box>
+                </S.Source>
               ))}
             </Box>
           </Section>

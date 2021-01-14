@@ -1,10 +1,14 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
+import Img from 'gatsby-image/withIEPolyfill'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Heading, Text } from '../ui'
 
+import Figure from './Figure'
+
 type BlockShape = {
   blocks: any
+  figure: any
 }
 
 const serializers = {
@@ -58,6 +62,9 @@ const serializers = {
         default:
           return <Text as="p">{props.children}</Text>
       }
+    },
+    figure(props: any) {
+      return <Figure {...props.node} />
     }
   }
 }
