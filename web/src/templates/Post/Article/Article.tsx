@@ -12,6 +12,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll'
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex, Text, Heading } from '../../../components/ui'
+import { Grid } from 'theme-ui'
 
 // Components
 import Button from '../../../components/ui/Button'
@@ -24,6 +25,7 @@ import CardLeak from '../../../components/CardLeak'
 import CardSlider from '../../../components/CardSlider'
 import Icon from '../../../components/Icons'
 import PostMeta from '../../../components/PostMeta'
+import Source from '../../../components/Source'
 
 // Data
 import usePost from '../../../hooks/usePost'
@@ -44,19 +46,15 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
         desc={`${post.title}`}
         pathname={`/articles/${post.slug.current}`}
       />
-      <S.Article bg={theme.colors.quinary}>
+      <S.Article>
         {post.categories && (
           <S.PageTitle px={theme.gutter.axis} py={4}>
             <Heading as="h4" color="white" mb={0} className="text--uppercase">
               {post.categories[0].title}
             </Heading>
+
             {post.tags && (
-              <Flex
-                ml={4}
-                pl={4}
-                width={1}
-                style={{ borderLeft: theme.border }}
-              >
+              <Flex className="pill-container">
                 {post.tags.slice(0, 3).map((item, idx) => (
                   <Pill key={idx}>
                     <span>#{item.tag}</span>
@@ -112,6 +110,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                     alt={post.figure.alt}
                     className="article__img"
                   />
+
                   {post.figure.caption && (
                     <Text as="figcaption" color="tertiary" fontSize={0} mt={2}>
                       {post.figure.caption}
@@ -156,22 +155,20 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
 
         {post.sources[0] && (
           <Section border={true} maxWidth={theme.maxWidth}>
-            <Heading as="h4" fontFamily="display" className="text--uppercase">
+            <Heading
+              as="h4"
+              fontFamily="display"
+              mb={5}
+              className="text--uppercase"
+            >
               Sources
             </Heading>
-            <Flex flexDirection={[`column`, `row`]} flexWrap="wrap" width={1}>
+
+            <Grid columns={[1, 2, 4]} gap={[4, 5, 6]}>
               {post.sources.map((source, idx) => (
-                <S.Source as="a" href={source.url} target="_blank" key={idx}>
-                  <Heading as="h5" className="title">
-                    <div>{source.title}</div>
-                    <Icon name="external-link" />
-                  </Heading>
-                  <Text className="url">
-                    {source.url}
-                  </Text>
-                </S.Source>
+                <Source source={source} key={idx} />
               ))}
-            </Flex>
+            </Grid>
           </Section>
         )}
 
@@ -184,6 +181,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
           >
             Related
           </Heading>
+          
           <Box width={1}>
             <CardSlider pagination={true} slidesPerView={3}>
               {posts.map(({ node: post }, idx) => (

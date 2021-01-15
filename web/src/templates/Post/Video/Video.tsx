@@ -4,14 +4,13 @@
 
 // Libraries
 import React from 'react'
-import { Link } from 'gatsby'
 import ResponsiveEmbed from 'react-responsive-embed'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 // Theme + UI
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex, Text, Heading } from '../../../components/ui'
+import { Grid } from 'theme-ui'
 import Pill from '../../../components/ui/Pill'
 
 // Components
@@ -22,6 +21,7 @@ import BlockContent from '../../../components/BlockContent'
 import CardLeak from '../../../components/CardLeak'
 import CardSlider from '../../../components/CardSlider'
 import PostMeta from '../../../components/PostMeta'
+import Source from '../../../components/Source'
 
 // Hooks
 import useVideo from '../../../hooks/useVideo'
@@ -111,22 +111,17 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
           <Section border={true} maxWidth={theme.maxWidth}>
             <Heading
               as="h4"
-              color="tertiary"
               fontFamily="display"
+              mb={5}
               className="text--uppercase"
             >
               Sources
             </Heading>
-            <Box width={1}>
+            <Grid columns={[1, 2, 4]} gap={[4, 5, 6]}>
               {post.sources.map((source, idx) => (
-                <Box key={idx}>
-                  <Heading as="h5">{source.title}</Heading>
-                  <Text as="a" href={source.url} target="_blank">
-                    {source.url}
-                  </Text>
-                </Box>
+                <Source source={source} key={idx} />
               ))}
-            </Box>
+            </Grid>
           </Section>
         )}
 

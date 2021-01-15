@@ -95,7 +95,7 @@ const theme: ThemeShape = {
     white: '#ffffff',
     red: '#FF0000',
 
-    lightgray: '#F1F1F1',
+    lightgray: '#F4F4F4',
     gray: '#C4C4c4',
     darkgray: '#696d6d',
     

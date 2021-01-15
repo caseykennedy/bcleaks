@@ -25,6 +25,7 @@ const Pill = styled(Flex)<PillProps>`
 
   color: ${theme.colors.primary};
   font-size: ${theme.fontSizes[0]};
+  white-space: nowrap;
 
   transition: all ${theme.transition.global};
 
