@@ -37,9 +37,9 @@ const CardLeak: React.FC<Props> = ({
     <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
       <Card inline={inline}>
         <Box width={!inline ? 1 : 1 / 3}>
-          {post.figure && (
-            <Box className="bg">
-              <Box className="figure">
+          <Box className="bg">
+            <Box className="figure">
+              {post.figure && (
                 <Img
                   fluid={{
                     ...post.figure.asset.fluid,
@@ -49,9 +49,9 @@ const CardLeak: React.FC<Props> = ({
                   objectPosition="50% 50%"
                   alt={post.title}
                 />
-              </Box>
+              )}
             </Box>
-          )}
+          </Box>
         </Box>
 
         <Flex width={!inline ? 1 : 2 / 3} className="content">

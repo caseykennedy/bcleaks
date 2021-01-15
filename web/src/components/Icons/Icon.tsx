@@ -11,14 +11,17 @@ import IconStyle from './styles.scss'
 // Icons
 // TODO: alphabetize
 import Hamburger from './SVG/Hamburger'
-import Carat from './SVG/Carat'
 import Facebook from './SVG/Facebook'
-import Bag from './SVG/Bag'
 import Instagram from './SVG/Instagram'
 import Twitter from './SVG/Twitter'
 import NextArrow from './SVG/NextArrow'
+import Bag from './SVG/Bag'
+import Carat from './SVG/Carat'
+
+
 import Document from './SVG/Document'
 import Download from './SVG/Download'
+import ExternalLink from './SVG/ExternalLink'
 
 import GridView from './SVG/GridView'
 import ListView from './SVG/ListView'
@@ -62,6 +65,12 @@ const Icon: React.FC<Props> = ({ name, className, color, fas }) => {
       return (
         <IconStyle color={color} className={className}>
           <Download />
+        </IconStyle>
+      )
+    case 'external-link':
+      return (
+        <IconStyle color={color} className={className}>
+          <ExternalLink />
         </IconStyle>
       )
     case 'facebook':

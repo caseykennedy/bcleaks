@@ -44,7 +44,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
         desc={`${post.title}`}
         pathname={`/articles/${post.slug.current}`}
       />
-      <S.Article>
+      <S.Article bg={theme.colors.quinary}>
         {post.categories && (
           <S.PageTitle px={theme.gutter.axis} py={4}>
             <Heading as="h4" color="white" mb={0} className="text--uppercase">
@@ -156,24 +156,22 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
 
         {post.sources[0] && (
           <Section border={true} maxWidth={theme.maxWidth}>
-            <Heading
-              as="h4"
-              color="tertiary"
-              fontFamily="display"
-              className="text--uppercase"
-            >
+            <Heading as="h4" fontFamily="display" className="text--uppercase">
               Sources
             </Heading>
-            <Box width={1}>
+            <Flex flexDirection={[`column`, `row`]} flexWrap="wrap" width={1}>
               {post.sources.map((source, idx) => (
-                <S.Source key={idx}>
-                  <Heading as="h5">{source.title}</Heading>
-                  <Text as="a" href={source.url} target="_blank">
+                <S.Source as="a" href={source.url} target="_blank" key={idx}>
+                  <Heading as="h5" className="title">
+                    <div>{source.title}</div>
+                    <Icon name="external-link" />
+                  </Heading>
+                  <Text className="url">
                     {source.url}
                   </Text>
                 </S.Source>
               ))}
-            </Box>
+            </Flex>
           </Section>
         )}
 
