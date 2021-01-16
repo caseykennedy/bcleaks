@@ -14,7 +14,6 @@ import { Grid } from 'theme-ui'
 // Components
 import Section from '../../components/Section'
 import CardLeak from '../../components/CardLeak'
-import CardSlider from '../../components/CardSlider'
 import FeaturedArticles from '../../components/FeaturedArticles'
 import TopArticles from '../../components/TopArticles'
 
@@ -41,7 +40,7 @@ const ArticlesPage = () => {
         </Heading>
       </S.PageTitle>
 
-      <Hero />
+      <FeaturedArticles />
 
       <Section bg="black" border={true} overflow="hidden">
         <Heading

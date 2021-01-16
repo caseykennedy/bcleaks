@@ -50,6 +50,8 @@ const CardSlider: React.FC<Props> = ({
   const paramsPagination = {
     slidesPerView: 1,
     spaceBetween: 8,
+    grabCursor: true,
+    freeMode: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,

@@ -100,9 +100,11 @@ const theme: ThemeShape = {
     darkgray: '#696d6d',
     
     moss: '#a8ffdc',
-    blue: '#7df2ff',
-    purple: '#ff2f86',
-    bitcoin: '#ff9900'
+    blue: '#1be8ff',
+    pink: '#f700de',
+    purple: '#bc58ff',
+    orange: '#ff9900',
+    yellow: '#e2fb00'
   },
 
   // Space

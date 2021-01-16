@@ -15,9 +15,11 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
   flex-direction: ${p => (!p.inline ? `column` : `row-reverse`)};
 
   border-bottom: ${theme.border};
-  padding: ${p => (!p.inline ? 0 : `${theme.space[5]} 0`)};
+  padding: ${p => (!p.inline ? 0 : `${theme.space[4]} 0`)};
 
-  /* border-radius: ${p => (!p.inline ? theme.borderRadius : 0)}; */
+  @media ${theme.mq.tablet} {
+    padding: ${p => (!p.inline ? 0 : `${theme.space[5]} 0`)};
+  }
 
   .content {
     flex: 1;
@@ -59,15 +61,22 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
   &:hover {
     .figure {
       border-color: ${theme.colors.primary};
+      transform: matrix(1, 0, 0, 1, 5, -5);
+    }
 
-      @media ${theme.mq.tablet} {
-        transform: matrix(1, 0, 0, 1, 5, -5);
-      }
+    .title {
+      color: ${theme.colors.primary};
     }
   }
 
   .title {
+    color: ${theme.colors.white};
+    font-size: calc(${theme.fontSizes[2]});
     padding-bottom: ${theme.space[4]};
+
+    @media ${theme.mq.tablet} {
+      font-size: calc(${theme.fontSizes[3]});
+    }
 
     &--small {
       font-size: calc(${theme.fontSizes[2]});

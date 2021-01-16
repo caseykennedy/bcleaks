@@ -10,7 +10,7 @@ import { Box, Flex } from '../../../components/ui'
 // ___________________________________________________________________
 
 export const Article = styled.div`
-  background: ${theme.colors.secondary};
+  background: ${theme.colors.background};
 
   .swiper-container {
     overflow: visible;

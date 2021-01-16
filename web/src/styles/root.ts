@@ -34,7 +34,7 @@ const RootVariables = css`
 
     /* line-height */
     --heading-line-height: 1.25;
-    --body-line-height: 1.75;
+    --body-line-height: 1.65;
 
     /* letter-spacing */
     --heading-letter-spacing: -1px;

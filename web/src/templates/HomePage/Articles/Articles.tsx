@@ -12,7 +12,7 @@ import { Box, Flex, Heading, Text } from '../../../components/ui'
 import Pill from '../../../components/ui/Pill'
 
 import BlockContent from '../../../components/BlockContent'
-import Featured from '../../../components/FeaturedArticles'
+import Billboard from '../../../components/FeaturedArticles'
 import CardLeak from '../../../components/CardLeak'
 import Section from '../../../components/Section'
 
@@ -46,7 +46,7 @@ const Articles = () => {
   const posts = usePost()
   return (
     <S.Articles>
-      <Section overflow="hidden">
+      <Section bg="black" overflow="hidden">
         <Flex
           justifyContent="space-between"
           width={1}
@@ -57,13 +57,13 @@ const Articles = () => {
           </Heading>
           <Link to={`/articles`}>View All</Link>
         </Flex>
-
-        <Box width={1} overflow="hidden">
-          <Featured />
-        </Box>
       </Section>
 
-      <Section>
+      <Box width={1} overflow="hidden">
+        <Billboard />
+      </Box>
+
+      <Section bg="black" border={true}>
         <Flex
           justifyContent="space-between"
           width={1}

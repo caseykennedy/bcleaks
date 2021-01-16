@@ -28,12 +28,20 @@ const PostMeta: React.FC<MetaShape> = ({
   publishedAt
 }) => {
   let pillColor
-  if (categories[0].title === 'Crypto') {
-    pillColor = theme.colors.primary
+  if (categories[0].title === 'Altcoin') {
+    pillColor = theme.colors.blue
   } else if (categories[0].title === 'Bitcoin') {
-    pillColor = theme.colors.bitcoin
-  } else if (categories[0].title === 'Videos') {
+    pillColor = theme.colors.orange
+  } else if (categories[0].title === 'Crypto Picks') {
+    pillColor = theme.colors.pink
+  } else if (categories[0].title === 'DeFi') {
+    pillColor = theme.colors.yellow
+  } else if (categories[0].title === 'Ethereum') {
     pillColor = theme.colors.purple
+  } else if (categories[0].title === 'Investigations') {
+    pillColor = theme.colors.gray
+  } else if (categories[0].title === 'Live Streams') {
+    pillColor = theme.colors.white
   } else {
     pillColor = theme.colors.tertiary
   }

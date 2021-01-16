@@ -14,8 +14,6 @@ export const Articles = styled(Box)`
     &__header {
       align-items: center;
       justify-content: space-between;
-
-      margin-bottom: ${theme.space[6]};
       width: 100%;
 
       h3 {

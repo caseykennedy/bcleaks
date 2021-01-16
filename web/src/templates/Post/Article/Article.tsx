@@ -172,7 +172,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
           </Section>
         )}
 
-        <Section border={true} overflow="hidden">
+        <Section bg="black" border={true} overflow="hidden">
           <Heading
             as="h4"
             color="tertiary"
