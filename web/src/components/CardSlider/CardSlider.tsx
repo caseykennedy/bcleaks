@@ -27,7 +27,7 @@ const CardSlider: React.FC<Props> = ({
     slidesPerView: 1,
     spaceBetween: 8,
     grabCursor: true,
-    freeMode: true,
+    // freeMode: true,
     breakpoints: {
       1024: {
         slidesPerView: `${slidesPerView}`,
@@ -51,7 +51,7 @@ const CardSlider: React.FC<Props> = ({
     slidesPerView: 1,
     spaceBetween: 8,
     grabCursor: true,
-    freeMode: true,
+    // freeMode: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,

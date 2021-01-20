@@ -6,11 +6,10 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
 
-// import * as S from './styles.scss'
+import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../ui'
 import Pill from '../ui/Pill'
-import Card from '../ui/Card'
 import PostMeta from '../PostMeta'
 
 // ___________________________________________________________________
@@ -35,7 +34,7 @@ const CardLeak: React.FC<Props> = ({
   const pagePrefix = !video ? `articles` : `videos`
   return (
     <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
-      <Card inline={inline}>
+      <S.CardLeak inline={inline}>
         <Box width={!inline ? 1 : 1 / 3}>
           <Box className="bg">
             <Box className="figure">
@@ -79,7 +78,7 @@ const CardLeak: React.FC<Props> = ({
             publishedAt={post.publishedAt}
           />
         </Flex>
-      </Card>
+      </S.CardLeak>
     </Link>
   )
 }

@@ -1,15 +1,19 @@
-// Card Styles:
+// Card Leak Styles:
 
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { darken } from 'polished'
-import { Box, Flex } from '.'
+import { lighten } from 'polished'
+
+// Theme
 import theme from '../../gatsby-plugin-theme-ui'
+
+// Elements
+import { Box, Flex } from '../ui'
 
 // ___________________________________________________________________
 
-export const Card = styled(Flex)<{ inline?: boolean }>`
+export const CardLeak = styled(Flex)<{ inline?: boolean }>`
   display: flex;
   align-items: center;
   flex-direction: ${p => (!p.inline ? `column` : `row-reverse`)};
@@ -74,6 +78,12 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
     font-size: calc(${theme.fontSizes[2]});
     margin-bottom: ${theme.space[4]};
 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
     @media ${theme.mq.tablet} {
       font-size: calc(${theme.fontSizes[3]});
     }
@@ -107,5 +117,3 @@ export const Card = styled(Flex)<{ inline?: boolean }>`
   .horizontal {
   }
 `
-
-export default Card

@@ -235,7 +235,7 @@ const Typography = css`
 
   p,
   .text--base {
-    color: ${theme.colors.gray};
+    color: ${theme.colors.lightgray};
     font-size: ${theme.fontSizes[2]};
     line-height: ${theme.root.font.bodyLineHeight};
     margin: 0 0 ${theme.space[4]};
