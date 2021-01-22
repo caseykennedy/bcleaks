@@ -42,7 +42,7 @@ const ArticlesPage = () => {
 
       <FeaturedArticles />
 
-      <Section bg="black" border={true} overflow="hidden">
+      {/* <Section bg="black" border={true} overflow="hidden">
         <Heading
           as="h4"
           color="tertiary"
@@ -52,7 +52,7 @@ const ArticlesPage = () => {
           Latest Articles
         </Heading>
         <TopArticles />
-      </Section>
+      </Section> */}
 
       <S.FilterNav px={theme.gutter.axis}>
         <Box className="inner">
@@ -65,6 +65,21 @@ const ArticlesPage = () => {
       </S.FilterNav>
 
       <Section>
+        <Flex
+          justifyContent="space-between"
+          width={1}
+          className="articles__header"
+        >
+          <Heading
+            as="h4"
+            fontFamily="display"
+            mb={0}
+            className="text--uppercase"
+          >
+            Latest
+          </Heading>
+        </Flex>
+
         <Box width={[1, 1, 6 / 8]}>
           {posts.map(({ node: post }, idx) => (
             <CardLeak aspectRatio={3 / 2} post={post} inline={true} key={idx} />

@@ -3,7 +3,7 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { lighten } from 'polished'
+import { darken } from 'polished'
 
 // Theme
 import theme from '../../gatsby-plugin-theme-ui'
@@ -15,14 +15,14 @@ import { Box, Flex } from '../ui'
 
 export const CardLeak = styled(Flex)<{ inline?: boolean }>`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: ${p => (!p.inline ? `column` : `row-reverse`)};
 
   border-bottom: ${theme.border};
-  padding: ${p => (!p.inline ? 0 : `${theme.space[4]} 0`)};
+  padding: ${p => (!p.inline ? 0 : `${theme.space[5]} 0`)};
 
   @media ${theme.mq.tablet} {
-    padding: ${p => (!p.inline ? 0 : `${theme.space[5]} 0`)};
+    padding: ${p => (!p.inline ? 0 : `${theme.space[6]} 0`)};
   }
 
   .content {
@@ -30,6 +30,9 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    border-right: ${p => (!p.inline ? theme.border : `none`)};
+    border-left: ${p => (!p.inline ? theme.border : `none`)};
 
     height: 100%;
     padding: ${p =>
@@ -40,7 +43,7 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
     @media ${theme.mq.tablet} {
       padding: ${p =>
         !p.inline
-          ? `${theme.space[5]} ${theme.space[3]}`
+          ? `${theme.space[3]} ${theme.space[3]}`
           : `0 ${theme.space[5]} 0 0`};
     }
   }
@@ -74,7 +77,7 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
   }
 
   .title {
-    color: ${theme.colors.white};
+    color: ${darken(0.15, theme.colors.white)};
     font-size: calc(${theme.fontSizes[2]});
     margin-bottom: ${theme.space[4]};
 

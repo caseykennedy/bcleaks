@@ -23,7 +23,7 @@ const Pill = styled(Flex)<PillProps>`
   margin-right: ${theme.space[2]};
   padding: ${theme.space[1]} ${theme.space[2]};
 
-  color: ${theme.colors.primary};
+  color: ${theme.colors.tertiary};
   font-size: ${theme.fontSizes[0]};
   white-space: nowrap;
 

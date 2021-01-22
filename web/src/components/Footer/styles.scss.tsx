@@ -57,6 +57,7 @@ export const Footer = styled(Flex)`
 `
 
 export const Bulletin = styled(Flex)`
+  background: ${theme.colors.black};
   border-top: ${theme.border};
 
   .inner {
@@ -165,6 +166,7 @@ export const Bulletin = styled(Flex)`
 
 export const Social = styled(Flex)`
   border-top: ${theme.border};
+  background: ${theme.colors.black};
 
   .inner {
     display: flex;

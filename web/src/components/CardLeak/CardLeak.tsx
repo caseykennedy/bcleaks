@@ -55,6 +55,12 @@ const CardLeak: React.FC<Props> = ({
 
         <Flex width={!inline ? 1 : 2 / 3} className="content">
           <Box>
+            <Heading
+              className={`title  ${!small ? `text--md` : `title--small`}`}
+            >
+              {post.title && post.title}
+            </Heading>
+
             {post.tags && (
               <Flex mb={4} width={1}>
                 {post.tags.slice(0, 3).map((item, idx) => (
@@ -64,12 +70,6 @@ const CardLeak: React.FC<Props> = ({
                 ))}
               </Flex>
             )}
-
-            <Heading
-              className={`title  ${!small ? `text--md` : `title--small`}`}
-            >
-              {post.title && post.title}
-            </Heading>
           </Box>
 
           <PostMeta
