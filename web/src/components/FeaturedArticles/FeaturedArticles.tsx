@@ -29,26 +29,12 @@ const FeaturedArticles: React.FC<Props> = () => {
   return (
     <S.FeaturedArticles>
       <Flex className="featured__inner">
-        {posts.slice(3, 5).map(({ node: post }, idx) => (
+        {posts.slice(0, 1).map(({ node: post }, idx) => (
           <Link
             to={`/articles/${post.slug.current}`}
             className="featured__panel"
             key={idx}
           >
-            {post.figure && (
-              <Box className="featured__image">
-                <Img
-                  fluid={{
-                    ...post.figure.asset.fluid,
-                    aspectRatio: 1 / 1
-                  }}
-                  objectFit="cover"
-                  objectPosition="50% 50%"
-                  alt={post.title}
-                />
-              </Box>
-            )}
-
             <Flex className="featured__content">
               <Box width={1}>
                 {post.tags && (
@@ -80,6 +66,20 @@ const FeaturedArticles: React.FC<Props> = () => {
                 </Link>
               </Flex>
             </Flex>
+
+            {post.figure && (
+              <Box className="featured__image">
+                <Img
+                  fluid={{
+                    ...post.figure.asset.fluid,
+                    aspectRatio: 1.15 / 1
+                  }}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  alt={post.title}
+                />
+              </Box>
+            )}
           </Link>
         ))}
       </Flex>

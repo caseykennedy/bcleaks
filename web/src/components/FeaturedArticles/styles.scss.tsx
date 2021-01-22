@@ -18,18 +18,25 @@ export const FeaturedArticles = styled(Box)`
 
   .featured {
     &__image {
-      position: absolute;
+      /* position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
-      left: 0;
+      left: 0; */
 
-      opacity: 0.15;
+      flex: 2;
+
+      overflow: hidden;
+      opacity: 0.85;
       mix-blend-mode: difference;
 
       height: 100%;
       width: 100%;
       z-index: 0;
+
+      img {
+        /* transform: scale(0.75); */
+      }
     }
 
     &__inner {
@@ -47,6 +54,7 @@ export const FeaturedArticles = styled(Box)`
     }
 
     &__content {
+      flex: 2;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -59,6 +67,7 @@ export const FeaturedArticles = styled(Box)`
     }
 
     &__panel {
+      display: flex;
       flex: 1;
       padding: ${theme.space[4]};
       position: relative;
@@ -86,7 +95,7 @@ export const FeaturedArticles = styled(Box)`
 
       &:hover {
         a {
-          color: ${darken(0.15, theme.colors.white)};
+          color: ${theme.colors.primary};
         }
 
         .button {
