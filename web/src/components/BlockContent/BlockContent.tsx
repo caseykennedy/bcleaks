@@ -37,7 +37,7 @@ const serializers = {
 
         case 'h4':
           return (
-            <Heading as="h4" mt={4}>
+            <Heading as="h4" color="white" mt={4}>
               {props.children}
             </Heading>
           )
