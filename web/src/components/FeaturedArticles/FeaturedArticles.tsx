@@ -30,45 +30,48 @@ const FeaturedArticles: React.FC<Props> = () => {
     <S.FeaturedArticles>
       <Flex className="featured__inner">
         {posts.slice(0, 1).map(({ node: post }, idx) => (
-          <Link
-            to={`/articles/${post.slug.current}`}
-            className="featured__panel"
-            key={idx}
-          >
-            <Flex className="featured__content">
-              <Box width={1}>
-                {post.tags && (
-                  <Flex mb={4} width={1}>
-                    {post.tags.map((item, idx) => (
-                      <Pill key={idx}>
-                        <span>#{item.tag}</span>
-                      </Pill>
-                    ))}
-                  </Flex>
-                )}
+          <>
+            <Link
+              to={`/articles/${post.slug.current}`}
+              className="featured__panel"
+              key={idx}
+            >
+              <Flex className="featured__content">
+                <Box width={1}>
+                  <Heading as="h1" className="text--xl  text--uppercase">
+                    <Link to={`/articles/${post.slug.current}`}>
+                      {post.title}
+                    </Link>
+                  </Heading>
+                  {post.tags && (
+                    <Flex mb={4} width={1}>
+                      {post.tags.map((item, idx) => (
+                        <Pill key={idx}>
+                          <span>#{item.tag}</span>
+                        </Pill>
+                      ))}
+                    </Flex>
+                  )}
+                </Box>
 
-                <Heading as="h1" className="text--xl  text--uppercase">
-                  <Link to={`/articles/${post.slug.current}`}>
-                    {post.title}
+                <Flex alignItems="center" justifyContent="space-between">
+                  <PostMeta
+                    authors={post.authors}
+                    categories={post.categories}
+                    publishedAt={post.publishedAt}
+                  />
+
+                  <Link
+                    to={`/articles/${post.slug.current}`}
+                    className="button"
+                  >
+                    <Icon name="carat" />
                   </Link>
-                </Heading>
-              </Box>
-
-              <Flex alignItems="center" justifyContent="space-between">
-                <PostMeta
-                  authors={post.authors}
-                  categories={post.categories}
-                  publishedAt={post.publishedAt}
-                />
-
-                <Link to={`/articles/${post.slug.current}`} className="button">
-                  <Icon name="carat" />
-                </Link>
+                </Flex>
               </Flex>
-            </Flex>
-
+            </Link>
             {post.figure && (
-              <Box className="featured__image">
+              <Box flex={1} className="featured__image">
                 <Img
                   fluid={{
                     ...post.figure.asset.fluid,
@@ -80,7 +83,7 @@ const FeaturedArticles: React.FC<Props> = () => {
                 />
               </Box>
             )}
-          </Link>
+          </>
         ))}
       </Flex>
     </S.FeaturedArticles>

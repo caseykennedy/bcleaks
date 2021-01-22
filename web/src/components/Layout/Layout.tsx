@@ -37,7 +37,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const mainRef = useRef<HTMLDivElement>(null)
 
   // eslint-disable-next-line no-console
-  console.log(`%c BC Leaks `, `background: #2cc48a; color: #000000`)
+  console.log(
+    `%c BC Leaks — crafted with care. [ caseykennedy.hns.to ] `,
+    `background: #2cc48a; color: #000000`
+  )
   return (
     <ContextProvider>
       <ThemeProvider theme={theme}>

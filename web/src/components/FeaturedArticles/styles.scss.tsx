@@ -68,7 +68,7 @@ export const FeaturedArticles = styled(Box)`
 
     &__panel {
       display: flex;
-      flex: 1;
+      flex: 2;
       padding: ${theme.space[4]};
       position: relative;
 
