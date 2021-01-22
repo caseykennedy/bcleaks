@@ -63,7 +63,7 @@ const Articles = () => {
         <Billboard />
       </Box>
 
-      <Section bg="black" border={true}>
+      <Section border={true}>
         <Flex
           justifyContent="space-between"
           width={1}

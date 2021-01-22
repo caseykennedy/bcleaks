@@ -13,7 +13,7 @@ import { Box, Flex } from '../ui'
 
 // ___________________________________________________________________
 
-export const Header = styled(Box)`
+export const Header = styled(Flex)`
   display: flex;
   align-items: center;
   justify-content: space-between;
