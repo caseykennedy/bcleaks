@@ -22,7 +22,7 @@ import Symbol from '../Symbol'
 
 // Assets
 import podFig from './assets/bc-podcast.svg'
-import checkUsOut from './assets/checkUsOut.svg'
+import checkUsOut from './assets/checkusout.svg'
 
 // ___________________________________________________________________
 
