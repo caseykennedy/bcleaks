@@ -37,6 +37,7 @@ export const FilterNav = styled(Flex)`
   justify-content: space-between;
 
   background: ${theme.colors.black};
+  border-top: ${theme.border};
   color: ${theme.colors.tertiary};
 
   height: calc(${theme.headerHeight});
