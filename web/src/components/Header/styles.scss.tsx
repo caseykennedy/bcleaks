@@ -14,27 +14,32 @@ import { Box, Flex } from '../ui'
 // ___________________________________________________________________
 
 export const Header = styled(Flex)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: ${theme.maxWidth};
+    padding: 0 ${theme.space[4]};
+
+    @media ${theme.mq.tablet} {
+      padding: 0 ${theme.space[5]};
+    }
+
+    @media ${theme.mq.desktop} {
+      padding: 0 ${theme.space[6]};
+    }
+  }
 
   background: ${theme.colors.background};
   border-bottom: ${theme.border};
   margin: 0 auto;
-  padding: 0 ${theme.space[4]};
   position: sticky;
   top: 0;
 
   width: 100%;
   z-index: 999999;
-
-  @media ${theme.mq.tablet} {
-    padding: 0 ${theme.space[5]};
-  }
-
-  @media ${theme.mq.desktop} {
-    padding: 0 ${theme.space[6]};
-  }
 `
 
 export const Menu = styled(Flex)`
@@ -130,7 +135,7 @@ export const Account = styled(Flex)`
       position: absolute;
       width: 0%;
       height: calc(${theme.space[1]} / 1.5);
-      top: 0;
+      bottom: 0;
       right: 0;
       transition: width ${theme.transition.global};
     }
@@ -156,7 +161,7 @@ export const Announcement = styled(Flex)`
     &__inner {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-end;
 
       margin: 0 auto;
 

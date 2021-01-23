@@ -37,24 +37,9 @@ const FeaturedArticles: React.FC<Props> = () => {
               key={idx}
             >
               <Flex className="featured__content">
-                <Box width={1}>
-                  <Heading as="h1" className="text--xl  text--uppercase">
-                    <Link to={`/articles/${post.slug.current}`}>
-                      {post.title}
-                    </Link>
-                  </Heading>
-                  {post.tags && (
-                    <Flex mb={4} width={1}>
-                      {post.tags.map((item, idx) => (
-                        <Pill key={idx}>
-                          <span>#{item.tag}</span>
-                        </Pill>
-                      ))}
-                    </Flex>
-                  )}
-                </Box>
 
-                <Flex alignItems="center" justifyContent="space-between">
+
+              <Flex alignItems="center" justifyContent="space-between">
                   <PostMeta
                     authors={post.authors}
                     categories={post.categories}
@@ -68,6 +53,23 @@ const FeaturedArticles: React.FC<Props> = () => {
                     <Icon name="carat" />
                   </Link>
                 </Flex>
+
+                <Box width={1}>
+                  <Heading as="h1" className="text--xl  text--uppercase">
+                    <Link to={`/articles/${post.slug.current}`}>
+                      {post.title}
+                    </Link>
+                  </Heading>
+                  {post.tags && (
+                    <Flex mb={0} width={1}>
+                      {post.tags.map((item, idx) => (
+                        <Pill key={idx}>
+                          <span>#{item.tag}</span>
+                        </Pill>
+                      ))}
+                    </Flex>
+                  )}
+                </Box>
               </Flex>
             </Link>
             {post.figure && (

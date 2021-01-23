@@ -62,44 +62,47 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
           <div className="page-title">
             <GetDate />
           </div>
+          <S.Account>
+          <button onClick={() => setDialog(true)}>log in</button>
+          <button onClick={() => setDialog(true)}>sign up</button>
+        </S.Account>
         </Flex>
       </S.Announcement>
 
       <S.Header as="header">
-        <S.Logo>
-          <Link
-            to="/"
-            className="logo-symbol"
-            aria-label="BC Leaks, back to home"
-          >
-            <Symbol />
-          </Link>
-          <Flex className="logo-lettermark">
-            <Lettermark />
+        <Flex className="inner">
+          <Flex>
+            <S.Logo>
+              <Link
+                to="/"
+                className="logo-symbol"
+                aria-label="BC Leaks, back to home"
+              >
+                <Symbol />
+              </Link>
+              <Flex className="logo-lettermark">
+                <Lettermark />
+              </Flex>
+              <S.Toggle onClick={toggleMenu} aria-label="toggle menu">
+                <HamburgerMenu
+                  isOpen={!isNavOpen ? false : true}
+                  menuClicked={toggleMenu}
+                  width={32}
+                  height={12}
+                  strokeWidth={1.5}
+                  rotate={0}
+                  color="white"
+                  borderRadius={0}
+                  animationDuration={0.333}
+                />
+              </S.Toggle>
+            </S.Logo>
+
+            <S.Menu>
+              <Navigation />
+            </S.Menu>
           </Flex>
-          <S.Toggle onClick={toggleMenu} aria-label="toggle menu">
-            <HamburgerMenu
-              isOpen={!isNavOpen ? false : true}
-              menuClicked={toggleMenu}
-              width={32}
-              height={12}
-              strokeWidth={1.5}
-              rotate={0}
-              color="white"
-              borderRadius={0}
-              animationDuration={0.333}
-            />
-          </S.Toggle>
-        </S.Logo>
-
-        <S.Menu>
-          <Navigation />
-        </S.Menu>
-
-        <S.Account>
-          <button onClick={() => setDialog(true)}>log in</button>
-          <button onClick={() => setDialog(true)}>sign up</button>
-        </S.Account>
+        </Flex>
       </S.Header>
     </>
   )

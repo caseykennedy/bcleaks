@@ -39,13 +39,13 @@ export const Nav = styled.nav`
 
     &::before {
       content: '';
-      background: ${theme.colors.tertiary};
+      background: ${theme.colors.primary};
       width: 0;
       height: 2px;
 
       position: absolute;
 
-      bottom: 0;
+      top: 0;
       left: 0;
       z-index: 0;
 
