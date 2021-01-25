@@ -28,7 +28,7 @@ const ArticlesPage = () => {
   const posts = usePost()
   return (
     <S.ArticlesPage>
-      <S.PageTitle px={theme.gutter.axis} py={4}>
+      {/* <S.PageTitle px={theme.gutter.axis} py={4}>
         <Heading
           as="h3"
           color="tertiary"
@@ -38,7 +38,7 @@ const ArticlesPage = () => {
         >
           Articles
         </Heading>
-      </S.PageTitle>
+      </S.PageTitle> */}
 
       <FeaturedArticles />
 
@@ -73,16 +73,15 @@ const ArticlesPage = () => {
           <Heading
             as="h4"
             fontFamily="display"
-            mb={0}
             className="text--uppercase"
           >
-            Latest
+            Latest Articles
           </Heading>
         </Flex>
 
         <Box width={[1, 1, 6 / 8]}>
           {posts.map(({ node: post }, idx) => (
-            <CardLeak aspectRatio={3 / 2} post={post} inline={true} key={idx} />
+            <CardLeak aspectRatio={1 / 1} post={post} inline={true} key={idx} />
           ))}
         </Box>
       </Section>

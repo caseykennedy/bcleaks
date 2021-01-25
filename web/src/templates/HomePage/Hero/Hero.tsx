@@ -38,7 +38,7 @@ const Hero: React.FC<Props> = () => {
 
             {post.tags && (
               <Flex mb={4} width={1}>
-                {post.tags.map((item, idx) => (
+                {post.tags.slice(0, 2).map((item, idx) => (
                   <Pill key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>

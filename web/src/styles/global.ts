@@ -3,6 +3,7 @@
 // ___________________________________________________________________
 
 import { createGlobalStyle } from 'styled-components'
+import { darken } from 'polished'
 
 import theme from '../gatsby-plugin-theme-ui'
 
@@ -16,6 +17,26 @@ const GlobalStyles = createGlobalStyle`
   ${RootVars}
   ${Reset}
   ${Typography}
+
+  ::-webkit-scrollbar {
+    width: ${theme.space[2]};
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: ${theme.colors.black};
+    border-left: ${theme.border};
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: ${theme.colors.darkgray};
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${theme.colors.primary};
+  }
   
   body {
     background: ${theme.colors.black};
@@ -24,9 +45,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    
   }
 
   figure {

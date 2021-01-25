@@ -57,17 +57,18 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
         aria-label="Log in"
       />
 
-      <S.Announcement>
-        <Flex className="announcement__inner">
-          <div className="page-title">
+      <S.Utilities>
+        <Flex className="inner">
+          <Flex className="date">
             <GetDate />
-          </div>
-          <S.Account>
-          <button onClick={() => setDialog(true)}>log in</button>
-          <button onClick={() => setDialog(true)}>sign up</button>
-        </S.Account>
+          </Flex>
+          
+          <Flex className="account">
+            <button onClick={() => setDialog(true)}>log in</button>
+            <button onClick={() => setDialog(true)}>sign up</button>
+          </Flex>
         </Flex>
-      </S.Announcement>
+      </S.Utilities>
 
       <S.Header as="header">
         <Flex className="inner">

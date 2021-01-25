@@ -62,8 +62,8 @@ const CardLeak: React.FC<Props> = ({
             </Heading>
 
             {post.tags && (
-              <Flex mb={4} width={1}>
-                {post.tags.slice(0, 3).map((item, idx) => (
+              <Flex mb={6} width={1}>
+                {post.tags.slice(0, 2).map((item, idx) => (
                   <Pill key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>

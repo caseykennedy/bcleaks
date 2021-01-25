@@ -171,7 +171,7 @@ const theme: ThemeShape = {
   strokeWidth: '2px',
 
   maxWidth: '1280px',
-  siteWidth: '100vw',
+  siteWidth: '100%',
   logoWidth: '',
   headerHeight: '74px',
   tickerHeight: '64px',

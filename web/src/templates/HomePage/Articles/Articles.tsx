@@ -74,7 +74,6 @@ const Articles = () => {
           <Heading
             as="h4"
             fontFamily="display"
-            mb={0}
             className="text--uppercase"
           >
             Latest
@@ -83,9 +82,9 @@ const Articles = () => {
 
         <Box width={[1, 1, 6 / 8]} className="articles__main">
           <Box>
-            {posts.map(({ node: post }, idx) => (
+            {posts.slice(0, 6).map(({ node: post }, idx) => (
               <CardLeak
-                aspectRatio={3 / 2}
+                aspectRatio={4 / 3}
                 post={post}
                 inline={true}
                 key={idx}
