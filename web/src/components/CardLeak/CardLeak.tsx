@@ -38,7 +38,7 @@ const CardLeak: React.FC<Props> = ({
         <Box width={!inline ? 1 : 1 / 3}>
           <Box className="bg">
             <Box className="figure">
-              {post.figure && (
+              {post.figure.asset.fluid && (
                 <Img
                   fluid={{
                     ...post.figure.asset.fluid,
@@ -62,9 +62,9 @@ const CardLeak: React.FC<Props> = ({
             </Heading>
 
             {post.tags && (
-              <Flex mb={6} width={1}>
-                {post.tags.slice(0, 2).map((item, idx) => (
-                  <Pill key={idx}>
+              <Flex className="pillbox">
+                {post.tags.slice(0, 3).map((item, idx) => (
+                  <Pill mb={2} key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>
                 ))}
@@ -77,6 +77,20 @@ const CardLeak: React.FC<Props> = ({
             categories={post.categories}
             publishedAt={post.publishedAt}
           />
+
+          {/* {video && (
+            <Box as="span" className="text--small">
+              <Text as="span" color="white" mb={0}>
+                {publishedAt}
+              </Text>
+              by {post.authors && post.authors.name} in{' '}
+              <Link to={``}>
+                <Box as="span" className="category">
+                  {post.categories && post.categories[0].title}
+                </Box>
+              </Link>
+            </Box>
+          )} */}
         </Flex>
       </S.CardLeak>
     </Link>

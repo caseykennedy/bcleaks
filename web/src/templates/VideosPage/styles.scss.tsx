@@ -26,6 +26,7 @@ export const PageTitle = styled(Box)`
   justify-content: space-between;
 
   background: ${theme.colors.black};
+  border-bottom: ${theme.border};
   height: ${theme.tickerHeight};
   width: 100%;
 

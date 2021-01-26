@@ -83,7 +83,7 @@ const theme: ThemeShape = {
 
   colors: {
     text: '#f5f5f5',
-    background: '#111111',
+    background: '#121212',
 
     primary: '#00ff9b',
     secondary: '#0d0d0d',

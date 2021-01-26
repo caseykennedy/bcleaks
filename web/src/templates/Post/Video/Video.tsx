@@ -50,13 +50,14 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
             </Heading>
             {post.tags && (
               <Flex
+                flexWrap="wrap"
                 ml={4}
                 pl={4}
                 width={1}
                 style={{ borderLeft: theme.border }}
               >
                 {post.tags.slice(0, 3).map((item, idx) => (
-                  <Pill key={idx}>
+                  <Pill mb={2} key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>
                 ))}

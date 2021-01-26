@@ -44,7 +44,7 @@ const FeaturedArticles: React.FC<Props> = () => {
                     </Link>
                   </Heading>
                   {post.tags && (
-                    <Flex mb={0} width={1}>
+                    <Flex mb={6} width={1}>
                       {post.tags.slice(0, 3).map((item, idx) => (
                         <Pill key={idx}>
                           <span>#{item.tag}</span>
@@ -75,7 +75,7 @@ const FeaturedArticles: React.FC<Props> = () => {
                 <Img
                   fluid={{
                     ...post.figure.asset.fluid,
-                    aspectRatio: 1.15 / 1
+                    aspectRatio: 1.25 / 1
                   }}
                   objectFit="cover"
                   objectPosition="50% 50%"

@@ -44,7 +44,7 @@ const RootVariables = css`
       :root {
         --text-base-size: 0.95em;
         --body-line-height: 1.75;
-        --heading-line-height: 1.35;
+        --heading-line-height: 1.25;
       }
     }
 

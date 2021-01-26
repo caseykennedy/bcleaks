@@ -56,7 +56,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
             {post.tags && (
               <Flex className="pill-container">
                 {post.tags.slice(0, 3).map((item, idx) => (
-                  <Pill key={idx}>
+                  <Pill mb={2} key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>
                 ))}
@@ -138,9 +138,9 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
 
                 <Box mt={6}>
                   {post.tags && (
-                    <Flex mb={4} width={1}>
+                    <Flex flexWrap="wrap" mb={4} width={1}>
                       {post.tags.map((item, idx) => (
-                        <Pill key={idx}>
+                        <Pill mb={2} key={idx}>
                           <span>#{item.tag}</span>
                         </Pill>
                       ))}

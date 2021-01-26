@@ -59,6 +59,16 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
           ? `${theme.space[3]} ${theme.space[4]}`
           : `0 0 ${theme.space[5]} ${theme.space[5]}`};
     }
+
+    .pillbox {
+      display: none;
+      margin-bottom: ${theme.space[6]};
+      width: 100%;
+
+      @media ${theme.mq.tablet} {
+        display: flex;
+      }
+    }
   }
 
   a {
@@ -92,21 +102,23 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
   .title {
     color: ${theme.colors.white};
     font-size: calc(${theme.fontSizes[2]});
-    margin-bottom: ${theme.space[2]};
+    margin-bottom: ${theme.space[6]};
 
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-line-clamp: 5; /* number of lines to show */
     -webkit-box-orient: vertical;
 
     @media ${theme.mq.tablet} {
       font-size: calc(${theme.fontSizes[3]});
+      -webkit-line-clamp: 2; /* number of lines to show */
+      margin-bottom: ${theme.space[2]};
     }
 
     &--small {
       font-size: calc(${theme.fontSizes[2]});
-      margin: 0 0 ${theme.space[4]};
+      margin-bottom: 0 0 ${theme.space[4]};
 
       @media ${theme.mq.tablet} {
         font-size: calc(${theme.fontSizes[3]} / 1.25);

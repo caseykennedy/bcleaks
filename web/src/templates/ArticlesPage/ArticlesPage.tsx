@@ -81,7 +81,7 @@ const ArticlesPage = () => {
 
         <Box width={[1, 1, 6 / 8]}>
           {posts.map(({ node: post }, idx) => (
-            <CardLeak aspectRatio={1 / 1} post={post} inline={true} key={idx} />
+            <CardLeak aspectRatio={4 / 3} post={post} inline={true} key={idx} />
           ))}
         </Box>
       </Section>

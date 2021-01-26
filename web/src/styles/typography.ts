@@ -316,8 +316,13 @@ const Typography = css`
   }
 
   ul {
-    margin: 0 0 ${theme.space[6]};
-    list-style-type: disc;
+    margin: 0 0 ${theme.space[6]} ${theme.space[4]};
+    /* list-style-position: inside; */
+    list-style-type: square;
+
+    @media ${theme.mq.tablet} {
+      margin: 0 0 ${theme.space[6]} ${theme.space[4]};
+    }
 
     li {
       color: ${darken(0.15, theme.colors.white)};

@@ -39,7 +39,7 @@ const VideosPage = () => {
         </Heading>
       </S.PageTitle>
 
-      <Section bg="black" border={true} overflow="hidden">
+      {/* <Section bg="black" border={true} overflow="hidden">
         <Heading
           as="h4"
           fontFamily="display"
@@ -55,7 +55,7 @@ const VideosPage = () => {
             </Flex>
           ))}
         </CardSlider>
-      </Section>
+      </Section> */}
 
       <S.FilterNav px={theme.gutter.axis}>
         <Box className="inner">

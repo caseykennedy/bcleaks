@@ -47,15 +47,12 @@ export const PageTitle = styled(Box)`
   }
 
   .pill-container {
+    display: flex;
+    flex-wrap: wrap;
+
     border-left: ${theme.border};
     margin-left: ${theme.space[4]};
     padding-left: ${theme.space[4]};
     width: 100%;
-
-    display: none;
-
-    @media ${theme.mq.tablet} {
-      display: flex;
-    }
   }
 `

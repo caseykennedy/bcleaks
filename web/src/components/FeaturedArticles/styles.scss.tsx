@@ -17,32 +17,10 @@ export const FeaturedArticles = styled(Box)`
   border-top: ${theme.border};
 
   .featured {
-    &__image {
-      /* position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0; */
-
-      flex: 2;
-
-      overflow: hidden;
-      opacity: 0.85;
-      mix-blend-mode: difference;
-
-      height: 100%;
-      width: 100%;
-      z-index: 0;
-
-      img {
-        /* transform: scale(0.75); */
-      }
-    }
-
     &__inner {
       display: flex;
       flex-wrap: wrap;
-      flex-direction: column;
+      flex-direction: column-reverse;
 
       margin-right: auto;
       max-width: ${theme.maxWidth};
@@ -50,6 +28,29 @@ export const FeaturedArticles = styled(Box)`
 
       @media ${theme.mq.tablet} {
         flex-direction: row;
+        justify-content: stretch;
+      }
+    }
+
+    &__image {
+      /* position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0; */
+
+      flex: 1;
+
+      /* overflow: hidden; */
+      opacity: 0.85;
+      mix-blend-mode: difference;
+
+      /* height: 100%; */
+      width: 100%;
+      z-index: 0;
+
+      .gatsby-image-wrapper {
+        height: 100%;
       }
     }
 
@@ -66,7 +67,7 @@ export const FeaturedArticles = styled(Box)`
       z-index: 1;
     }
 
-    &__panel {
+    &__panel{
       display: flex;
       flex: 2;
       padding: ${theme.space[4]};
@@ -110,7 +111,11 @@ export const FeaturedArticles = styled(Box)`
 
         span > svg {
           stroke: ${theme.colors.white};
-          width: ${theme.space[4]};
+          width: ${theme.space[3]};
+
+          @media ${theme.mq.tablet} {
+            width: ${theme.space[4]};
+          }
         }
       }
     }
