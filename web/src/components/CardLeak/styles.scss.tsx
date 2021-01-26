@@ -118,7 +118,7 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
 
     &--small {
       font-size: calc(${theme.fontSizes[2]});
-      margin-bottom: 0 0 ${theme.space[4]};
+      margin-bottom: ${theme.space[2]};
 
       @media ${theme.mq.tablet} {
         font-size: calc(${theme.fontSizes[3]} / 1.25);

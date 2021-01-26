@@ -8,7 +8,7 @@ import React from 'react'
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../../components/ui'
-import HeadingStroked from '../../components/ui/HeadingStroked'
+import { Grid } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
@@ -68,13 +68,13 @@ const VideosPage = () => {
       </S.FilterNav>
 
       <Section>
-        <S.AllPosts>
+        <Grid columns={[1, 2, 3]} gap={theme.space[4]}>
           {videos.map(({ node: post }, idx) => (
             <Flex key={idx}>
               <CardLeak post={post} video={true} small={true} />
             </Flex>
           ))}
-        </S.AllPosts>
+        </Grid>
       </Section>
     </S.VideosPage>
   )

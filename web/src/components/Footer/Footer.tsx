@@ -89,6 +89,23 @@ const Bulletin = () => {
           </Text>
         </Box>
 
+        <Box px={theme.gutter.axis} py={[5, 5, 6]} className="bulletin__social">
+          <Flex width={1} justifyContent="space-between" mb={4} flexWrap="wrap">
+            <Box as="img" width="175px" src={checkUsOut} alt="BC Leaks Podcast" />
+
+            <Flex justifyContent="flex-end" pl={4}>
+              youtube
+              <br />
+              twitter
+            </Flex>
+          </Flex>
+
+          <Flex>
+            <button>subscribe</button>
+            <button>Follow</button>
+          </Flex>
+        </Box>
+
         {/* <Box
           px={theme.gutter.axis}
           py={[5, 5, 6]}
@@ -159,7 +176,6 @@ const Footer: React.FC = () => {
   return (
     <>
       <Bulletin />
-      <Social />
       <S.Footer as="footer">
         <Box>
           <a href="">FAQs</a>

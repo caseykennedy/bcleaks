@@ -9,6 +9,7 @@ import { Link } from 'gatsby'
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading } from '../../../components/ui'
+import { Grid } from 'theme-ui'
 
 // Components
 import CardSlider from '../../../components/CardSlider'
@@ -32,13 +33,13 @@ const Videos = () => {
       </Flex>
 
       <Box className="videos__posts">
-        <CardSlider pagination={true} slidesPerView={3}>
-          {videos.map(({ node: post }, idx) => (
-            <Box key={idx}>
-              <CardLeak post={post} small={true} video={true} />
-            </Box>
+      <Grid columns={[1, 2, 3]} gap={theme.space[4]}>
+          {videos.slice(0, 6).map(({ node: post }, idx) => (
+            <Flex key={idx}>
+              <CardLeak post={post} video={true} small={true} />
+            </Flex>
           ))}
-        </CardSlider>
+        </Grid>
       </Box>
     </S.Videos>
   )

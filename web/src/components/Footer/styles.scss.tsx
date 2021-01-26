@@ -75,7 +75,7 @@ export const Bulletin = styled(Flex)`
 
   .bulletin {
     &__newsletter {
-      flex: 0.65;
+      flex: 2;
       margin-bottom: ${theme.space[6]};
 
       @media ${theme.mq.tablet} {
@@ -159,6 +159,14 @@ export const Bulletin = styled(Flex)`
         svg {
           width: 60px;
         }
+      }
+    }
+
+    &__social {
+      flex: 1;
+
+      @media ${theme.mq.tablet} {
+        border-right: ${theme.border};
       }
     }
   }
