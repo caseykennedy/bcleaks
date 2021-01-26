@@ -75,7 +75,7 @@ export const Bulletin = styled(Flex)`
 
   .bulletin {
     &__newsletter {
-      flex: 7;
+      flex: 0.65;
       margin-bottom: ${theme.space[6]};
 
       @media ${theme.mq.tablet} {
@@ -192,6 +192,7 @@ export const Social = styled(Flex)`
 
     &__podcast {
       flex: 2;
+      flex-wrap: wrap;
     }
   }
 `

@@ -16,8 +16,8 @@ import { Box, Flex, Heading, Text } from '../ui'
 import { Input } from 'theme-ui'
 
 // Components
-import CoinDrop from './CoinDrop'
-import Section from '../Section'
+import Button from '../ui/Button'
+import Icon from '../Icons'
 import Symbol from '../Symbol'
 
 // Assets
@@ -39,7 +39,7 @@ const Bulletin = () => {
           py={[5, 5, 6]}
           className="bulletin__newsletter"
         >
-          <Heading as="h4" className="text--uppercase">
+          <Heading fontFamily="Rubik" className="text--md  text--uppercase">
             Join the newletter
           </Heading>
           <Flex
@@ -89,7 +89,7 @@ const Bulletin = () => {
           </Text>
         </Box>
 
-        <Box
+        {/* <Box
           px={theme.gutter.axis}
           py={[5, 5, 6]}
           className="bulletin__support"
@@ -105,7 +105,7 @@ const Bulletin = () => {
               <CoinDrop />
             </Flex>
           </Flex>
-        </Box>
+        </Box> */}
       </Flex>
     </S.Bulletin>
   )
@@ -117,7 +117,7 @@ const Social = () => {
       <Flex className="inner">
         <Box px={theme.gutter.axis} py={[5, 5, 6]} className="social__links">
           <Flex width={1} justifyContent="space-between" mb={4} flexWrap="wrap">
-            <Box as="img" src={checkUsOut} alt="BC Leaks Podcast" />
+            <Box as="img" width="175px" src={checkUsOut} alt="BC Leaks Podcast" />
 
             <Flex justifyContent="flex-end" pl={4}>
               youtube
@@ -134,15 +134,20 @@ const Social = () => {
 
         <Flex px={theme.gutter.axis} py={[5, 5, 6]} className="social__podcast">
           <Box mr={6}>
-            <p>Blockchain Leaks</p>
-            <p>
-              <a href="">waking up the blockchain</a>
-            </p>
-            <button>sign up</button>
+            <Heading fontFamily="Rubik" className="text--md  text--uppercase">Support us</Heading>
+            <Text as="p">
+              Donate to our hard-hitting crypto news outlet.
+            </Text>
+
+            <Flex>
+              <Button bg="transparent" color={theme.colors.primary}>
+                <Icon name="arrow" /> Donate
+              </Button>
+            </Flex>
           </Box>
 
           <Box>
-            <Box as="img" width="100%" src={podFig} alt="BC Leaks Podcast" />
+            <Box as="img" width="300px" src={podFig} alt="BC Leaks Podcast" />
           </Box>
         </Flex>
       </Flex>
