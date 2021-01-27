@@ -22,12 +22,16 @@ import usePost from '../../hooks/usePost'
 
 // ___________________________________________________________________
 
-type Props = {}
+type Props = {} & typeof defaultProps
 
-const FeaturedArticles: React.FC<Props> = () => {
+const defaultProps = {
+  bg: theme.colors.background
+}
+
+const FeaturedArticles: React.FC<Props> = ({ bg }) => {
   const posts = usePost()
   return (
-    <S.FeaturedArticles>
+    <S.FeaturedArticles bg={bg}>
       <Flex className="featured__inner">
         {posts.slice(1, 2).map(({ node: post }, idx) => (
           <>
@@ -93,7 +97,5 @@ const FeaturedArticles: React.FC<Props> = () => {
 export default FeaturedArticles
 
 // ___________________________________________________________________
-
-const defaultProps = {}
 
 FeaturedArticles.defaultProps = defaultProps

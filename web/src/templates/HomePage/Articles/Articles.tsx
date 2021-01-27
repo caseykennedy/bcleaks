@@ -30,13 +30,13 @@ type CategoryShape = {
 const Author: React.FC<{ author: PostAuthor }> = ({ author }) => {
   return (
     <S.Author>
-      {/* <Img
+      <Img
         fluid={author.avatar.asset.fluid}
         objectFit="cover"
         objectPosition="50% 50%"
         alt={author.name}
         className="author__img"
-      /> */}
+      />
       <Box className="author__name">{author.name}</Box>
     </S.Author>
   )
@@ -46,7 +46,7 @@ const Articles = () => {
   const posts = usePost()
   return (
     <S.Articles>
-      <Section bg="black" overflow="hidden">
+      <Section bg="" overflow="hidden">
         <Flex
           justifyContent="space-between"
           width={1}

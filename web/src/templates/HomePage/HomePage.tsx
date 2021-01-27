@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
       <Hero />
       <Videos />
       <Box
-        bg="quinary"
+        bg="black"
         px={theme.gutter.axis}
         py={6}
       >

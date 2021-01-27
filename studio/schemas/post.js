@@ -6,7 +6,8 @@ export default {
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
+      validation: Rule => Rule.required().min(10).max(72).warning(`A title shouldn't exceed 72 characters.`)
     },
     {
       name: "slug",
@@ -14,8 +15,7 @@ export default {
       type: "slug",
       description: "Some frontend will require a slug to be set to be able to show the post",
       options: {
-        source: "title",
-        maxLength: 96
+        source: "title"
       }
     },
     {
@@ -39,7 +39,7 @@ export default {
     {
       name: "tags",
       title: "Tags",
-      type: "array", 
+      type: "array",
       of: [
         {
           type: "tag"

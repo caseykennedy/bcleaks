@@ -23,7 +23,7 @@ import useVideo from '../../../hooks/useVideo'
 const Videos = () => {
   const videos = useVideo()
   return (
-    <S.Videos bg="black" border={true} overflow="hidden">
+    <S.Videos bg="background" border={true} overflow="hidden">
       <Flex className="videos__header" justifyContent="space-between">
         <Heading fontFamily="display" className="text--lg  text--uppercase">
           Videos

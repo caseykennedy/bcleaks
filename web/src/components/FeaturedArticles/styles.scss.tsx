@@ -13,7 +13,6 @@ import Section from '../Section'
 // ___________________________________________________________________
 
 export const FeaturedArticles = styled(Box)`
-  background: ${theme.colors.black};
   border-top: ${theme.border};
 
   .featured {
