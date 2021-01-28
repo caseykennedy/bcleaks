@@ -46,12 +46,14 @@ const Hero: React.FC<Props> = () => {
               </Flex>
             )}
 
-            <Flex justifyContent="space-between">
-              <PostMeta
-                authors={post.authors}
-                categories={post.categories}
-                publishedAt={post.publishedAt}
-              />
+            <Flex justifyContent="space-between" flexWrap="wrap">
+              <Box mb={[6, 0]}>
+                <PostMeta
+                  authors={post.authors}
+                  categories={post.categories}
+                  publishedAt={post.publishedAt}
+                />
+              </Box>
 
               <Link to={`/articles/${post.slug.current}`}>
                 <Button bg="transparent" color={theme.colors.primary}>

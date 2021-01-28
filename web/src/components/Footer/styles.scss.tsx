@@ -12,18 +12,19 @@ import Section from '../Section'
 // ___________________________________________________________________
 
 export const Footer = styled(Flex)`
+  align-items: flex-end;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 
   position: relative;
-  padding: ${theme.space[7]} ${theme.space[4]};
+  padding: ${theme.space[7]} ${theme.space[4]} ${theme.space[4]};
 
   background: ${theme.colors.black};
   border-top: ${theme.border};
 
   @media ${theme.mq.tablet} {
-    padding: ${theme.space[8]} ${theme.space[5]};
+    padding: ${theme.space[8]} ${theme.space[5]} ${theme.space[5]};
   }
 
   .logo {

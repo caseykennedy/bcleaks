@@ -21,14 +21,14 @@ export const Header = styled(Flex)`
 
     width: 100%;
     max-width: ${theme.maxWidth};
-    padding: 0 ${theme.space[4]};
+    padding-left: ${theme.space[4]};
 
     @media ${theme.mq.tablet} {
-      padding: 0 ${theme.space[5]};
+      padding-left: ${theme.space[5]};
     }
 
     @media ${theme.mq.desktop} {
-      padding: 0 ${theme.space[5]};
+      padding-left: ${theme.space[5]};
     }
   }
 
@@ -49,18 +49,17 @@ export const Menu = styled(Flex)`
   flex: 1;
   display: none;
 
-  @media (min-width: 800px) {
+  @media ${theme.mq.tablet} {
     display: flex;
   }
 `
 
 export const Logo = styled(Flex)`
   align-items: center;
-  flex: 1;
-
-  padding-right: ${theme.space[5]};
+  padding: ${theme.space[1]} ${theme.space[5]} ${theme.space[1]} 0;
 
   @media ${theme.mq.tablet} {
+    padding: 0 ${theme.space[5]} 0 0;
   }
 
   .logo {
@@ -94,93 +93,79 @@ export const Logo = styled(Flex)`
 `
 
 export const Utilities = styled(Flex)`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
   background: ${theme.colors.background};
   border-bottom: ${theme.border};
   flex: 1;
+  font-size: calc(${theme.fontSizes[2]} / 1.15);
 
-  .inner {
+  margin: 0 auto;
+  width: 100%;
+
+  .date {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: center;
 
-    margin: 0 auto;
-    padding: 0 ${theme.space[4]};
-    width: 100%;
+    color: ${theme.colors.tertiary};
+    font-size: calc(${theme.fontSizes[1]} / 1.25);
+    font-family: ${theme.fonts.display};
+    text-transform: uppercase;
 
     @media ${theme.mq.tablet} {
-      padding: 0 ${theme.space[5]};
+      font-size: calc(${theme.fontSizes[2]});
     }
+  }
 
-    @media ${theme.mq.desktop} {
-      padding: 0 ${theme.space[5]};
-    }
+  .account {
+    flex: 1;
+    justify-content: flex-end;
 
-    .date {
-      flex: 1;
-      display: flex;
-      align-items: center;
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
 
       color: ${theme.colors.tertiary};
       font-family: ${theme.fonts.display};
-      font-size: calc(${theme.fontSizes[1]} / 1.5);
+      font-weight: 600;
       text-transform: uppercase;
+      white-space: nowrap;
 
-      @media ${theme.mq.desktop} {
-        font-size: ${theme.fontSizes[1]};
-      }
-    }
+      position: relative;
+      padding: ${theme.space[2]} 0 ${theme.space[2]} ${theme.space[4]};
+      transition: color 0.111s ease-in-out,
+      background-color 0.111s ease-in-out;
 
-    .account {
-      flex: 1;
-      justify-content: flex-end;
+      /* &:before {
+        background: ${theme.colors.primary};
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: calc(${theme.space[1]} / 1.5);
+        bottom: 0;
+        right: 0;
+        transition: width ${theme.transition.global};
+      } */
 
-      button {
-        background: transparent;
-        border: none;
-        cursor: pointer;
+      &:hover {
+        color: ${theme.colors.white};
 
-        color: ${theme.colors.tertiary};
-        font-family: ${theme.fonts.display};
-        font-size: calc(${theme.fontSizes[2]} / 1.25);
-        font-weight: 600;
-        text-transform: uppercase;
-        white-space: nowrap;
-
-        position: relative;
-        padding: ${theme.space[4]} ${theme.space[3]};
-        transition: border-color 0.111s ease-in-out,
-          background-color 0.111s ease-in-out;
-
-        &:before {
-          background: ${theme.colors.primary};
-          content: '';
-          position: absolute;
-          width: 0%;
-          height: calc(${theme.space[1]} / 1.5);
-          bottom: 0;
-          right: 0;
-          transition: width ${theme.transition.global};
-        }
-
-        &:hover {
-          border-color: ${theme.colors.primary};
-          color: ${theme.colors.white};
-
-          &:before {
-            left: 0;
-            width: 100%;
-          }
-        }
+        /* &:before {
+          left: 0;
+          width: 100%;
+        } */
       }
     }
   }
 `
 
-export const Toggle = styled.div`
+export const Toggle = styled(Box)`
   display: flex;
   align-items: flex-start;
   box-sizing: content-box;
-  padding: ${theme.space[5]};
 
   color: ${theme.colors.text};
   font-size: calc(${theme.fontSizes[2]});

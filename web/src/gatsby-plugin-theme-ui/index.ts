@@ -131,8 +131,8 @@ const theme: ThemeShape = {
   gutter: {
     mobile: 4,
     tablet: 5,
-    desktop: 6,
-    vertical: [4, 5, 6],
+    desktop: 5,
+    vertical: [4, 5, 5],
     axis: [4, 5, 5]
   },
 
@@ -174,7 +174,7 @@ const theme: ThemeShape = {
   siteWidth: '100%',
   logoWidth: '',
   headerHeight: '74px',
-  tickerHeight: '64px',
+  tickerHeight: '50px',
   iconWidth: '18px',
 
   // Base

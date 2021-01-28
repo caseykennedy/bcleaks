@@ -57,52 +57,51 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
         aria-label="Log in"
       />
 
-      <S.Utilities>
-        <Flex className="inner">
-          <Flex className="date">
-            <GetDate />
-          </Flex>
-          
-          <Flex className="account">
-            <button onClick={() => setDialog(true)}>log in</button>
-            <button onClick={() => setDialog(true)}>sign up</button>
-          </Flex>
+      <S.Utilities px={theme.gutter.axis} py={2}>
+        <Flex className="date">
+          <GetDate />
+        </Flex>
+
+        <Flex className="account">
+          <button onClick={() => setDialog(true)}>log in</button>
+          <button onClick={() => setDialog(true)}>sign up</button>
         </Flex>
       </S.Utilities>
 
       <S.Header as="header">
         <Flex className="inner">
-          <Flex>
+          <S.Toggle onClick={toggleMenu} aria-label="toggle menu">
+            <HamburgerMenu
+              isOpen={!isNavOpen ? false : true}
+              menuClicked={toggleMenu}
+              width={32}
+              height={12}
+              strokeWidth={1.5}
+              rotate={0}
+              color="white"
+              borderRadius={0}
+              animationDuration={0.333}
+            />
+          </S.Toggle>
+
+          <Link
+            to="/"
+            className="logo-symbol"
+            aria-label="BC Leaks, back to home"
+          >
             <S.Logo>
-              <Link
-                to="/"
-                className="logo-symbol"
-                aria-label="BC Leaks, back to home"
-              >
+              <Box className="logo-symbol">
                 <Symbol />
-              </Link>
+              </Box>
               <Flex className="logo-lettermark">
                 <Lettermark />
               </Flex>
-              <S.Toggle onClick={toggleMenu} aria-label="toggle menu">
-                <HamburgerMenu
-                  isOpen={!isNavOpen ? false : true}
-                  menuClicked={toggleMenu}
-                  width={32}
-                  height={12}
-                  strokeWidth={1.5}
-                  rotate={0}
-                  color="white"
-                  borderRadius={0}
-                  animationDuration={0.333}
-                />
-              </S.Toggle>
             </S.Logo>
+          </Link>
 
-            <S.Menu>
-              <Navigation />
-            </S.Menu>
-          </Flex>
+          <S.Menu>
+            <Navigation />
+          </S.Menu>
         </Flex>
       </S.Header>
     </>

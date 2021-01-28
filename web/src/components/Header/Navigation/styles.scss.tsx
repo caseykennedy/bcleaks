@@ -33,9 +33,9 @@ export const Nav = styled.nav`
     padding: 0 ${theme.space[5]};
     width: 100%;
 
-    &:last-child {
+    /* &:last-child {
       border-right: ${theme.border};
-    }
+    } */
 
     &::before {
       content: '';

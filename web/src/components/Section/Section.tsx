@@ -72,8 +72,8 @@ export default Section
 // ___________________________________________________________________
 
 const defaultProps = {
-  pt: [5, 5, 6],
-  pb: [5, 5, 6],
+  pt: theme.gutter.vertical,
+  pb: theme.gutter.vertical,
   pr: theme.gutter.axis,
   pl: theme.gutter.axis
 }

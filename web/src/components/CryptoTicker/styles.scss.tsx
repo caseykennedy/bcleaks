@@ -16,7 +16,7 @@ export const CryptoTicker = styled(Flex)`
   border-bottom: ${theme.border};
   font-size: ${theme.fontSizes[1]};
   overflow: hidden;
-  padding: ${theme.space[3]} ${theme.space[3]};
+  padding: ${theme.space[1]} ${theme.space[3]};
 
   height: ${theme.tickerHeight};
   width: 100%;
@@ -41,6 +41,7 @@ export const Coin = styled(Box)`
     &-title {
       color: ${theme.colors.tertiary};
       font-size: ${theme.fontSizes[0]};
+      line-height: 1.35;
 
       @media ${theme.mq.tablet} {
         font-size: calc(${theme.fontSizes[1]} * 1.15);
@@ -59,6 +60,7 @@ export const Coin = styled(Box)`
 
     &-info {
       font-size: calc(${theme.fontSizes[1]} / 1.15);
+      line-height: 1.35;
 
       &__price {
         margin-right: ${theme.space[2]};

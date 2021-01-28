@@ -113,7 +113,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                 />
 
                 {post.figure.caption && (
-                  <Text as="figcaption" color="tertiary" fontSize={0} mt={2}>
+                  <Text as="figcaption" color="tertiary" fontSize={0} p={theme.gutter.axis}>
                     {post.figure.caption}
                   </Text>
                 )}
