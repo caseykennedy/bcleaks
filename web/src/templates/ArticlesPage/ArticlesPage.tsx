@@ -40,7 +40,7 @@ const ArticlesPage = () => {
         </Heading>
       </S.PageTitle> */}
 
-      <FeaturedArticles />
+      <FeaturedArticles bg={theme.colors.black} />
 
       {/* <Section bg="black" border={true} overflow="hidden">
         <Heading

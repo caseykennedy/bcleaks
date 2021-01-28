@@ -29,9 +29,10 @@ const HomePage: React.FC = () => {
       <Hero />
       <Videos />
       <Box
-        bg="black"
+        bg="background"
         px={theme.gutter.axis}
         py={6}
+        style={{ borderTop: theme.border }}
       >
         <Text as="p" color="tertiary">
           Ad space

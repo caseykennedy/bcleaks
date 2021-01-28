@@ -19,9 +19,4 @@ export const Videos = styled(Section)`
       width: 100%;
     }
   }
-
-  .swiper-container {
-    overflow: visible;
-    padding-bottom: ${theme.space[7]};
-  }
 `

@@ -65,8 +65,8 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
           </S.PageTitle>
         )}
 
-        <Section border={true}>
-          <Box width={1} mb={5}>
+        <Section bg="black" border={true}>
+          <Box width={1} mb={0}>
             <Text as="p" className="text--small  text--uppercase">
               {post.publishedAt}
             </Text>
@@ -77,7 +77,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
 
             <Flex flexDirection={[`column`, `row`]}>
               <Box flex={[1, 2]}>
-                <Text fontSize={2}>
+                <Text fontFamily="sans" fontSize={2}>
                   {post._rawExcerpt && (
                     <BlockContent blocks={post._rawExcerpt || []} />
                   )}
@@ -95,31 +95,33 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
               </Flex>
             </Flex>
           </Box>
+        </Section>
 
-          <Flex flexDirection="column">
-            <Box mb={6}>
-              {post.figure && (
-                <>
-                  <Img
-                    fluid={{
-                      ...post.figure.asset.fluid,
-                      aspectRatio: 16 / 9
-                    }}
-                    objectFit="cover"
-                    objectPosition="50% 50%"
-                    alt={post.figure.alt}
-                    className="article__img"
-                  />
+        <Box>
+          {post.figure && (
+            <>
+              <Img
+                fluid={{
+                  ...post.figure.asset.fluid,
+                  aspectRatio: 16 / 9
+                }}
+                objectFit="cover"
+                objectPosition="50% 50%"
+                alt={post.figure.alt}
+                className="article__img"
+              />
 
-                  {post.figure.caption && (
-                    <Text as="figcaption" color="tertiary" fontSize={0} mt={2}>
-                      {post.figure.caption}
-                    </Text>
-                  )}
-                </>
+              {post.figure.caption && (
+                <Text as="figcaption" color="tertiary" fontSize={0} mt={2}>
+                  {post.figure.caption}
+                </Text>
               )}
-            </Box>
+            </>
+          )}
+        </Box>
 
+        <Section border={true}>
+          <Flex flexDirection="column">
             <Flex flexDirection={[`column`, `row`]}>
               <Box flex={1} mb={4} width={1}>
                 <PostMeta
@@ -181,10 +183,10 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
           >
             Related
           </Heading>
-          
+
           <Box width={1}>
             <CardSlider pagination={true} slidesPerView={3}>
-              {posts.map(({ node: post }, idx) => (
+              {posts.slice(0, 6).map(({ node: post }, idx) => (
                 <Flex key={idx}>
                   <CardLeak post={post} small={true} />
                 </Flex>

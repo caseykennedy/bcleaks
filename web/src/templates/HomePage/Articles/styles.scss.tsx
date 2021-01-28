@@ -10,6 +10,8 @@ import { Box, Flex } from '../../../components/ui'
 // ___________________________________________________________________
 
 export const Articles = styled(Box)`
+  border-top: ${theme.border};
+
   .articles {
     &__header {
       align-items: center;
@@ -45,14 +47,6 @@ export const Articles = styled(Box)`
           &:hover {
             border-color: ${theme.colors.primary};
           }
-
-          /* img {
-            transition: ${theme.transition.all};
-
-            &:hover {
-              mix-blend-mode: luminosity;
-            }
-          } */
         }
 
         &__details {
@@ -78,28 +72,6 @@ export const Articles = styled(Box)`
 
         &--horizontal {
         }
-      }
-    }
-  }
-`
-
-export const Author = styled(Flex)`
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-
-  @media ${theme.mq.tablet} {
-  }
-
-  .author {
-    &__img {
-      display: block;
-      width: 100%;
-      max-width: 48px;
-      border-radius: 100rem;
-    }
-    &__name {
-      span {
       }
     }
   }

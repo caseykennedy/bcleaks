@@ -21,27 +21,6 @@ import usePost from '../../../hooks/usePost'
 
 // ___________________________________________________________________
 
-type CategoryShape = {
-  categories: {
-    title: string
-  }[]
-}
-
-const Author: React.FC<{ author: PostAuthor }> = ({ author }) => {
-  return (
-    <S.Author>
-      <Img
-        fluid={author.avatar.asset.fluid}
-        objectFit="cover"
-        objectPosition="50% 50%"
-        alt={author.name}
-        className="author__img"
-      />
-      <Box className="author__name">{author.name}</Box>
-    </S.Author>
-  )
-}
-
 const Articles = () => {
   const posts = usePost()
   return (
@@ -62,7 +41,7 @@ const Articles = () => {
       </Section>
 
       <Box width={1} overflow="hidden">
-        <Billboard />
+        <Billboard bg={theme.colors.black} />
       </Box>
 
       <Section border={true}>

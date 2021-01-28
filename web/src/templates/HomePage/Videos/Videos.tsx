@@ -33,13 +33,13 @@ const Videos = () => {
       </Flex>
 
       <Box className="videos__posts">
-      <Grid columns={[1, 2, 3]} gap={theme.space[4]}>
-          {videos.slice(0, 6).map(({ node: post }, idx) => (
+        <CardSlider pagination={false} slidesPerView={3}>
+          {videos.slice(0, 3).map(({ node: post }, idx) => (
             <Flex key={idx}>
               <CardLeak post={post} video={true} small={true} />
             </Flex>
           ))}
-        </Grid>
+        </CardSlider>
       </Box>
     </S.Videos>
   )

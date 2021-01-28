@@ -67,14 +67,12 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
         )}
 
         <Section border={true}>
-          <Flex flexDirection="column">
-            <Box mb={6}>
-              {post.videoUrl && (
-                <ResponsiveEmbed src={post.videoUrl} allowFullScreen={true} />
-              )}
-            </Box>
-          </Flex>
+          {post.videoUrl && (
+            <ResponsiveEmbed src={post.videoUrl} allowFullScreen={true} />
+          )}
+        </Section>
 
+        <Section bg="background" border={true}>
           <Flex flexDirection={[`column`, `row`]}>
             <Box flex={1} mb={4}>
               <PostMeta
@@ -82,6 +80,14 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
                 categories={post.categories}
                 publishedAt={post.publishedAt}
               />
+
+              {/* {post.sources[0] && (
+                <AnchorLink offset={theme.headerHeight} href={`#sources`}>
+                  <Button bg="transparent" color={theme.colors.tertiary}>
+                    <Icon name="document" /> View Sources
+                  </Button>
+                </AnchorLink>
+              )} */}
             </Box>
 
             <Box flex={[1, 2]}>
