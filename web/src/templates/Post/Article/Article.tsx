@@ -48,15 +48,15 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
       />
       <S.Article>
         {post.categories && (
-          <S.PageTitle px={theme.gutter.axis} py={4}>
+          <S.PageTitle px={theme.gutter.axis}>
             <Heading as="h4" color="white" mb={0} className="text--uppercase">
               {post.categories[0].title}
             </Heading>
 
             {post.tags && (
-              <Flex className="pill-container">
+              <Flex className="pillbox">
                 {post.tags.slice(0, 3).map((item, idx) => (
-                  <Pill mb={2} key={idx}>
+                  <Pill my={[1, 2]} key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>
                 ))}
@@ -97,32 +97,34 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
           </Box>
         </Section>
 
-        <Box>
-          {post.figure && (
-            <>
-              <Img
-                fluid={{
-                  ...post.figure.asset.fluid,
-                  aspectRatio: 16 / 9
-                }}
-                objectFit="cover"
-                objectPosition="50% 50%"
-                alt={post.figure.alt}
-                className="article__img"
-              />
+        <Box bg="black" width={1}>
+          <Box width={1} maxWidth={theme.maxWidth}>
+            {post.figure && (
+              <>
+                <Img
+                  fluid={{
+                    ...post.figure.asset.fluid,
+                    aspectRatio: 16 / 9
+                  }}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  alt={post.figure.alt}
+                  className="article__img"
+                />
 
-              {post.figure.caption && (
-                <Text as="figcaption" color="tertiary" fontSize={0} mt={2}>
-                  {post.figure.caption}
-                </Text>
-              )}
-            </>
-          )}
+                {post.figure.caption && (
+                  <Text as="figcaption" color="tertiary" fontSize={0} mt={2}>
+                    {post.figure.caption}
+                  </Text>
+                )}
+              </>
+            )}
+          </Box>
         </Box>
 
         <Section border={true}>
           <Flex flexDirection="column">
-            <Flex flexDirection={[`column`, `row`]}>
+            <Flex flexDirection={[`column`, `row`]} position="relative">
               <Box flex={1} mb={4} width={1}>
                 <PostMeta
                   authors={post.authors}
@@ -166,7 +168,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
               Sources
             </Heading>
 
-            <Grid columns={[1, 2, 4]} gap={[4, 5, 6]}>
+            <Grid columns={[1, 2, 4]} gap={6}>
               {post.sources.map((source, idx) => (
                 <Source source={source} key={idx} />
               ))}

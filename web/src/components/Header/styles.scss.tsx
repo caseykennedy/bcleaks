@@ -28,7 +28,7 @@ export const Header = styled(Flex)`
     }
 
     @media ${theme.mq.desktop} {
-      padding: 0 ${theme.space[6]};
+      padding: 0 ${theme.space[5]};
     }
   }
 
@@ -112,7 +112,7 @@ export const Utilities = styled(Flex)`
     }
 
     @media ${theme.mq.desktop} {
-      padding: 0 ${theme.space[6]};
+      padding: 0 ${theme.space[5]};
     }
 
     .date {

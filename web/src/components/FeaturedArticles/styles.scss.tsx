@@ -32,21 +32,16 @@ export const FeaturedArticles = styled(Box)`
     }
 
     &__image {
-      /* position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0; */
-
       flex: 1;
 
-      /* overflow: hidden; */
       opacity: 0.85;
       mix-blend-mode: difference;
-
-      /* height: 100%; */
       width: 100%;
       z-index: 0;
+
+      @media ${theme.mq.tablet} {
+        /* border-right: ${theme.border}; */
+      }
 
       .gatsby-image-wrapper {
         height: 100%;
@@ -62,13 +57,14 @@ export const FeaturedArticles = styled(Box)`
       height: 100%;
       width: 100%;
 
+      padding-top: ${theme.space[6]};
       position: relative;
       z-index: 1;
     }
 
     &__panel{
       display: flex;
-      flex: 2;
+      flex: 1.5;
       padding: ${theme.space[4]};
       position: relative;
 

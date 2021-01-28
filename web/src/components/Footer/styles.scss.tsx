@@ -17,13 +17,13 @@ export const Footer = styled(Flex)`
   justify-content: space-between;
 
   position: relative;
-  padding: ${theme.space[7]} ${theme.space[5]};
+  padding: ${theme.space[7]} ${theme.space[4]};
 
   background: ${theme.colors.black};
   border-top: ${theme.border};
 
   @media ${theme.mq.tablet} {
-    padding: ${theme.space[8]} ${theme.space[6]};
+    padding: ${theme.space[8]} ${theme.space[5]};
   }
 
   .logo {

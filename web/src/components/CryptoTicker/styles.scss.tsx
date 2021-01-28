@@ -31,12 +31,16 @@ export const CryptoTicker = styled(Flex)`
 `
 
 export const Coin = styled(Box)`
-  margin-right: ${theme.space[6]};
+  margin-right: ${theme.space[5]};
+
+  @media ${theme.mq.tablet} {
+    margin-right: ${theme.space[7]};
+  }
 
   .coin {
     &-title {
       color: ${theme.colors.tertiary};
-      font-size: ${theme.fontSizes[1]};
+      font-size: ${theme.fontSizes[0]};
 
       @media ${theme.mq.tablet} {
         font-size: calc(${theme.fontSizes[1]} * 1.15);

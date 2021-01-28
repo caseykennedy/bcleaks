@@ -33,7 +33,7 @@ const FeaturedArticles: React.FC<Props> = ({ bg }) => {
   return (
     <S.FeaturedArticles bg={bg}>
       <Flex className="featured__inner">
-        {posts.slice(1, 2).map(({ node: post }, idx) => (
+        {posts.slice(0, 1).map(({ node: post }, idx) => (
           <>
             <Link
               to={`/articles/${post.slug.current}`}
