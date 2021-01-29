@@ -72,6 +72,7 @@ const ArticlesPage = () => {
         >
           <Heading
             as="h4"
+            mb={0}
             fontFamily="display"
             className="text--uppercase"
           >

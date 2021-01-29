@@ -27,35 +27,17 @@ const VideosPage = () => {
   const videos = useVideo()
   return (
     <S.VideosPage>
-      <S.PageTitle px={theme.gutter.axis} py={4}>
-        <Heading
-          as="h3"
-          color="tertiary"
-          fontFamily="display"
-          mb={0}
-          className="text--uppercase"
-        >
-          Videos
-        </Heading>
-      </S.PageTitle>
 
-      {/* <Section bg="black" border={true} overflow="hidden">
-        <Heading
-          as="h4"
-          fontFamily="display"
-          className="text--uppercase"
-        >
-          Latest
-        </Heading>
 
+      <Section bg="black" border={true} overflow="hidden">
         <CardSlider pagination={false} slidesPerView={2}>
-          {videos.slice(0, 2).map(({ node: post }, idx) => (
+          {videos.slice(0, 1).map(({ node: post }, idx) => (
             <Flex key={idx}>
               <CardLeak post={post} video={true} key={idx} />
             </Flex>
           ))}
         </CardSlider>
-      </Section> */}
+      </Section>
 
       <S.FilterNav px={theme.gutter.axis}>
         <Box className="inner">

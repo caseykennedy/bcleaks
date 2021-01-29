@@ -53,6 +53,7 @@ const Articles = () => {
           <Heading
             as="h4"
             fontFamily="display"
+            mb={0}
             className="text--uppercase"
           >
             Latest
