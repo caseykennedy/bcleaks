@@ -58,7 +58,7 @@ const FeaturedArticles: React.FC<Props> = ({ bg }) => {
                   )}
                 </Box>
 
-                <Flex alignItems="center" justifyContent="space-between">
+                <Flex alignItems="flex-end" justifyContent="space-between">
                   <PostMeta
                     authors={post.authors}
                     categories={post.categories}

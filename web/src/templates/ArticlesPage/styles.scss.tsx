@@ -40,7 +40,7 @@ export const FilterNav = styled(Flex)`
   border-top: ${theme.border};
   color: ${theme.colors.tertiary};
 
-  height: calc(${theme.headerHeight});
+  min-height: ${theme.headerHeight};
   width: 100%;
 
   position: sticky;
@@ -49,12 +49,14 @@ export const FilterNav = styled(Flex)`
 
   .inner {
     display: flex;
+    flex-wrap: wrap;
+    
     margin-right: auto;
     max-width: ${theme.maxWidth};
     width: 100%;
 
     .criteria {
-      color: ${theme.colors.tertiary};
+      color: ${theme.colors.white};
       cursor: pointer;
       font-weight: 500;
       text-transform: uppercase;

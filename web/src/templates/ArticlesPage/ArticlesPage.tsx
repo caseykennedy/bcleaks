@@ -54,7 +54,7 @@ const ArticlesPage = () => {
         <TopArticles />
       </Section> */}
 
-      <S.FilterNav px={theme.gutter.axis}>
+      <S.FilterNav p={theme.gutter.axis}>
         <Box className="inner">
           {data.map((filter, idx) => (
             <Box mr={6} className="criteria" key={idx}>

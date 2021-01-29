@@ -20,7 +20,6 @@ export const Header = styled(Flex)`
     justify-content: space-between;
 
     width: 100%;
-    max-width: ${theme.maxWidth};
     padding-left: ${theme.space[4]};
 
     @media ${theme.mq.tablet} {

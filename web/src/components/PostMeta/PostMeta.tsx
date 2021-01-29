@@ -113,7 +113,7 @@ const Meta = styled(Flex)`
 const Avatar = styled(Flex)`
   display: block;
   margin-right: ${theme.space[4]};
-  max-width: 42px;
+  max-width: 48px;
   width: 100%;
 
   img {

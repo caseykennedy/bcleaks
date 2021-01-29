@@ -28,8 +28,9 @@ export const Source = styled(Box)`
 
   .title {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+
     color: ${theme.colors.lightgray};
     text-transform: uppercase;
     width: 100%;
@@ -40,7 +41,7 @@ export const Source = styled(Box)`
 
     span {
       position: relative;
-      bottom: 0;
+      top: 0;
 
       transition: ${theme.transition.all};
 

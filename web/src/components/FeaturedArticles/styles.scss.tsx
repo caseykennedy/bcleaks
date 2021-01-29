@@ -81,10 +81,6 @@ export const FeaturedArticles = styled(Box)`
         }
       }
 
-      @media ${theme.mq.desktop} {
-        padding: ${theme.space[6]};
-      }
-
       @media (min-width: ${theme.maxWidth}) {
         border-right: ${theme.border};
       }

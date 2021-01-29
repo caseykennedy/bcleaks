@@ -22,6 +22,9 @@ import CardLeak from '../../../components/CardLeak'
 import CardSlider from '../../../components/CardSlider'
 import PostMeta from '../../../components/PostMeta'
 import Source from '../../../components/Source'
+import Icon from '../../../components/Icons'
+import Button from '../../../components/ui/Button'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 // Hooks
 import useVideo from '../../../hooks/useVideo'
@@ -44,20 +47,15 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
       />
       <S.Video>
         {post.categories && (
-          <S.PageTitle px={theme.gutter.axis} py={4}>
+          <S.PageTitle px={theme.gutter.axis}>
             <Heading as="h4" color="white" mb={0} className="text--uppercase">
               {post.categories[0].title}
             </Heading>
+
             {post.tags && (
-              <Flex
-                flexWrap="wrap"
-                ml={4}
-                pl={4}
-                width={1}
-                style={{ borderLeft: theme.border }}
-              >
+              <Flex className="pillbox">
                 {post.tags.slice(0, 3).map((item, idx) => (
-                  <Pill mb={2} key={idx}>
+                  <Pill my={[1, 2]} key={idx}>
                     <span>#{item.tag}</span>
                   </Pill>
                 ))}
@@ -81,13 +79,15 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
                 publishedAt={post.publishedAt}
               />
 
-              {/* {post.sources[0] && (
-                <AnchorLink offset={theme.headerHeight} href={`#sources`}>
-                  <Button bg="transparent" color={theme.colors.tertiary}>
-                    <Icon name="document" /> View Sources
-                  </Button>
-                </AnchorLink>
-              )} */}
+              {post.sources[0] && (
+                <Box >
+                  <AnchorLink offset={theme.headerHeight} href={`#sources`}>
+                    <Button bg="transparent" color={theme.colors.tertiary}>
+                      <Icon name="document" /> View Sources
+                    </Button>
+                  </AnchorLink>
+                </Box>
+              )}
             </Box>
 
             <Box flex={[1, 2]}>
@@ -124,7 +124,7 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
             >
               Sources
             </Heading>
-            <Grid columns={[1, 2, 4]} gap={[4, 5, 6]}>
+            <Grid columns={[1, 2, 4]} gap={6}>
               {post.sources.map((source, idx) => (
                 <Source source={source} key={idx} />
               ))}

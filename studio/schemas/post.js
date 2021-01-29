@@ -16,25 +16,29 @@ export default {
       description: "Some frontend will require a slug to be set to be able to show the post",
       options: {
         source: "title"
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: "publishedAt",
       title: "Published at",
       description: "You can use this field to schedule post where you show them",
-      type: "datetime"
+      type: "datetime",
+      validation: Rule => Rule.required()
     },
     {
       name: "authors",
       title: "Authors",
       type: "reference",
-      to: [{ type: "person" }]
+      to: [{ type: "person" }],
+      validation: Rule => Rule.required()
     },
     {
       name: "categories",
       title: "Categories",
       type: "array",
-      of: [{ type: "reference", to: { type: "postCategory" } }]
+      of: [{ type: "reference", to: { type: "postCategory" } }],
+      validation: Rule => Rule.required()
     },
     {
       name: "tags",
@@ -49,17 +53,20 @@ export default {
     {
       name: "figure",
       title: "Figure",
-      type: "figure"
+      type: "figure",
+      validation: Rule => Rule.required()
     },
     {
       name: "excerpt",
       title: "Excerpt",
-      type: "blockText"
+      type: "blockText",
+      validation: Rule => Rule.required()
     },
     {
       name: "body",
       title: "Body",
-      type: "blockContent"
+      type: "blockContent",
+      validation: Rule => Rule.required()
     },
     {
       name: "sources",
