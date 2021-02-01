@@ -1,4 +1,4 @@
-// Navigation Styles:
+// Mobile Navigation Styles:
 
 // ___________________________________________________________________
 
@@ -13,7 +13,7 @@ import { Flex, AnimatedFlex } from '../../ui'
 // Begin Styles
 // ___________________________________________________________________
 
-export const NavLinks = styled(Flex)`
+export const MobileNav = styled(Flex)`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;

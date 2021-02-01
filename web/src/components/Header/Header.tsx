@@ -18,6 +18,8 @@ import { Box, Flex, Text } from '../ui'
 import Symbol from '../Symbol'
 import Lettermark from '../Lettermark'
 import Navigation from './Navigation'
+import MobileNav from './MobileNav'
+import Modal from '../Modal'
 import GetDate from '../GetDate'
 
 import Typist from 'react-typist'
@@ -56,6 +58,10 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
         onSignup={() => navigate('/app/profile')}
         aria-label="Log in"
       />
+
+      <Modal open={isNavOpen} close={toggleMenu}>
+        <MobileNav open={isNavOpen} />
+      </Modal>
 
       <S.Utilities px={theme.gutter.axis} py={2}>
         <Flex className="date">

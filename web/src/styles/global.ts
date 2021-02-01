@@ -58,11 +58,6 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
-  #drawer-root {
-    position: relative;
-    z-index: 100;
-  }
-
   .headroom[style] {
     z-index: 999999 !important;
   }

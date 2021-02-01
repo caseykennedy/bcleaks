@@ -65,27 +65,26 @@ const FeaturedArticles: React.FC<Props> = ({ bg }) => {
                     publishedAt={post.publishedAt}
                   />
 
-                  <Link
-                    to={`/articles/${post.slug.current}`}
-                    className="button"
-                  >
+                  <Box className="button">
                     <Icon name="carat" />
-                  </Link>
+                  </Box>
                 </Flex>
               </Flex>
             </Link>
             {post.figure && (
-              <Box flex={1} className="featured__image">
-                <Img
-                  fluid={{
-                    ...post.figure.asset.fluid,
-                    aspectRatio: 1.25 / 1
-                  }}
-                  objectFit="cover"
-                  objectPosition="50% 50%"
-                  alt={post.title}
-                />
-              </Box>
+              <Link to={`/articles/${post.slug.current}`} className="featured__image">
+                <Box>
+                  <Img
+                    fluid={{
+                      ...post.figure.asset.fluid,
+                      aspectRatio: 1.25 / 1
+                    }}
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                    alt={post.title}
+                  />
+                </Box>
+              </Link>
             )}
           </>
         ))}

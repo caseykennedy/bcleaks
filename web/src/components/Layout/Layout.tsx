@@ -19,6 +19,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 import GlobalStyles from '../../styles/global'
 import * as S from './styles.scss'
 import 'swiper/css/swiper.css'
+import 'react-responsive-modal/styles.css'
 
 // ___________________________________________________________________
 
