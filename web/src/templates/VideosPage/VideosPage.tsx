@@ -2,7 +2,7 @@
 
 // ___________________________________________________________________
 
-import React from 'react'
+import React, { useState } from 'react'
 
 // Theme
 import * as S from './styles.scss'
@@ -23,12 +23,32 @@ import useVideo from '../../hooks/useVideo'
 // ___________________________________________________________________
 
 const VideosPage = () => {
-  const posts = usePost()
   const videos = useVideo()
+
+  // Filter posts
+  const [items, setItems] = useState(videos)
+  // const [pillActive, setPillActive] = useState(false)
+  const setFilteredItems = (category: string) => {
+    setItems(
+      videos.filter(item => {
+        if (item.node.categories[0].title.includes(category)) {
+          return item
+        }
+        if (
+          item.node.categories[1] &&
+          item.node.categories[1].title.includes(category)
+        ) {
+          return item
+        }
+      })
+    )
+  }
+  // Reset / Show all
+  const resetFilteredItems = () => {
+    setItems(videos)
+  }
   return (
     <S.VideosPage>
-
-
       <Section bg="black" border={true} overflow="hidden">
         <CardSlider pagination={false} slidesPerView={2}>
           {videos.slice(0, 1).map(({ node: post }, idx) => (
@@ -41,8 +61,17 @@ const VideosPage = () => {
 
       <S.FilterNav px={theme.gutter.axis}>
         <Box className="inner">
-          {data.map((filter, idx) => (
-            <Box mr={6} className="criteria" key={idx}>
+          <Box mr={6} className="criteria" onClick={resetFilteredItems}>
+            All
+          </Box>
+          
+          {criteria.map((filter, idx) => (
+            <Box
+              mr={6}
+              className="criteria"
+              onClick={() => setFilteredItems(filter.criteria)}
+              key={idx}
+            >
               {filter.criteria}
             </Box>
           ))}
@@ -51,7 +80,7 @@ const VideosPage = () => {
 
       <Section>
         <Grid columns={[1, 2, 3]} gap={theme.space[4]}>
-          {videos.map(({ node: post }, idx) => (
+          {items.map(({ node: post }, idx) => (
             <Flex key={idx}>
               <CardLeak post={post} video={true} small={true} />
             </Flex>
@@ -66,26 +95,23 @@ export default VideosPage
 
 // ___________________________________________________________________
 
-const data = [
+const criteria = [
   {
-    criteria: 'blockchain'
+    criteria: 'Altcoin'
   },
   {
-    criteria: 'crypto'
+    criteria: 'Bitcoin'
   },
   {
-    criteria: 'bitcoin'
+    criteria: 'Crypto Picks'
   },
   {
-    criteria: 'ethereum'
+    criteria: 'DeFi'
   },
   {
-    criteria: 'opinion'
+    criteria: 'Ethereum'
   },
   {
-    criteria: 'markets'
-  },
-  {
-    criteria: 'tech'
+    criteria: 'Investigations'
   }
 ]

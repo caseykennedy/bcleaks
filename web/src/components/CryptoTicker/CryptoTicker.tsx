@@ -59,8 +59,6 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
   const currentPrice = coin.current_price
   const currentChange = coin.price_change_percentage_24h
 
-  console.log(coin)
-
   let color
   if (typeof parseFloat(currentChange) === 'number') {
     const currentChangeFixed = currentChange.toFixed(2)

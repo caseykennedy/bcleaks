@@ -62,7 +62,7 @@ const Articles = () => {
 
         <Box width={[1, 1, 6 / 8]} className="articles__main">
           <Box>
-            {posts.slice(0, 6).map(({ node: post }, idx) => (
+            {posts.slice(1, 7).map(({ node: post }, idx) => (
               <CardLeak
                 aspectRatio={4 / 3}
                 post={post}
