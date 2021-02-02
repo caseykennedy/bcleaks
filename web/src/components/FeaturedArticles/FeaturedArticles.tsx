@@ -72,18 +72,19 @@ const FeaturedArticles: React.FC<Props> = ({ bg }) => {
               </Flex>
             </Link>
             {post.figure && (
-              <Link to={`/articles/${post.slug.current}`} className="featured__image">
-                <Box>
-                  <Img
-                    fluid={{
-                      ...post.figure.asset.fluid,
-                      aspectRatio: 1.25 / 1
-                    }}
-                    objectFit="cover"
-                    objectPosition="50% 50%"
-                    alt={post.title}
-                  />
-                </Box>
+              <Link
+                to={`/articles/${post.slug.current}`}
+                className="featured__image"
+              >
+                <Img
+                  fluid={{
+                    ...post.figure.asset.fluid,
+                    aspectRatio: 1.25 / 1
+                  }}
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  alt={post.title}
+                />
               </Link>
             )}
           </>

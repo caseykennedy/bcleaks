@@ -24,7 +24,7 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
 
   @media ${theme.mq.tablet} {
     align-items: flex-end;
-    padding: ${p => (!p.inline ? 0 : `${theme.space[7]} 0 0 0`)};
+    padding: ${p => (!p.inline ? 0 : `${theme.space[6]} 0 0 0`)};
   }
 
   @media ${theme.mq.desktop} {
@@ -101,7 +101,11 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
 
   .title {
     color: ${theme.colors.white};
+    /* font-family: ${theme.fonts.sans}; */
     font-size: calc(${theme.fontSizes[2]});
+    line-height: ${theme.root.font.headingLineHeight};
+    text-transform: uppercase;
+
     margin-bottom: ${theme.space[6]};
 
     overflow: hidden;

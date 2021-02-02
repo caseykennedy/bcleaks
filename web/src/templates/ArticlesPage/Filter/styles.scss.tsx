@@ -1,73 +1,12 @@
-// ArticlesPage Styles:
+// Filter Styles:
 
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { darken } from 'polished'
-
-import { Box, Flex, Heading } from '../../components/ui'
-
-import theme from '../../gatsby-plugin-theme-ui'
+import theme from '../../../../config/theme'
+import { Box, Flex } from '../../ui'
 
 // ___________________________________________________________________
-
-export const ArticlesPage = styled(Box)`
-  width: 100%;
-
-  @media ${theme.mq.tablet} {
-  }
-`
-
-export const PageTitle = styled(Box)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  background: ${theme.colors.black};
-  height: ${theme.tickerHeight};
-  width: 100%;
-
-  @media ${theme.mq.tablet} {
-  }
-`
-
-export const FilterNav = styled(Flex)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  background: ${theme.colors.black};
-  border-top: ${theme.border};
-  color: ${theme.colors.tertiary};
-
-  min-height: ${theme.headerHeight};
-  width: 100%;
-
-  position: sticky;
-  top: ${theme.headerHeight};
-  z-index: 99999;
-
-  .inner {
-    display: flex;
-    flex-wrap: wrap;
-    
-    margin-right: auto;
-    max-width: ${theme.maxWidth};
-    width: 100%;
-
-    .criteria {
-      color: ${theme.colors.white};
-      cursor: pointer;
-      font-weight: 500;
-      text-transform: uppercase;
-      transition: color ${theme.transition.global};
-
-      &:hover {
-        color: ${theme.colors.primary};
-      }
-    }
-  }
-`
 
 export const Filter = styled.div`
   width: 100%;
@@ -131,6 +70,13 @@ export const Filter = styled.div`
   }
 `
 
+export const FilterNav = styled(Flex)`
+  display: flex;
+  align-items: center;
+
+  margin-bottom: ${theme.space[6]};
+  width: 100%;
+`
 
 export const Toggler = styled(Flex)`
   margin-right: ${theme.space[5]};

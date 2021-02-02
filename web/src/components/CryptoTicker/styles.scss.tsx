@@ -30,16 +30,26 @@ export const CryptoTicker = styled(Flex)`
   }
 `
 
-export const Coin = styled(Box)`
+export const Coin = styled(Flex)`
+  display: flex;
+  flex-direction: row;
+
+
   margin-right: ${theme.space[5]};
 
   @media ${theme.mq.tablet} {
-    margin-right: ${theme.space[7]};
+    margin-right: ${theme.space[6]};
   }
 
   .coin {
+    &__image {
+      flex: 1;
+      margin-right: ${theme.space[2]};
+    }
+
     &-title {
-      color: ${theme.colors.tertiary};
+      color: ${theme.colors.gray};
+      font-family: ${theme.fonts.sans};
       font-size: ${theme.fontSizes[0]};
       line-height: 1.35;
 
@@ -48,7 +58,7 @@ export const Coin = styled(Box)`
       }
 
       &__name {
-        font-weight: 600;
+        font-weight: 500;
       }
 
       &__marker {
@@ -61,6 +71,10 @@ export const Coin = styled(Box)`
     &-info {
       font-size: calc(${theme.fontSizes[1]} / 1.15);
       line-height: 1.35;
+
+      @media ${theme.mq.tablet} {
+        font-size: calc(${theme.fontSizes[1]} / 1);
+      }
 
       &__price {
         margin-right: ${theme.space[2]};

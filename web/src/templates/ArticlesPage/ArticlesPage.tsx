@@ -2,7 +2,7 @@
 
 // ___________________________________________________________________
 
-import React from 'react'
+import React, { useState } from 'react'
 
 // Theme
 import * as S from './styles.scss'
@@ -13,6 +13,7 @@ import { Grid } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
+import Pill from '../../components/ui/Pill'
 import CardLeak from '../../components/CardLeak'
 import FeaturedArticles from '../../components/FeaturedArticles'
 import TopArticles from '../../components/TopArticles'
@@ -24,40 +25,104 @@ import usePost from '../../hooks/usePost'
 
 // ___________________________________________________________________
 
+const Filter = () => {
+  const posts = usePost()
+  const categories = [{ title: 'News' }, { title: 'Press' }]
+
+  // Filter posts
+  const [items, setItems] = useState(posts)
+  const [pillActive, setPillActive] = useState(false)
+  const setFilteredItems = (category: string) => {
+    setItems(
+      posts.filter(item => {
+        if (item.node.categories[0].title.includes(category)) {
+          return item
+        }
+        if (
+          item.node.categories[1] &&
+          item.node.categories[1].title.includes(category)
+        ) {
+          return item
+        }
+      })
+    )
+  }
+  // Reset / Show all
+  const resetFilteredItems = () => {
+    setItems(posts)
+  }
+
+  return (
+    <S.Filter id="product-grid">
+      <S.FilterNav>
+        <Pill
+          bg={theme.colors.lightgray}
+          color={theme.colors.text}
+          onClick={resetFilteredItems}
+        >
+          All
+        </Pill>
+
+        {categories.map((cat, idx) => (
+          <div onClick={() => setFilteredItems(cat.title)} key={idx}>
+            <Pill bg={theme.colors.lightgray} color={theme.colors.text}>
+              {cat.title}
+            </Pill>
+          </div>
+        ))}
+      </S.FilterNav>
+
+      <Box width={[1, 1, 6 / 8]}>
+        {posts.map(({ node: post }, idx) => (
+          <CardLeak aspectRatio={4 / 3} post={post} inline={true} key={idx} />
+        ))}
+      </Box>
+    </S.Filter>
+  )
+}
+
 const ArticlesPage = () => {
   const posts = usePost()
+  console.log(posts)
+
+  // Filter posts
+  const [items, setItems] = useState(posts)
+  const [pillActive, setPillActive] = useState(false)
+  const setFilteredItems = (category: string) => {
+    setItems(
+      posts.filter(item => {
+        if (item.node.categories[0].title.includes(category)) {
+          return item
+        }
+        if (
+          item.node.categories[1] &&
+          item.node.categories[1].title.includes(category)
+        ) {
+          return item
+        }
+      })
+    )
+  }
+  // Reset / Show all
+  const resetFilteredItems = () => {
+    setItems(posts)
+  }
   return (
     <S.ArticlesPage>
-      {/* <S.PageTitle px={theme.gutter.axis} py={4}>
-        <Heading
-          as="h3"
-          color="tertiary"
-          fontFamily="display"
-          mb={0}
-          className="text--uppercase"
-        >
-          Articles
-        </Heading>
-      </S.PageTitle> */}
-
       <FeaturedArticles bg={theme.colors.black} />
-
-      {/* <Section bg="black" border={true} overflow="hidden">
-        <Heading
-          as="h4"
-          color="tertiary"
-          fontFamily="display"
-          className="text--uppercase"
-        >
-          Latest Articles
-        </Heading>
-        <TopArticles />
-      </Section> */}
 
       <S.FilterNav p={theme.gutter.axis}>
         <Box className="inner">
-          {data.map((filter, idx) => (
-            <Box mr={6} className="criteria" key={idx}>
+          <Box mr={6} className="criteria" onClick={resetFilteredItems}>
+            All
+          </Box>
+          {criteria.map((filter, idx) => (
+            <Box
+              mr={6}
+              className="criteria"
+              onClick={() => setFilteredItems(filter.criteria)}
+              key={idx}
+            >
               {filter.criteria}
             </Box>
           ))}
@@ -81,7 +146,7 @@ const ArticlesPage = () => {
         </Flex>
 
         <Box width={[1, 1, 6 / 8]}>
-          {posts.map(({ node: post }, idx) => (
+          {items.map(({ node: post }, idx) => (
             <CardLeak aspectRatio={4 / 3} post={post} inline={true} key={idx} />
           ))}
         </Box>
@@ -92,29 +157,25 @@ const ArticlesPage = () => {
 
 export default ArticlesPage
 
-const data = [
+// ___________________________________________________________________
+
+const criteria = [
   {
-    criteria: 'All'
+    criteria: 'Altcoin'
   },
   {
-    criteria: 'blockchain'
+    criteria: 'Bitcoin'
   },
   {
-    criteria: 'crypto'
+    criteria: 'Crypto Picks'
   },
   {
-    criteria: 'bitcoin'
+    criteria: 'DeFi'
   },
   {
-    criteria: 'ethereum'
+    criteria: 'Ethereum'
   },
   {
-    criteria: 'opinion'
-  },
-  {
-    criteria: 'markets'
-  },
-  {
-    criteria: 'tech'
+    criteria: 'Investigations'
   }
 ]

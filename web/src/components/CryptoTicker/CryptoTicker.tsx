@@ -59,6 +59,8 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
   const currentPrice = coin.current_price
   const currentChange = coin.price_change_percentage_24h
 
+  console.log(coin)
+
   let color
   if (typeof parseFloat(currentChange) === 'number') {
     const currentChangeFixed = currentChange.toFixed(2)
@@ -74,14 +76,19 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
         'Loading...'
       ) : (
         <S.Coin>
-          <Flex className="coin-title">
-            <div className="coin-title__name">{coinName}</div>
-            <div className="coin-title__marker">24h</div>
-          </Flex>
-          <Flex color={color} className="coin-info">
-            <div className="coin-info__price">${currentPrice.toFixed(2)}</div>
-            <div className="coin-info__change">({currentChange}%)</div>
-          </Flex>
+          <Box flex={1} className="coin__image">
+            <img height="18px" src={coin.image} />
+          </Box>
+          <Box flex={3}>
+            <Flex className="coin-title">
+              <div className="coin-title__name">{coinName}</div>
+              {/* <div className="coin-title__marker">24h</div> */}
+            </Flex>
+            <Flex color={color} className="coin-info">
+              <div className="coin-info__price">${currentPrice.toFixed(2)}</div>
+              <div className="coin-info__change">({currentChange}%)</div>
+            </Flex>
+          </Box>
         </S.Coin>
       )}
     </>
