@@ -14,7 +14,7 @@ import { Grid } from 'theme-ui'
 import Section from '../../components/Section'
 import CardLeak from '../../components/CardLeak'
 import CardSlider from '../../components/CardSlider'
-import Featured from '../../components/FeaturedArticles'
+import FilterNav from '../../components/FilterNav'
 
 // Data
 import usePost from '../../hooks/usePost'
@@ -59,24 +59,10 @@ const VideosPage = () => {
         </CardSlider>
       </Section>
 
-      <S.FilterNav px={theme.gutter.axis}>
-        <Box className="inner">
-          <Box mr={6} className="criteria" onClick={resetFilteredItems}>
-            All
-          </Box>
-          
-          {criteria.map((filter, idx) => (
-            <Box
-              mr={6}
-              className="criteria"
-              onClick={() => setFilteredItems(filter.criteria)}
-              key={idx}
-            >
-              {filter.criteria}
-            </Box>
-          ))}
-        </Box>
-      </S.FilterNav>
+      <FilterNav
+        setFilteredItems={setFilteredItems}
+        resetFilteredItems={resetFilteredItems}
+      />
 
       <Section>
         <Grid columns={[1, 2, 3]} gap={theme.space[4]}>

@@ -35,7 +35,7 @@ const Articles = () => {
             Articles
           </Heading>
           <Link to={`/articles`}>
-            <Text color="primary">View All</Text>
+            View All
           </Link>
         </Flex>
       </Section>

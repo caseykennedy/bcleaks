@@ -40,7 +40,6 @@ export const FilterNav = styled(Flex)`
   border-top: ${theme.border};
   color: ${theme.colors.tertiary};
 
-  min-height: ${theme.headerHeight};
   width: 100%;
 
   position: sticky;
@@ -57,9 +56,10 @@ export const FilterNav = styled(Flex)`
 
     .criteria {
       color: ${theme.colors.white};
-      cursor: pointer;
-      font-weight: 500;
       text-transform: uppercase;
+
+      cursor: pointer;
+      padding: ${theme.space[4]} 0;
       transition: color ${theme.transition.global};
 
       &:hover {
