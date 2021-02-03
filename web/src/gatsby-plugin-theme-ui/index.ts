@@ -174,7 +174,7 @@ const theme: ThemeShape = {
   siteWidth: '100%',
   logoWidth: '',
   headerHeight: '74px',
-  tickerHeight: '64px',
+  tickerHeight: '56px',
   iconWidth: '18px',
 
   // Base

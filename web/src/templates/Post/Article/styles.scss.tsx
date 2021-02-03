@@ -32,6 +32,10 @@ export const Article = styled.div`
     -webkit-hyphens: auto;
     hyphens: auto;
   }
+
+  img {
+    background: ${theme.colors.white};
+  }
 `
 
 export const PageTitle = styled(Box)`

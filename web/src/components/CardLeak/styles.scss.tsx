@@ -24,11 +24,8 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
 
   @media ${theme.mq.tablet} {
     align-items: flex-end;
-    padding: ${p => (!p.inline ? 0 : `${theme.space[6]} 0 0 0`)};
-  }
-
-  @media ${theme.mq.desktop} {
     flex-direction: ${p => (!p.inline ? `column` : `row`)};
+    padding: ${p => (!p.inline ? 0 : `${theme.space[6]} 0 0 0`)};
   }
 
   .content {
@@ -47,13 +44,6 @@ export const CardLeak = styled(Flex)<{ inline?: boolean }>`
         : `0 ${theme.space[4]} ${theme.space[4]} 0`};
 
     @media ${theme.mq.tablet} {
-      padding: ${p =>
-        !p.inline
-          ? `${theme.space[3]} ${theme.space[4]}`
-          : `0 ${theme.space[5]} ${theme.space[5]} 0`};
-    }
-
-    @media ${theme.mq.desktop} {
       padding: ${p =>
         !p.inline
           ? `${theme.space[3]} ${theme.space[4]}`

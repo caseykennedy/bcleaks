@@ -11,10 +11,14 @@ import { Box, Flex } from '../../../components/ui'
 
 export const Video = styled.div`
   background: ${theme.colors.black};
-  
+
   .swiper-container {
     overflow: visible;
     padding-bottom: ${theme.space[7]};
+  }
+
+  img {
+    background: ${theme.colors.white};
   }
 `
 
