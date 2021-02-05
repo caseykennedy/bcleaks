@@ -17,7 +17,7 @@ export const Source = styled(Box)`
       color: ${theme.colors.primary};
 
       span {
-        bottom: ${theme.space[2]};
+        top: calc(${theme.space[1]} * -1);
       }
     }
 
@@ -53,6 +53,8 @@ export const Source = styled(Box)`
 
   .url {
     color: ${theme.colors.gray};
+    font-size: ${theme.fontSizes[1]};
+    line-height: 1.25;
     /* These are technically the same, but use both */
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -66,5 +68,11 @@ export const Source = styled(Box)`
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
   }
 `
