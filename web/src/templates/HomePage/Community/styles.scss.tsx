@@ -9,7 +9,7 @@ import { Box, Flex } from '../../../components/ui'
 
 // ___________________________________________________________________
 
-export const Community = styled(Section)`
+export const Community = styled(Box)`
   @media ${theme.mq.tablet} {
   }
 `

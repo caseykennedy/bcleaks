@@ -11,7 +11,7 @@ import { Flex } from '../ui'
 
 // Components
 import CardSlider from '../CardSlider'
-import CardLeak from '../CardLeak'
+import CardLeak from '../CardPost'
 
 // Data
 import usePost from '../../hooks/usePost'

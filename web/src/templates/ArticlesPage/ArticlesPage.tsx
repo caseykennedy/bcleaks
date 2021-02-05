@@ -11,7 +11,7 @@ import { Box, Flex, Heading, Text } from '../../components/ui'
 
 // Components
 import Section from '../../components/Section'
-import CardLeak from '../../components/CardLeak'
+import CardPost from '../../components/CardPost'
 import FeaturedArticles from '../../components/FeaturedArticles'
 import FilterNav from '../../components/FilterNav'
 
@@ -72,7 +72,7 @@ const ArticlesPage = () => {
 
         <Box width={[1, 1, 6 / 8]}>
           {items.map(({ node: post }, idx) => (
-            <CardLeak aspectRatio={4 / 3} post={post} inline={true} key={idx} />
+            <CardPost aspectRatio={4 / 3} post={post} inline={true} key={idx} />
           ))}
         </Box>
       </Section>

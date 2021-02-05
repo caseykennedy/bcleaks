@@ -1,4 +1,4 @@
-// Card Leak Styles:
+// Card Post Styles:
 
 // ___________________________________________________________________
 
@@ -13,62 +13,50 @@ import { Box, Flex } from '../ui'
 
 // ___________________________________________________________________
 
-export const CardLeak = styled(Flex)`
+export const CardPost = styled(Flex)<{ inline?: boolean }>`
   display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  justify-content: stretch;
+  align-items: flex-start;
+  /* justify-content: stretch; */
+  flex-direction: ${p => (!p.inline ? `column` : `row-reverse`)};
 
-  border: ${theme.border};
-  border-radius: ${theme.borderRadius};
-  margin-bottom: ${theme.space[4]};
-  padding: ${theme.space[4]};
+  border-bottom: ${theme.border};
+  padding: ${p => (!p.inline ? 0 : `${theme.space[4]} 0 0 0`)};
 
   @media ${theme.mq.tablet} {
-    margin-bottom: ${theme.space[5]};
+    align-items: flex-end;
+    flex-direction: ${p => (!p.inline ? `column` : `row`)};
+    padding: ${p => (!p.inline ? 0 : `${theme.space[6]} 0 0 0`)};
   }
 
   .content {
-    flex: 3;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
+    border-right: ${p => (!p.inline ? theme.border : `none`)};
+    border-left: ${p => (!p.inline ? theme.border : `none`)};
+
     height: 100%;
-    padding-left: ${theme.space[4]};
+    padding: ${p =>
+      !p.inline
+        ? `${theme.space[3]} ${theme.space[3]}`
+        : `0 ${theme.space[4]} ${theme.space[4]} 0`};
 
     @media ${theme.mq.tablet} {
-      padding-right: ${theme.space[5]};
-      padding-left: ${theme.space[6]};
+      padding: ${p =>
+        !p.inline
+          ? `${theme.space[3]} ${theme.space[4]}`
+          : `0 0 ${theme.space[5]} ${theme.space[5]}`};
     }
 
-    .category {
-      background: ${theme.colors.primary};
-      border-radius: 2px;
-
-      color: ${theme.colors.black};
-      font-size: ${theme.fontSizes[0]};
-      font-weight: 500;
-      text-transform: uppercase;
-
-      margin-right: ${theme.space[3]};
-      padding: 0 ${theme.space[1]};
-
-      @media ${theme.mq.tablet} {
-        font-size: ${theme.fontSizes[1]};
-      }
-    }
-
-    .utilities {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-
-      color: ${theme.colors.tertiary};
-      font-family: ${theme.fonts.sans};
+    .pillbox {
+      display: none;
+      margin-bottom: ${theme.space[6]};
       width: 100%;
 
       @media ${theme.mq.tablet} {
+        display: flex;
       }
     }
   }
@@ -106,7 +94,9 @@ export const CardLeak = styled(Flex)`
     /* font-family: ${theme.fonts.sans}; */
     font-size: calc(${theme.fontSizes[2]});
     line-height: ${theme.root.font.headingLineHeight};
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
+
+    margin-bottom: ${theme.space[6]};
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -117,6 +107,7 @@ export const CardLeak = styled(Flex)`
     @media ${theme.mq.tablet} {
       font-size: calc(${theme.fontSizes[3]});
       -webkit-line-clamp: 2; /* number of lines to show */
+      margin-bottom: ${theme.space[2]};
     }
 
     &--small {

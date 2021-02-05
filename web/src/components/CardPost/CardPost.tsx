@@ -1,4 +1,4 @@
-// Card Leak
+// Card Post
 
 // ___________________________________________________________________
 
@@ -16,17 +16,26 @@ import PostMeta from '../PostMeta'
 
 type Props = {
   aspectRatio?: number
+  bg?: any
+  inline?: boolean
   post: PostQuery
   small?: boolean
   video?: boolean
 }
 
-const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
+const CardPost: React.FC<Props> = ({
+  aspectRatio,
+  bg,
+  inline,
+  post,
+  small,
+  video
+}) => {
   const pagePrefix = !video ? `articles` : `videos`
   return (
     <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
-      <S.CardLeak>
-        <Box flex={1}>
+      <S.CardPost inline={inline}>
+        <Box width={!inline ? 1 : 1 / 3}>
           <Box className="bg">
             <Box className="figure">
               {post.figure.asset.fluid && (
@@ -44,37 +53,56 @@ const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
           </Box>
         </Box>
 
-        <Flex className="content">
+        <Flex width={!inline ? 1 : 2 / 3} className="content">
           <Box>
-            <Text as="p" color="tertiary" className="text--small">
-              <Box as="span" className="category">
-                c/BITCOIN
-              </Box>{' '}
-              Posted 8 hrs ago by u/cryptoproject
-            </Text>
             <Heading
               className={`title  ${!small ? `text--md` : `title--small`}`}
             >
               {post.title && post.title}
             </Heading>
+
+            {post.tags && (
+              <Flex className="pillbox">
+                {post.tags.slice(0, 3).map((item, idx) => (
+                  <Pill mb={2} key={idx}>
+                    <span>#{item.tag}</span>
+                  </Pill>
+                ))}
+              </Flex>
+            )}
           </Box>
 
-          <Flex className="utilities">
-            <Flex className="vote">137</Flex>
-            <Flex ml={4} className="comments">comments</Flex>
-            <Flex ml={4} className="share">share</Flex>
-          </Flex>
+          <PostMeta
+            authors={post.authors}
+            categories={post.categories}
+            publishedAt={post.publishedAt}
+          />
+
+          {/* {video && (
+            <Box as="span" className="text--small">
+              <Text as="span" color="white" mb={0}>
+                {publishedAt}
+              </Text>
+              by {post.authors && post.authors.name} in{' '}
+              <Link to={``}>
+                <Box as="span" className="category">
+                  {post.categories && post.categories[0].title}
+                </Box>
+              </Link>
+            </Box>
+          )} */}
         </Flex>
-      </S.CardLeak>
+      </S.CardPost>
     </Link>
   )
 }
 
-export default CardLeak
+export default CardPost
 
 // ___________________________________________________________________
 
-CardLeak.defaultProps = {
+CardPost.defaultProps = {
   aspectRatio: 16 / 9,
+  bg: theme.colors.background,
   small: false
 }

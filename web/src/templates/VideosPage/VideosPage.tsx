@@ -12,7 +12,7 @@ import { Grid } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
-import CardLeak from '../../components/CardLeak'
+import CardLeak from '../../components/CardPost'
 import CardSlider from '../../components/CardSlider'
 import FilterNav from '../../components/FilterNav'
 

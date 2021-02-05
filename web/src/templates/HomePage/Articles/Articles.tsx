@@ -13,7 +13,7 @@ import Pill from '../../../components/ui/Pill'
 
 import BlockContent from '../../../components/BlockContent'
 import Billboard from '../../../components/FeaturedArticles'
-import CardLeak from '../../../components/CardLeak'
+import CardPost from '../../../components/CardPost'
 import Section from '../../../components/Section'
 
 // Data
@@ -63,7 +63,7 @@ const Articles = () => {
         <Box width={[1, 1, 6 / 8]} className="articles__main">
           <Box>
             {posts.slice(1, 7).map(({ node: post }, idx) => (
-              <CardLeak
+              <CardPost
                 aspectRatio={4 / 3}
                 post={post}
                 inline={true}

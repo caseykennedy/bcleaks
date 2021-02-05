@@ -13,7 +13,7 @@ import { Grid } from 'theme-ui'
 
 // Components
 import CardSlider from '../../../components/CardSlider'
-import CardLeak from '../../../components/CardLeak'
+import CardLeak from '../../../components/CardPost'
 
 // Data
 import useVideo from '../../../hooks/useVideo'
