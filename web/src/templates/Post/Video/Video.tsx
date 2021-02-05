@@ -73,21 +73,23 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
         <Section bg="background" border={true}>
           <Flex flexDirection={[`column`, `row`]}>
             <Box flex={1} mb={4}>
-              <PostMeta
-                authors={post.authors}
-                categories={post.categories}
-                publishedAt={post.publishedAt}
-              />
+              <Box className="utilities">
+                <PostMeta
+                  authors={post.authors}
+                  categories={post.categories}
+                  publishedAt={post.publishedAt}
+                />
 
-              {post.sources[0] && (
-                <Box >
-                  <AnchorLink offset={theme.headerHeight} href={`#sources`}>
-                    <Button bg="transparent" color={theme.colors.tertiary}>
-                      <Icon name="document" /> View Sources
-                    </Button>
-                  </AnchorLink>
-                </Box>
-              )}
+                {post.sources[0] && (
+                  <Flex mt={5} mb={4}>
+                    <AnchorLink offset={theme.headerHeight} href={`#sources`}>
+                      <Button bg="transparent" color={theme.colors.tertiary}>
+                        <Icon name="document" /> View Sources
+                      </Button>
+                    </AnchorLink>
+                  </Flex>
+                )}
+              </Box>
             </Box>
 
             <Box flex={[1, 2]}>
@@ -115,7 +117,7 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
         </Section>
 
         {post.sources[0] && (
-          <Section border={true} maxWidth={theme.maxWidth}>
+          <Section border={true} maxWidth={theme.maxWidth} id="sources">
             <Heading
               as="h4"
               fontFamily="display"

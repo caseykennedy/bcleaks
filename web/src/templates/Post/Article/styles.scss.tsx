@@ -36,6 +36,13 @@ export const Article = styled.div`
   img {
     background: ${theme.colors.white};
   }
+
+  .utilities {
+    @media ${theme.mq.tablet} {
+      position: sticky;
+      top: calc(${theme.headerHeight} + ${theme.space[5]});
+    }
+  }
 `
 
 export const PageTitle = styled(Box)`

@@ -9,7 +9,7 @@ import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../../../components/ui'
 
-//Components
+// Components
 import CardLeak from '../../../components/CardLeak'
 import Section from '../../../components/Section'
 

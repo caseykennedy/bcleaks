@@ -113,7 +113,12 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                 />
 
                 {post.figure.caption && (
-                  <Text as="figcaption" color="tertiary" fontSize={0} p={theme.gutter.axis}>
+                  <Text
+                    as="figcaption"
+                    color="tertiary"
+                    fontSize={0}
+                    p={theme.gutter.axis}
+                  >
                     {post.figure.caption}
                   </Text>
                 )}
@@ -126,11 +131,13 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
           <Flex flexDirection="column">
             <Flex flexDirection={[`column`, `row`]} position="relative">
               <Box flex={1} mb={4} width={1}>
-                <PostMeta
-                  authors={post.authors}
-                  categories={post.categories}
-                  publishedAt={post.publishedAt}
-                />
+                <Box className="utilities">
+                  <PostMeta
+                    authors={post.authors}
+                    categories={post.categories}
+                    publishedAt={post.publishedAt}
+                  />
+                </Box>
               </Box>
 
               <Box flex={[1, 2]} width={1}>
