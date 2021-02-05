@@ -84,15 +84,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                 </Text>
               </Box>
 
-              <Flex flex={1} mt={[4, 0, 0]} ml={[0, 6, 8]}>
-                {post.sources[0] && (
-                  <AnchorLink offset={theme.headerHeight} href={`#sources`}>
-                    <Button bg="transparent" color={theme.colors.tertiary}>
-                      <Icon name="document" /> View Sources
-                    </Button>
-                  </AnchorLink>
-                )}
-              </Flex>
+              
             </Flex>
           </Box>
         </Section>
@@ -137,6 +129,16 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                     categories={post.categories}
                     publishedAt={post.publishedAt}
                   />
+
+                  {post.sources[0] && (
+                    <Flex mt={5} mb={4}>
+                      <AnchorLink offset={theme.headerHeight} href={`#sources`}>
+                        <Button bg="transparent" color={theme.colors.tertiary}>
+                          <Icon name="document" /> View Sources
+                        </Button>
+                      </AnchorLink>
+                    </Flex>
+                  )}
                 </Box>
               </Box>
 

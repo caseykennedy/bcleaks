@@ -22,10 +22,11 @@ export const CardLeak = styled(Flex)`
   border: ${theme.border};
   border-radius: ${theme.borderRadius};
   margin-bottom: ${theme.space[4]};
-  padding: ${theme.space[4]};
+  padding: ${theme.space[2]};
 
   @media ${theme.mq.tablet} {
     margin-bottom: ${theme.space[5]};
+    padding: ${theme.space[3]};
   }
 
   .content {
@@ -35,7 +36,8 @@ export const CardLeak = styled(Flex)`
     justify-content: space-between;
 
     height: 100%;
-    padding-left: ${theme.space[4]};
+    padding-right: ${theme.space[4]};
+    padding-left: ${theme.space[1]};
 
     @media ${theme.mq.tablet} {
       padding-right: ${theme.space[5]};
