@@ -21,10 +21,10 @@ import useSiteSettings from '../hooks/useSiteSettings'
 const Articles = () => {
   const site = useSiteSettings()
   return (
-    <Layout>
+    <>
       <SEO pathname={`/articles`} title={`Articles | ${site.titleShort}`} />
       <ArticlesPage />
-    </Layout>
+    </>
   )
 }
 

@@ -28,12 +28,12 @@ const Index = () => {
     to: { opacity: 1 }
   })
   return (
-    <Layout>
+    <>
       <SEO />
       <AnimatedBox>
         <HomePage />
       </AnimatedBox>
-    </Layout>
+    </>
   )
 }
 

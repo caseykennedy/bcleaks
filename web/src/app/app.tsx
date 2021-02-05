@@ -14,7 +14,7 @@ import Layout from '../components/Layout'
 
 const App = () => {
   return (
-    <Layout>
+    <>
       <NavBar />
       <Router>
         <PrivateRoute path="/app/profile" component={Profile} />
@@ -23,7 +23,7 @@ const App = () => {
           <Login path="/login" />
         </PublicRoute>
       </Router>
-    </Layout>
+    </>
   )
 }
 

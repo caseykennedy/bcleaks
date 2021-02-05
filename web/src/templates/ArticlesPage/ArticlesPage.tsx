@@ -9,8 +9,6 @@ import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../../components/ui'
 
-import { Grid } from 'theme-ui'
-
 // Components
 import Section from '../../components/Section'
 import CardLeak from '../../components/CardLeak'
@@ -83,26 +81,3 @@ const ArticlesPage = () => {
 }
 
 export default ArticlesPage
-
-// ___________________________________________________________________
-
-const criteria = [
-  {
-    criteria: 'Altcoin'
-  },
-  {
-    criteria: 'Bitcoin'
-  },
-  {
-    criteria: 'Crypto Picks'
-  },
-  {
-    criteria: 'DeFi'
-  },
-  {
-    criteria: 'Ethereum'
-  },
-  {
-    criteria: 'Investigations'
-  }
-]

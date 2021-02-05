@@ -20,17 +20,13 @@ type LinkProps = {
 }
 
 type NavLinksProps = {
+  handleExitOnClick: () => any
   open: boolean
 }
 
-// ___________________________________________________________________
-
 const NavLink = ({ item, transition, handleExitOnClick }: LinkProps) => {
-  // console.log('—————|— Navigation —|—————')
-  // console.log(item.subPage)
-
   return (
-    <S.NavLink style={transition}>
+    <S.NavLink style={transition} onClick={handleExitOnClick}>
       <Box className="nav-mobile-sub">
         <Link to={item.link} className="nav-mobile__link">
           {item.name}
@@ -40,7 +36,7 @@ const NavLink = ({ item, transition, handleExitOnClick }: LinkProps) => {
   )
 }
 
-const MobileNav: React.FC<NavLinksProps> = ({ open }) => {
+const MobileNav: React.FC<NavLinksProps> = ({ handleExitOnClick, open }) => {
   const navTransitions = useTransition(open ? data : [], item => item.name, {
     from: {
       opacity: 0
@@ -60,7 +56,7 @@ const MobileNav: React.FC<NavLinksProps> = ({ open }) => {
         <NavLink
           key={key}
           transition={props}
-          handleExitOnClick={() => close()}
+          handleExitOnClick={handleExitOnClick}
           item={item}
         />
       ))}

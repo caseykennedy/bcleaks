@@ -21,10 +21,10 @@ import useSiteSettings from '../hooks/useSiteSettings'
 const Community = () => {
   const site = useSiteSettings()
   return (
-    <Layout>
+    <>
       <SEO pathname={`/community`} title={`Community | ${site.titleShort}`} />
       <CommunityPage />
-    </Layout>
+    </>
   )
 }
 

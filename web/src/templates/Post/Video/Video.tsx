@@ -37,7 +37,7 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
   const videos = useVideo()
   const siteSettings = useSiteSettings()
   return (
-    <Layout>
+    <>
       <SEO
         article={true}
         banner={`${post.figure.asset.fluid.src}`}
@@ -152,7 +152,7 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
           </Box>
         </Section>
       </S.Video>
-    </Layout>
+    </>
   )
 }
 

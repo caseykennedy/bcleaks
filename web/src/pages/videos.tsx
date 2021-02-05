@@ -21,10 +21,10 @@ import useSiteSettings from '../hooks/useSiteSettings'
 const Videos = () => {
   const site = useSiteSettings()
   return (
-    <Layout>
+    <>
       <SEO pathname={`/videos`} title={`Videos | ${site.titleShort}`} />
       <VideosPage />
-    </Layout>
+    </>
   )
 }
 

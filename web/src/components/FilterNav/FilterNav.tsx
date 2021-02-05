@@ -3,24 +3,18 @@
 // ___________________________________________________________________
 
 import React from 'react'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image/withIEPolyfill'
 
 // Theme + ui
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Heading, Text } from '../ui'
+import { Box } from '../ui'
 
 // ___________________________________________________________________
 
 type Props = {
   resetFilteredItems: () => any
   setFilteredItems: (arg: string) => void
-} & typeof defaultProps
-
-const defaultProps = {}
-
-// ___________________________________________________________________
+}
 
 const FilterNav: React.FC<Props> = ({
   resetFilteredItems,
@@ -51,8 +45,6 @@ const FilterNav: React.FC<Props> = ({
 export default FilterNav
 
 // ___________________________________________________________________
-
-FilterNav.defaultProps = defaultProps
 
 const criteria = [
   {

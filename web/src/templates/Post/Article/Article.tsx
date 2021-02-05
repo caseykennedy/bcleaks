@@ -38,7 +38,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
   const posts = usePost()
   const siteSettings = useSiteSettings()
   return (
-    <Layout>
+    <>
       <SEO
         article={true}
         banner={`${post.figure.asset.fluid.src}`}
@@ -198,7 +198,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
         </Section>
         {/* <PrevNext pageContext={pageContext} /> */}
       </S.Article>
-    </Layout>
+    </>
   )
 }
 

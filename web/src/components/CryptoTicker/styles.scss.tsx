@@ -12,10 +12,10 @@ import theme from '../../gatsby-plugin-theme-ui'
 
 export const CryptoTicker = styled(Flex)`
   align-items: center;
-  background-color: black;
+  background: ${theme.colors.black};
   border-bottom: ${theme.border};
   font-size: ${theme.fontSizes[1]};
-  overflow-x: scroll;
+  overflow-x: hidden;
   padding: 0 ${theme.space[3]};
 
   height: ${theme.tickerHeight};
@@ -28,6 +28,10 @@ export const CryptoTicker = styled(Flex)`
   .ticker {
     &__inner {
     }
+  }
+
+  .swiper-container {
+    overflow: visible;
   }
 `
 

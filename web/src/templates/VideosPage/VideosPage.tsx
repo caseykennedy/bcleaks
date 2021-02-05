@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 // Theme
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Heading, Text } from '../../components/ui'
+import { Box, Flex } from '../../components/ui'
 import { Grid } from 'theme-ui'
 
 // Components
@@ -17,7 +17,6 @@ import CardSlider from '../../components/CardSlider'
 import FilterNav from '../../components/FilterNav'
 
 // Data
-import usePost from '../../hooks/usePost'
 import useVideo from '../../hooks/useVideo'
 
 // ___________________________________________________________________
@@ -78,26 +77,3 @@ const VideosPage = () => {
 }
 
 export default VideosPage
-
-// ___________________________________________________________________
-
-const criteria = [
-  {
-    criteria: 'Altcoin'
-  },
-  {
-    criteria: 'Bitcoin'
-  },
-  {
-    criteria: 'Crypto Picks'
-  },
-  {
-    criteria: 'DeFi'
-  },
-  {
-    criteria: 'Ethereum'
-  },
-  {
-    criteria: 'Investigations'
-  }
-]

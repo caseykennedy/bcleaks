@@ -2,8 +2,9 @@
 
 // ___________________________________________________________________
 
-import React, { useEffect, useState } from 'react'
+import React, { ReactChild, useEffect, useState } from 'react'
 import CoinGecko from 'coingecko-api'
+import Swiper from 'react-id-swiper'
 
 // Libraries
 import Ticker from 'nice-react-ticker'
@@ -48,12 +49,43 @@ type CoinNode = {
   total_volume: number
 }
 
+const Slider: React.FC<{ children: React.ReactChild }> = ({ children }) => {
+  const params = {
+    slidesPerView: 3,
+    spaceBetween: 0,
+    grabCursor: true,
+    freeMode: true,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
+    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 8,
+        spaceBetween: 0
+      },
+      768: {
+        slidesPerView: 8,
+        spaceBetween: 0
+      },
+      640: {
+        slidesPerView: 4,
+        spaceBetween: 0
+      },
+      320: {
+        slidesPerView: 3,
+        spaceBetween: 0
+      }
+    }
+  }
+  return <Swiper {...params}>{children}</Swiper>
+}
+
 const Coin: React.FC<{ coin: any }> = ({ coin }) => {
   const coinName = coin.name
   const currentPrice = coin.current_price
   const currentChange = coin.price_change_percentage_24h
-
-  console.log(coin)
 
   let color
   let carat
@@ -84,7 +116,9 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
             <Flex color={color} className="coin-info">
               <div className="coin-info__price">${currentPrice.toFixed(2)}</div>
               <div className="coin-info__carat">{carat}</div>
-              <div className="coin-info__change">{currentChange.toFixed(2)}%</div>
+              <div className="coin-info__change">
+                {currentChange.toFixed(2)}%
+              </div>
             </Flex>
           </Box>
         </S.Coin>
@@ -97,6 +131,8 @@ const GetCoinGecko = () => {
   const CoinGeckoClient = new CoinGecko()
   // Fetch Coin data
   const [data, setData] = useState<any>(null)
+
+  console.log(data)
 
   useEffect(() => {
     async function getCoins() {
@@ -116,7 +152,7 @@ const GetCoinGecko = () => {
           'tezos',
           'stellar',
           'monero',
-          'zcash',
+          'zcash'
         ],
         sparkline: false,
         price_change_percentage: '24h'
@@ -140,7 +176,9 @@ const GetCoinGecko = () => {
 const CryptoTicker = () => {
   return (
     <S.CryptoTicker>
-      <GetCoinGecko />
+      <Slider>
+        <GetCoinGecko />
+      </Slider>
     </S.CryptoTicker>
   )
 }

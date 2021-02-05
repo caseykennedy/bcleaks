@@ -60,7 +60,7 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       />
 
       <Modal open={isNavOpen} close={toggleMenu}>
-        <MobileNav open={isNavOpen} />
+        <MobileNav open={isNavOpen} handleExitOnClick={toggleMenu} />
       </Modal>
 
       <S.Utilities px={theme.gutter.axis} py={2}>
