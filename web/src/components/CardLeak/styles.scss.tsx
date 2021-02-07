@@ -36,9 +36,9 @@ export const CardLeak = styled(Flex)`
     padding-left: ${theme.space[1]};
 
     @media ${theme.mq.tablet} {
-      padding-top: ${theme.space[2]};
+      padding-top: ${theme.space[1]};
       padding-right: ${theme.space[5]};
-      padding-left: calc(${theme.space[7]} / 1.15);
+      padding-left: calc(${theme.space[7]} / 1.1);
     }
 
     .category {
@@ -64,7 +64,7 @@ export const CardLeak = styled(Flex)`
       align-items: center;
       justify-content: flex-start;
 
-      margin-top: ${theme.space[4]};
+      margin-top: ${theme.space[5]};
 
       color: ${theme.colors.tertiary};
       font-family: ${theme.fonts.sans};
