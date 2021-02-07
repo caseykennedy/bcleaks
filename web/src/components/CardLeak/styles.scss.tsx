@@ -14,15 +14,11 @@ import { Box, Flex } from '../ui'
 // ___________________________________________________________________
 
 export const CardLeak = styled(Flex)`
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  justify-content: stretch;
-
   border: ${theme.border};
   border-radius: ${theme.borderRadius};
   margin-bottom: ${theme.space[4]};
   padding: ${theme.space[2]};
+  position: relative;
 
   @media ${theme.mq.tablet} {
     margin-bottom: ${theme.space[5]};
@@ -30,7 +26,7 @@ export const CardLeak = styled(Flex)`
   }
 
   .content {
-    flex: 3;
+    flex: 4;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -40,15 +36,17 @@ export const CardLeak = styled(Flex)`
     padding-left: ${theme.space[1]};
 
     @media ${theme.mq.tablet} {
+      padding-top: ${theme.space[2]};
       padding-right: ${theme.space[5]};
-      padding-left: ${theme.space[6]};
+      padding-left: calc(${theme.space[7]} / 1.15);
     }
 
     .category {
-      background: ${theme.colors.primary};
+      background: ${theme.colors.darkgray};
       border-radius: 2px;
 
       color: ${theme.colors.black};
+      font-family: ${theme.fonts.body};
       font-size: ${theme.fontSizes[0]};
       font-weight: 500;
       text-transform: uppercase;
@@ -66,11 +64,71 @@ export const CardLeak = styled(Flex)`
       align-items: center;
       justify-content: flex-start;
 
+      margin-top: ${theme.space[4]};
+
       color: ${theme.colors.tertiary};
       font-family: ${theme.fonts.sans};
+      font-size: ${theme.fontSizes[1]};
       width: 100%;
 
       @media ${theme.mq.tablet} {
+      }
+
+      .vote {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        color: ${theme.colors.white};
+        font-weight: 600;
+
+        margin-right: ${theme.space[5]};
+
+        @media ${theme.mq.tablet} {
+          flex-direction: column;
+
+          font-size: ${theme.fontSizes[3]};
+          letter-spacing: 1.75px;
+
+          margin-top: ${theme.space[4]};
+          margin-right: 0;
+          margin-left: ${theme.space[4]};
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .vote-count {
+          margin: 0 ${theme.space[3]};
+
+          @media ${theme.mq.tablet} {
+            margin: ${theme.space[1]} 0;
+          }
+        }
+
+        .vote-arrow {
+          svg {
+            fill: ${theme.colors.white};
+            width: ${theme.space[3]};
+          }
+
+          &--up {
+            padding-bottom: ${theme.space[1]};
+
+            svg {
+              fill: ${theme.colors.primary};
+              transform: rotate(-90deg);
+            }
+          }
+
+          &--down {
+            padding-top: ${theme.space[1]};
+
+            svg {
+              transform: rotate(90deg);
+            }
+          }
+        }
       }
     }
   }
@@ -105,10 +163,10 @@ export const CardLeak = styled(Flex)`
 
   .title {
     color: ${theme.colors.white};
-    /* font-family: ${theme.fonts.sans}; */
     font-size: calc(${theme.fontSizes[2]});
     line-height: ${theme.root.font.headingLineHeight};
-    /* text-transform: uppercase; */
+
+    margin-bottom: ${theme.space[1]};
 
     overflow: hidden;
     text-overflow: ellipsis;

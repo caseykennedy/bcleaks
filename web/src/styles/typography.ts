@@ -293,6 +293,10 @@ const Typography = css`
     letter-spacing: 0.5px;
   }
 
+  .text--underline {
+    text-decoration: underline;
+  }
+
   a {
     text-decoration: none;
     position: relative;

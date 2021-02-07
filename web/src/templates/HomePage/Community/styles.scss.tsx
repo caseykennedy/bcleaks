@@ -10,6 +10,8 @@ import { Box, Flex } from '../../../components/ui'
 // ___________________________________________________________________
 
 export const Community = styled(Box)`
+  border-top: ${theme.border};
+
   @media ${theme.mq.tablet} {
   }
 `
