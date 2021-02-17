@@ -8,9 +8,11 @@ import { Box, Flex, Heading, Text, AnimatedBox } from '../components/ui'
 import theme from '../gatsby-plugin-theme-ui'
 
 type TodoData = {
+  author: string
+  body: string
+  postType: string
   title: string
   votes: number
-  author: string
 }
 
 const Main = () => {
@@ -18,8 +20,6 @@ const Main = () => {
   const [data, setData] = React.useState(null)
   const [articleTitle, setArticleTitle] = React.useState<string>('')
   const [testData, setTestData] = React.useState([])
-  console.log('------ testi -------')
-  console.log(testData)
   const [loading, setLoading] = React.useState(false)
   const { user }: any = useIdentityContext()
   const [err, setErr] = React.useState('')
@@ -31,7 +31,7 @@ const Main = () => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + user.token.access_token
+        Authorization: `Bearer ${user.token.access_token}`
       }
     })
       .then(response => response.json())
@@ -58,6 +58,18 @@ const Main = () => {
       })
       .then(console.log)
   }
+
+  // Todo data
+  const myTodo = {
+    author: user.user_metadata.full_name,
+    body: "Chainlink and it's connection to Polkadot.",
+    postType: 'article',
+    title: articleTitle,
+    votes: 0
+  }
+
+  // console.log('------ myTodo -------')
+  // console.log(myTodo)
 
   const handlePost = (e: any) => {
     e.preventDefault()
@@ -86,18 +98,11 @@ const Main = () => {
       })
   }
 
-  const handleInputChange = ({ target }: any) => {
+  const handleInputChange = ({
+    target
+  }: React.ChangeEvent<HTMLInputElement>) => {
     setArticleTitle(target.value)
   }
-
-  // Todo data
-  const myTodo = {
-    title: articleTitle,
-    votes: 37,
-    author: 'crypto_33'
-  }
-
-  console.log(articleTitle)
 
   React.useEffect(() => {
     return () => {}
@@ -113,7 +118,9 @@ const Main = () => {
 
       <hr />
 
-      <Heading as="h3" mt={3}>Post article</Heading>
+      <Heading as="h3" mt={3}>
+        Post article
+      </Heading>
 
       <Text as="h4">Article Title:</Text>
       <Text
@@ -143,7 +150,9 @@ const Main = () => {
 
       <hr />
 
-      <Heading as="h3" mt={6}>get data</Heading>
+      <Heading as="h3" mt={6}>
+        get data
+      </Heading>
 
       <Box
         width={1}
@@ -158,12 +167,16 @@ const Main = () => {
         {loading ? 'Loading...' : 'show account info + articles'}
       </Box>
       {err && <pre>{JSON.stringify(err, null, 2)}</pre>}
-      <Heading as="h3" fontSize={3}>Account data</Heading>
+      <Heading as="h3" fontSize={3}>
+        Account data
+      </Heading>
       <Box as="pre" mb={6}>
         {JSON.stringify(data, null, 2)}
       </Box>
 
-      <Heading as="h3" fontSize={3}>Community articles</Heading>
+      <Heading as="h3" fontSize={3}>
+        Community articles
+      </Heading>
       {testData &&
         testData.map((data, idx) => (
           <Box as="pre" key={idx}>

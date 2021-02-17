@@ -6,9 +6,6 @@ import React, { ReactChild, useEffect, useState } from 'react'
 import CoinGecko from 'coingecko-api'
 import Swiper from 'react-id-swiper'
 
-// Libraries
-import Ticker from 'nice-react-ticker'
-
 // ui
 import { Box, Flex, Text } from '../ui'
 

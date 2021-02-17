@@ -24,7 +24,7 @@ type Props = {
 const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
   const pagePrefix = !video ? `articles` : `videos`
   return (
-    <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
+    // <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
       <S.CardLeak>
         <Flex className="content">
           <Box>
@@ -86,7 +86,7 @@ const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
           </Box>
         </Box>
       </S.CardLeak>
-    </Link>
+    // </Link>
   )
 }
 

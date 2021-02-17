@@ -4,7 +4,6 @@
 
 // Libraries
 import React from 'react'
-import { useSpring, config } from 'react-spring'
 
 // Elements
 import { AnimatedBox } from '../components/ui'
@@ -20,13 +19,6 @@ import theme from '../gatsby-plugin-theme-ui'
 // ___________________________________________________________________
 
 const Index = () => {
-  // Page animation
-  const pageAnimation = useSpring({
-    config: config.molasses,
-    delay: 0,
-    from: { opacity: 0 },
-    to: { opacity: 1 }
-  })
   return (
     <>
       <SEO />
