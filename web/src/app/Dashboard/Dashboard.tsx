@@ -1,11 +1,23 @@
+// Dashboard
+
+// ___________________________________________________________________
+
 import React from 'react'
 import fetch from 'node-fetch'
 
+// Context
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
-import api from '../utils/api'
-import { Box, Flex, Heading, Text, AnimatedBox } from '../components/ui'
-import theme from '../gatsby-plugin-theme-ui'
+// Utils
+import api from '../../utils/api'
+
+// Theme + ui
+import * as S from './styles.scss'
+import theme from '../../gatsby-plugin-theme-ui'
+import { Box, Heading, Text } from '../../components/ui'
+import { Input, Select, Textarea } from 'theme-ui'
+
+// ___________________________________________________________________
 
 type TodoData = {
   author: string
@@ -15,10 +27,11 @@ type TodoData = {
   votes: number
 }
 
-const Main = () => {
+const Dashboard = () => {
   const inputRef = React.useRef<HTMLInputElement>(null)
   const [data, setData] = React.useState(null)
   const [articleTitle, setArticleTitle] = React.useState<string>('')
+  const [articleBody, setArticleBody] = React.useState<string>('')
   const [testData, setTestData] = React.useState([])
   const [loading, setLoading] = React.useState(false)
   const { user }: any = useIdentityContext()
@@ -48,7 +61,7 @@ const Main = () => {
         throw err
       })
 
-    fetch('/.netlify/functions/token-hider').then(response => response.json())
+    // fetch('/.netlify/functions/token-hider').then(response => response.json())
     // .then(console.log)
 
     fetch('/.netlify/functions/todos-read-all')
@@ -62,16 +75,16 @@ const Main = () => {
   // Todo data
   const myTodo = {
     author: user.user_metadata.full_name,
-    body: "Chainlink and it's connection to Polkadot.",
+    body: articleBody,
     postType: 'article',
     title: articleTitle,
     votes: 0
   }
 
-  // console.log('------ myTodo -------')
-  // console.log(myTodo)
+  console.log('------ myTodo -------')
+  console.log(myTodo)
 
-  const handlePost = (e: any) => {
+  const handlePost = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
     setLoading(true)
 
@@ -98,10 +111,16 @@ const Main = () => {
       })
   }
 
-  const handleInputChange = ({
+  const handleTitleChange = ({
     target
   }: React.ChangeEvent<HTMLInputElement>) => {
     setArticleTitle(target.value)
+  }
+
+  const handleBodyChange = ({
+    target
+  }: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setArticleBody(target.value)
   }
 
   React.useEffect(() => {
@@ -109,12 +128,8 @@ const Main = () => {
   }, [])
 
   return (
-    <Box p={5}>
+    <S.Dashboard>
       <Heading as="h3">Dashboard</Heading>
-      <Box as="ul" mb={6}>
-        <li>API: {user.api && user.api.apiURL}</li>
-        <li>ID: {user.id}</li>
-      </Box>
 
       <hr />
 
@@ -122,23 +137,30 @@ const Main = () => {
         Post article
       </Heading>
 
-      <Text as="h4">Article Title:</Text>
-      <Text
-        as="input"
-        fontSize={4}
+      <Heading as="h4">Post Title:</Heading>
+      <Input
         p={1}
-        mb={3}
-        width={1}
+        mb={6}
         type="text"
         value={articleTitle}
-        onChange={handleInputChange}
+        onChange={handleTitleChange}
         ref={inputRef}
       />
+
+      <Heading as="h4">Post Body:</Heading>
+      <Textarea p={1} mb={6} value={articleBody} onChange={handleBodyChange} />
+
+      <Heading as="h4">Post type:</Heading>
+      <Select defaultValue="Article">
+        <option>Article</option>
+        <option>Link</option>
+        <option>Video</option>
+      </Select>
 
       <Box
         width={1}
         p={4}
-        mb={6}
+        my={6}
         bg="primary"
         color="black"
         textAlign="center"
@@ -150,46 +172,53 @@ const Main = () => {
 
       <hr />
 
-      <Heading as="h3" mt={6}>
-        get data
-      </Heading>
+      <Box bg="black" p={4}>
+        <Heading as="h3" mt={6}>
+          get data
+        </Heading>
 
-      <Box
-        width={1}
-        p={4}
-        mb={6}
-        bg="primary"
-        color="black"
-        textAlign="center"
-        onClick={handleGet}
-        style={{ cursor: 'pointer' }}
-      >
-        {loading ? 'Loading...' : 'show account info + articles'}
-      </Box>
-      {err && <pre>{JSON.stringify(err, null, 2)}</pre>}
-      <Heading as="h3" fontSize={3}>
-        Account data
-      </Heading>
-      <Box as="pre" mb={6}>
-        {JSON.stringify(data, null, 2)}
-      </Box>
+        <Box
+          width={1}
+          p={4}
+          mb={6}
+          bg="primary"
+          color="black"
+          textAlign="center"
+          onClick={handleGet}
+          style={{ cursor: 'pointer' }}
+        >
+          {loading ? 'Loading...' : 'show account info + articles'}
+        </Box>
 
-      <Heading as="h3" fontSize={3}>
-        Community articles
-      </Heading>
-      {testData &&
-        testData.map((data, idx) => (
-          <Box as="pre" key={idx}>
-            <Heading as="h3" fontSize={3} mb={3}>
-              {data.data.title}
-            </Heading>
-            <Heading as="h4">VOTES: {data.data.votes}</Heading>
-            <Heading as="h4">AUTHOR: {data.data.author}</Heading>
-          </Box>
-        ))}
-      <pre>{JSON.stringify(testData, null, 2)}</pre>
-    </Box>
+        <Text color="pink" mb={6}>
+          {err && <>{JSON.stringify(err, null, 2)}</>}
+        </Text>
+        
+        <Heading as="h3" fontSize={3}>
+          Account data
+        </Heading>
+        <Box as="pre" mb={6}>
+          {JSON.stringify(data, null, 2)}
+        </Box>
+
+        <Heading as="h3" fontSize={3}>
+          Community articles
+        </Heading>
+        {testData &&
+          testData.map((data, idx) => (
+            <Box as="pre" key={idx}>
+              <Heading as="h3" fontSize={3} mb={3}>
+                {data.data.title}
+              </Heading>
+              <Text as="p">{data.data.body}</Text>
+              <Heading as="h4">VOTES: {data.data.votes}</Heading>
+              <Heading as="h4">AUTHOR: {data.data.author}</Heading>
+            </Box>
+          ))}
+        <pre>{JSON.stringify(testData, null, 2)}</pre>
+      </Box>
+    </S.Dashboard>
   )
 }
 
-export default Main
+export default Dashboard

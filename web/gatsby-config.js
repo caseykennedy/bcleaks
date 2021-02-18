@@ -37,7 +37,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/app/*`] },
+      options: { prefixes: [`/user/*`] },
     },
     {
       resolve: `gatsby-plugin-netlify-identity`,

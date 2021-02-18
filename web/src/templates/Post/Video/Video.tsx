@@ -14,7 +14,6 @@ import { Grid } from 'theme-ui'
 import Pill from '../../../components/ui/Pill'
 
 // Components
-import Layout from '../../../components/Layout'
 import SEO from '../../../components/SEO'
 import Section from '../../../components/Section'
 import BlockContent from '../../../components/BlockContent'
@@ -141,11 +140,11 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
             fontFamily="display"
             className="text--uppercase"
           >
-            Related
+            Recent
           </Heading>
           <Box width={1}>
             <CardSlider pagination={true} slidesPerView={3}>
-              {videos.map(({ node: post }, idx) => (
+              {videos.slice(0, 4).map(({ node: post }, idx) => (
                 <Box key={idx}>
                   <CardLeak post={post} small={true} video={true} />
                 </Box>

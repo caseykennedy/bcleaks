@@ -13,22 +13,15 @@ export default () => {
     : 'You are not logged in'
 
   return (
-    <Flex
-      bg="black"
-      p={5}
-      style={{
-        display: 'flex',
-        flex: '1',
-        justifyContent: 'space-between'
-      }}
-    >
+    <Flex bg="black" p={5} flex={1} flexDirection="column" flexWrap="wrap">
       <span>{message}</span>
 
-      <nav>
-        <span>test nav: </span>
-        <Link to="/app/">Dashboard</Link>
+      <br />
+
+      <Flex flexDirection="column" flexWrap="wrap">
+        <Link to="/user/">Dashboard</Link>
         {` `}
-        <Link to="/app/profile">account</Link>
+        <Link to="/user/profile">Account</Link>
         {` `}
         {isLoggedIn ? (
           <a
@@ -36,15 +29,15 @@ export default () => {
             onClick={async event => {
               event.preventDefault()
               await logoutUser()
-              navigate(`/app/login`)
+              navigate(`/user/login`)
             }}
           >
             Logout
           </a>
         ) : (
-          <Link to="/app/login">Login</Link>
+          <Link to="/user/login">Login</Link>
         )}
-      </nav>
+      </Flex>
     </Flex>
   )
 }

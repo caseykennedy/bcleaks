@@ -4,6 +4,6 @@
   publish = "public"
 
 # [[redirects]]
-#   from = "/app/*"
-#   to = "/app.html"
+#   from = "/user/*"
+#   to = "/user.html"
 #   status = 200

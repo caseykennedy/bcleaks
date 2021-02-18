@@ -38,7 +38,7 @@ const CardPost: React.FC<Props> = ({
         <Box width={!inline ? 1 : 1 / 3}>
           <Box className="bg">
             <Box className="figure">
-              {post.figure.asset.fluid && (
+              {post.figure && (
                 <Img
                   fluid={{
                     ...post.figure.asset.fluid,

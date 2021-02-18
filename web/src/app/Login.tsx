@@ -18,8 +18,8 @@ const Login: React.FC<{ path: string }> = ({ path }) => {
       <IdentityModal
         showDialog={dialog}
         onCloseDialog={() => setDialog(false)}
-        onLogin={user => navigate('/app/profile')}
-        onSignup={user => navigate('/app/profile')}
+        onLogin={user => navigate('/user/profile')}
+        onSignup={user => navigate('/user/profile')}
         aria-label="Log in"
       />
     </>

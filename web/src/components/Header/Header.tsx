@@ -54,8 +54,8 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       <IdentityModal
         showDialog={dialog}
         onCloseDialog={() => setDialog(false)}
-        onLogin={() => navigate('/app/profile')}
-        onSignup={() => navigate('/app/profile')}
+        onLogin={() => navigate('/user/profile')}
+        onSignup={() => navigate('/user/profile')}
         aria-label="Log in"
       />
 

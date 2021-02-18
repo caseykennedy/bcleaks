@@ -12,9 +12,9 @@ const PrivateRoute = (props: any) => {
   const { component: Component, location, ...rest } = props
 
   React.useEffect(() => {
-    if (!isLoggedIn && location.pathname !== `/app/login`) {
+    if (!isLoggedIn && location.pathname !== `/user/login`) {
       // If the user is not logged in, redirect to the login page.
-      navigate(`/app/login`)
+      navigate(`/user/login`)
     }
   }, [isLoggedIn, location])
   return isLoggedIn ? <Component {...rest} /> : null
