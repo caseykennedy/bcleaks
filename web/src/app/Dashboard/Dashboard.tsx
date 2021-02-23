@@ -2,7 +2,7 @@
 
 // ___________________________________________________________________
 
-import React from 'react'
+import React, { useContext } from 'react'
 import fetch from 'node-fetch'
 
 // Context
@@ -10,6 +10,8 @@ import { useIdentityContext } from 'react-netlify-identity-widget'
 
 // Utils
 import api from '../../utils/api'
+
+import StoreContext from '../../context/StoreContext'
 
 // Theme + ui
 import * as S from './styles.scss'
@@ -28,6 +30,8 @@ type TodoData = {
 }
 
 const Dashboard = () => {
+  const { create, readAll, update } = useContext(StoreContext)
+
   const inputRef = React.useRef<HTMLInputElement>(null)
   const [data, setData] = React.useState(null)
   const [articleTitle, setArticleTitle] = React.useState<string>('')
@@ -61,10 +65,8 @@ const Dashboard = () => {
         throw err
       })
 
-    // fetch('/.netlify/functions/token-hider').then(response => response.json())
-    // .then(console.log)
-
-    fetch('/.netlify/functions/todos-read-all')
+      // readAll()
+      fetch('/.netlify/functions/todos-read-all')
       .then(response => response.json())
       .then(json => {
         setTestData(json)
@@ -81,25 +83,15 @@ const Dashboard = () => {
     votes: 0
   }
 
-  console.log('------ myTodo -------')
-  console.log(myTodo)
+  // console.log('------ myTodo -------')
+  // console.log(myTodo)
 
   const handlePost = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
     setLoading(true)
 
-    // Function using fetch to POST to our API endpoint
-    function createTodo(data: TodoData) {
-      return fetch('/.netlify/functions/todos-create', {
-        body: JSON.stringify(data),
-        method: 'POST'
-      }).then(response => {
-        return response.text()
-      })
-    }
-
     // create it!
-    createTodo(myTodo)
+    create(myTodo)
       .then(response => {
         console.log('API response', response)
         // set app state
@@ -193,7 +185,7 @@ const Dashboard = () => {
         <Text color="pink" mb={6}>
           {err && <>{JSON.stringify(err, null, 2)}</>}
         </Text>
-        
+
         <Heading as="h3" fontSize={3}>
           Account data
         </Heading>

@@ -3,7 +3,6 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { darken } from 'polished'
 
 // Theme
 import theme from '../../gatsby-plugin-theme-ui'
@@ -106,9 +105,14 @@ export const CardLeak = styled(Flex)`
           }
         }
 
+        button,
         .vote-arrow {
+          display: flex;
+          background: ${theme.colors.black};
+          border: ${theme.border};
+
           svg {
-            fill: ${theme.colors.white};
+            fill: ${theme.colors.primary};
             width: ${theme.space[3]};
           }
 
@@ -126,6 +130,13 @@ export const CardLeak = styled(Flex)`
 
             svg {
               transform: rotate(90deg);
+            }
+          }
+
+          &:disabled,
+          &[disabled] {
+            svg {
+              fill: ${theme.colors.tertiary};
             }
           }
         }

@@ -16,7 +16,7 @@ const readAll = () => {
   })
 }
 
-const update = (todoId: any, data: any) => {
+const update = (todoId: string, data: object) => {
   return fetch(`/.netlify/functions/todos-update/${todoId}`, {
     body: JSON.stringify(data),
     method: 'POST'
@@ -25,7 +25,7 @@ const update = (todoId: any, data: any) => {
   })
 }
 
-const deleteTodo = (todoId: any) => {
+const deleteTodo = (todoId: string) => {
   return fetch(`/.netlify/functions/todos-delete/${todoId}`, {
     method: 'POST'
   }).then(response => {
@@ -45,9 +45,9 @@ const batchDeleteTodo = (todoIds: any) => {
 }
 
 export default {
-  create: create,
-  readAll: readAll,
-  update: update,
+  create,
+  readAll,
+  update,
   delete: deleteTodo,
   batchDelete: batchDeleteTodo
 }
