@@ -6,12 +6,9 @@
 import React from 'react'
 
 // Components
-import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import Section from '../components/Section'
 
-// Theme
-import theme from '../gatsby-plugin-theme-ui'
 
 // Data
 import useSiteSettings from '../hooks/useSiteSettings'

@@ -6,12 +6,8 @@
 import React from 'react'
 
 // Components
-import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import VideosPage from '../templates/VideosPage'
-
-// Theme
-import theme from '../gatsby-plugin-theme-ui'
 
 // Data
 import useSiteSettings from '../hooks/useSiteSettings'
