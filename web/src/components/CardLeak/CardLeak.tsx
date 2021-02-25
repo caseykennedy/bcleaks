@@ -6,8 +6,6 @@ import React, {
   useState,
   useEffect,
   useCallback,
-  useLayoutEffect,
-  useContext,
   useMemo,
   useRef,
   createContext
@@ -23,32 +21,47 @@ import Icon from '../Icons'
 
 // ___________________________________________________________________
 
-type Props = {
+type PostShape = {
+  id: number
+  title: string
+  body: string
+  votes: number
+  user: string
+}
+
+type CardLeakProps = {
   aspectRatio?: number
-  post: PostQuery
+  post: PostShape
   small?: boolean
   video?: boolean
 }
 
-const initialState = {
-  vote: 0,
-  voteTotal: 37,
-  isClicked: false
-}
+// ___________________________________________________________________
 
 const MediumClapContext = createContext({})
 const { Provider } = MediumClapContext
 
-const VoteCount: React.FC<{ onVote: any }> = ({ onVote }) => {
-  const MAXIMUM_USER_CLAP = 50000000
+const VoteCounter: React.FC<{ onVote: any; totalVotes: number }> = ({
+  onVote,
+  totalVotes
+}) => {
+  const initialState = {
+    userVote: 0,
+    voteTotal: totalVotes,
+    isClicked: false,
+    isUpVote: false,
+    isDownVote: false
+  }
+  
+  const MAXIMUM_USER_VOTE = 50000000
   const [voteState, setVoteState] = useState(initialState)
-  const { vote, voteTotal, isClicked } = voteState
-
+  const { userVote, voteTotal, isClicked } = voteState
   const [{ voteRef, voteCountRef, voteTotalRef }, setRefState] = useState<{
     voteRef: any
     voteCountRef: any
     voteTotalRef: any
   }>({})
+
   const setRef = useCallback(node => {
     if (node !== null) {
       setRefState(prevRefState => ({
@@ -58,29 +71,36 @@ const VoteCount: React.FC<{ onVote: any }> = ({ onVote }) => {
     }
   }, [])
 
-  const handleVoteUp = () => {
+  const handleVoteUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
     setVoteState({
-      vote: Math.min(vote + 1, MAXIMUM_USER_CLAP),
-      voteTotal: vote < MAXIMUM_USER_CLAP ? voteTotal + 1 : voteTotal,
-      isClicked: true
+      userVote: Math.min(userVote + 1, MAXIMUM_USER_VOTE),
+      voteTotal: userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal,
+      isClicked: true,
+      isDownVote: false,
+      isUpVote: true
     })
   }
-  const handleVoteDown = () => {
+  const handleVoteDown = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault()
     setVoteState({
-      vote: Math.min(vote - 1, MAXIMUM_USER_CLAP),
-      voteTotal: vote < MAXIMUM_USER_CLAP ? voteTotal - 1 : voteTotal,
-      isClicked: true
+      userVote: Math.min(userVote - 1, MAXIMUM_USER_VOTE),
+      voteTotal: userVote < MAXIMUM_USER_VOTE ? voteTotal - 1 : voteTotal,
+      isClicked: true,
+      isDownVote: true,
+      isUpVote: false
     })
   }
 
-  const componentJustMounted = useRef(true)
-
+  const componentJustMounted = useRef<boolean>(true)
   useEffect(() => {
     if (!componentJustMounted.current) {
       onVote(voteState)
     }
     componentJustMounted.current = false
-  }, [vote, onVote])
+  }, [userVote, onVote])
 
   const memoizedValue = useMemo(
     () => ({
@@ -90,15 +110,13 @@ const VoteCount: React.FC<{ onVote: any }> = ({ onVote }) => {
     [voteState, setRef]
   )
 
-  // console.log(memoizedValue)
-
   return (
     <Provider value={memoizedValue}>
       <Flex className="vote">
         <button
           onClick={handleVoteUp}
           className={`vote-arrow  vote-arrow--up`}
-          disabled={vote !== 1 ? false : true}
+          disabled={userVote !== 1 ? false : true}
           aria-label="upvote post"
         >
           <Icon name="arrow" />
@@ -109,7 +127,7 @@ const VoteCount: React.FC<{ onVote: any }> = ({ onVote }) => {
         <button
           onClick={handleVoteDown}
           className="vote-arrow  vote-arrow--down"
-          disabled={vote !== -1 ? false : true}
+          disabled={userVote !== -1 ? false : true}
           aria-label="downvote post"
         >
           <Icon name="arrow" />
@@ -119,11 +137,15 @@ const VoteCount: React.FC<{ onVote: any }> = ({ onVote }) => {
   )
 }
 
-const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
-  const [total, setTotal] = useState(0)
-
+const CardLeak: React.FC<CardLeakProps> = ({
+  aspectRatio,
+  post,
+  small,
+  video
+}) => {
+  const [totalVotes, setTotalVotes] = useState(post.votes)
   const onVote = (countTotal: number) => {
-    setTotal(countTotal)
+    setTotalVotes(countTotal)
   }
   return (
     // <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
@@ -150,7 +172,7 @@ const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
         </Box>
 
         <Flex className="utilities">
-          <VoteCount onVote={onVote} />
+          <VoteCounter onVote={onVote} totalVotes={totalVotes} />
 
           <Flex mr={5} className="comments">
             comments
@@ -163,7 +185,7 @@ const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
       <Box flex={1}>
         <Box className="bg">
           <Box className="figure">
-            {post.figure.asset.fluid && (
+            {/* {post.figure.asset.fluid && (
               <Img
                 fluid={{
                   ...post.figure.asset.fluid,
@@ -173,7 +195,8 @@ const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
                 objectPosition="50% 50%"
                 alt={post.title}
               />
-            )}
+            )} */}
+            img
           </Box>
         </Box>
       </Box>
@@ -183,10 +206,3 @@ const CardLeak: React.FC<Props> = ({ aspectRatio, post, small, video }) => {
 }
 
 export default CardLeak
-
-// ___________________________________________________________________
-
-CardLeak.defaultProps = {
-  aspectRatio: 16 / 9,
-  small: false
-}

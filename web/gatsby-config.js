@@ -66,6 +66,26 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-faunadb`,
+      options: {
+        // The secret for the key you're using to connect to your Fauna database.
+        // You can generate on of these in the "Security" tab of your Fauna Console.
+        secret: process.env.FAUNADB_SECRET,
+        // The name of the index you want to query
+        // You can create an index in the "Indexes" tab of your Fauna Console.
+        index: `all_posts`,
+        // If your index requires arguments, you can specify them like this.
+        // You can omit this property if your index doesn't need any.
+        // arguments: ["bird"],
+        // This is the name under which your data will appear in Gatsby GraphQL queries
+        // The following will create queries called `allBird` and `bird`.
+        type: "faunaDb",
+        // If you need to limit the number of documents returned, you can specify a 
+        // maximum number to read.
+        size: 100
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'config',
@@ -79,13 +99,6 @@ module.exports = {
         path: `${__dirname}/src/images`
       }
     },
-    // {
-    //   resolve: 'gatsby-source-instagram',
-    //   options: {
-    //     access_token: process.env.ACCESS_TOKEN,
-    //     instagram_id: process.env.BUSINESS_ID,
-    //   }
-    // },
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {

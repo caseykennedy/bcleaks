@@ -2,7 +2,7 @@
 
 // ___________________________________________________________________
 
-import React, { useContext } from 'react'
+import React, { useRef, useState } from 'react'
 import fetch from 'node-fetch'
 
 // Context
@@ -10,8 +10,6 @@ import { useIdentityContext } from 'react-netlify-identity-widget'
 
 // Utils
 import api from '../../utils/api'
-
-import StoreContext from '../../context/StoreContext'
 
 // Theme + ui
 import * as S from './styles.scss'
@@ -21,27 +19,34 @@ import { Input, Select, Textarea } from 'theme-ui'
 
 // ___________________________________________________________________
 
-type TodoData = {
+type PostShape = {
   author: string
-  body: string
   postType: string
+  category: string
   title: string
+  body: string
+  assetUrl: string
   votes: number
+  createdOn: string
 }
 
+const currentDate = new Date().toUTCString()
+
 const Dashboard = () => {
-  const { create, readAll, update } = useContext(StoreContext)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const textAreaRef = useRef<HTMLTextAreaElement>(null)
+  const assetUrlRef = useRef<HTMLInputElement>(null)
 
-  const inputRef = React.useRef<HTMLInputElement>(null)
-  const [data, setData] = React.useState(null)
-  const [articleTitle, setArticleTitle] = React.useState<string>('')
-  const [articleBody, setArticleBody] = React.useState<string>('')
-  const [testData, setTestData] = React.useState([])
-  const [loading, setLoading] = React.useState(false)
+  const [data, setData] = useState(null)
+  const [articleTitle, setArticleTitle] = useState<string>('')
+  const [articleBody, setArticleBody] = useState<string>('')
+  const [assetUrl, setAssetUrl] = useState<string>('')
+  const [testData, setTestData] = useState([])
+  const [loading, setLoading] = useState(false)
   const { user }: any = useIdentityContext()
-  const [err, setErr] = React.useState('')
+  const [err, setErr] = useState('')
 
-  const handleGet = (e: any) => {
+  const handleGet = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
     setLoading(true)
     fetch('/.netlify/functions/auth-hello', {
@@ -65,8 +70,7 @@ const Dashboard = () => {
         throw err
       })
 
-      // readAll()
-      fetch('/.netlify/functions/todos-read-all')
+    fetch('/.netlify/functions/todos-read-all')
       .then(response => response.json())
       .then(json => {
         setTestData(json)
@@ -75,23 +79,25 @@ const Dashboard = () => {
   }
 
   // Todo data
-  const myTodo = {
+  const myPost = {
     author: user.user_metadata.full_name,
-    body: articleBody,
     postType: 'article',
+    category: 'bitcoin',
     title: articleTitle,
-    votes: 0
+    body: articleBody,
+    assetUrl: `${assetUrl}`,
+    votes: 0,
+    createdOn: currentDate
   }
 
-  // console.log('------ myTodo -------')
-  // console.log(myTodo)
-
+  // console.log('------ myPost -------')
+  // console.log(myPost)
   const handlePost = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault()
     setLoading(true)
-
     // create it!
-    create(myTodo)
+    api
+      .create(myPost)
       .then(response => {
         console.log('API response', response)
         // set app state
@@ -108,16 +114,16 @@ const Dashboard = () => {
   }: React.ChangeEvent<HTMLInputElement>) => {
     setArticleTitle(target.value)
   }
-
   const handleBodyChange = ({
     target
   }: React.ChangeEvent<HTMLTextAreaElement>) => {
     setArticleBody(target.value)
   }
-
-  React.useEffect(() => {
-    return () => {}
-  }, [])
+  const handleAssetUrlChange = ({
+    target
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setAssetUrl(target.value)
+  }
 
   return (
     <S.Dashboard>
@@ -126,28 +132,45 @@ const Dashboard = () => {
       <hr />
 
       <Heading as="h3" mt={3}>
-        Post article
+        Post articleee
       </Heading>
 
-      <Heading as="h4">Post Title:</Heading>
+      <label>
+        <Heading as="h4">Post Title:</Heading>
+      </label>
       <Input
         p={1}
         mb={6}
+        name="title"
         type="text"
         value={articleTitle}
         onChange={handleTitleChange}
         ref={inputRef}
       />
 
-      <Heading as="h4">Post Body:</Heading>
-      <Textarea p={1} mb={6} value={articleBody} onChange={handleBodyChange} />
+      <label>
+        <Heading as="h4">Post Body:</Heading>
+      </label>
+      <Textarea
+        p={1}
+        mb={6}
+        value={articleBody}
+        onChange={handleBodyChange}
+        ref={textAreaRef}
+      />
 
-      <Heading as="h4">Post type:</Heading>
-      <Select defaultValue="Article">
-        <option>Article</option>
-        <option>Link</option>
-        <option>Video</option>
-      </Select>
+      <label>
+        <Heading as="h4">Asset URL:</Heading>
+      </label>
+      <Input
+        p={1}
+        mb={6}
+        name="assetUrl"
+        type="text"
+        value={assetUrl}
+        onChange={handleAssetUrlChange}
+        ref={assetUrlRef}
+      />
 
       <Box
         width={1}

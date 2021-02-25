@@ -18,6 +18,14 @@ type ContextProps = {
   update: (todoId: string, data: PostQuery) => Promise<any>
   deleteTodo: (todoId: string) => Promise<any>
   batchDeleteTodo: (arg1: any) => any
+  state: {
+    vote: number
+    isClicked: boolean
+    isUpvote: boolean
+    isDownvote: boolean
+    message: string
+  }
+  dispatch: any
 }
 
 const StoreContext = React.createContext<ContextProps>({})
