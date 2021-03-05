@@ -35,6 +35,8 @@ import 'react-netlify-identity-widget/styles.css' // delete if you want to bring
 type HeaderShape = { mainRef: React.RefObject<HTMLDivElement> }
 
 const Header: React.FC<HeaderShape> = ({ mainRef }) => {
+  const { isLoggedIn, logoutUser } = useIdentityContext()
+  const { user }: any = useIdentityContext()
   // Navigation portal
   const [isNavOpen, setNavOpen] = useState(false)
   const toggleMenu = () => {
@@ -45,8 +47,6 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
     //   label: 'Header hamburger toggle'
     // })
   }
-
-  const identity = useIdentityContext()
   const [dialog, setDialog] = React.useState(false)
 
   return (
@@ -54,8 +54,8 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       <IdentityModal
         showDialog={dialog}
         onCloseDialog={() => setDialog(false)}
-        onLogin={() => navigate('/user/profile')}
-        onSignup={() => navigate('/user/profile')}
+        onLogin={() => navigate('/user')}
+        onSignup={() => navigate('/user')}
         aria-label="Log in"
       />
 
@@ -67,10 +67,33 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
         <Flex className="date">
           <GetDate />
         </Flex>
-
         <Flex className="account">
-          <button onClick={() => setDialog(true)}>log in</button>
-          <button onClick={() => setDialog(true)}>sign up</button>
+          {!isLoggedIn ? (
+            <>
+              <button onClick={() => setDialog(true)}>log in</button>
+              <button onClick={() => setDialog(true)}>sign up</button>
+            </>
+          ) : (
+            <>
+              <Box className="user">Howdy, {user.user_metadata.full_name}!</Box>
+              <Link
+                to={`/user`}
+                activeClassName="active"
+                partiallyActive={true}
+              >
+                Dashboard
+              </Link>
+              <a
+                onClick={async event => {
+                  event.preventDefault()
+                  await logoutUser()
+                  navigate(`/`)
+                }}
+              >
+                Logout
+              </a>
+            </>
+          )}
         </Flex>
       </S.Utilities>
 

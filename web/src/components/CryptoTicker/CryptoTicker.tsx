@@ -129,7 +129,7 @@ const GetCoinGecko = () => {
   // Fetch Coin data
   const [data, setData] = useState<any>(null)
 
-  console.log(data)
+  // console.log(data)
 
   useEffect(() => {
     async function getCoins() {

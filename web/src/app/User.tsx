@@ -15,30 +15,32 @@ import Login from './Login'
 
 // Theme + ui
 import theme from '../gatsby-plugin-theme-ui'
-import { Box } from '../components/ui'
+import { Box, Flex } from '../components/ui'
 import { Grid } from 'theme-ui'
 
 const User = () => {
   return (
-    <Box p={theme.gutter.axis}>
-      <Box mr="auto" maxWidth={theme.maxWidth} width={1}>
-        <Grid gap={[4, 5, 6]} columns={[1, '2fr 1fr']}>
-          <Box>
-            <Router>
-              <PrivateRoute path="/user/profile" component={Profile} />
-              <PublicRoute path="/user">
-                <PrivateRoute path="/" component={Dashboard} />
-                <Login path="/login" />
-              </PublicRoute>
-            </Router>
-          </Box>
+    <>
+      <Box bg="black">
+        <Box mr="auto" maxWidth={theme.maxWidth} width={1}>
+          <Flex>
+            <Box flex={2} bg="black" p={theme.gutter.axis} style={{ borderRight: theme.border }}>
+              <Router>
+                <PrivateRoute path="/user/profile" component={Profile} />
+                <PublicRoute path="/user">
+                  <PrivateRoute path="/" component={Dashboard} />
+                  <Login path="/login" />
+                </PublicRoute>
+              </Router>
+            </Box>
 
-          <Box>
-            <NavBar />
-          </Box>
-        </Grid>
+            <Box flex={1} bg="black" p={theme.gutter.axis}>
+              <NavBar />
+            </Box>
+          </Flex>
+        </Box>
       </Box>
-    </Box>
+    </>
   )
 }
 

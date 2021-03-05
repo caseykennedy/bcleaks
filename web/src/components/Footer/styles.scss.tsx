@@ -167,7 +167,7 @@ export const Bulletin = styled(Flex)`
       flex: 1;
 
       @media ${theme.mq.tablet} {
-        border-right: ${theme.border};
+        /* border-right: ${theme.border}; */
       }
     }
   }

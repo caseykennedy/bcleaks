@@ -4,7 +4,7 @@
 // ___________________________________________________________________
 
 import * as React from 'react'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 
 // utils
 // import * as gtag from '../../utils/gtag'
@@ -29,6 +29,8 @@ import checkUsOut from './assets/checkusout.svg'
 const Year = () => {
   return new Date().getFullYear()
 }
+
+const isBrowser = typeof window !== 'undefined'
 
 const Bulletin = () => {
   return (
@@ -91,7 +93,12 @@ const Bulletin = () => {
 
         <Box px={theme.gutter.axis} py={[5, 5, 6]} className="bulletin__social">
           <Flex width={1} justifyContent="space-between" mb={4} flexWrap="wrap">
-            <Box as="img" width="175px" src={checkUsOut} alt="BC Leaks Podcast" />
+            <Box
+              as="img"
+              width="175px"
+              src={checkUsOut}
+              alt="BC Leaks Podcast"
+            />
 
             <Flex justifyContent="flex-end" pl={4}>
               youtube
@@ -134,7 +141,12 @@ const Social = () => {
       <Flex className="inner">
         <Box px={theme.gutter.axis} py={[5, 5, 6]} className="social__links">
           <Flex width={1} justifyContent="space-between" mb={4} flexWrap="wrap">
-            <Box as="img" width="175px" src={checkUsOut} alt="BC Leaks Podcast" />
+            <Box
+              as="img"
+              width="175px"
+              src={checkUsOut}
+              alt="BC Leaks Podcast"
+            />
 
             <Flex justifyContent="flex-end" pl={4}>
               youtube
@@ -151,10 +163,10 @@ const Social = () => {
 
         <Flex px={theme.gutter.axis} py={[5, 5, 6]} className="social__podcast">
           <Box mr={6}>
-            <Heading fontFamily="Rubik" className="text--md  text--uppercase">Support us</Heading>
-            <Text as="p">
-              Donate to our hard-hitting crypto news outlet.
-            </Text>
+            <Heading fontFamily="Rubik" className="text--md  text--uppercase">
+              Support us
+            </Heading>
+            <Text as="p">Donate to our hard-hitting crypto news outlet.</Text>
 
             <Flex>
               <Button bg="transparent" color={theme.colors.primary}>
@@ -173,9 +185,10 @@ const Social = () => {
 }
 
 const Footer: React.FC = () => {
+  const isUserPath = isBrowser && location.pathname === withPrefix('/user')
   return (
     <>
-      <Bulletin />
+      {!isUserPath && <Bulletin />}
       <S.Footer as="footer">
         <Box>
           <a href="">FAQs</a>

@@ -1,14 +1,10 @@
 import React from 'react'
 import { navigate } from 'gatsby'
 
-import {
-  IdentityModal,
-  useIdentityContext
-} from 'react-netlify-identity-widget'
+import { IdentityModal } from 'react-netlify-identity-widget'
 import 'react-netlify-identity-widget/styles.css' // delete if you want to bring your own CSS
 
 const Login: React.FC<{ path: string }> = ({ path }) => {
-  const identity = useIdentityContext()
   const [dialog, setDialog] = React.useState(false)
   return (
     <>
@@ -18,8 +14,8 @@ const Login: React.FC<{ path: string }> = ({ path }) => {
       <IdentityModal
         showDialog={dialog}
         onCloseDialog={() => setDialog(false)}
-        onLogin={user => navigate('/user/profile')}
-        onSignup={user => navigate('/user/profile')}
+        onLogin={() => navigate('/user')}
+        onSignup={() => navigate('/user')}
         aria-label="Log in"
       />
     </>

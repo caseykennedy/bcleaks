@@ -122,6 +122,17 @@ export const Utilities = styled(Flex)`
     flex: 1;
     justify-content: flex-end;
 
+    .user {
+      color: ${theme.colors.primary};
+      font-weight: 600;
+      white-space: nowrap;
+
+      border-right: ${theme.border};
+      position: relative;
+      padding: ${theme.space[2]} ${theme.space[4]} ${theme.space[2]} ${theme.space[4]};
+    }
+
+    a,
     button {
       background: transparent;
       border: none;
@@ -149,7 +160,8 @@ export const Utilities = styled(Flex)`
         transition: width ${theme.transition.global};
       } */
 
-      &:hover {
+      &:hover,
+      &.active {
         color: ${theme.colors.white};
 
         /* &:before {

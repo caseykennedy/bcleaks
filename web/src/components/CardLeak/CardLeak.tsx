@@ -26,6 +26,7 @@ type PostShape = {
   title: string
   body: string
   votes: number
+  category: string
   user: string
 }
 
@@ -52,7 +53,7 @@ const VoteCounter: React.FC<{ onVote: any; totalVotes: number }> = ({
     isUpVote: false,
     isDownVote: false
   }
-  
+
   const MAXIMUM_USER_VOTE = 50000000
   const [voteState, setVoteState] = useState(initialState)
   const { userVote, voteTotal, isClicked } = voteState
@@ -154,11 +155,14 @@ const CardLeak: React.FC<CardLeakProps> = ({
         <Box>
           <Text as="p" color="gray" fontFamily="sans" className="text--small">
             <Box as="span" className="category">
-              c/BITCOIN
+              c/
+              <Box as="span" className="text--uppercasee">
+                {post.category && post.category}
+              </Box>
             </Box>{' '}
-            Posted 8 hrs ago by{' '}
+            8 hrs ago by{' '}
             <Box as="span" className="text--underline">
-              u/cryptoproject
+              u/{post.user && post.user}
             </Box>
           </Text>
           <Heading className={`title  ${!small ? `text--md` : `title--small`}`}>

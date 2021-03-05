@@ -103,7 +103,6 @@ type PostContextShape = {
   }
 }
 
-
 // Video post shape
 // ___________________________________________________________________
 
@@ -190,5 +189,43 @@ type VideoContextShape = {
         current: string
       }
     }
+  }
+}
+
+type Token = {
+  access_token: string
+  expires_at: string | number
+  expires_in: string | number
+  refresh_token: string
+  token_type: string
+}
+
+type UserShape = {
+  api: {
+    _sameOrigin?: boolean
+    apiURL: string
+    defaultHeaders: {
+      [header: string]: string | string[] | undefined
+    }
+  }
+  app_metadata: {
+    provider: string
+    roles: string[]
+  }
+  aud: string
+  audience?: any
+  confirmed_at: string
+  created_at: string
+  updated_at: string
+  invited_at: string
+  recovery_sent_at: string
+  email: string
+  id: string
+  role: string
+  token?: Token
+  url: string
+  user_metadata: {
+    avatar_url: string
+    full_name: string
   }
 }

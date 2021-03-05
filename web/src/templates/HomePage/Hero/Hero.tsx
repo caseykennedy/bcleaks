@@ -47,7 +47,7 @@ const Hero: React.FC<Props> = () => {
             )}
 
             <Flex justifyContent="space-between" flexWrap="wrap">
-              <Box mb={[6, 0]}>
+              <Box mb={[6, 0]} flex={1}>
                 <PostMeta
                   authors={post.authors}
                   categories={post.categories}

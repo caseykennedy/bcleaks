@@ -14,8 +14,8 @@ const Profile = () => {
   const { user }: any = useIdentityContext()
   console.log(user)
   return (
-    <Box p={5}>
-      <Heading as="h3">Account</Heading>
+    <Box>
+      <Heading as="h4">Account</Heading>
       <ul>
         <li>Name: {user.user_metadata && user.user_metadata.full_name}</li>
         <li>E-mail: {user.email}</li>

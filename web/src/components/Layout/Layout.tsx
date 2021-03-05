@@ -3,6 +3,7 @@
 // ___________________________________________________________________
 
 import React, { useRef } from 'react'
+import { withPrefix } from 'gatsby'
 
 // Components
 import Header from '../Header'
@@ -29,7 +30,6 @@ export type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Ref <main> to lock body for modal/overlay
   const mainRef = useRef<HTMLDivElement>(null)
-
   // eslint-disable-next-line no-console
   console.log(
     `%c BC Leaks — crafted with care. [ caseykennedy.hns.to ] `,

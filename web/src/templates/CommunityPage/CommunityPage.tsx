@@ -34,13 +34,13 @@ type PostShape = {
 }
 
 const randomizeVotes = () => {
-  return Math.floor((Math.random() * 50) + 15);
+  return Math.floor((Math.random() * 50) + 37);
 }
 
 const CommunityPage = () => {
   const [items, setItems] = useState(posts)
 
-  const [testData, setTestData] = React.useState([])
+  const [testData, setTestData] = React.useState(posts)
   const [loading, setLoading] = React.useState(false)
 
   useEffect(() => {
@@ -65,23 +65,10 @@ const CommunityPage = () => {
     <S.CommunityPage>
       <Section>
         <Box width={[1, 1, 6 / 8]}>
-          {items.map((post, idx) => (
+          {testData.map((post, idx) => (
             <CardLeak aspectRatio={4 / 3} post={post} key={idx} />
           ))}
         </Box>
-      </Section>
-      <Section>
-        {testData &&
-          testData.map((data, idx) => (
-            <Box as="pre" key={idx}>
-              <Heading as="h3" fontSize={3} mb={3}>
-                {data.data.title}
-              </Heading>
-              <Text as="p">{data.data.body}</Text>
-              <Heading as="h4">VOTES: {data.data.votes}</Heading>
-              <Heading as="h4">AUTHOR: {data.data.author}</Heading>
-            </Box>
-          ))}
       </Section>
     </S.CommunityPage>
   )
@@ -89,13 +76,15 @@ const CommunityPage = () => {
 
 export default CommunityPage
 
+// ___________________________________________________________________
+
 const posts = [
   {
     id: 1,
-    title: 'Any parties tonight?',
+    title: 'ChainLink to the moon!',
     body: 'I\'ve had a tough week and I\'m looking to get wasted and hit up some babes.',
     votes: randomizeVotes(),
-    community: 'r/Rolla',
+    category: 'Rolla',
     user: 'kschoon'
   },
   {
@@ -103,7 +92,7 @@ const posts = [
     title: 'Would Lightning McQueen buy car insurance or life insurance?',
     body: 'This question has been on my mind daily since I first fell in love with the Cars movies around 2006.',
     votes: randomizeVotes(),
-    community: 'r/AskReddit',
+    category: 'AskReddit',
     user: 'claymav'
   },
   {
@@ -111,7 +100,7 @@ const posts = [
     title: 'How to get a job as a web developer?',
     body: 'I find web development incredibly fun but I\'m not sure where to go to get experience. Any ideas?',
     votes: randomizeVotes(),
-    community: 'r/cscareerquestions',
+    category: 'cscareerquestions',
     user: 'pdilly'
   },
   {
@@ -119,7 +108,7 @@ const posts = [
     title: 'Just got my first cat over the weekend. Meet Skittles!',
     body: '(=ↀωↀ=)',
     votes: randomizeVotes(),
-    community: 'r/aww',
+    category: 'aww',
     user: 'ramzo'
   },
 ];
