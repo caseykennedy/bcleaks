@@ -21,18 +21,9 @@ import Icon from '../Icons'
 
 // ___________________________________________________________________
 
-type PostShape = {
-  id: number
-  title: string
-  body: string
-  votes: number
-  category: string
-  user: string
-}
-
 type CardLeakProps = {
   aspectRatio?: number
-  post: PostShape
+  post: any
   small?: boolean
   video?: boolean
 }
@@ -144,7 +135,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
   small,
   video
 }) => {
-  const [totalVotes, setTotalVotes] = useState(post.votes)
+  const [totalVotes, setTotalVotes] = useState(0)
   const onVote = (countTotal: number) => {
     setTotalVotes(countTotal)
   }
@@ -162,7 +153,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
             </Box>{' '}
             8 hrs ago by{' '}
             <Box as="span" className="text--underline">
-              u/{post.user && post.user}
+              u/{post.author && post.author}
             </Box>
           </Text>
           <Heading className={`title  ${!small ? `text--md` : `title--small`}`}>
@@ -200,7 +191,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
                 alt={post.title}
               />
             )} */}
-            img
+            {post.assetUrl && post.assetUrl}
           </Box>
         </Box>
       </Box>

@@ -12,6 +12,7 @@ import * as S from './styles.scss'
 import { Box, Flex, Heading, Text } from '../../components/ui'
 
 // Sections
+import FeaturedArticles from '../../components/FeaturedArticles'
 import Hero from './Hero'
 import Videos from './Videos'
 import Articles from './Articles'
@@ -26,7 +27,9 @@ const HomePage: React.FC = () => {
   // const data = useHomePage()
   return (
     <S.HomePage>
-      <Hero />
+      <Box width={1} overflow="hidden">
+        <FeaturedArticles bg={theme.colors.black} />
+      </Box>
       <Videos />
       <Box
         bg="background"

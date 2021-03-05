@@ -11,6 +11,35 @@ type ImageShape = {
   srcSetWebp: string
 }
 
+// Fauna DB Post shape
+// ___________________________________________________________________
+
+type FaunaDbPostShape = {
+  posts: {
+    edges: FaunaDbPostEdges[]
+  }
+}
+
+type FaunaDbPostEdges = {
+  node: FaunaDbPostQuery
+}
+
+type FaunaDbPostData = {
+  post: FaunaDbPostQuery
+}
+
+type FaunaDbPostQuery = {
+  _id: string
+  assetUrl: string
+  author: string
+  body: string
+  category: string
+  createdOn: string
+  postType: string
+  title: string
+  votes: number
+}
+
 // Post shape
 // ___________________________________________________________________
 
@@ -192,6 +221,9 @@ type VideoContextShape = {
   }
 }
 
+// Netlify Identity User Shape
+// ___________________________________________________________________
+
 type Token = {
   access_token: string
   expires_at: string | number
@@ -201,17 +233,6 @@ type Token = {
 }
 
 type UserShape = {
-  api: {
-    _sameOrigin?: boolean
-    apiURL: string
-    defaultHeaders: {
-      [header: string]: string | string[] | undefined
-    }
-  }
-  app_metadata: {
-    provider: string
-    roles: string[]
-  }
   aud: string
   audience?: any
   confirmed_at: string

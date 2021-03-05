@@ -51,17 +51,14 @@ const Section: React.FC<Props> = ({
     color={color}
     pt={pt}
     pb={pb}
+    pr={pr}
+    pl={pl}
     id={id}
     overflow={overflow}
     width={1}
     className={className}
   >
-    <Box
-      pr={pr}
-      pl={pl}
-      mr="auto"
-      maxWidth={maxWidth ? maxWidth : theme.maxWidth}
-    >
+    <Box mr="auto" maxWidth={maxWidth ? maxWidth : theme.maxWidth}>
       {children}
     </Box>
   </S.Section>

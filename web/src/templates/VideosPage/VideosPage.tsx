@@ -12,7 +12,7 @@ import { Grid } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
-import CardLeak from '../../components/CardPost'
+import CardPost from '../../components/CardPost'
 import CardSlider from '../../components/CardSlider'
 import FilterNav from '../../components/FilterNav'
 
@@ -52,7 +52,7 @@ const VideosPage = () => {
         <CardSlider pagination={false} slidesPerView={2}>
           {videos.slice(0, 1).map(({ node: post }, idx) => (
             <Flex key={idx}>
-              <CardLeak post={post} video={true} key={idx} />
+              <CardPost post={post} video={true} key={idx} />
             </Flex>
           ))}
         </CardSlider>
@@ -67,7 +67,7 @@ const VideosPage = () => {
         <Grid columns={[1, 2, 3]} gap={theme.space[4]}>
           {items.map(({ node: post }, idx) => (
             <Flex key={idx}>
-              <CardLeak post={post} video={true} small={true} />
+              <CardPost post={post} video={true} small={true} />
             </Flex>
           ))}
         </Grid>

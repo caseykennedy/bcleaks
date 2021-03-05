@@ -12,7 +12,7 @@ import { Box, Flex, Heading, Text } from '../../../components/ui'
 import Pill from '../../../components/ui/Pill'
 
 import BlockContent from '../../../components/BlockContent'
-import Billboard from '../../../components/FeaturedArticles'
+import FeaturedArticles from '../../../components/FeaturedArticles'
 import CardPost from '../../../components/CardPost'
 import Section from '../../../components/Section'
 
@@ -41,7 +41,7 @@ const Articles = () => {
       </Section>
 
       <Box width={1} overflow="hidden">
-        <Billboard bg={theme.colors.black} />
+        <FeaturedArticles bg={theme.colors.black} />
       </Box>
 
       <Section border={true}>

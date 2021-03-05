@@ -22,7 +22,7 @@ export const FeaturedArticles = styled(Box)`
       flex-direction: column-reverse;
 
       margin-right: auto;
-      max-width: ${theme.maxWidth};
+      /* max-width: ${theme.maxWidth}; */
       width: 100%;
 
       @media ${theme.mq.tablet} {
