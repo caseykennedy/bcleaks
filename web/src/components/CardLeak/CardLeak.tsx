@@ -23,7 +23,19 @@ import Icon from '../Icons'
 
 type CardLeakProps = {
   aspectRatio?: number
-  post: any
+  post: {
+    data: {
+      _id: string
+      assetUrl: string
+      author: string
+      body: string
+      category: string
+      createdOn: string
+      postType: string
+      title: string
+      votes: number
+    }
+  }
   small?: boolean
   video?: boolean
 }
@@ -140,7 +152,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
     setTotalVotes(countTotal)
   }
   return (
-    // <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
+    // <Link to={`/${pagePrefix}/${post.data.slug.current && post.data.slug.current}`}>
     <S.CardLeak>
       <Flex className="content">
         <Box>
@@ -148,16 +160,16 @@ const CardLeak: React.FC<CardLeakProps> = ({
             <Box as="span" className="category">
               c/
               <Box as="span" className="text--uppercasee">
-                {post.category && post.category}
+                {post.data.category && post.data.category}
               </Box>
             </Box>{' '}
             8 hrs ago by{' '}
             <Box as="span" className="text--underline">
-              u/{post.author && post.author}
+              u/{post.data.author && post.data.author}
             </Box>
           </Text>
           <Heading className={`title  ${!small ? `text--md` : `title--small`}`}>
-            {post.title && post.title}
+            {post.data.title && post.data.title}
           </Heading>
           <Link to={`#`}>
             <Text color="primary" fontSize={[0, 1]}>
@@ -180,18 +192,18 @@ const CardLeak: React.FC<CardLeakProps> = ({
       <Box flex={1}>
         <Box className="bg">
           <Box className="figure">
-            {/* {post.figure.asset.fluid && (
+            {/* {post.data.figure.asset.fluid && (
               <Img
                 fluid={{
-                  ...post.figure.asset.fluid,
+                  ...post.data.figure.asset.fluid,
                   aspectRatio: `${aspectRatio}`
                 }}
                 objectFit="cover"
                 objectPosition="50% 50%"
-                alt={post.title}
+                alt={post.data.title}
               />
             )} */}
-            {post.assetUrl && post.assetUrl}
+            {post.data.assetUrl && post.data.assetUrl}
           </Box>
         </Box>
       </Box>

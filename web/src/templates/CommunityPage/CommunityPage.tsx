@@ -7,6 +7,7 @@ import React, { useContext, useEffect, useState } from 'react'
 // Utils
 import api from '../../utils/api'
 import isLocalHost from '../../utils/isLocalHost'
+import { client, q } from '../../utils/faunaDb'
 
 // Theme
 import * as S from './styles.scss'
@@ -23,46 +24,44 @@ import useFaunaDb from '../../hooks/useFaunaDb'
 
 // ___________________________________________________________________
 
-const randomizeVotes = () => {
-  return Math.floor(Math.random() * 50 + 37)
+const GetFauna = () => {
+  const [items, setItems] = useState<FaunaDataShape[]>([])
+
+  const getFaunaPosts = client
+    .query(q.Paginate(q.Match(q.Ref('indexes/all_posts'))))
+    .then(response => {
+      const postsRefs = response.data
+      // create new query
+      // https://docs.fauna.com/fauna/current/api/fql/
+      const getAllPostDataQuery = postsRefs.map((ref: any) => {
+        return q.Get(ref)
+      })
+      // query the refs
+      return client.query(getAllPostDataQuery).then(data => data)
+    })
+    .catch(error => console.warn('error', error.message))
+  console.log('Fetched FaunaDb posts', items)
+
+  useEffect(() => {
+    getFaunaPosts.then(results => setItems(results))
+  }, [])
+  return items.length === 0 ? (
+    <Box>Loading...</Box>
+  ) : (
+    <>
+      {items.map((post, idx) => (
+        <CardLeak aspectRatio={4 / 3} post={post} key={idx} />
+      ))}
+    </>
+  )
 }
 
 const CommunityPage = () => {
-  const faunaDbPosts = useFaunaDb()
-  const [items, setItems] = useState([])
-  const [loading, setLoading] = React.useState(false)
-
-  useEffect(() => {
-    api.readAll().then(posts => {
-      if (posts.message === 'unauthorized') {
-        if (isLocalHost()) {
-          alert(
-            'FaunaDB key is not unauthorized. Make sure you set it in terminal session where you ran `npm start`. Visit http://bit.ly/set-fauna-key for more info'
-          )
-        } else {
-          alert(
-            'FaunaDB key is not unauthorized. Verify the key `FAUNADB_SERVER_SECRET` set in Netlify enviroment variables is correct'
-          )
-        }
-        return false
-      }
-      setItems(posts)
-      console.log('Fetched FaunaDb posts', posts)
-    })
-  }, [])
   return (
     <S.CommunityPage>
       <Section>
         <Box width={[1, 1, 6 / 8]}>
-          {items.map((post, idx) => (
-            <CardLeak aspectRatio={4 / 3} post={post} key={idx} />
-          ))}
-        </Box>
-
-        <Box width={[1, 1, 6 / 8]}>
-          {faunaDbPosts.map(({ node: post }, idx) => (
-            <CardLeak aspectRatio={4 / 3} post={post} key={idx} />
-          ))}
+          <GetFauna />
         </Box>
       </Section>
     </S.CommunityPage>
@@ -72,3 +71,20 @@ const CommunityPage = () => {
 export default CommunityPage
 
 // ___________________________________________________________________
+
+// api.readAll().then(posts => {
+//   if (posts.message === 'unauthorized') {
+//     if (isLocalHost()) {
+//       alert(
+//         'FaunaDB key is not unauthorized. Make sure you set it in terminal session where you ran `npm start`. Visit http://bit.ly/set-fauna-key for more info'
+//       )
+//     } else {
+//       alert(
+//         'FaunaDB key is not unauthorized. Verify the key `FAUNADB_SERVER_SECRET` set in Netlify enviroment variables is correct'
+//       )
+//     }
+//     return false
+//   }
+//   setItems(posts)
+//   console.log('Fetched FaunaDb posts', posts)
+// })

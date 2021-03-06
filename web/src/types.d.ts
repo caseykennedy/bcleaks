@@ -14,6 +14,20 @@ type ImageShape = {
 // Fauna DB Post shape
 // ___________________________________________________________________
 
+type FaunaDataShape = {
+  data: {
+    _id: string
+    assetUrl: string
+    author: string
+    body: string
+    category: string
+    createdOn: string
+    postType: string
+    title: string
+    votes: number
+  }
+}
+
 type FaunaDbPostShape = {
   posts: {
     edges: FaunaDbPostEdges[]
