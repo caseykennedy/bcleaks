@@ -7,8 +7,7 @@ import { Router } from '@reach/router'
 import fetch from 'node-fetch'
 
 // Components
-import NavBar from './components/NavBar'
-import Profile from './Profile'
+import Profile from './components/Profile'
 import Dashboard from './Dashboard'
 import PrivateRoute from './components/PrivateRoute'
 import Login from './Login'
@@ -23,8 +22,8 @@ const User = () => {
     <>
       <Box bg="black">
         <Box mr="auto" maxWidth={theme.maxWidth} width={1}>
-          <Flex>
-            <Box flex={2} bg="black" p={theme.gutter.axis} style={{ borderRight: theme.border }}>
+          <Flex flexDirection={['column-reverse', 'row']}>
+            <Box flex={2} bg="background" p={theme.gutter.axis}>
               <Router>
                 <PrivateRoute path="/user/profile" component={Profile} />
                 <PublicRoute path="/user">
@@ -35,7 +34,7 @@ const User = () => {
             </Box>
 
             <Box flex={1} bg="black" p={theme.gutter.axis}>
-              <NavBar />
+              <Profile />
             </Box>
           </Flex>
         </Box>

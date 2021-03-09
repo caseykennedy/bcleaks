@@ -20,7 +20,6 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "@feuer/react-tabs": "^0.1.8",
     "@reach/dialog": "^0.10.5",
     "@reach/tabs": "^0.10.5",
     "@reach/visually-hidden": "^0.10.4",
@@ -31,6 +30,7 @@
     "@types/netlify-identity-widget": "^1.9.1",
     "@types/react-hamburger-menu": "0.0.3",
     "@types/react-headroom": "^2.2.1",
+    "@types/react-tabs": "^2.3.2",
     "@types/react-typist": "^2.0.1",
     "@types/rebass": "^3.0.4",
     "@types/theme-ui": "^0.3.7",
@@ -78,6 +78,7 @@
     "react-responsive-modal": "^6.0.1",
     "react-scroll-parallax": "^2.3.5",
     "react-spring": "^8.0.27",
+    "react-tabs": "^3.2.0",
     "react-typist": "^2.0.5",
     "rebass": "^3.2.2",
     "styled-breakpoints": "^6.11.0",

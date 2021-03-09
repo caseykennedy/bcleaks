@@ -5,6 +5,9 @@
 import React, { useRef, useState } from 'react'
 import fetch from 'node-fetch'
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
+
 // Context
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
@@ -25,74 +28,44 @@ type PostShape = {
   category: string
   title: string
   body: string
-  assetUrl: string
+  linkUrl: string
   votes: number
   createdOn: string
 }
 
 const currentDate = new Date().toUTCString()
 
-const CreatePost = () => {
-  const inputRef = useRef<HTMLInputElement>(null)
+const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
+  postType
+}) => {
+  const inputRef = useRef<HTMLTextAreaElement>(null)
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
-  const assetUrlRef = useRef<HTMLInputElement>(null)
+  const linkUrlRef = useRef<HTMLInputElement>(null)
 
-  const [data, setData] = useState(null)
   const [articleTitle, setArticleTitle] = useState<string>('')
   const [articleBody, setArticleBody] = useState<string>('')
-  const [assetUrl, setAssetUrl] = useState<string>('')
-  const [testData, setTestData] = useState([])
+  const [linkUrl, setlinkUrl] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const { user }: any = useIdentityContext()
-  const [err, setErr] = useState('')
-
-  const handleGet = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.preventDefault()
-    setLoading(true)
-    fetch('/.netlify/functions/auth-hello', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token.access_token}`
-      }
-    })
-      .then(response => response.json())
-      .then(json => {
-        setLoading(false)
-        setData(json)
-      })
-      .catch(err => {
-        if (window.location.origin === 'http://localhost:8000') {
-          setErr(
-            'your origin is "http://localhost:8000". You are likely not using Netlify Dev so the functions server isnt running. Please read the docs, use Netlify Dev, and go to http://localhost:8888'
-          )
-        } else setErr(err)
-        throw err
-      })
-
-    fetch('/.netlify/functions/todos-read-all')
-      .then(response => response.json())
-      .then(json => {
-        setTestData(json)
-      })
-      .then(console.log)
-  }
 
   // Todo data
   const myPost = {
     author: user.user_metadata.full_name,
-    postType: 'article',
+    postType: `${postType}`,
     category: 'bitcoin',
     title: articleTitle,
     body: articleBody,
-    assetUrl: `${assetUrl}`,
+    linkUrl: `${linkUrl}`,
     votes: 0,
     createdOn: currentDate
   }
 
+  // Check if Text post type
+  const isPostText = postType === 'text'
+
   // console.log('------ myPost -------')
   // console.log(myPost)
-  const handlePost = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handlePost = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     setLoading(true)
     // create it!
@@ -111,7 +84,7 @@ const CreatePost = () => {
 
   const handleTitleChange = ({
     target
-  }: React.ChangeEvent<HTMLInputElement>) => {
+  }: React.ChangeEvent<HTMLTextAreaElement>) => {
     setArticleTitle(target.value)
   }
   const handleBodyChange = ({
@@ -119,69 +92,93 @@ const CreatePost = () => {
   }: React.ChangeEvent<HTMLTextAreaElement>) => {
     setArticleBody(target.value)
   }
-  const handleAssetUrlChange = ({
+  const handlelinkUrlChange = ({
     target
   }: React.ChangeEvent<HTMLInputElement>) => {
-    setAssetUrl(target.value)
+    setlinkUrl(target.value)
   }
 
   return (
-    <S.CreatePost>
-      <Heading mb={6} className="title  text--sm">
-        Create a post
-      </Heading>
-
-      <Box as="form">
-        <label>
-          <Heading as="p">Post Title:</Heading>
+    <S.Form name="Creat post: link">
+      <fieldset>
+        <label htmlFor="linkUrl">
+          <Heading as="p">Link URL:</Heading>
         </label>
         <Input
-          p={1}
-          mb={4}
-          name="title"
+          name="linkUrl"
+          placeholder="Link URL"
           type="text"
+          value={linkUrl}
+          onChange={handlelinkUrlChange}
+          ref={linkUrlRef}
+        />
+
+        <label htmlFor="title">
+          <Heading as="p">Title:</Heading>
+        </label>
+        <Textarea
+          rows={2}
+          name="title"
+          placeholder="Title"
           value={articleTitle}
           onChange={handleTitleChange}
           ref={inputRef}
         />
 
-        <label>
-          <Heading as="p">Post Body:</Heading>
-        </label>
-        <Textarea
-          p={1}
-          mb={4}
-          value={articleBody}
-          onChange={handleBodyChange}
-          ref={textAreaRef}
-        />
+        {isPostText && (
+          <>
+            <label htmlFor="text">
+              <Heading as="p">Text:</Heading>
+            </label>
+            <Textarea
+              rows={4}
+              name="text"
+              placeholder="Text"
+              value={articleBody}
+              onChange={handleBodyChange}
+              ref={textAreaRef}
+            />
+          </>
+        )}
 
-        <label>
-          <Heading as="p">Asset URL:</Heading>
-        </label>
-        <Input
-          p={1}
-          mb={4}
-          name="assetUrl"
-          type="text"
-          value={assetUrl}
-          onChange={handleAssetUrlChange}
-          ref={assetUrlRef}
-        />
+        <label htmlFor="category">Category:</label>
+        <Select id="category">
+          <option>choose a category</option>
+          <option value="altcoin">Altcoin</option>
+          <option value="bitcoin">Bitcoin</option>
+          <option value="defi">DeFi</option>
+          <option value="ethereum">Ethereum</option>
+        </Select>
 
-        <Box
-          width={1}
-          p={4}
-          my={6}
-          bg="primary"
-          color="black"
-          textAlign="center"
-          onClick={handlePost}
-          style={{ cursor: 'pointer' }}
-        >
-          {loading ? 'Loading...' : 'post article'}
-        </Box>
-      </Box>
+        <button onClick={handlePost}>
+          {loading
+            ? 'Loading...'
+            : 'submit'}
+        </button>
+      </fieldset>
+    </S.Form>
+  )
+}
+
+const CreatePost = () => {
+  return (
+    <S.CreatePost>
+      <Box className="title">Create a post</Box>
+
+      <Tabs>
+        <TabList>
+          <Tab>Link</Tab>
+          <Tab>Text</Tab>
+        </TabList>
+
+        <TabPanel>
+          <CreatePostForm postType="link" />
+        </TabPanel>
+
+        <TabPanel>
+          <CreatePostForm postType="text" />
+        </TabPanel>
+      </Tabs>
     </S.CreatePost>
   )
 }

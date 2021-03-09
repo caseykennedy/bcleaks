@@ -12,7 +12,7 @@ import Section from '../Section'
 
 // ___________________________________________________________________
 
-export const FeaturedArticles = styled(Box)`
+export const FeaturedArticles = styled(Box)<{ hero?: boolean }>`
   border-top: ${theme.border};
 
   .featured {
@@ -79,6 +79,10 @@ export const FeaturedArticles = styled(Box)`
           border-right: ${theme.border};
           border-bottom: none;
         }
+      }
+
+      @media ${theme.mq.desktop} {
+        ${p => p.hero && `flex: 1;`}
       }
 
       @media (min-width: ${theme.maxWidth}) {

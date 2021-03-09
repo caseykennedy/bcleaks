@@ -17,7 +17,7 @@ type PostShape = {
   category: string
   title: string
   body: string
-  assetUrl: string
+  linkUrl: string
   votes: number
   createdOn: string
 }

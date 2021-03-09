@@ -331,7 +331,7 @@ const Typography = css`
     li {
       color: ${darken(0.15, theme.colors.white)};
       font-size: ${theme.fontSizes[2]};
-      margin: 0 0 ${theme.space[4]};
+      margin: 0;
 
       @media ${theme.mq.tablet} {
         font-size: calc(${theme.fontSizes[2]} * 1.25);
