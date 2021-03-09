@@ -27,7 +27,7 @@ type PostShape = {
   postType: string
   category: string
   title: string
-  body: string
+  text: string
   linkUrl: string
   votes: number
   createdOn: string
@@ -38,30 +38,32 @@ const currentDate = new Date().toUTCString()
 const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   postType
 }) => {
+  const { user }: any = useIdentityContext()
+
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const linkUrlRef = useRef<HTMLInputElement>(null)
 
-  const [articleTitle, setArticleTitle] = useState<string>('')
-  const [articleBody, setArticleBody] = useState<string>('')
-  const [linkUrl, setlinkUrl] = useState<string>('')
+  const [category, setCategory] = useState<string>('')
+  const [linkUrl, setLinkUrl] = useState<string>('')
+  const [title, setTitle] = useState<string>('')
+  const [text, setText] = useState<string>('')
   const [loading, setLoading] = useState(false)
-  const { user }: any = useIdentityContext()
 
   // Todo data
   const myPost = {
     author: user.user_metadata.full_name,
     postType: `${postType}`,
-    category: 'bitcoin',
-    title: articleTitle,
-    body: articleBody,
+    category: `${category}`,
+    title: `${title}`,
+    text: `${text}`,
     linkUrl: `${linkUrl}`,
     votes: 0,
     createdOn: currentDate
   }
 
   // Check if Text post type
-  const isPostText = postType === 'text'
+  const istext = postType === 'text'
 
   // console.log('------ myPost -------')
   // console.log(myPost)
@@ -82,20 +84,25 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
       })
   }
 
+  const handleCategoryChange = ({
+    target
+  }: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(target.value)
+  }
+  const handleLinkUrlChange = ({
+    target
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setLinkUrl(target.value)
+  }
   const handleTitleChange = ({
     target
   }: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setArticleTitle(target.value)
+    setTitle(target.value)
   }
-  const handleBodyChange = ({
+  const handleTextChange = ({
     target
   }: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setArticleBody(target.value)
-  }
-  const handlelinkUrlChange = ({
-    target
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setlinkUrl(target.value)
+    setText(target.value)
   }
 
   return (
@@ -109,7 +116,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           placeholder="Link URL"
           type="text"
           value={linkUrl}
-          onChange={handlelinkUrlChange}
+          onChange={handleLinkUrlChange}
           ref={linkUrlRef}
         />
 
@@ -120,12 +127,12 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           rows={2}
           name="title"
           placeholder="Title"
-          value={articleTitle}
+          value={title}
           onChange={handleTitleChange}
           ref={inputRef}
         />
 
-        {isPostText && (
+        {istext && (
           <>
             <label htmlFor="text">
               <Heading as="p">Text:</Heading>
@@ -134,15 +141,15 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
               rows={4}
               name="text"
               placeholder="Text"
-              value={articleBody}
-              onChange={handleBodyChange}
+              value={text}
+              onChange={handleTextChange}
               ref={textAreaRef}
             />
           </>
         )}
 
         <label htmlFor="category">Category:</label>
-        <Select id="category">
+        <Select id="category" value={category} onChange={handleCategoryChange}>
           <option>choose a category</option>
           <option value="altcoin">Altcoin</option>
           <option value="bitcoin">Bitcoin</option>
@@ -151,9 +158,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
         </Select>
 
         <button onClick={handlePost}>
-          {loading
-            ? 'Loading...'
-            : 'submit'}
+          {loading ? 'Loading...' : 'submit'}
         </button>
       </fieldset>
     </S.Form>
