@@ -25,7 +25,7 @@ export const CardLeak = styled(Flex)`
   }
 
   .content {
-    flex: 4;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -33,15 +33,45 @@ export const CardLeak = styled(Flex)`
     height: 100%;
     padding-right: ${theme.space[4]};
     padding-left: ${theme.space[1]};
+    width: 100%;
 
     @media ${theme.mq.tablet} {
+      flex: 4;
       padding-top: ${theme.space[1]};
       padding-right: ${theme.space[5]};
       padding-left: calc(${theme.space[7]} / 1.1);
     }
 
+    .link-url {
+      position: relative;
+
+      a {
+        color: ${theme.colors.primary};
+        font-size: ${theme.fontSizes[0]};
+
+        display: -webkit-box;
+        overflow: hidden;
+        position: relative;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1; /* number of lines to show */
+        -webkit-box-orient: vertical;
+      }
+
+      span {
+        position: absolute;
+        top: 0;
+        right: calc(${theme.space[4]} * -1);
+
+        transition: ${theme.transition.all};
+
+        svg {
+          fill: ${theme.colors.primary};
+          width: 12px;
+        }
+      }
+    }
+
     .category {
-      background: ${theme.colors.darkgray};
       border-radius: 2px;
 
       color: ${theme.colors.black};
@@ -182,7 +212,7 @@ export const CardLeak = styled(Flex)`
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 5; /* number of lines to show */
+    -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
 
     @media ${theme.mq.tablet} {

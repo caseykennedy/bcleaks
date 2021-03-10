@@ -7,8 +7,8 @@ import { Link } from 'gatsby'
 
 // Theme + ui
 import * as S from './styles.scss'
-import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Heading, Text } from '../../components/ui'
+import theme from '../../../gatsby-plugin-theme-ui'
+import { Box, Flex, Heading, Text } from '../../../components/ui'
 
 import CreatePost from './CreatePost'
 import MyPosts from './MyPosts'

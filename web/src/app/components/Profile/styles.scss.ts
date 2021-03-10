@@ -15,7 +15,6 @@ export const Profile = styled(Flex)`
   flex-direction: column;
   flex-wrap: wrap;
 
-  background: ${theme.colors.background};
   border: ${theme.border};
 
   .title {
@@ -26,5 +25,24 @@ export const Profile = styled(Flex)`
 
   .content {
     padding: ${theme.space[4]};
+  }
+
+  .btn {
+    background: transparent;
+    border: ${theme.border};
+    border-color: ${theme.colors.gray};
+    color: ${theme.colors.gray};
+    font-size: ${theme.fontSizes[2]};
+
+    margin: ${theme.space[6]} 0 0 0;
+    padding: ${theme.space[2]} ${theme.space[4]};
+    cursor: pointer;
+    transition: ${theme.transition.all};
+    width: 100%;
+
+    &:hover {
+      background: ${theme.colors.gray};
+      color: ${theme.colors.black};
+    }
   }
 `

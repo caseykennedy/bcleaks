@@ -17,9 +17,9 @@ type ImageShape = {
 type FaunaDataShape = {
   data: {
     _id: string
-    assetUrl: string
+    linkUrl: string
     author: string
-    body: string
+    text: string
     category: string
     createdOn: string
     postType: string
@@ -44,9 +44,9 @@ type FaunaDbPostData = {
 
 type FaunaDbPostQuery = {
   _id: string
-  assetUrl: string
+  linkUrl: string
   author: string
-  body: string
+  text: string
   category: string
   createdOn: string
   postType: string

@@ -5,8 +5,8 @@
 import styled from 'styled-components'
 
 // Theme
-import theme from '../../../gatsby-plugin-theme-ui'
-import { Box } from '../../../components/ui'
+import theme from '../../../../gatsby-plugin-theme-ui'
+import { Box } from '../../../../components/ui'
 
 // ___________________________________________________________________
 
@@ -31,12 +31,15 @@ export const CreatePost = styled(Box)`
 
     &__tab {
       border: ${theme.border};
+      border-color: ${theme.colors.primary};
       border-right: none;
       border-radius: 0;
+      color: ${theme.colors.primary};
       padding: ${theme.space[2]} ${theme.space[4]};
 
       &:last-child {
         border-right: ${theme.border};
+        border-color: ${theme.colors.primary};
         border-left: none;
       }
 

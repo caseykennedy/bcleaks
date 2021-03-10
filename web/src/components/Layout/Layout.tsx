@@ -3,7 +3,6 @@
 // ___________________________________________________________________
 
 import React, { useRef } from 'react'
-import { withPrefix } from 'gatsby'
 
 // Components
 import Header from '../Header'
@@ -14,6 +13,7 @@ import CryptoTicker from '../CryptoTicker'
 import * as S from './styles.scss'
 import 'swiper/css/swiper.css'
 import 'react-responsive-modal/styles.css'
+import 'react-netlify-identity-widget/styles.css' // delete if you want to bring your own CSS
 
 // ___________________________________________________________________
 
@@ -30,6 +30,8 @@ export type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Ref <main> to lock body for modal/overlay
   const mainRef = useRef<HTMLDivElement>(null)
+  const [dialog, setDialog] = React.useState(false)
+
   // eslint-disable-next-line no-console
   console.log(
     `%c BC Leaks — crafted with care. [ caseykennedy.hns.to ] `,

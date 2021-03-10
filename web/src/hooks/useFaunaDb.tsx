@@ -14,9 +14,9 @@ const useFaunaDb = () => {
         edges {
           node {
             _id
-            assetUrl
+            linkUrl
             author
-            body
+            text
             category
             createdOn
             postType

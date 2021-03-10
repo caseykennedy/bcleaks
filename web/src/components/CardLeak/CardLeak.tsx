@@ -13,6 +13,8 @@ import React, {
 import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
 
+import moment from 'moment'
+
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../ui'
@@ -26,9 +28,9 @@ type CardLeakProps = {
   post: {
     data: {
       _id: string
-      assetUrl: string
+      linkUrl: string
       author: string
-      body: string
+      text: string
       category: string
       createdOn: string
       postType: string
@@ -151,19 +153,37 @@ const CardLeak: React.FC<CardLeakProps> = ({
   const onVote = (countTotal: number) => {
     setTotalVotes(countTotal)
   }
+
+  let pillColor
+  if (post.data.category === 'altcoin') {
+    pillColor = theme.colors.blue
+  } else if (post.data.category === 'bitcoin') {
+    pillColor = theme.colors.orange
+  } else if (post.data.category === 'defi') {
+    pillColor = theme.colors.yellow
+  } else if (post.data.category === 'Ethereum') {
+    pillColor = theme.colors.purple
+  }
+
+  const currentDate = new Date().toLocaleString()
+  console.log('DATE', currentDate)
+
   return (
     // <Link to={`/${pagePrefix}/${post.data.slug.current && post.data.slug.current}`}>
     <S.CardLeak>
       <Flex className="content">
         <Box>
           <Text as="p" color="gray" fontFamily="sans" className="text--small">
-            <Box as="span" className="category">
+            <Box as="span" bg={pillColor} className="category">
               c/
               <Box as="span" className="text--uppercasee">
                 {post.data.category && post.data.category}
               </Box>
             </Box>{' '}
-            8 hrs ago by{' '}
+            {post.data.createdOn &&
+              moment(post.data.createdOn)
+                .startOf('day')
+                .fromNow()}{' '}
             <Box as="span" className="text--underline">
               u/{post.data.author && post.data.author}
             </Box>
@@ -171,11 +191,13 @@ const CardLeak: React.FC<CardLeakProps> = ({
           <Heading className={`title  ${!small ? `text--md` : `title--small`}`}>
             {post.data.title && post.data.title}
           </Heading>
-          <Link to={`#`}>
-            <Text color="primary" fontSize={[0, 1]}>
-              youtu.be/p0mNQx...
-            </Text>
-          </Link>
+
+          {post.data.linkUrl && (
+            <Box width={[3 / 4, 1 / 2]} className="link-url">
+              <Link to={`#`}>{post.data.linkUrl && post.data.linkUrl}</Link>
+              <Icon name="external-link" />
+            </Box>
+          )}
         </Box>
 
         <Flex className="utilities">
@@ -189,10 +211,11 @@ const CardLeak: React.FC<CardLeakProps> = ({
         </Flex>
       </Flex>
 
-      <Box flex={1}>
-        <Box className="bg">
-          <Box className="figure">
-            {/* {post.data.figure.asset.fluid && (
+      {post.data.linkUrl && (
+        <Box flex={1}>
+          <Box className="bg">
+            <Box className="figure">
+              {/* {post.data.figure.asset.fluid && (
               <Img
                 fluid={{
                   ...post.data.figure.asset.fluid,
@@ -203,10 +226,11 @@ const CardLeak: React.FC<CardLeakProps> = ({
                 alt={post.data.title}
               />
             )} */}
-            {post.data.assetUrl && post.data.assetUrl}
+              <img src={post.data.linkUrl} alt="alt" width="100%" />
+            </Box>
           </Box>
         </Box>
-      </Box>
+      )}
     </S.CardLeak>
     // </Link>
   )

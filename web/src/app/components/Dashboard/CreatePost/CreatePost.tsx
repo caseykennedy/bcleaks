@@ -12,12 +12,12 @@ import 'react-tabs/style/react-tabs.css'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
 // Utils
-import api from '../../../utils/api'
+import api from '../../../../utils/api'
 
 // Theme + ui
 import * as S from './styles.scss'
-import theme from '../../../gatsby-plugin-theme-ui'
-import { Box, Heading, Text } from '../../../components/ui'
+import theme from '../../../../gatsby-plugin-theme-ui'
+import { Box, Heading, Text } from '../../../../components/ui'
 import { Input, Select, Textarea } from 'theme-ui'
 
 // ___________________________________________________________________
@@ -33,7 +33,7 @@ type PostShape = {
   createdOn: string
 }
 
-const currentDate = new Date().toUTCString()
+const currentDate = new Date().toLocaleString()
 
 const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   postType

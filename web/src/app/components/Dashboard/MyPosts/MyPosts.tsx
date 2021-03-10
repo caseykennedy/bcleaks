@@ -7,8 +7,8 @@ import fetch from 'node-fetch'
 
 // Theme + ui
 import * as S from './styles.scss'
-import theme from '../../../gatsby-plugin-theme-ui'
-import { Box, Flex } from '../../../components/ui'
+import theme from '../../../../gatsby-plugin-theme-ui'
+import { Box, Flex } from '../../../../components/ui'
 
 // ___________________________________________________________________
 

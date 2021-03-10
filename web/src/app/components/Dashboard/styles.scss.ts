@@ -5,8 +5,8 @@
 import styled from 'styled-components'
 
 // Theme
-import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex } from '../../components/ui'
+import theme from '../../../gatsby-plugin-theme-ui'
+import { Box, Flex } from '../../../components/ui'
 
 // ___________________________________________________________________
 
