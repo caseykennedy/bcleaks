@@ -34,6 +34,7 @@ type CardLeakProps = {
       category: string
       createdOn: string
       postType: string
+      slug: string
       title: string
       votes: number
     }
@@ -169,52 +170,54 @@ const CardLeak: React.FC<CardLeakProps> = ({
   console.log('DATE', currentDate)
 
   return (
-    // <Link to={`/${pagePrefix}/${post.data.slug.current && post.data.slug.current}`}>
-    <S.CardLeak>
-      <Flex className="content">
-        <Box>
-          <Box className="meta">
-            <Box as="span" bg={pillColor} className="category">
-              c/
-              <span className="text--uppercasee">
-                {post.data.category && post.data.category}
-              </span>
-            </Box>{' '}
-            {post.data.createdOn &&
-              moment(post.data.createdOn)
-                .startOf('day')
-                .fromNow()}{' '}
-            <Box as="span" className="user">
-              by u/{post.data.author && post.data.author}
+    <Link
+      to={`/community/${post.data.slug && post.data.slug}`}
+    >
+      <S.CardLeak>
+        <Flex className="content">
+          <Box>
+            <Box className="meta">
+              <Box as="span" bg={pillColor} className="category">
+                c/
+                <span className="text--uppercasee">
+                  {post.data.category && post.data.category}
+                </span>
+              </Box>{' '}
+              {post.data.createdOn &&
+                moment(post.data.createdOn)
+                  .startOf('day')
+                  .fromNow()}{' '}
+              <Box as="span" className="user">
+                by u/{post.data.author && post.data.author}
+              </Box>
             </Box>
+
+            <Text as="p" className="title">
+              {post.data.title && post.data.title}
+            </Text>
+
+            {post.data.linkUrl && (
+              <Box width={[3 / 4, 1 / 2]} className="link-url">
+                <Link to={`#`}>{post.data.linkUrl && post.data.linkUrl}</Link>
+                <Icon name="external-link" />
+              </Box>
+            )}
           </Box>
 
-          <Text as="p" className="title">
-            {post.data.title && post.data.title}
-          </Text>
+          <Flex className="utilities">
+            <VoteCounter onVote={onVote} totalVotes={totalVotes} />
 
-          {post.data.linkUrl && (
-            <Box width={[3 / 4, 1 / 2]} className="link-url">
-              <Link to={`#`}>{post.data.linkUrl && post.data.linkUrl}</Link>
-              <Icon name="external-link" />
-            </Box>
-          )}
-        </Box>
+            <Flex mr={5} className="comments">
+              comments
+            </Flex>
 
-        <Flex className="utilities">
-          <VoteCounter onVote={onVote} totalVotes={totalVotes} />
-
-          <Flex mr={5} className="comments">
-            comments
+            <Flex className="share">share</Flex>
           </Flex>
-
-          <Flex className="share">share</Flex>
         </Flex>
-      </Flex>
 
-      {post.data.linkUrl && (
-        <Box className="figure">
-          {/* {post.data.figure.asset.fluid && (
+        {post.data.linkUrl && (
+          <Box className="figure">
+            {/* {post.data.figure.asset.fluid && (
         <Img
           fluid={{
             ...post.data.figure.asset.fluid,
@@ -225,11 +228,11 @@ const CardLeak: React.FC<CardLeakProps> = ({
           alt={post.data.title}
         />
       )} */}
-          <img src={post.data.linkUrl} alt="alt" height="100%" width="100%" />
-        </Box>
-      )}
-    </S.CardLeak>
-    // </Link>
+            <img src={post.data.linkUrl} alt="alt" height="100%" width="100%" />
+          </Box>
+        )}
+      </S.CardLeak>
+    </Link>
   )
 }
 

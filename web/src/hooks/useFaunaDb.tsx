@@ -20,6 +20,7 @@ const useFaunaDb = () => {
             category
             createdOn
             postType
+            # slug
             title
             votes
           }

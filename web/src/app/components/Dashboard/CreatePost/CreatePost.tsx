@@ -31,6 +31,7 @@ type PostShape = {
   linkUrl: string
   votes: number
   createdOn: string
+  slug: string
 }
 
 const currentDate = new Date().toLocaleString()
@@ -59,7 +60,8 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
     text: `${text}`,
     linkUrl: `${linkUrl}`,
     votes: 0,
-    createdOn: currentDate
+    createdOn: currentDate,
+    slug: title
   }
 
   // Check if Text post type

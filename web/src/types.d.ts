@@ -23,6 +23,7 @@ type FaunaDataShape = {
     category: string
     createdOn: string
     postType: string
+    slug: string
     title: string
     votes: number
   }
@@ -50,6 +51,7 @@ type FaunaDbPostQuery = {
   category: string
   createdOn: string
   postType: string
+  slug: string
   title: string
   votes: number
 }
