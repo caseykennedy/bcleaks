@@ -162,7 +162,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
     pillColor = theme.colors.orange
   } else if (post.data.category === 'defi') {
     pillColor = theme.colors.yellow
-  } else if (post.data.category === 'Ethereum') {
+  } else if (post.data.category === 'ethereum') {
     pillColor = theme.colors.purple
   }
 
