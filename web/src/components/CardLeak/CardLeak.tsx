@@ -173,24 +173,25 @@ const CardLeak: React.FC<CardLeakProps> = ({
     <S.CardLeak>
       <Flex className="content">
         <Box>
-          <Text as="p" color="gray" fontFamily="sans" className="text--small">
+          <Box className="meta">
             <Box as="span" bg={pillColor} className="category">
               c/
-              <Box as="span" className="text--uppercasee">
+              <span className="text--uppercasee">
                 {post.data.category && post.data.category}
-              </Box>
+              </span>
             </Box>{' '}
             {post.data.createdOn &&
               moment(post.data.createdOn)
                 .startOf('day')
                 .fromNow()}{' '}
-            <Box as="span" className="text--underline">
-              u/{post.data.author && post.data.author}
+            <Box as="span" className="user">
+              by u/{post.data.author && post.data.author}
             </Box>
-          </Text>
-          <Heading className={`title  ${!small ? `text--md` : `title--small`}`}>
+          </Box>
+
+          <Text as="p" className="title">
             {post.data.title && post.data.title}
-          </Heading>
+          </Text>
 
           {post.data.linkUrl && (
             <Box width={[3 / 4, 1 / 2]} className="link-url">
@@ -212,23 +213,19 @@ const CardLeak: React.FC<CardLeakProps> = ({
       </Flex>
 
       {post.data.linkUrl && (
-        <Box flex={1}>
-          <Box className="bg">
-            <Box className="figure">
-              {/* {post.data.figure.asset.fluid && (
-              <Img
-                fluid={{
-                  ...post.data.figure.asset.fluid,
-                  aspectRatio: `${aspectRatio}`
-                }}
-                objectFit="cover"
-                objectPosition="50% 50%"
-                alt={post.data.title}
-              />
-            )} */}
-              <img src={post.data.linkUrl} alt="alt" width="100%" />
-            </Box>
-          </Box>
+        <Box className="figure">
+          {/* {post.data.figure.asset.fluid && (
+        <Img
+          fluid={{
+            ...post.data.figure.asset.fluid,
+            aspectRatio: `${aspectRatio}`
+          }}
+          objectFit="cover"
+          objectPosition="50% 50%"
+          alt={post.data.title}
+        />
+      )} */}
+          <img src={post.data.linkUrl} alt="alt" height="100%" width="100%" />
         </Box>
       )}
     </S.CardLeak>

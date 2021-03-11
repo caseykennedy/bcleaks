@@ -28,11 +28,17 @@ export const Profile = styled(Flex)`
   }
 
   .btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     background: transparent;
     border: ${theme.border};
-    border-color: ${theme.colors.gray};
+    border-color: ${theme.colors.darkgray};
+
     color: ${theme.colors.gray};
     font-size: ${theme.fontSizes[2]};
+    text-transform: uppercase;
 
     margin: ${theme.space[6]} 0 0 0;
     padding: ${theme.space[2]} ${theme.space[4]};
@@ -40,9 +46,24 @@ export const Profile = styled(Flex)`
     transition: ${theme.transition.all};
     width: 100%;
 
+    span svg {
+      fill: ${theme.colors.gray};
+    }
+
+    &--logout {
+      span {
+        transform: rotate(180deg);
+      }
+    }
+
     &:hover {
       background: ${theme.colors.gray};
+      border-color: ${theme.colors.gray};
       color: ${theme.colors.black};
+
+      span svg {
+        fill: ${theme.colors.black};
+      }
     }
   }
 `

@@ -38,20 +38,13 @@ const RootVariables = css`
 
     /* letter-spacing */
     --heading-letter-spacing: -1px;
-    --body-letter-spacing: 0.5px;
+    --body-letter-spacing: 0;
+    --text-letter-spacing: 0.75px;
 
     @media ${theme.mq.tablet} {
-      :root {
-        --text-base-size: 0.95em;
-        --body-line-height: 1.95;
-        --heading-line-height: 1.25;
-      }
-    }
-
-    @media ${theme.mq.desktop} {
-      :root {
-        --text-base-size: 0.95em;
-      }
+      --text-base-size: 1em;
+      --body-line-height: 1.95;
+      --heading-line-height: 1.25;
     }
 
     /* type scale */

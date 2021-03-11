@@ -3,17 +3,19 @@
 // ___________________________________________________________________
 
 import React from 'react'
-import { Link, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
+import moment from 'moment'
 import {
   useIdentityContext,
   IdentityModal
 } from 'react-netlify-identity-widget'
 
-import moment from 'moment'
+import Icon from '../../../components/Icons'
 
+// Theme + ui
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
-import { Box, Flex, Heading, Text } from '../../../components/ui'
+import { Box, Text } from '../../../components/ui'
 
 // ___________________________________________________________________
 
@@ -40,6 +42,7 @@ const Profile = () => {
         onSignup={() => navigate('/user')}
         aria-label="Log in"
       />
+
       <S.Profile>
         <Box className="title">{welcomeMessage}</Box>
         <Box className="content">
@@ -56,7 +59,8 @@ const Profile = () => {
           )}
           {!isLoggedIn ? (
             <Box onClick={() => setDialog(true)} className="btn">
-              log in
+              login
+              <Icon name="login" />
             </Box>
           ) : (
             <Box
@@ -65,9 +69,10 @@ const Profile = () => {
                 await logoutUser()
                 navigate(`/user/login`)
               }}
-              className="btn"
+              className="btn  btn--logout"
             >
-              Logout
+              logout
+              <Icon name="logout" />
             </Box>
           )}
         </Box>

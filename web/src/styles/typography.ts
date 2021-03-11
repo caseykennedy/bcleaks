@@ -115,7 +115,7 @@ const Typography = css`
   }
 
   html {
-    font-size: 16px;
+    font-size: 14px;
     box-sizing: border-box;
     border: 0;
     margin: 0;
@@ -237,6 +237,7 @@ const Typography = css`
   .text--base {
     color: ${theme.colors.lightgray};
     font-size: ${theme.fontSizes[2]};
+    letter-spacing: 1px;
     line-height: ${theme.root.font.bodyLineHeight};
     margin: 0 0 ${theme.space[4]};
 

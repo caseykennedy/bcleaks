@@ -15,9 +15,8 @@ import Facebook from './SVG/Facebook'
 import Instagram from './SVG/Instagram'
 import Twitter from './SVG/Twitter'
 import NextArrow from './SVG/NextArrow'
-import Bag from './SVG/Bag'
+import Logout from './SVG/Logout'
 import Carat from './SVG/Carat'
-
 
 import Document from './SVG/Document'
 import Download from './SVG/Download'
@@ -97,16 +96,22 @@ const Icon: React.FC<Props> = ({ name, className, color, fas }) => {
           <Instagram />
         </IconStyle>
       )
-    case 'bag':
-      return (
-        <IconStyle color={color} className={className}>
-          <Bag />
-        </IconStyle>
-      )
     case 'listView':
       return (
         <IconStyle color={color} className={className}>
           <ListView />
+        </IconStyle>
+      )
+    case 'login':
+      return (
+        <IconStyle color={color} className={className}>
+          <Logout />
+        </IconStyle>
+      )
+    case 'logout':
+      return (
+        <IconStyle color={color} className={className}>
+          <Logout />
         </IconStyle>
       )
     case 'pdf':
