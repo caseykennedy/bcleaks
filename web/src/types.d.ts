@@ -27,6 +27,12 @@ type FaunaDataShape = {
     title: string
     votes: number
   }
+  ref: {
+    value: {
+      id: string
+    }
+  }
+  ts: number
 }
 
 type FaunaDbPostShape = {

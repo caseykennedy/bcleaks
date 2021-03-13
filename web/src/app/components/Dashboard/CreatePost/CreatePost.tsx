@@ -65,7 +65,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   }
 
   // Check if Text post type
-  const istext = postType === 'text'
+  const isLink = postType === 'link'
 
   // console.log('------ myPost -------')
   // console.log(myPost)
@@ -110,17 +110,21 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   return (
     <S.Form name="Creat post: link">
       <fieldset>
-        <label htmlFor="linkUrl">
-          <Heading as="p">Link URL:</Heading>
-        </label>
-        <Input
-          name="linkUrl"
-          placeholder="Link URL"
-          type="text"
-          value={linkUrl}
-          onChange={handleLinkUrlChange}
-          ref={linkUrlRef}
-        />
+        {isLink && (
+          <>
+            <label htmlFor="linkUrl">
+              <Heading as="p">Link URL:</Heading>
+            </label>
+            <Input
+              name="linkUrl"
+              placeholder="Link URL"
+              type="text"
+              value={linkUrl}
+              onChange={handleLinkUrlChange}
+              ref={linkUrlRef}
+            />
+          </>
+        )}
 
         <label htmlFor="title">
           <Heading as="p">Title:</Heading>
@@ -134,7 +138,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           ref={inputRef}
         />
 
-        {istext && (
+        {!isLink && (
           <>
             <label htmlFor="text">
               <Heading as="p">Text:</Heading>

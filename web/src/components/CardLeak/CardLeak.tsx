@@ -12,7 +12,6 @@ import React, {
 } from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
-
 import moment from 'moment'
 
 import * as S from './styles.scss'
@@ -21,24 +20,14 @@ import { Box, Flex, Heading, Text } from '../ui'
 
 import Icon from '../Icons'
 
+// Utils
+import api from '../../utils/api'
+
 // ___________________________________________________________________
 
 type CardLeakProps = {
   aspectRatio?: number
-  post: {
-    data: {
-      _id: string
-      linkUrl: string
-      author: string
-      text: string
-      category: string
-      createdOn: string
-      postType: string
-      slug: string
-      title: string
-      votes: number
-    }
-  }
+  post: FaunaDataShape
   small?: boolean
   video?: boolean
 }
@@ -48,10 +37,12 @@ type CardLeakProps = {
 const MediumClapContext = createContext({})
 const { Provider } = MediumClapContext
 
-const VoteCounter: React.FC<{ onVote: any; totalVotes: number }> = ({
-  onVote,
-  totalVotes
-}) => {
+const VoteCounter: React.FC<{
+  id: string
+  onVote: any
+  post: FaunaDbPostQuery
+  totalVotes: number
+}> = ({ id, onVote, post, totalVotes }) => {
   const initialState = {
     userVote: 0,
     voteTotal: totalVotes,
@@ -78,7 +69,10 @@ const VoteCounter: React.FC<{ onVote: any; totalVotes: number }> = ({
     }
   }, [])
 
-  const handleVoteUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleVoteUp = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    currentValue: any
+  ) => {
     e.preventDefault()
     setVoteState({
       userVote: Math.min(userVote + 1, MAXIMUM_USER_VOTE),
@@ -87,6 +81,17 @@ const VoteCounter: React.FC<{ onVote: any; totalVotes: number }> = ({
       isDownVote: false,
       isUpVote: true
     })
+    // update it!
+    api
+      .update(id, { votes: currentValue })
+      .then(response => {
+        console.log('API response', response)
+        // set app state
+      })
+      .catch(error => {
+        console.log('ERROR')
+        console.log('API error:', error)
+      })
   }
   const handleVoteDown = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -167,12 +172,10 @@ const CardLeak: React.FC<CardLeakProps> = ({
   }
 
   const currentDate = new Date().toLocaleString()
-  console.log('DATE', currentDate)
+  console.log('POST', post.ref.value.id)
 
   return (
-    <Link
-      to={`/community/${post.data.slug && post.data.slug}`}
-    >
+    <Link to={`/community/${post.data.slug && post.data.slug}`}>
       <S.CardLeak>
         <Flex className="content">
           <Box>
@@ -205,7 +208,12 @@ const CardLeak: React.FC<CardLeakProps> = ({
           </Box>
 
           <Flex className="utilities">
-            <VoteCounter onVote={onVote} totalVotes={totalVotes} />
+            <VoteCounter
+              id={post.ref.value.id}
+              onVote={onVote}
+              post={post.data}
+              totalVotes={totalVotes}
+            />
 
             <Flex mr={5} className="comments">
               comments

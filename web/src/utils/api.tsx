@@ -20,6 +20,7 @@ type PostShape = {
   linkUrl: string
   votes: number
   createdOn: string
+  slug: string
 }
 
 const createPost = (data: PostShape) => {
@@ -32,12 +33,12 @@ const createPost = (data: PostShape) => {
 }
 
 const readAllPosts = () => {
-  return fetch('/.netlify/functions/todos-read-all').then((response) => {
+  return fetch('/.netlify/functions/todos-read-all').then(response => {
     return response.json()
   })
 }
 
-const updatePost = (todoId: string, data: PostShape) => {
+const updatePost = (todoId: number, data: { votes: number }) => {
   return fetch(`/.netlify/functions/todos-update/${todoId}`, {
     body: JSON.stringify(data),
     method: 'POST'

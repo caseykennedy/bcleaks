@@ -1,14 +1,13 @@
-// code from functions/todos-create.js
+/* Import faunaDB sdk */
 const faunadb = require('faunadb')
-
-// configure faunaDB Client with our secret
 const q = faunadb.query
-const client = new faunadb.Client({
-  secret: process.env.FAUNADB_SECRET
-})
 
 /* export our lambda function as named "handler" export */
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context) => {
+  /* configure faunaDB Client with our secret */
+  const client = new faunadb.Client({
+    secret: process.env.FAUNADB_SECRET
+  })
   /* parse the string body into a useable JS object */
   const data = JSON.parse(event.body)
   console.log('Function `todo-create` invoked', data)
@@ -21,17 +20,17 @@ exports.handler = (event, context, callback) => {
     .then(response => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
-      return callback(null, {
+      return {
         statusCode: 200,
         body: JSON.stringify(response)
-      })
+      }
     })
     .catch(error => {
       console.log('error', error)
       /* Error! return the error with statusCode 400 */
-      return callback(null, {
+      return {
         statusCode: 400,
         body: JSON.stringify(error)
-      })
+      }
     })
 }
