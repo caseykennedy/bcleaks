@@ -40,7 +40,6 @@ const GetFauna = () => {
       return client.query(getAllPostDataQuery).then(data => data)
     })
     .catch(error => console.warn('error', error.message))
-  console.log('Fetched FaunaDb posts', items)
 
   useEffect(() => {
     // getFaunaPosts.then(results => setItems(results))
@@ -61,6 +60,8 @@ const GetFauna = () => {
       console.log('Fetched FaunaDb posts', posts)
     })
   }, [])
+  console.log('Netlify fetched items', items)
+  
   return items.length === 0 ? (
     <Box>Loading...</Box>
   ) : (

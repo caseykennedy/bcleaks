@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 /* Frontend code from src/utils/api.js */
 /* Api methods to call /functions */
 
@@ -38,7 +36,7 @@ const readAllPosts = () => {
   })
 }
 
-const updatePost = (todoId: number, data: { votes: number }) => {
+const updatePost = (todoId: string, data: { votes: number }) => {
   return fetch(`/.netlify/functions/todos-update/${todoId}`, {
     body: JSON.stringify(data),
     method: 'POST'

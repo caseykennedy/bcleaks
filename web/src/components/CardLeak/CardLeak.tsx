@@ -69,10 +69,7 @@ const VoteCounter: React.FC<{
     }
   }, [])
 
-  const handleVoteUp = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    currentValue: any
-  ) => {
+  const handleVoteUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     setVoteState({
       userVote: Math.min(userVote + 1, MAXIMUM_USER_VOTE),
@@ -83,7 +80,9 @@ const VoteCounter: React.FC<{
     })
     // update it!
     api
-      .update(id, { votes: currentValue })
+      .update(id, {
+        votes: userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal
+      })
       .then(response => {
         console.log('API response', response)
         // set app state
@@ -104,6 +103,19 @@ const VoteCounter: React.FC<{
       isDownVote: true,
       isUpVote: false
     })
+    // update it!
+    api
+      .update(id, {
+        votes: userVote < MAXIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
+      })
+      .then(response => {
+        console.log('API response', response)
+        // set app state
+      })
+      .catch(error => {
+        console.log('ERROR')
+        console.log('API error:', error)
+      })
   }
 
   const componentJustMounted = useRef<boolean>(true)
@@ -172,7 +184,6 @@ const CardLeak: React.FC<CardLeakProps> = ({
   }
 
   const currentDate = new Date().toLocaleString()
-  console.log('POST', post.ref.value.id)
 
   return (
     <Link to={`/community/${post.data.slug && post.data.slug}`}>
@@ -209,10 +220,10 @@ const CardLeak: React.FC<CardLeakProps> = ({
 
           <Flex className="utilities">
             <VoteCounter
-              id={post.ref.value.id}
+              id={post.ref['@ref'].id}
               onVote={onVote}
               post={post.data}
-              totalVotes={totalVotes}
+              totalVotes={post.data.votes}
             />
 
             <Flex mr={5} className="comments">
