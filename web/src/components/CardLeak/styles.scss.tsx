@@ -3,6 +3,7 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
+import { darken } from 'polished'
 
 // Theme
 import theme from '../../gatsby-plugin-theme-ui'
@@ -51,7 +52,7 @@ export const CardLeak = styled(Flex)`
       color: ${theme.colors.gray};
       font-family: ${theme.fonts.sans};
       font-size: ${theme.fontSizes[0]};
-      letter-spacing: ${theme.root.font.textLetterSpacing};
+      letter-spacing: 0.5px;
       margin-bottom: ${theme.space[4]};
 
       @media ${theme.mq.tablet} {
@@ -84,10 +85,10 @@ export const CardLeak = styled(Flex)`
     .title {
       color: ${theme.colors.white};
       font-family: ${theme.fonts.sans};
-      font-size: calc(${theme.fontSizes[2]});
-      line-height: ${theme.root.font.headingLineHeight};
+      font-size: calc(${theme.fontSizes[2]} * 1.15);
+      line-height: 1.5;
 
-      margin-bottom: ${theme.space[0]};
+      margin-bottom: calc(${theme.space[1]} / 2);
 
       overflow: hidden;
       text-overflow: ellipsis;
@@ -141,6 +142,16 @@ export const CardLeak = styled(Flex)`
           width: 12px;
         }
       }
+    }
+
+    .text {
+      color: ${darken (0.05, theme.colors.lightgray)};
+      font-family: ${theme.fonts.sans};
+      font-size: calc(${theme.fontSizes[2]});
+      line-height: 1.75;
+
+      margin-top: ${theme.space[3]};
+      margin-bottom: ${theme.space[0]};
     }
 
     .utilities {

@@ -9,7 +9,7 @@ const client = new faunadb.Client({
 
 exports.handler = (event, context, callback) => {
   const id = getId(event.path)
-  console.log(`Function 'todo-read' invoked. Read id: ${id}`)
+  console.log(`Function 'post-read' invoked. Read id: ${id}`)
   return client
     .query(q.Get(q.Ref(`classes/posts/${id}`)))
     .then(response => {

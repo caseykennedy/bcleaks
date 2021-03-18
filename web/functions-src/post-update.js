@@ -1,29 +1,29 @@
-/* code from functions/todos-delete.js */
 const faunadb = require('faunadb')
 const getId = require('./utils/getId')
-
 const q = faunadb.query
-const client = new faunadb.Client({
-  secret: process.env.FAUNADB_SECRET
-})
 
-exports.handler = (event, context, callback) => {
+exports.handler = (event, context) => {
+  /* configure faunaDB Client with our secret */
+  const client = new faunadb.Client({
+    secret: process.env.FAUNADB_SECRET
+  })
+  const data = JSON.parse(event.body)
   const id = getId(event.path)
-  console.log(`Function 'todo-delete' invoked. delete id: ${id}`)
+  console.log(`Function 'post-update' invoked. update id: ${id}`)
   return client
-    .query(q.Delete(q.Ref(`collection/posts/${id}`)))
+    .query(q.Update(q.Ref(`classes/posts/${id}`), { data }))
     .then(response => {
       console.log('success', response)
-      return callback(null, {
+      return {
         statusCode: 200,
         body: JSON.stringify(response)
-      })
+      }
     })
     .catch(error => {
       console.log('error', error)
-      return callback(null, {
+      return {
         statusCode: 400,
         body: JSON.stringify(error)
-      })
+      }
     })
 }

@@ -11,23 +11,25 @@ import React, {
   createContext
 } from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image/withIEPolyfill'
 import moment from 'moment'
+import { useIdentityContext } from 'react-netlify-identity-widget'
 
+// Utils
+import api from '../../utils/api'
+
+// Theme + ui
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../ui'
 
+// Components
 import Icon from '../Icons'
-
-// Utils
-import api from '../../utils/api'
 
 // ___________________________________________________________________
 
 type CardLeakProps = {
   aspectRatio?: number
-  post: FaunaDataShape
+  post: FaunaDataQuery
   small?: boolean
   video?: boolean
 }
@@ -40,9 +42,9 @@ const { Provider } = MediumClapContext
 const VoteCounter: React.FC<{
   id: string
   onVote: any
-  post: FaunaDbPostQuery
   totalVotes: number
-}> = ({ id, onVote, post, totalVotes }) => {
+  voters: VoterShape[]
+}> = ({ id, onVote, totalVotes, voters }) => {
   const initialState = {
     userVote: 0,
     voteTotal: totalVotes,
@@ -50,6 +52,9 @@ const VoteCounter: React.FC<{
     isUpVote: false,
     isDownVote: false
   }
+
+  const { user }: any = useIdentityContext()
+  const username: string = user.user_metadata.full_name
 
   const MAXIMUM_USER_VOTE = 50000000
   const [voteState, setVoteState] = useState(initialState)
@@ -60,6 +65,10 @@ const VoteCounter: React.FC<{
     voteTotalRef: any
   }>({})
 
+  // const hasMatch = voters.filter(function(value) {
+  //   return value.recordId == valueId
+  // })
+
   const setRef = useCallback(node => {
     if (node !== null) {
       setRefState(prevRefState => ({
@@ -69,19 +78,24 @@ const VoteCounter: React.FC<{
     }
   }, [])
 
+  // Handle the up vote
   const handleVoteUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
+    const voteUpReducer =
+      userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal
     setVoteState({
       userVote: Math.min(userVote + 1, MAXIMUM_USER_VOTE),
-      voteTotal: userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal,
+      voteTotal: voteUpReducer,
       isClicked: true,
       isDownVote: false,
       isUpVote: true
     })
+
     // update it!
     api
-      .update(id, {
-        votes: userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal
+      .castVote(id, {
+        votes: voteUpReducer,
+        voters: voters.concat({ user: username, vote: userVote + 1 })
       })
       .then(response => {
         console.log('API response', response)
@@ -92,21 +106,25 @@ const VoteCounter: React.FC<{
         console.log('API error:', error)
       })
   }
+  // Handle the down vote
   const handleVoteDown = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault()
+    const voteDownReducer =
+      userVote < MAXIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
     setVoteState({
       userVote: Math.min(userVote - 1, MAXIMUM_USER_VOTE),
-      voteTotal: userVote < MAXIMUM_USER_VOTE ? voteTotal - 1 : voteTotal,
+      voteTotal: voteDownReducer,
       isClicked: true,
       isDownVote: true,
       isUpVote: false
     })
     // update it!
     api
-      .update(id, {
-        votes: userVote < MAXIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
+      .castVote(id, {
+        votes: voteDownReducer,
+        voters: [{ user: username, vote: userVote - 1 }]
       })
       .then(response => {
         console.log('API response', response)
@@ -150,7 +168,7 @@ const VoteCounter: React.FC<{
 
         <button
           onClick={handleVoteDown}
-          className="vote-arrow  vote-arrow--down"
+          className={`vote-arrow  vote-arrow--down`}
           disabled={userVote !== -1 ? false : true}
           aria-label="downvote post"
         >
@@ -172,6 +190,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
     setTotalVotes(countTotal)
   }
 
+  // Highlight the category pill
   let pillColor
   if (post.data.category === 'altcoin') {
     pillColor = theme.colors.blue
@@ -183,75 +202,65 @@ const CardLeak: React.FC<CardLeakProps> = ({
     pillColor = theme.colors.purple
   }
 
-  const currentDate = new Date().toLocaleString()
-
   return (
-    <Link to={`/community/${post.data.slug && post.data.slug}`}>
-      <S.CardLeak>
-        <Flex className="content">
-          <Box>
-            <Box className="meta">
-              <Box as="span" bg={pillColor} className="category">
-                c/
-                <span className="text--uppercasee">
-                  {post.data.category && post.data.category}
-                </span>
-              </Box>{' '}
-              {post.data.createdOn &&
-                moment(post.data.createdOn)
-                  .startOf('day')
-                  .fromNow()}{' '}
-              <Box as="span" className="user">
-                by u/{post.data.author && post.data.author}
-              </Box>
+    <S.CardLeak>
+      <Flex className="content">
+        <Box>
+          <Box className="meta">
+            <Box as="span" bg={pillColor} className="category">
+              c/
+              <span className="text--uppercasee">
+                {post.data.category && post.data.category}
+              </span>
+            </Box>{' '}
+            {post.data.createdOn &&
+              moment(post.data.createdOn)
+                .startOf('day')
+                .fromNow()}{' '}
+            <Box as="span" className="user">
+              by u/{post.data.author && post.data.author}
             </Box>
+          </Box>
 
-            <Text as="p" className="title">
-              {post.data.title && post.data.title}
+          <Text className="title">{post.data.title && post.data.title}</Text>
+
+          {post.data.linkUrl && (
+            <Box width={[3 / 4, 1 / 2]} className="link-url">
+              <Link to={`#`}>{post.data.linkUrl && post.data.linkUrl}</Link>
+              <Icon name="external-link" />
+            </Box>
+          )}
+
+          {post.data.text && (
+            <Text as="p" className="text">
+              {post.data.text}
             </Text>
+          )}
+        </Box>
 
-            {post.data.linkUrl && (
-              <Box width={[3 / 4, 1 / 2]} className="link-url">
-                <Link to={`#`}>{post.data.linkUrl && post.data.linkUrl}</Link>
-                <Icon name="external-link" />
-              </Box>
-            )}
-          </Box>
+        <Flex className="utilities">
+          <VoteCounter
+            id={post.ref['@ref'].id}
+            // id="0101010101101100010"
+            onVote={onVote}
+            totalVotes={post.data.votes}
+            voters={post.data.voters}
+          />
 
-          <Flex className="utilities">
-            <VoteCounter
-              id={post.ref['@ref'].id}
-              onVote={onVote}
-              post={post.data}
-              totalVotes={post.data.votes}
-            />
-
-            <Flex mr={5} className="comments">
-              comments
-            </Flex>
-
-            <Flex className="share">share</Flex>
+          <Flex mr={5} className="comments">
+            comments
           </Flex>
-        </Flex>
 
-        {post.data.linkUrl && (
-          <Box className="figure">
-            {/* {post.data.figure.asset.fluid && (
-        <Img
-          fluid={{
-            ...post.data.figure.asset.fluid,
-            aspectRatio: `${aspectRatio}`
-          }}
-          objectFit="cover"
-          objectPosition="50% 50%"
-          alt={post.data.title}
-        />
+          <Flex className="share">share</Flex>
+        </Flex>
+      </Flex>
+
+      {/* {post.data.linkUrl && (
+        <Box className="figure">
+          <img src={post.data.linkUrl} alt="alt" height="100%" width="100%" />
+        </Box>
       )} */}
-            <img src={post.data.linkUrl} alt="alt" height="100%" width="100%" />
-          </Box>
-        )}
-      </S.CardLeak>
-    </Link>
+    </S.CardLeak>
   )
 }
 

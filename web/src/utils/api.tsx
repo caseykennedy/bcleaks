@@ -4,25 +4,13 @@
 // type ContextProps = {
 //   create: (data: PostShape) => Promise<string>
 //   readAll: () => Promise<any>
-//   update: (todoId: string, data: PostQuery) => Promise<any>
-//   deleteTodo: (todoId: string) => Promise<any>
+//   update: (postId: string, data: PostQuery) => Promise<any>
+//   deleteTodo: (postId: string) => Promise<any>
 //   batchDeleteTodo: (arg1: any) => any
 // }
 
-type PostShape = {
-  author: string
-  postType: string
-  category: string
-  title: string
-  text: string
-  linkUrl: string
-  votes: number
-  createdOn: string
-  slug: string
-}
-
-const createPost = (data: PostShape) => {
-  return fetch('/.netlify/functions/todos-create', {
+const createPost = (data: FaunaDbPostShape) => {
+  return fetch('/.netlify/functions/post-create', {
     body: JSON.stringify(data),
     method: 'POST'
   }).then(response => {
@@ -31,13 +19,13 @@ const createPost = (data: PostShape) => {
 }
 
 const readAllPosts = () => {
-  return fetch('/.netlify/functions/todos-read-all').then(response => {
+  return fetch('/.netlify/functions/post-read-all').then(response => {
     return response.json()
   })
 }
 
-const updatePost = (todoId: string, data: { votes: number }) => {
-  return fetch(`/.netlify/functions/todos-update/${todoId}`, {
+const updatePost = (postId: string, data: FaunaDbPostShape) => {
+  return fetch(`/.netlify/functions/post-update/${postId}`, {
     body: JSON.stringify(data),
     method: 'POST'
   }).then(response => {
@@ -45,18 +33,30 @@ const updatePost = (todoId: string, data: { votes: number }) => {
   })
 }
 
-const deletePost = (todoId: string) => {
-  return fetch(`/.netlify/functions/todos-delete/${todoId}`, {
+const updateVote = (
+  postId: string,
+  data: { votes: number; voters: VoterShape[] }
+) => {
+  return fetch(`/.netlify/functions/post-update/${postId}`, {
+    body: JSON.stringify(data),
     method: 'POST'
   }).then(response => {
     return response.json()
   })
 }
 
-const batchDeletePost = (todoIds: string[]) => {
-  return fetch(`/.netlify/functions/todos-delete-batch`, {
+const deletePost = (postId: string) => {
+  return fetch(`/.netlify/functions/post-delete/${postId}`, {
+    method: 'POST'
+  }).then(response => {
+    return response.json()
+  })
+}
+
+const batchDeletePost = (postIds: string[]) => {
+  return fetch(`/.netlify/functions/post-delete-batch`, {
     body: JSON.stringify({
-      ids: todoIds
+      ids: postIds
     }),
     method: 'POST'
   }).then(response => {
@@ -65,6 +65,7 @@ const batchDeletePost = (todoIds: string[]) => {
 }
 
 export default {
+  castVote: updateVote,
   create: createPost,
   readAll: readAllPosts,
   update: updatePost,

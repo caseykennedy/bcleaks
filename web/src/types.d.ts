@@ -14,46 +14,27 @@ type ImageShape = {
 // Fauna DB Post shape
 // ___________________________________________________________________
 
-type FaunaDataShape = {
-  data: {
-    _id: string
-    linkUrl: string
-    author: string
-    text: string
-    category: string
-    createdOn: string
-    postType: string
-    slug: string
-    title: string
-    votes: number
-  }
+type FaunaDataQuery = {
+  data: FaunaDbPostShape
   ref: any
-}
-
-type FaunaDbPostShape = {
-  posts: {
-    edges: FaunaDbPostEdges[]
-  }
-}
-
-type FaunaDbPostEdges = {
-  node: FaunaDbPostQuery
 }
 
 type FaunaDbPostData = {
   post: FaunaDbPostQuery
 }
 
-type FaunaDbPostQuery = {
-  _id: string
-  linkUrl: string
+type VoterShape = { user: string; vote: number }
+
+interface FaunaDbPostShape {
   author: string
-  text: string
   category: string
   createdOn: string
+  linkUrl: string
   postType: string
   slug: string
+  text: string
   title: string
+  voters: VoterShape[]
   votes: number
 }
 

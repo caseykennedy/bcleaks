@@ -224,7 +224,6 @@ const theme: ThemeShape = {
       // Letter spacing
       headingLetterSpacing: 'var(--heading-letter-spacing)',
       baseLetterSpacing: 'var(--body-letter-spacing)',
-      textLetterSpacing: 'var(--text-letter-spacing)',
     },
     space: {
       xxs: 'var(--space-xxs)',

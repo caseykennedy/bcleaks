@@ -2,48 +2,8 @@
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  const leakTemplate = require.resolve('./src/templates/Post/Leak/index.tsx')
   const PostTemplate = require.resolve('./src/templates/Post/Article/index.tsx')
   const VideoTemplate = require.resolve('./src/templates/Post/Video/index.tsx')
-
-  // Community leak
-  // ___________________________________________________________________
-  const leak = graphql(`
-    {
-      posts: allFaunaDb(sort: { order: DESC, fields: createdOn }) {
-        edges {
-          node {
-            _id
-            linkUrl
-            author
-            text
-            category
-            createdOn
-            postType
-            slug
-            title
-            votes
-          }
-        }
-      }
-    }
-  `).then(result => {
-    if (result.errors) {
-      Promise.reject(result.errors)
-    }
-    result.data.posts.edges.forEach(edge => {
-      createPage({
-        path: `/community/${edge.node.slug}`,
-        component: leakTemplate,
-        context: {
-          slug: edge.node.slug,
-          post: edge.node,
-          next: edge.next,
-          prev: edge.previous
-        }
-      })
-    })
-  })
 
   // Articles
   // ___________________________________________________________________
@@ -230,5 +190,5 @@ exports.createPages = ({ graphql, actions }) => {
   })
 
   // Return a Promise which will wait for all queries to resolve
-  return Promise.all([leak, post, video])
+  return Promise.all([post, video])
 }

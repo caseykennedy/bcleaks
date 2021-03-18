@@ -38,12 +38,11 @@ const RootVariables = css`
 
     /* letter-spacing */
     --heading-letter-spacing: -1px;
-    --body-letter-spacing: 0;
-    --text-letter-spacing: 0.5px;
+    --body-letter-spacing: 0.5px;
 
     @media ${theme.mq.tablet} {
       --text-base-size: 1em;
-      --body-line-height: 1.95;
+      --body-line-height: 1.75;
       --heading-line-height: 1.25;
     }
 

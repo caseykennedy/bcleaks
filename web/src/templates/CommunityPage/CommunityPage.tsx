@@ -19,31 +19,29 @@ import ImgMatch from '../../components/ImgMatch'
 import Section from '../../components/Section'
 import CardLeak from '../../components/CardLeak'
 
-// Data
-import useFaunaDb from '../../hooks/useFaunaDb'
-
 // ___________________________________________________________________
 
 const GetFauna = () => {
-  const [items, setItems] = useState<FaunaDataShape[]>([])
+  // const initialState: FaunaDataQuery[] | (() => FaunaDataQuery[]) = []
+  const [items, setItems] = useState<FaunaDataQuery[]>([])
 
-  const getFaunaPosts = client
-    .query(q.Paginate(q.Match(q.Ref('indexes/all_posts'))))
-    .then(response => {
-      const postsRefs = response.data
-      // create new query
-      // https://docs.fauna.com/fauna/current/api/fql/
-      const getAllPostDataQuery = postsRefs.map((ref: any) => {
-        return q.Get(ref)
-      })
-      // query the refs
-      return client.query(getAllPostDataQuery).then(data => data)
-    })
-    .catch(error => console.warn('error', error.message))
+  // const getFaunaPosts = client
+  //   .query(q.Paginate(q.Match(q.Ref('indexes/all_posts'))))
+  //   .then(response => {
+  //     const postsRefs = response.data
+  //     // create new query
+  //     // https://docs.fauna.com/fauna/current/api/fql/
+  //     const getAllPostDataQuery = postsRefs.map((ref: any) => {
+  //       return q.Get(ref)
+  //     })
+  //     // query the refs
+  //     return client.query(getAllPostDataQuery).then(data => data)
+  //   })
+  //   .catch(error => console.warn('error', error.message))
 
   useEffect(() => {
     // getFaunaPosts.then(results => setItems(results))
-    api.readAll().then(posts => {
+    api.readAll().then((posts: FaunaDataQuery[] | any) => {
       if (posts.message === 'unauthorized') {
         if (isLocalHost()) {
           alert(
@@ -57,11 +55,10 @@ const GetFauna = () => {
         return false
       }
       setItems(posts)
-      console.log('Fetched FaunaDb posts', posts)
+      console.log('Netlify Fetched FaunaDb posts', posts)
     })
   }, [])
-  console.log('Netlify fetched items', items)
-  
+
   return items.length === 0 ? (
     <Box>Loading...</Box>
   ) : (

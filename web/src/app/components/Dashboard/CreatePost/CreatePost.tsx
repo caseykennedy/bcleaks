@@ -54,14 +54,15 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   // Todo data
   const myPost = {
     author: user.user_metadata.full_name,
-    postType: `${postType}`,
     category: `${category}`,
-    title: `${title}`,
-    text: `${text}`,
-    linkUrl: `${linkUrl}`,
-    votes: 0,
     createdOn: currentDate,
-    slug: title
+    linkUrl: `${linkUrl}`,
+    postType: `${postType}`,
+    slug: title,
+    text: `${text}`,
+    title: `${title}`,
+    voters: [],
+    votes: 0,
   }
 
   // Check if Text post type
