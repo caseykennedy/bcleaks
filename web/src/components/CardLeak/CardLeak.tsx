@@ -53,8 +53,13 @@ const VoteCounter: React.FC<{
     isDownVote: false
   }
 
-  const { user }: any = useIdentityContext()
-  const username: string = user.user_metadata.full_name
+  const { isLoggedIn, user } = useIdentityContext()
+  let username: string
+  if (isLoggedIn) {
+    username = user!.user_metadata.full_name
+  } else {
+    username = ''
+  }
 
   const MAXIMUM_USER_VOTE = 50000000
   const [voteState, setVoteState] = useState(initialState)
@@ -157,8 +162,8 @@ const VoteCounter: React.FC<{
       <Flex className="vote">
         <button
           onClick={handleVoteUp}
-          className={`vote-arrow  vote-arrow--up`}
-          disabled={userVote !== 1 ? false : true}
+          className={`vote-arrow  vote-arrow--up  ${userVote === 1 ? 'active' : ''}`}
+          disabled={isLoggedIn && userVote !== 1 ? false : true}
           aria-label="upvote post"
         >
           <Icon name="arrow" />
@@ -168,8 +173,8 @@ const VoteCounter: React.FC<{
 
         <button
           onClick={handleVoteDown}
-          className={`vote-arrow  vote-arrow--down`}
-          disabled={userVote !== -1 ? false : true}
+          className={`vote-arrow  vote-arrow--down  ${userVote === -1 ? 'active' : ''}`}
+          disabled={isLoggedIn && userVote !== -1 ? false : true}
           aria-label="downvote post"
         >
           <Icon name="arrow" />

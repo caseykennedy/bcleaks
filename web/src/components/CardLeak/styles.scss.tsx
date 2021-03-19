@@ -204,6 +204,7 @@ export const CardLeak = styled(Flex)`
 
           background: ${theme.colors.black};
           border: none;
+          outline: 0;
           padding: ${theme.space[2]};
 
           svg {
@@ -216,7 +217,8 @@ export const CardLeak = styled(Flex)`
               transform: rotate(-90deg);
             }
 
-            &:hover {
+            &.active,
+            &:hover:enabled {
               svg {
                 fill: ${theme.colors.primary};
               }
@@ -226,9 +228,9 @@ export const CardLeak = styled(Flex)`
             &[disabled] {
               cursor: default;
 
-              svg {
+              /* svg {
                 fill: ${theme.colors.primary};
-              }
+              } */
             }
           }
 
@@ -237,7 +239,8 @@ export const CardLeak = styled(Flex)`
               transform: rotate(90deg);
             }
 
-            &:hover {
+            &.active,
+            &:hover:enabled {
               svg {
                 fill: ${theme.colors.purple};
               }
@@ -247,9 +250,9 @@ export const CardLeak = styled(Flex)`
             &[disabled] {
               cursor: default;
 
-              svg {
+              /* svg {
                 fill: ${theme.colors.purple};
-              }
+              } */
             }
           }
         }

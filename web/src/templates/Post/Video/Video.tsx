@@ -39,7 +39,7 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
     <>
       <SEO
         article={true}
-        banner={`${post.figure.asset && post.figure.asset.fluid.src}`}
+        banner={`${post.figure.asset.fluid.src}`}
         title={`${post.title} | ${siteSettings.titleShort}`}
         desc={`${post.title}`}
         pathname={`/videos/${post.slug.current}`}
