@@ -17,6 +17,11 @@ export const Profile = styled(Flex)`
 
   border: ${theme.border};
 
+  @media ${theme.mq.tablet} {
+    position: sticky;
+    top: calc(${theme.headerHeight} + ${theme.space[5]});
+  }
+
   .title {
     background: ${theme.colors.black};
     border-bottom: ${theme.border};

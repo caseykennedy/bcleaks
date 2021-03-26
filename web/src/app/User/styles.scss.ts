@@ -23,6 +23,7 @@ export const Aside = styled(Box)`
   background: ${theme.colors.black};
   border-bottom: ${theme.border};
   flex: 1;
+  position: relative;
 
   @media ${theme.mq.tablet} {
     border-bottom: 0;
