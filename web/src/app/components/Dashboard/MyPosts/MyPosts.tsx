@@ -35,22 +35,6 @@ import {
 //   })
 //   .catch(error => console.warn('error', error.message))
 
-const readFaunaWithApi = api.readAll().then((posts: FaunaDataQuery[] | any) => {
-  if (posts.message === 'unauthorized') {
-    if (isLocalHost()) {
-      alert(
-        'FaunaDB key is not unauthorized. Make sure you set it in terminal session where you ran `npm start`. Visit http://bit.ly/set-fauna-key for more info'
-      )
-    } else {
-      alert(
-        'FaunaDB key is not unauthorized. Verify the key `FAUNADB_SERVER_SECRET` set in Netlify enviroment variables is correct'
-      )
-    }
-    return false
-  }
-  return posts
-})
-
 const UserPosts = () => {
   const { user }: any = useIdentityContext()
   const [items, setItems] = useState<FaunaDataQuery[]>([])
@@ -62,7 +46,21 @@ const UserPosts = () => {
 
   useEffect(() => {
     // getFaunaPosts.then(results => setItems(results))
-    readFaunaWithApi.then(posts => setItems(posts))
+    api.readAll().then((posts: FaunaDataQuery[] | any) => {
+      if (posts.message === 'unauthorized') {
+        if (isLocalHost()) {
+          alert(
+            'FaunaDB key is not unauthorized. Make sure you set it in terminal session where you ran `npm start`. Visit http://bit.ly/set-fauna-key for more info'
+          )
+        } else {
+          alert(
+            'FaunaDB key is not unauthorized. Verify the key `FAUNADB_SERVER_SECRET` set in Netlify enviroment variables is correct'
+          )
+        }
+        return false
+      }
+      setItems(posts)
+    })
   }, [])
 
   return items.length <= 0 ? (
