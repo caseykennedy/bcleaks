@@ -21,3 +21,20 @@ export const MyPosts = styled(Box)`
     padding: ${theme.space[4]};
   }
 `
+
+export const UserPost = styled(Box)`
+  border: ${theme.border};
+  border-radius: ${theme.borderRadius};
+  margin-top: ${theme.space[4]};
+  padding: ${theme.space[4]};
+
+  transition: ${theme.transition.all};
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:hover {
+    border-color: ${theme.colors.primary};
+  }
+`

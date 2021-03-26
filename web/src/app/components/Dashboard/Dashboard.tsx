@@ -18,11 +18,8 @@ import MyPosts from './MyPosts'
 const Dashboard = () => {
   return (
     <S.Dashboard>
-      {/* <Heading color="quaternary" mb={3} className="text--xl">
-        Dashboard
-      </Heading> */}
-
       <CreatePost />
+
       <Box
         bg="black"
         mt={theme.gutter.axis}
@@ -34,6 +31,7 @@ const Dashboard = () => {
           and be respectful.
         </Text>
       </Box>
+
       <MyPosts />
     </S.Dashboard>
   )

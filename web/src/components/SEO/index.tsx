@@ -52,7 +52,7 @@ const SEO = ({
 
   const seo = {
     title: `${title}` || settings.titleAlt,
-    description: desc || settings.description,
+    description: `${desc}` || settings.description,
     image: `${banner || settings.banner.asset.fluid.src}`,
     url: `${settings.url}${pathname || ''}`
   }

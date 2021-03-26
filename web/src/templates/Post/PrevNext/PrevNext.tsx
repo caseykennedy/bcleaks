@@ -17,7 +17,7 @@ import theme from '../../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-const path = 'blog'
+const path = 'articles'
 
 const PrevNext: React.FC<PostContextShape> = ({ pageContext }) => {
   const post = pageContext.post

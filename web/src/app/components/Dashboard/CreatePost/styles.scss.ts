@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 // Theme
 import theme from '../../../../gatsby-plugin-theme-ui'
-import { Box } from '../../../../components/ui'
+import { Box } from 'theme-ui'
 
 // ___________________________________________________________________
 
@@ -17,7 +17,6 @@ export const CreatePost = styled(Box)`
   .title {
     background: ${theme.colors.black};
     border-bottom: ${theme.border};
-    margin-bottom: ${theme.space[4]};
     padding: ${theme.space[4]};
   }
 
@@ -128,6 +127,7 @@ export const Form = styled.form`
     border: ${theme.border};
     color: ${theme.colors.lightgray};
     font-size: ${theme.fontSizes[2]};
+    text-transform: uppercase;
 
     margin: ${theme.space[5]} 0 0 0;
     padding: ${theme.space[4]};
@@ -136,7 +136,8 @@ export const Form = styled.form`
     width: 100%;
 
     &:hover {
-      background: ${theme.colors.darkgray};
+      background: ${theme.colors.primary};
+      color: ${theme.colors.black};
     }
   }
 

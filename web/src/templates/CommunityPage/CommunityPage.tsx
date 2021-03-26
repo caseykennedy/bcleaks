@@ -12,7 +12,7 @@ import { client, q } from '../../utils/faunaDb'
 // Theme
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Heading, Text } from '../../components/ui'
+import { Box } from '../../components/ui'
 
 // Components
 import ImgMatch from '../../components/ImgMatch'
@@ -74,7 +74,7 @@ const CommunityPage = () => {
   return (
     <S.CommunityPage>
       <Section>
-        <Box width={[1, 1, 6 / 8]}>
+        <Box width={[1, 1, 2 / 3]}>
           <GetFauna />
         </Box>
       </Section>

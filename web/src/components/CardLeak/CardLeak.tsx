@@ -63,7 +63,7 @@ const VoteCounter: React.FC<{
 
   const MAXIMUM_USER_VOTE = 50000000
   const [voteState, setVoteState] = useState(initialState)
-  const { userVote, voteTotal, isClicked } = voteState
+  const { userVote, voteTotal, isClicked, isUpVote, isDownVote } = voteState
   const [{ voteRef, voteCountRef, voteTotalRef }, setRefState] = useState<{
     voteRef: any
     voteCountRef: any
@@ -162,7 +162,9 @@ const VoteCounter: React.FC<{
       <Flex className="vote">
         <button
           onClick={handleVoteUp}
-          className={`vote-arrow  vote-arrow--up  ${userVote === 1 ? 'active' : ''}`}
+          className={`vote-arrow  vote-arrow--up  ${
+            userVote === 1 ? 'active' : ''
+          }`}
           disabled={isLoggedIn && userVote !== 1 ? false : true}
           aria-label="upvote post"
         >
@@ -173,7 +175,9 @@ const VoteCounter: React.FC<{
 
         <button
           onClick={handleVoteDown}
-          className={`vote-arrow  vote-arrow--down  ${userVote === -1 ? 'active' : ''}`}
+          className={`vote-arrow  vote-arrow--down  ${
+            userVote === -1 ? 'active' : ''
+          }`}
           disabled={isLoggedIn && userVote !== -1 ? false : true}
           aria-label="downvote post"
         >

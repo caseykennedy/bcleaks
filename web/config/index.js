@@ -1,6 +1,3 @@
-// import * as useSiteSettings from '../src/hooks/useSiteSettings'
-// const settings = useSiteSettings
-
 const settings = require.resolve('../src/hooks/useSiteSettings.tsx')
 
 module.exports = {
@@ -15,7 +12,7 @@ module.exports = {
   siteTitleAlt: settings.titleAlt, // Alternative Site title for SEO
   siteTitleShort: settings.titleShort, // short_name for manifest
   siteHeadline: settings.headline, // Headline for schema.org JSONLD
-  siteUrl: 'http://eonmist.com', // Domain of your site. No trailing slash!
+  siteUrl: 'http://bcleaks.com', // Domain of your site. No trailing slash!
   siteLanguage: settings.language, // Language Tag on <html> element
   siteLogo: settings.logo, // Used for SEO and manifest
   siteDescription: settings.description,

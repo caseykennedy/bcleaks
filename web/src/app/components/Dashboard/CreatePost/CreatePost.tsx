@@ -118,7 +118,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
             </label>
             <Input
               name="linkUrl"
-              placeholder="Link URL"
+              placeholder="Link"
               type="text"
               value={linkUrl}
               onChange={handleLinkUrlChange}
@@ -175,7 +175,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
 const CreatePost = () => {
   return (
     <S.CreatePost>
-      <Box className="title">Create a post</Box>
+      <Box className="title  text--uppercase">Create a post</Box>
 
       <Tabs>
         <TabList>

@@ -17,7 +17,6 @@ import { Grid } from 'theme-ui'
 // Components
 import Button from '../../../components/ui/Button'
 import Pill from '../../../components/ui/Pill'
-import Layout from '../../../components/Layout'
 import SEO from '../../../components/SEO'
 import Section from '../../../components/Section'
 import BlockContent from '../../../components/BlockContent'
@@ -26,11 +25,12 @@ import CardSlider from '../../../components/CardSlider'
 import Icon from '../../../components/Icons'
 import PostMeta from '../../../components/PostMeta'
 import Source from '../../../components/Source'
+import PrevNext from '../PrevNext'
 
 // Data
 import usePost from '../../../hooks/usePost'
 import useSiteSettings from '../../../hooks/useSiteSettings'
-
+ 
 // ___________________________________________________________________
 
 const Article: React.FC<PostContextShape> = ({ pageContext }) => {
@@ -205,7 +205,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
             </CardSlider>
           </Box>
         </Section>
-        {/* <PrevNext pageContext={pageContext} /> */}
+        <PrevNext pageContext={pageContext} />
       </S.Article>
     </>
   )

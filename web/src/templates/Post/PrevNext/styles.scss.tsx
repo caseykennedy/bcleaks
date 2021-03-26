@@ -23,7 +23,7 @@ export const Button = styled(Link)`
   flex-wrap: wrap;
   justify-content: space-between;
   
-  background: ${theme.colors.background};
+  background: ${theme.colors.black};
   padding: ${theme.space[4]};
   width: 100%;
 
@@ -42,7 +42,7 @@ export const Button = styled(Link)`
 
   &:hover {
     background: ${theme.colors.primary};
-    color: ${theme.colors.text};
+    color: ${theme.colors.black};
   }
 
   &:nth-child(2) {
