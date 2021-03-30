@@ -13,6 +13,7 @@ import HamburgerMenu from 'react-hamburger-menu'
 import theme from '../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
 import { Box, Flex, Text } from '../ui'
+import './login.css'
 
 // Components
 import Symbol from '../Symbol'
@@ -28,7 +29,6 @@ import {
   IdentityModal,
   useIdentityContext
 } from 'react-netlify-identity-widget'
-import 'react-netlify-identity-widget/styles.css' // delete if you want to bring your own CSS
 
 // ___________________________________________________________________
 
@@ -63,7 +63,7 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
         <MobileNav open={isNavOpen} handleExitOnClick={toggleMenu} />
       </Modal>
 
-      <S.Utilities px={theme.gutter.axis} py={2}>
+      <S.Utilities px={theme.gutter.axis} py={1}>
         <Flex className="date">
           <GetDate />
         </Flex>

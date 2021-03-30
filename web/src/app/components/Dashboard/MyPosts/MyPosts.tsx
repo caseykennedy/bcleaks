@@ -13,6 +13,7 @@ import { client, q } from '../../../../utils/faunaDb'
 import * as S from './styles.scss'
 import theme from '../../../../gatsby-plugin-theme-ui'
 import { Box, Text } from '../../../../components/ui'
+import Button from '../../../../components/ui/Button'
 
 import {
   IdentityModal,
@@ -20,6 +21,30 @@ import {
 } from 'react-netlify-identity-widget'
 
 // ___________________________________________________________________
+
+const DeletePost: React.FC<{ postId: string }> = ({ postId }) => {
+  const handleDeletePost = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault()
+    // delete it!
+    api
+      .delete(postId)
+      .then(response => {
+        console.log('API response', response)
+      })
+      .catch(error => {
+        console.log('ERROR')
+        console.log('API error:', error)
+      })
+  }
+
+  return (
+    <Button as="button" onClick={handleDeletePost}>
+      delete
+    </Button>
+  )
+}
 
 // const getFaunaPosts = client
 //   .query(q.Paginate(q.Match(q.Ref('indexes/all_posts'))))
@@ -64,7 +89,7 @@ const UserPosts = () => {
   }, [])
 
   return items.length <= 0 ? (
-    <Box>Loading...</Box>
+    <Box>You have no posts :(</Box>
   ) : (
     <>
       {userPosts.map((post, idx) => (
@@ -72,6 +97,7 @@ const UserPosts = () => {
           <Text as="p" className="text--sm">
             {post.data.title}
           </Text>
+          <DeletePost postId={post.ref['@ref'].id} />
         </S.UserPost>
       ))}
     </>

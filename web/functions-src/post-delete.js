@@ -11,7 +11,7 @@ exports.handler = (event, context, callback) => {
   const id = getId(event.path)
   console.log(`Function 'post-delete' invoked. delete id: ${id}`)
   return client
-    .query(q.Delete(q.Ref(`collection/posts/${id}`)))
+    .query(q.Delete(q.Ref(q.Collection('posts'), id)))
     .then(response => {
       console.log('success', response)
       return callback(null, {

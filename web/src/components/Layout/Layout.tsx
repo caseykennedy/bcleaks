@@ -13,7 +13,6 @@ import CryptoTicker from '../CryptoTicker'
 import * as S from './styles.scss'
 import 'swiper/css/swiper.css'
 import 'react-responsive-modal/styles.css'
-import 'react-netlify-identity-widget/styles.css' // delete if you want to bring your own CSS
 
 // ___________________________________________________________________
 

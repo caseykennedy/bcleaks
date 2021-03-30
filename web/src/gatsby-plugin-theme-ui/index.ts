@@ -173,8 +173,8 @@ const theme: ThemeShape = {
   maxWidth: '1280px',
   siteWidth: '100%',
   logoWidth: '',
-  headerHeight: '74px',
-  tickerHeight: '56px',
+  headerHeight: '64px',
+  tickerHeight: '50px',
   iconWidth: '18px',
 
   // Base
