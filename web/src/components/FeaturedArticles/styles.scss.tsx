@@ -67,6 +67,7 @@ export const FeaturedArticles = styled(Box)<{ hero?: boolean }>`
       flex: 1.5;
       padding: ${theme.space[4]};
       position: relative;
+      width: 100%;
 
       &:first-child {
         border-bottom: ${theme.border};

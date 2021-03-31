@@ -65,11 +65,9 @@ const PostMeta: React.FC<MetaShape> = ({
           {publishedAt}
         </Text>
         by <strong>{authors && authors.name}</strong> in{' '}
-        <Link to={``}>
-          <Box as="span" bg={pillColor} className="category">
-            {categories && categories[0].title}
-          </Box>
-        </Link>
+        <Box as="span" bg={pillColor} className="category">
+          {categories && categories[0].title}
+        </Box>
       </Box>
     </Meta>
   )

@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
   return (
     <S.HomePage>
       <Box width={1} overflow="hidden">
-        <FeaturedArticles bg={theme.colors.black} hero={true} />
+        <FeaturedArticles bg={theme.colors.black} hero={false} />
       </Box>
       <Videos />
       <Box

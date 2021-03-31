@@ -15,6 +15,7 @@ export const FilterNav = styled(Box)`
 
   background: ${theme.colors.black};
   border-top: ${theme.border};
+  border-bottom: ${theme.border};
   color: ${theme.colors.tertiary};
 
   width: 100%;
