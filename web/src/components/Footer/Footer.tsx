@@ -106,8 +106,8 @@ const Bulletin = () => {
           </Flex>
 
           <Flex>
-            <Box mr={2} className="btn">subscribe</Box>
-            <Box ml={2} className="btn">Follow</Box>
+            <Box as="a" href="https://www.youtube.com/channel/UCHop-jpf-huVT1IYw79ymPw" target="_blank" mr={2} className="btn">subscribe</Box>
+            <Box as="a" href="https://www.youtube.com/channel/UCHop-jpf-huVT1IYw79ymPw" target="_blank" ml={2} className="btn">follow</Box>
           </Flex>
         </Box>
 

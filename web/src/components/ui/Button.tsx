@@ -40,6 +40,8 @@ const Button = styled(Flex)<ButtonProps>`
   span svg {
     fill: ${theme.colors.gray};
     stroke: ${theme.colors.gray};
+    margin-left: ${theme.space[4]};
+    width: 18px;
   }
 
   &--logout {

@@ -82,8 +82,8 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
                 {post.sources[0] && (
                   <Flex mt={5} mb={4}>
                     <AnchorLink offset={theme.headerHeight} href={`#sources`}>
-                      <Button bg="transparent" color={theme.colors.tertiary}>
-                        <Icon name="document" /> View Sources
+                      <Button>
+                        View Sources <Icon name="document" />
                       </Button>
                     </AnchorLink>
                   </Flex>

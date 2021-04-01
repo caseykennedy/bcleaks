@@ -13,6 +13,7 @@ export const Videos = styled(Section)`
   .videos {
     &__header {
       display: flex;
+      align-items: center;
       justify-content: space-between;
 
       margin-bottom: ${theme.space[6]};

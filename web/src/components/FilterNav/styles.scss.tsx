@@ -4,12 +4,11 @@
 
 import styled from 'styled-components'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex } from '../ui'
+import { Box } from '../ui'
 
 // ___________________________________________________________________
 
 export const FilterNav = styled(Box)`
-  display: flex;
   align-items: center;
   justify-content: space-between;
 
@@ -18,11 +17,18 @@ export const FilterNav = styled(Box)`
   border-bottom: ${theme.border};
   color: ${theme.colors.tertiary};
 
+  min-height: ${theme.tickerHeight};
   width: 100%;
 
   position: sticky;
   top: ${theme.headerHeight};
   z-index: 99999;
+
+  display: none;
+
+  @media ${theme.mq.tablet} {
+    display: flex;
+  }
 
   .inner {
     display: flex;
@@ -37,7 +43,6 @@ export const FilterNav = styled(Box)`
       text-transform: uppercase;
 
       cursor: pointer;
-      padding: ${theme.space[4]} 0;
       transition: color ${theme.transition.global};
 
       &:hover {

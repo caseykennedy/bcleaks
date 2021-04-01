@@ -24,7 +24,7 @@ const Videos = () => {
   const videos = useVideo()
   return (
     <S.Videos bg="background" border={true} overflow="hidden">
-      <Flex className="videos__header" justifyContent="space-between">
+      <Flex className="videos__header">
         <Heading fontFamily="display" className="text--lg  text--uppercase">
           Videos
         </Heading>

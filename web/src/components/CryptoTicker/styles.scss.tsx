@@ -16,7 +16,7 @@ export const CryptoTicker = styled(Flex)`
   border-bottom: ${theme.border};
   font-size: ${theme.fontSizes[1]};
   overflow-x: hidden;
-  padding: 0 ${theme.space[3]};
+  /* padding: 0 ${theme.space[3]}; */
 
   height: ${theme.tickerHeight};
   width: 100%;
