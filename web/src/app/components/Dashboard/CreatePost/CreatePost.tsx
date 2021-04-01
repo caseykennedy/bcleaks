@@ -177,7 +177,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           <option value="ethereum">Ethereum</option>
         </Select>
 
-        <Button as="button" onSubmit={handlePost} mt={5}>
+        <Button as="button" onClick={handlePost} mt={5}>
           {loading ? 'processing...' : 'submit'}
           <Icon name="carat" />
         </Button>
