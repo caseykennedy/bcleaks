@@ -4,10 +4,8 @@
 
 import styled from 'styled-components'
 import { darken } from 'polished'
-import { Box, Flex, Heading } from '../ui'
+import { Flex } from '../ui'
 import theme from '../../gatsby-plugin-theme-ui'
-
-import Section from '../Section'
 
 // ___________________________________________________________________
 
@@ -104,10 +102,6 @@ export const Bulletin = styled(Flex)`
 
           padding: ${theme.space[3]} ${theme.space[4]};
 
-          @media ${theme.mq.tablet} {
-            /* margin-right: ${theme.space[2]}; */
-          }
-
           &::placeholder {
             color: ${darken(0.15, theme.colors.primary)};
             font-weight: 400;
@@ -166,8 +160,39 @@ export const Bulletin = styled(Flex)`
     &__social {
       flex: 1;
 
-      @media ${theme.mq.tablet} {
-        /* border-right: ${theme.border}; */
+      .btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: transparent;
+        border: ${theme.border};
+        border-color: ${theme.colors.darkgray};
+
+        color: ${theme.colors.gray};
+        font-size: ${theme.fontSizes[2]};
+        text-transform: uppercase;
+
+        padding: ${theme.space[4]};
+        cursor: pointer;
+        transition: ${theme.transition.all};
+
+        height: ${theme.btnHeight};
+        width: 100%;
+
+        &:hover {
+          border-color: ${theme.colors.primary};
+          color: ${theme.colors.primary};
+        }
+      }
+
+      span svg {
+        width: calc(${theme.space[7]} / 1.15);
+
+        @media ${theme.mq.tablet} {
+          width: ${theme.space[7]};
+        }
       }
     }
   }

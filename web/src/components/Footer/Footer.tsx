@@ -13,15 +13,14 @@ import { Link, withPrefix } from 'gatsby'
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../ui'
+import Button from '../ui/Button'
 import { Input } from 'theme-ui'
 
-// Components
-import Button from '../ui/Button'
+
 import Icon from '../Icons'
 import Symbol from '../Symbol'
 
 // Assets
-import podFig from './assets/bc-podcast.svg'
 import checkUsOut from './assets/checkusout.svg'
 
 // ___________________________________________________________________
@@ -100,16 +99,15 @@ const Bulletin = () => {
               alt="BC Leaks Podcast"
             />
 
-            <Flex justifyContent="flex-end" pl={4}>
-              youtube
-              <br />
-              twitter
+            <Flex flexDirection="column" justifyContent="flex-end" pl={4}>
+              <Icon name="youtube" color="white" />
+              <Icon name="twitter" color="white" />
             </Flex>
           </Flex>
 
           <Flex>
-            <button>subscribe</button>
-            <button>Follow</button>
+            <Box mr={2} className="btn">subscribe</Box>
+            <Box ml={2} className="btn">Follow</Box>
           </Flex>
         </Box>
 
@@ -176,7 +174,7 @@ const Social = () => {
           </Box>
 
           <Box>
-            <Box as="img" width="300px" src={podFig} alt="BC Leaks Podcast" />
+            {/* <Box as="img" width="300px" src={podFig} alt="BC Leaks Podcast" /> */}
           </Box>
         </Flex>
       </Flex>

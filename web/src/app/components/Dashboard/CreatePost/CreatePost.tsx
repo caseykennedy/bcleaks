@@ -122,7 +122,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
             <Input
               name="linkUrl"
               placeholder="Link"
-              type="text"
+              type="url"
               value={linkUrl}
               onChange={handleLinkUrlChange}
               ref={linkUrlRef}
@@ -168,14 +168,16 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           onChange={handleCategoryChange}
           required={true}
         >
-          <option>choose a category</option>
+          <option value="" disabled={true} selected={true}>
+            choose a category
+          </option>
           <option value="altcoin">Altcoin</option>
           <option value="bitcoin">Bitcoin</option>
           <option value="defi">DeFi</option>
           <option value="ethereum">Ethereum</option>
         </Select>
 
-        <Button as="button" onClick={handlePost} mt={5}>
+        <Button as="button" onSubmit={handlePost} mt={5}>
           {loading ? 'processing...' : 'submit'}
           <Icon name="carat" />
         </Button>
