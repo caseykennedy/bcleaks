@@ -18,7 +18,10 @@ import api from '../../../../utils/api'
 import * as S from './styles.scss'
 import theme from '../../../../gatsby-plugin-theme-ui'
 import { Box, Heading, Text } from '../../../../components/ui'
+import Button from '../../../../components/ui/Button'
 import { Input, Select, Textarea } from 'theme-ui'
+
+import Icon from '../../../../components/Icons'
 
 // ___________________________________________________________________
 
@@ -62,7 +65,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
     text: `${text}`,
     title: `${title}`,
     voters: [],
-    votes: 0,
+    votes: 0
   }
 
   // Check if Text post type
@@ -123,6 +126,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
               value={linkUrl}
               onChange={handleLinkUrlChange}
               ref={linkUrlRef}
+              required={true}
             />
           </>
         )}
@@ -137,6 +141,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           value={title}
           onChange={handleTitleChange}
           ref={inputRef}
+          required={true}
         />
 
         {!isLink && (
@@ -151,12 +156,18 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
               value={text}
               onChange={handleTextChange}
               ref={textAreaRef}
+              required={true}
             />
           </>
         )}
 
         <label htmlFor="category">Category:</label>
-        <Select id="category" value={category} onChange={handleCategoryChange}>
+        <Select
+          id="category"
+          value={category}
+          onChange={handleCategoryChange}
+          required={true}
+        >
           <option>choose a category</option>
           <option value="altcoin">Altcoin</option>
           <option value="bitcoin">Bitcoin</option>
@@ -164,9 +175,10 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           <option value="ethereum">Ethereum</option>
         </Select>
 
-        <button onClick={handlePost}>
-          {loading ? 'Loading...' : 'submit'}
-        </button>
+        <Button as="button" onClick={handlePost} mt={5}>
+          {loading ? 'processing...' : 'submit'}
+          <Icon name="carat" />
+        </Button>
       </fieldset>
     </S.Form>
   )

@@ -10,12 +10,14 @@ import {
   IdentityModal
 } from 'react-netlify-identity-widget'
 
+// Components
 import Icon from '../../../components/Icons'
 
 // Theme + ui
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Text } from '../../../components/ui'
+import Button from '../../../components/ui/Button'
 
 // ___________________________________________________________________
 
@@ -49,7 +51,7 @@ const Profile = () => {
           {isLoggedIn && (
             <>
               <Text as="span">{user.email && user.email}</Text>
-              <Text as="span" mt={5}>
+              <Text as="span" my={5}>
                 Member since:
                 <br />
                 {user.created_at &&
@@ -58,14 +60,17 @@ const Profile = () => {
             </>
           )}
           {!isLoggedIn ? (
-            <Box onClick={() => setDialog(true)} className="btn">
+            <Button as="button" onClick={() => setDialog(true)}>
               login
               <Icon name="login" />
-            </Box>
+            </Button>
           ) : (
-            <Box
-              onClick={async event => {
-                event.preventDefault()
+            <Button
+              as="button"
+              onClick={async (
+                e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+              ) => {
+                e.preventDefault()
                 await logoutUser()
                 navigate(`/user/login`)
               }}
@@ -73,7 +78,7 @@ const Profile = () => {
             >
               logout
               <Icon name="logout" />
-            </Box>
+            </Button>
           )}
         </Box>
       </S.Profile>

@@ -22,7 +22,7 @@ export const MyPosts = styled(Box)`
   }
 `
 
-export const UserPost = styled(Box)`
+export const Post = styled(Box)`
   border: ${theme.border};
   border-radius: ${theme.borderRadius};
   margin-top: ${theme.space[4]};
@@ -35,6 +35,44 @@ export const UserPost = styled(Box)`
   }
 
   &:hover {
-    border-color: ${theme.colors.primary};
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: transparent;
+    border: ${theme.border};
+    border-color: ${theme.colors.darkgray};
+
+    color: ${theme.colors.gray};
+    font-size: ${theme.fontSizes[1]};
+    text-transform: uppercase;
+
+    margin: ${theme.space[6]} 0 0 0;
+    padding: ${theme.space[2]} ${theme.space[4]};
+    cursor: pointer;
+    transition: ${theme.transition.all};
+    /* width: 100%; */
+
+    span {
+      transform: rotate(45deg);
+      margin-left: ${theme.space[6]};
+
+      svg {
+        fill: ${theme.colors.gray};
+        width: 12px;
+      }
+    }
+
+    &:hover {
+      border-color: ${theme.colors.red};
+      color: ${theme.colors.red};
+
+      span svg {
+        fill: ${theme.colors.red};
+      }
+    }
   }
 `

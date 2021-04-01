@@ -56,6 +56,10 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
+  button {
+    outline: none;
+  }
+
   .headroom[style] {
     z-index: 999999 !important;
   }

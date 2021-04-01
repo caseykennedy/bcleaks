@@ -91,15 +91,15 @@ export const FeaturedArticles = styled(Box)<{ hero?: boolean }>`
       }
 
       &:hover {
-        a {
-          color: ${theme.colors.primary};
-        }
-
         .button {
           span > svg {
             stroke: ${theme.colors.primary};
           }
         }
+      }
+
+      a:hover {
+        color: ${theme.colors.primary};
       }
 
       .button {

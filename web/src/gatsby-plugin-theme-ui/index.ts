@@ -31,6 +31,7 @@ type ThemeShape = {
   logoWidth: string
   headerHeight: string
   tickerHeight: string
+  btnHeight: string
   iconWidth: string
   grid: {
     [key: string]: string
@@ -172,9 +173,12 @@ const theme: ThemeShape = {
 
   maxWidth: '1280px',
   siteWidth: '100%',
+
   logoWidth: '',
   headerHeight: '64px',
   tickerHeight: '50px',
+  
+  btnHeight: '48px',
   iconWidth: '18px',
 
   // Base

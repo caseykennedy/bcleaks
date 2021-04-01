@@ -79,6 +79,8 @@ export const CardPost = styled(Flex)<{ inline?: boolean }>`
   }
 
   &:hover {
+    border-color: ${theme.colors.primary};
+
     .figure {
       border-color: ${theme.colors.primary};
       transform: matrix(1, 0, 0, 1, 5, -5);

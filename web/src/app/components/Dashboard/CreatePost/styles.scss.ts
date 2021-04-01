@@ -123,21 +123,8 @@ export const Form = styled.form`
   }
 
   button {
-    background: transparent;
-    border: ${theme.border};
-    color: ${theme.colors.lightgray};
-    font-size: ${theme.fontSizes[2]};
-    text-transform: uppercase;
-
-    margin: ${theme.space[5]} 0 0 0;
-    padding: ${theme.space[4]};
-    cursor: pointer;
-    transition: ${theme.transition.all};
-    width: 100%;
-
-    &:hover {
-      background: ${theme.colors.primary};
-      color: ${theme.colors.black};
+    span svg {
+      width: 8px;
     }
   }
 
