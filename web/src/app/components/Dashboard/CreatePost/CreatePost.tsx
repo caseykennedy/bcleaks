@@ -4,6 +4,8 @@
 
 import React, { useRef, useState } from 'react'
 import fetch from 'node-fetch'
+import * as Yup from 'yup'
+import { withFormik, FormikProps, FormikErrors, Form, Field } from 'formik'
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
@@ -52,6 +54,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   const [linkUrl, setLinkUrl] = useState<string>('')
   const [title, setTitle] = useState<string>('')
   const [text, setText] = useState<string>('')
+  const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
 
   // Todo data
@@ -73,9 +76,15 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
 
   // console.log('------ myPost -------')
   // console.log(myPost)
-  const handlePost = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handlePost = (e: React.SyntheticEvent) => {
     e.preventDefault()
+
     setLoading(true)
+    setCategory('')
+    setLinkUrl('')
+    setTitle('')
+    setText('')
+
     // create it!
     api
       .create(myPost)
@@ -85,6 +94,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
         setLoading(false)
       })
       .catch(error => {
+        setError('FUNCTION ERROR')
         console.log('ERROR')
         console.log('API error:', error)
       })
@@ -112,7 +122,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   }
 
   return (
-    <S.Form name="Creat post: link">
+    <S.Form id="create-post" name="Creat post: link" onSubmit={handlePost}>
       <fieldset>
         {isLink && (
           <>
@@ -177,11 +187,18 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           <option value="ethereum">Ethereum</option>
         </Select>
 
-        <Button as="button" onClick={handlePost} mt={5}>
+        <Button
+          as="button"
+          mt={5}
+          form="create-post"
+          type="submit"
+          value="submit"
+        >
           {loading ? 'processing...' : 'submit'}
           <Icon name="carat" />
         </Button>
       </fieldset>
+      <pre>{error}</pre>
     </S.Form>
   )
 }

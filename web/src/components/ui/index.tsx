@@ -5,7 +5,6 @@
 
 import styled from 'styled-components'
 import { animated } from 'react-spring'
-import { darken, transparentize } from 'polished'
 
 // Theme
 import theme from '../../gatsby-plugin-theme-ui'

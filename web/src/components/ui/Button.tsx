@@ -5,7 +5,7 @@
 import styled from 'styled-components'
 import { darken } from 'polished'
 
-import { Box, Flex, Heading, AnimatedBox } from '.'
+import { Flex } from '.'
 
 import theme from '../../gatsby-plugin-theme-ui'
 
