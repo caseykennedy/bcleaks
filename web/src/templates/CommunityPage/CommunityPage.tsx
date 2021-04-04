@@ -4,10 +4,11 @@
 
 import React, { useContext, useEffect, useState } from 'react'
 
+import StoreContext from '../../context/StoreContext'
+
 // Utils
 import api from '../../utils/api'
 import isLocalHost from '../../utils/isLocalHost'
-import { client, q } from '../../utils/faunaDb'
 
 // Theme
 import * as S from './styles.scss'
@@ -22,25 +23,9 @@ import CardLeak from '../../components/CardLeak'
 // ___________________________________________________________________
 
 const GetFauna = () => {
-  // const initialState: FaunaDataQuery[] | (() => FaunaDataQuery[]) = []
-  const [items, setItems] = useState<FaunaDataQuery[]>([])
+  const { state, dispatch } = useContext(StoreContext)
 
-  // const getFaunaPosts = client
-  //   .query(q.Paginate(q.Match(q.Ref('indexes/all_posts'))))
-  //   .then(response => {
-  //     const postsRefs = response.data
-  //     // create new query
-  //     // https://docs.fauna.com/fauna/current/api/fql/
-  //     const getAllPostDataQuery = postsRefs.map((ref: any) => {
-  //       return q.Get(ref)
-  //     })
-  //     // query the refs
-  //     return client.query(getAllPostDataQuery).then(data => data)
-  //   })
-  //   .catch(error => console.warn('error', error.message))
-
-  useEffect(() => {
-    // getFaunaPosts.then(results => setItems(results))
+  const fetchFaunaData = () =>
     api.readAll().then((posts: FaunaDataQuery[] | any) => {
       if (posts.message === 'unauthorized') {
         if (isLocalHost()) {
@@ -54,16 +39,21 @@ const GetFauna = () => {
         }
         return false
       }
-      setItems(posts)
-      console.log('Netlify Fetched FaunaDb posts', posts)
+      dispatch({
+        type: 'FETCH_FAUNA_POSTS',
+        payload: posts
+      })
     })
+
+  useEffect(() => {
+    fetchFaunaData()
   }, [])
 
-  return items.length === 0 ? (
+  return state.posts.length === 0 ? (
     <Box>Loading...</Box>
   ) : (
     <>
-      {items.map((post, idx) => (
+      {state.posts.map((post, idx) => (
         <CardLeak aspectRatio={4 / 3} post={post} key={idx} />
       ))}
     </>

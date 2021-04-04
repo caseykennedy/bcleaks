@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
           Ad space
         </Text>
       </Box>
-      {/* <Community /> */}
+      <Community />
     </S.HomePage>
   )
 }

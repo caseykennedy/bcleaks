@@ -92,9 +92,11 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
         console.log('API response', response)
         // set app state
         setLoading(false)
+        alert('Great success!')
       })
       .catch(error => {
         setError('FUNCTION ERROR')
+        alert('Error, error, errrrrooorrrrrrrr.')
         console.log('ERROR')
         console.log('API error:', error)
       })
@@ -178,7 +180,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           onChange={handleCategoryChange}
           required={true}
         >
-          <option value="" disabled={true} selected={true}>
+          <option defaultValue="choose a category" disabled={true} selected={true}>
             choose a category
           </option>
           <option value="altcoin">Altcoin</option>

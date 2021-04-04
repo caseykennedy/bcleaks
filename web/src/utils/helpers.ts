@@ -27,3 +27,12 @@ export function buildImageObj(source: any) {
 
   return imageObj
 }
+
+// Get Fauana Post ID
+// ___________________________________________________________________
+export function getPostId(post: FaunaDataQuery) {
+  if (!post.ref) {
+    return null
+  }
+  return post.ref['@ref'].id
+}

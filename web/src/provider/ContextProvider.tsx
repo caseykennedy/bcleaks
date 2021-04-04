@@ -8,112 +8,41 @@ import Context from '../context/StoreContext'
 // ___________________________________________________________________
 
 type StateProps = {
-  vote: number
-  totalVote: number
-  isClicked: boolean
-  isUpvote: boolean
-  isDownvote: boolean
+  posts: FaunaDataQuery[]
 }
 
 type ActionProps = {
-  type: 'increment' | 'decrement' | 'reset'
-  message: string
+  type: string
+  payload: any
 }
 
 type ProviderProps = {
   children: React.ReactNode
 }
 
-const initialStoreState = {
-  vote: 0,
-  totalVote: 0,
-  isClicked: false,
-  isUpvote: false,
-  isDownvote: false,
-  message: ''
+const initialState = {
+  posts: []
 }
 
 const reducer = (state: StateProps, action: ActionProps) => {
   switch (action.type) {
-    case 'increment':
-      return {
-        vote: state.vote + 1,
-        totalVote: state.totalVote + 1,
-        isClicked: true,
-        isUpvote: true,
-        message: action.message
-      }
-    case 'decrement':
-      return {
-        vote: state.vote - 1,
-        totalVote: state.totalVote - 1,
-        isClicked: true,
-        isDownvote: true,
-        message: action.message
-      }
-    case 'reset':
-      return {
-        vote: 0
-      }
+    case 'FETCH_FAUNA_POSTS':
+      return { ...state, posts: action.payload }
     default:
-      throw new Error(`Unhandled action type: ${action.type}`)
+      // return state
+    throw new Error(`Unhandled action type: ${action.type}`)
   }
 }
 
 const ContextProvider: React.FC<ProviderProps> = ({ children }) => {
-  // const [store, updateStore] = useState(initialStoreState)
-  const [state, dispatch] = useReducer<{ (prevState: any, action: any): any }>(
-    reducer,
-    initialStoreState
-  )
-
+  const [state, dispatch] = useReducer(reducer, initialState)
   // useEffect(() => {}, [])
-
+  console.log('Context State', state)
   return (
     <Context.Provider
       value={{
         state,
-        dispatch,
-        update: (todoId: any, data: any) => {
-          return fetch(`/.netlify/functions/todos-update/${todoId}`, {
-            body: JSON.stringify(data),
-            method: 'POST'
-          }).then(response => {
-            return response.json()
-          })
-        },
-        create: (data: any) => {
-          return fetch('/.netlify/functions/todos-create', {
-            body: JSON.stringify(data),
-            method: 'POST'
-          }).then(response => {
-            return response.json()
-          })
-        },
-        readAll: () => {
-          return fetch('/.netlify/functions/todos-read-all')
-            .then(response => {
-              return response.json()
-            })
-            .then(console.log)
-        },
-        deleteTodo: (todoId: any) => {
-          return fetch(`/.netlify/functions/todos-delete/${todoId}`, {
-            method: 'POST'
-          }).then(response => {
-            return response.json()
-          })
-        },
-        batchDeleteTodo: (todoIds: any) => {
-          return fetch(`/.netlify/functions/todos-delete-batch`, {
-            body: JSON.stringify({
-              ids: todoIds
-            }),
-            method: 'POST'
-          }).then(response => {
-            return response.json()
-          })
-        }
+        dispatch
       }}
     >
       {children}

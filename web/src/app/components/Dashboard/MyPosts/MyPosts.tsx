@@ -3,11 +3,13 @@
 // ___________________________________________________________________
 
 import React, { useContext, useEffect, useState } from 'react'
+import { confirmAlert } from 'react-confirm-alert' // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 // Utils
 import api from '../../../../utils/api'
 import isLocalHost from '../../../../utils/isLocalHost'
-import { client, q } from '../../../../utils/faunaDb'
+import { getPostId } from '../../../../utils/helpers'
 
 // Theme + ui
 import * as S from './styles.scss'
@@ -23,43 +25,11 @@ import {
 
 // ___________________________________________________________________
 
-function getTodoId(post: FaunaDataQuery) {
-  if (!post.ref) {
-    return null
-  }
-  return post.ref['@ref'].id
-  // return post.ref.value.id
-}
-
-const getFaunaPosts = client
-  .query(q.Paginate(q.Match(q.Ref('indexes/all_posts'))))
-  .then(response => {
-    const postsRefs = response.data
-    // create new query
-    // https://docs.fauna.com/fauna/current/api/fql/
-    const getAllPostDataQuery = postsRefs.map((ref: any) => {
-      return q.Get(ref)
-    })
-    // query the refs
-    return client.query(getAllPostDataQuery).then((data: any) => data)
-  })
-  .catch(error => console.warn('error', error.message))
-
 const Posts = () => {
   const { user }: any = useIdentityContext()
   const [items, setItems] = useState<FaunaDataQuery[]>([])
 
-  useEffect(() => {
-    // getFaunaPosts.then((results: FaunaDataQuery[]) => {
-    //   const filteredPosts = results.filter(item => {
-    //     if (item.data.author.includes(user.user_metadata.full_name)) {
-    //       return item
-    //     }
-    //   })
-    //   setItems(filteredPosts)
-    //   console.log(filteredPosts)
-    // })
-
+  const fetchFaunaData = () =>
     api.readAll().then((fetchedPosts: FaunaDataQuery[]) => {
       if (fetchedPosts.message === 'unauthorized') {
         if (isLocalHost()) {
@@ -80,6 +50,9 @@ const Posts = () => {
       })
       setItems(filteredPosts)
     })
+
+  useEffect(() => {
+    fetchFaunaData()
   }, [])
 
   const DeletePost: React.FC<{ postId: string }> = ({ postId }) => {
@@ -88,37 +61,44 @@ const Posts = () => {
     ) => {
       e.preventDefault()
 
-      // Optimistically remove todo from UI
-      const filteredTodos = items.reduce(
-        (acc, current) => {
-          const currentId = getTodoId(current)
-          if (currentId === postId) {
-            // save item being removed for rollback
-            acc.rollbackTodo = current
-            return acc
-          }
-          // filter deleted todo out of the todos list
-          acc.optimisticState = acc.optimisticState.concat(current)
-          return acc
-        },
-        {
-          rollbackTodo: {},
-          optimisticState: []
-        }
+      const confirmDelete = confirm(
+        'Sure you want to delete?'
       )
-      setItems(filteredTodos.optimisticState)
-      console.log('deleted todos', filteredTodos.optimisticState)
 
-      // delete it!
-      api
-        .delete(postId)
-        .then(response => {
-          console.log('API response', response)
-        })
-        .catch(error => {
-          console.log('ERROR')
-          console.log('API error:', error)
-        })
+      if (confirmDelete) {
+        // Optimistically remove todo from UI
+        const filteredTodos = items.reduce(
+          (acc, current) => {
+            const currentId = getPostId(current)
+            if (currentId === postId) {
+              // save item being removed for rollback
+              acc.rollbackTodo = current
+              return acc
+            }
+            // filter deleted todo out of the todos list
+            acc.optimisticState = acc.optimisticState.concat(current)
+            return acc
+          },
+          {
+            rollbackTodo: {},
+            optimisticState: []
+          }
+        )
+        setItems(filteredTodos.optimisticState)
+        console.log('deleted todos', filteredTodos.optimisticState)
+
+        // delete it!
+        api
+          .delete(postId)
+          .then(response => {
+            console.log('API response', response)
+          })
+          .catch(error => {
+            console.log('ERROR')
+            console.log('API error:', error)
+          })
+      }
+      return
     }
 
     return (
@@ -138,10 +118,7 @@ const Posts = () => {
           <Text as="p" className="text--sm">
             {post.data.title}
           </Text>
-          <DeletePost
-            postId={getTodoId(post)}
-            // postId={post.ref.value.id}
-          />
+          <DeletePost postId={getPostId(post)} />
         </S.Post>
       ))}
     </>

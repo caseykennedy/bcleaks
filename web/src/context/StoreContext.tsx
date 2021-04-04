@@ -13,17 +13,8 @@ type TodoData = {
 }
 
 type ContextProps = {
-  create: (data: TodoData) => Promise<string>
-  readAll: () => Promise<any>
-  update: (todoId: string, data: PostQuery) => Promise<any>
-  deleteTodo: (todoId: string) => Promise<any>
-  batchDeleteTodo: (arg1: any) => any
   state: {
-    vote: number
-    isClicked: boolean
-    isUpvote: boolean
-    isDownvote: boolean
-    message: string
+    posts: FaunaDataQuery[]
   }
   dispatch: any
 }
