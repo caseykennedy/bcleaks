@@ -16,7 +16,6 @@ import { Box, Flex, Heading, Text } from '../ui'
 import Button from '../ui/Button'
 import { Input } from 'theme-ui'
 
-
 import Icon from '../Icons'
 import Symbol from '../Symbol'
 
@@ -106,28 +105,26 @@ const Bulletin = () => {
           </Flex>
 
           <Flex>
-            <Box as="a" href="https://www.youtube.com/channel/UCHop-jpf-huVT1IYw79ymPw" target="_blank" mr={2} className="btn">subscribe</Box>
-            <Box as="a" href="https://www.youtube.com/channel/UCHop-jpf-huVT1IYw79ymPw" target="_blank" ml={2} className="btn">follow</Box>
+            <Box
+              as="a"
+              href="https://www.youtube.com/channel/UCHop-jpf-huVT1IYw79ymPw"
+              target="_blank"
+              mr={2}
+              className="btn"
+            >
+              subscribe
+            </Box>
+            <Box
+              as="a"
+              href="https://www.youtube.com/channel/UCHop-jpf-huVT1IYw79ymPw"
+              target="_blank"
+              ml={2}
+              className="btn"
+            >
+              follow
+            </Box>
           </Flex>
         </Box>
-
-        {/* <Box
-          px={theme.gutter.axis}
-          py={[5, 5, 6]}
-          className="bulletin__support"
-        >
-          <Heading as="h4" className="text--uppercase">
-            Support us
-          </Heading>
-          <Flex p={4} flexWrap="wrap" style={{ border: theme.border }}>
-            <Text as="p" mb={0}>
-              Donate to our hard-hitting crypto news outlet.
-            </Text>
-            <Flex className="figure">
-              <CoinDrop />
-            </Flex>
-          </Flex>
-        </Box> */}
       </Flex>
     </S.Bulletin>
   )

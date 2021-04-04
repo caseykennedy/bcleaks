@@ -9,7 +9,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
 
 // UI
-import { Box, Flex, Heading, Text } from '../../components/ui'
+import { Box, Text } from '../../components/ui'
 
 // Sections
 import FeaturedArticles from '../../components/FeaturedArticles'
@@ -18,17 +18,22 @@ import Videos from './Videos'
 import Articles from './Articles'
 import Community from './Community'
 
-// Components
-import Section from '../../components/Section'
+// Data
+import usePost from '../../hooks/usePost'
 
 // ___________________________________________________________________
 
 const HomePage: React.FC = () => {
-  // const data = useHomePage()
+  const posts = usePost()
+  const heroPost = posts.filter(post => post.node.featured)
   return (
     <S.HomePage>
       <Box width={1} overflow="hidden">
-        <FeaturedArticles bg={theme.colors.black} hero={false} />
+        <FeaturedArticles
+          bg={theme.colors.black}
+          post={heroPost[0].node}
+          hero={false}
+        />
       </Box>
       <Videos />
       <Box

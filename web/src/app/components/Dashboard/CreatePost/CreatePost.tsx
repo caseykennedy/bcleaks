@@ -180,7 +180,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           onChange={handleCategoryChange}
           required={true}
         >
-          <option defaultValue="choose a category" disabled={true} selected={true}>
+          <option value="" disabled={true} selected={true}>
             choose a category
           </option>
           <option value="altcoin">Altcoin</option>

@@ -23,6 +23,7 @@ import usePost from '../../../hooks/usePost'
 
 const Articles = () => {
   const posts = usePost()
+  const heroPost = posts[0].node
   return (
     <S.Articles>
       <Section bg="" overflow="hidden">
@@ -34,14 +35,12 @@ const Articles = () => {
           <Heading fontFamily="display" className="text--lg  text--uppercase">
             Articles
           </Heading>
-          <Link to={`/articles`}>
-            View All
-          </Link>
+          <Link to={`/articles`}>View All</Link>
         </Flex>
       </Section>
 
       <Box width={1} overflow="hidden">
-        <FeaturedArticles bg={theme.colors.black} />
+        <FeaturedArticles bg={theme.colors.black} post={heroPost} />
       </Box>
 
       <Section border={true}>

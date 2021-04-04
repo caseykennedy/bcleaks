@@ -10,6 +10,11 @@ export default {
       validation: Rule => Rule.required().min(10).max(72).warning(`A title shouldn't exceed 72 characters.`)
     },
     {
+      name: "featured",
+      title: "Featured",
+      type: "boolean"
+    },
+    {
       name: "slug",
       title: "Slug",
       type: "slug",

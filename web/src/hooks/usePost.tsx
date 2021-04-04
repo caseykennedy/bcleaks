@@ -24,6 +24,7 @@ const usePost = () => {
             tags {
               tag
             }
+            featured
             figure {
               asset {
                 fluid(maxWidth: 800) {

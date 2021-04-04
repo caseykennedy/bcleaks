@@ -62,7 +62,7 @@ const Posts = () => {
       e.preventDefault()
 
       const confirmDelete = confirm(
-        'Sure you want to delete?'
+        'Are you sure you want to delete this post?'
       )
 
       if (confirmDelete) {

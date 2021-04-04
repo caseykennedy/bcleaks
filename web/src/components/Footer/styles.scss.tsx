@@ -4,7 +4,7 @@
 
 import styled from 'styled-components'
 import { darken } from 'polished'
-import { Flex } from '../ui'
+import { Box, Flex } from '../ui'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
@@ -55,9 +55,10 @@ export const Footer = styled(Flex)`
   }
 `
 
-export const Bulletin = styled(Flex)`
+export const Bulletin = styled(Box)`
   background: ${theme.colors.black};
   border-top: ${theme.border};
+  width: 100%;
 
   .inner {
     display: flex;
@@ -74,12 +75,18 @@ export const Bulletin = styled(Flex)`
 
   .bulletin {
     &__newsletter {
-      flex: 2;
+      flex: 1;
+      border-bottom: ${theme.border};
       margin-bottom: ${theme.space[6]};
 
       @media ${theme.mq.tablet} {
+        border-bottom: none;
         border-right: ${theme.border};
         margin-bottom: 0;
+      }
+
+      @media ${theme.mq.desktop} {
+        flex: 2;
       }
 
       form {
@@ -127,32 +134,6 @@ export const Bulletin = styled(Flex)`
           @media ${theme.mq.desktop} {
             margin-top: 0;
           }
-        }
-      }
-    }
-
-    &__support {
-      flex: 5;
-
-      p {
-        flex: 2;
-      }
-
-      .figure {
-        flex: 1;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: ${theme.colors.white};
-        border-radius: ${theme.borderRadius};
-
-        margin-left: ${theme.space[3]};
-        padding: ${theme.space[2]};
-
-        svg {
-          width: 60px;
         }
       }
     }

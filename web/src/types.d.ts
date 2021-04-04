@@ -63,6 +63,7 @@ type PostQuery = {
   categories: {
     title: string
   }[]
+  featured: boolean
   figure: {
     alt: string
     asset: {
