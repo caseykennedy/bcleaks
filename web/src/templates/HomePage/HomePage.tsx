@@ -26,6 +26,7 @@ import usePost from '../../hooks/usePost'
 const HomePage: React.FC = () => {
   const posts = usePost()
   const heroPost = posts.filter(post => post.node.featured)
+  console.log(heroPost[0].node)
   return (
     <S.HomePage>
       <Box width={1} overflow="hidden">

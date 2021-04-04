@@ -22,6 +22,7 @@ import usePost from '../../hooks/usePost'
 
 const ArticlesPage = () => {
   const posts = usePost()
+  const heroPost = posts[0].node
 
   // Filter posts
   const [items, setItems] = useState(posts)
@@ -47,7 +48,7 @@ const ArticlesPage = () => {
   }
   return (
     <S.ArticlesPage>
-      <FeaturedArticles bg={theme.colors.black} />
+      <FeaturedArticles bg={theme.colors.black} post={heroPost} />
 
       <FilterNav
         setFilteredItems={setFilteredItems}
