@@ -1,3 +1,12 @@
+// Login Modal styles
+
+// ___________________________________________________________________
+
+import { createGlobalStyle } from 'styled-components'
+
+// ___________________________________________________________________
+
+const LoginStyles = createGlobalStyle`
 /* This code is subject to LICENSE in root of this repository */
 
 /* Used to detect in JavaScript if apps have loaded styles or not. */
@@ -20,10 +29,9 @@
   /* width: 90vw; */ /* disabled for mobile */
   margin: 10vh auto;
   background: black;
-  border: 1px solid #808080 !important;
-  border-radius: 4px !important;
-  padding: 4rem 1rem 1.5rem 1rem;
-  outline: 0;
+  border: 2px solid #00ff9b !important;
+  padding: 3rem;
+  outline: none;
 }
 
 ::-webkit-input-placeholder {
@@ -92,12 +100,11 @@
   background-size: contain;
   background-origin: border-box;
   background-position: 0% 0%;
-  -webkit-animation: RNIW_loading 20s linear infinite;
   animation: RNIW_loading 20s linear infinite;
   pointer-events: none;
 }
 
-.RNIW_saving::after {
+.RNIW_saving:after {
   content: '\2026';
 }
 
@@ -130,12 +137,10 @@
   padding: 6px;
   /* outline: 0; */
   cursor: pointer;
-  outline: 0;
-  border: none;
-  border-bottom: 1px solid #00ff9b;
+  border: 1px solid #00ff9b;
   /* border-radius: 4px; */
-  background-color: #00ff9b;
-  color: #000000;
+  background-color: transparent;
+  color: #00ff9b;
   -webkit-transition: background-color 0.2s ease;
   transition: background-color 0.2s ease;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
@@ -150,7 +155,7 @@
 
 .RNIW_btn:hover,
 .RNIW_btn:focus {
-  /* background-color: #00ff9b; */
+  background-color: #00ff9b;
   color: black;
   text-decoration: none;
 }
@@ -162,9 +167,9 @@
   margin: 0;
   padding: 0;
   border: 0;
-  width: 22px;
-  height: 22px;
-  /* border-radius: 50%; */
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
   margin: 6px;
   background: black;
   color: #00ff9b;
@@ -172,8 +177,8 @@
 
 .RNIW_btnClose::before {
   content: '\D7';
-  font-size: 18px;
-  line-height: 0;
+  font-size: 25px;
+  line-height: 9px;
 }
 
 .RNIW_btnClose:hover,
@@ -195,22 +200,23 @@
   line-height: 24px;
   background: black;
   color: lightgray;
-  border-bottom: 1px solid #808080;
+  border: 1px solid #00ff9b;
   margin: 0;
-  outline: 0;
+  outline: none;
 }
 
 .RNIW_btnHeader:focus,
 /* .RNIW_btnHeader.active { */
 [aria-selected="true"].RNIW_btnHeader {
-  color: white;
+  background: #00ff9b;
+  color: black;
   border-color: #00ff9b;
+  font-weight: 700;
 }
 
 .RNIW_btnHeader:not(:only-child):hover {
-  /* background-color: #00ff9b; */
-  border-color: #00ff9b;
-  color: white;
+  background-color: #00ff9b;
+  color: black;
 }
 
 .RNIW_btnHeader:only-child {
@@ -229,6 +235,7 @@
   cursor: pointer;
   color: white;
   border: none;
+  border-bottom: 1px solid #00ff9b;
   border-radius: 0;
   background-color: inherit;
   -webkit-transition: border-color 0.2s ease;
@@ -261,13 +268,13 @@
   height: 40px;
   margin: 0;
   padding: 6px 12px 6px 34px;
-  border: 1px solid #808080;
+  border: 1px solid #00ff9b;
   background: black;
   color: white;
   -webkit-box-shadow: none;
   box-shadow: none;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 24px;
   -webkit-transition: -webkit-box-shadow ease-in-out 0.15s;
   transition: -webkit-box-shadow ease-in-out 0.15s;
@@ -275,11 +282,6 @@
   transition: box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
   -webkit-appearance: none;
   -moz-appearance: none;
-}
-
-.RNIW_formControl:focus {
-  border-color: #00ff9b;
-  outline: none;
 }
 
 .RNIW_inputFieldIcon {
@@ -408,3 +410,7 @@
 .providerBitbucket:before {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE0IDE2Ij4gIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEpIj4gICAgPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2Ii8+ICAgIDxnIGZpbGw9IiNGRkZGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSkiPiAgICAgIDxwYXRoIGQ9Ik03LDIuNDk4OTQxODdlLTA3IEw3LDIuNDk4OTQxODdlLTA3IEMzLjE1NzIxMjI5LDIuNDk4OTQxODdlLTA3IDAuMDAwNjM2NTM1NDM1LDEuMDIwODQ0MjQgMC4wMDA2MzY1MzU0MzUsMi4zMTM5MTM1OSBDMC4wMDA2MzY1MzU0MzUsMi42NTQxOTUxMyAwLjgyNDA5MTAyMyw3LjQ4NjE5MiAxLjE2NzE5NzE3LDkuMzkxNzY3NTkgQzEuMzA0NDM5MzcsMTAuMjc2NDk5OSAzLjU2ODkzOTUzLDExLjUwMTUxMyA3LDExLjUwMTUxMyBMNywxMS41MDE1MTMgQzEwLjQzMTA2MDIsMTEuNTAxNTEzIDEyLjYyNjkzODYsMTAuMjc2NDk5OSAxMi44MzI4MDMyLDkuMzkxNzY3NTkgQzEzLjE3NTkwODYsNy40ODYxOTIgMTMuOTk5MzYzMiwyLjY1NDE5NTEzIDEzLjk5OTM2MzIsMi4zMTM5MTM1OSBDMTMuOTMwNzQyMSwxLjAyMDg0NDI0IDEwLjg0Mjc4NzQsMi40OTg5NDE4N2UtMDcgNywyLjQ5ODk0MTg3ZS0wNyBMNywyLjQ5ODk0MTg3ZS0wNyBaIE03LDkuOTM2MjE4MzEgQzUuNzY0ODE4MjgsOS45MzYyMTgzMSA0LjgwNDEyMTI2LDguOTgzNDI5ODYgNC44MDQxMjEyNiw3Ljc1ODQxNjcxIEM0LjgwNDEyMTI2LDYuNTMzNDAzNTUgNS43NjQ4MTgyOCw1LjU4MDYxNTk3IDcsNS41ODA2MTU5NyBDOC4yMzUxODExMiw1LjU4MDYxNTk3IDkuMTk1ODc4NCw2LjUzMzQwMzU1IDkuMTk1ODc4NCw3Ljc1ODQxNjcxIEM5LjE5NTg3ODQsOC45MTUzNzM3MiA4LjIzNTE4MTEyLDkuOTM2MjE4MzEgNyw5LjkzNjIxODMxIEw3LDkuOTM2MjE4MzEgWiBNNywyLjk5NDQ3NjY3IEM0LjUyOTYzNjIyLDIuOTk0NDc2NjcgMi41Mzk2MjExLDIuNTg2MTM4OTUgMi41Mzk2MjExLDIuMDQxNjg4ODYgQzIuNTM5NjIxMSwxLjQ5NzIzODE1IDQuNTI5NjM2MjIsMS4wODg5MDA0MyA3LDEuMDg4OTAwNDMgQzkuNDcwMzYyODQsMS4wODg5MDA0MyAxMS40NjAzNzg2LDEuNDk3MjM4MTUgMTEuNDYwMzc4NiwyLjA0MTY4ODg2IEMxMS40NjAzNzg2LDIuNTg2MTM4OTUgOS40NzAzNjI4NCwyLjk5NDQ3NjY3IDcsMi45OTQ0NzY2NyBMNywyLjk5NDQ3NjY3IFoiLz4gICAgICA8cGF0aCBkPSJNMTIuMDY0NTA5NiwxMS4yMjkyODc2IEMxMS45MjcyNjY3LDExLjIyOTI4NzYgMTEuODU4NjQ1NywxMS4yOTczNDM4IDExLjg1ODY0NTcsMTEuMjk3MzQzOCBDMTEuODU4NjQ1NywxMS4yOTczNDM4IDEwLjE0MzExNTYsMTIuNjU4NDcgNy4wNTUxNjA5MywxMi42NTg0NyBDMy45NjcyMDY4NywxMi42NTg0NyAyLjI1MTY3NjE2LDExLjI5NzM0MzggMi4yNTE2NzYxNiwxMS4yOTczNDM4IEMyLjI1MTY3NjE2LDExLjI5NzM0MzggMi4xMTQ0MzM5NSwxMS4yMjkyODc2IDIuMDQ1ODEyODUsMTEuMjI5Mjg3NiBDMS45MDg1NzAwMiwxMS4yMjkyODc2IDEuNzcxMzI3ODEsMTEuMjk3MzQzOCAxLjc3MTMyNzgxLDExLjUwMTUxMyBMMS43NzEzMjc4MSwxMS41Njk1NjkyIEMyLjA0NTgxMjg1LDEyLjk5ODc1MTYgMi4yNTE2NzYxNiwxNC4wMTk1OTU2IDIuMjUxNjc2MTYsMTQuMTU1NzA3OSBDMi40NTc1NDAwOSwxNS4xNzY1NTI1IDQuNTE2MTc2MzIsMTUuOTkzMjI4IDYuOTg2NTM5ODIsMTUuOTkzMjI4IEw2Ljk4NjUzOTgyLDE1Ljk5MzIyOCBDOS40NTY5MDMzMSwxNS45OTMyMjggMTEuNTE1NTM5NSwxNS4xNzY1NTI1IDExLjcyMTQwMzUsMTQuMTU1NzA3OSBDMTEuNzIxNDAzNSwxNC4wMTk1OTU2IDExLjkyNzI2NjcsMTIuOTk4NzUxNiAxMi4yMDE3NTE4LDExLjU2OTU2OTIgTDEyLjIwMTc1MTgsMTEuNTAxNTEzIEMxMi4yNzAzNzI5LDExLjM2NTQgMTIuMjAxNzUxOCwxMS4yMjkyODc2IDEyLjA2NDUwOTYsMTEuMjI5Mjg3NiBMMTIuMDY0NTA5NiwxMS4yMjkyODc2IFoiLz4gICAgICA8ZWxsaXBzZSBjeD0iNyIgY3k9IjcuNjkiIHJ4PSIxLjA5OCIgcnk9IjEuMDg5Ii8+ICAgIDwvZz4gIDwvZz48L3N2Zz4=);
 }
+
+`
+
+export default LoginStyles

@@ -14,7 +14,7 @@ export const CryptoTicker = styled(Flex)`
   background: ${theme.colors.black};
   border-bottom: ${theme.border};
   font-size: ${theme.fontSizes[1]};
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   /* padding: 0 ${theme.space[3]}; */
 
   height: ${theme.tickerHeight};
@@ -30,7 +30,11 @@ export const CryptoTicker = styled(Flex)`
   }
 
   .swiper-container {
-    overflow: visible;
+    width: 100%;
+
+    .swiper-wrapper {
+      width: 100%;
+    }
   }
 `
 

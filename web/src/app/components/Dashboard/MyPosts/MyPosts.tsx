@@ -3,8 +3,6 @@
 // ___________________________________________________________________
 
 import React, { useContext, useEffect, useState } from 'react'
-import { confirmAlert } from 'react-confirm-alert' // Import
-import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 // Utils
 import api from '../../../../utils/api'
@@ -60,11 +58,10 @@ const Posts = () => {
       e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
       e.preventDefault()
-
+      // confirm delete alert
       const confirmDelete = confirm(
         'Are you sure you want to delete this post?'
       )
-
       if (confirmDelete) {
         // Optimistically remove todo from UI
         const filteredTodos = items.reduce(
@@ -86,7 +83,6 @@ const Posts = () => {
         )
         setItems(filteredTodos.optimisticState)
         console.log('deleted todos', filteredTodos.optimisticState)
-
         // delete it!
         api
           .delete(postId)
