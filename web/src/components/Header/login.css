@@ -6,7 +6,7 @@
 }
 
 [data-reach-dialog-overlay] {
-  background: hsla(0, 0%, 0%, 0.33);
+  background: hsla(0, 0%, 0%, 0.5);
   position: fixed;
   top: 0;
   right: 0;
@@ -22,7 +22,7 @@
   background: black;
   border: 1px solid #808080 !important;
   border-radius: 4px !important;
-  padding: 4rem 1rem 1.5rem 1rem;
+  padding: 6rem 1rem 1.5rem 1rem;
   outline: 0;
 }
 
@@ -146,6 +146,7 @@
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
+  transition: all 0.111s ease-in 0s;
 }
 
 .RNIW_btn:hover,
@@ -244,8 +245,9 @@
 
 .RNIW_btnLink:hover,
 .RNIW_btnLink:focus {
+  color: #00ff9b;
   background-color: inherit;
-  border-color: #a3a9ac;
+  border-color: #00ff9b;
 }
 
 .RNIW_formGroup {
