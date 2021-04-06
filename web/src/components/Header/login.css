@@ -16,6 +16,11 @@
   z-index: 999999;
 }
 
+#tabs--1--panel--0,
+#tabs--1--panel--1 {
+  outline: 0;
+}
+
 [data-reach-dialog-content] {
   /* width: 90vw; */ /* disabled for mobile */
   margin: 10vh auto;
@@ -228,7 +233,7 @@
   padding-bottom: 0;
   outline: 0;
   cursor: pointer;
-  color: white;
+  color: #808080;
   border: none;
   border-radius: 0;
   background-color: inherit;
@@ -241,13 +246,13 @@
   line-height: 24px;
   text-align: center;
   white-space: nowrap;
+  transition: all 0.111s ease-in 0s;
 }
 
 .RNIW_btnLink:hover,
 .RNIW_btnLink:focus {
-  color: #00ff9b;
+  color: #e1e1e1;
   background-color: inherit;
-  border-color: #00ff9b;
 }
 
 .RNIW_formGroup {

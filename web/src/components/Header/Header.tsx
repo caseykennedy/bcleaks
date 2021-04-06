@@ -5,8 +5,6 @@
 
 import React, { useState } from 'react'
 import { Link, navigate } from 'gatsby'
-
-import Headroom from 'react-headroom'
 import HamburgerMenu from 'react-hamburger-menu'
 
 // Theme + ui

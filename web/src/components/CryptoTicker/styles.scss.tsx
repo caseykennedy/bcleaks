@@ -14,26 +14,16 @@ export const CryptoTicker = styled(Flex)`
   background: ${theme.colors.black};
   border-bottom: ${theme.border};
   font-size: ${theme.fontSizes[1]};
-  /* overflow-x: hidden; */
   /* padding: 0 ${theme.space[3]}; */
 
   height: ${theme.tickerHeight};
   width: 100%;
 
-  &::-webkit-scrollbar {
-      display: none;
-    }
-
-  .ticker {
-    &__inner {
-    }
-  }
-
   .swiper-container {
     width: 100%;
+    overflow: hidden;
 
     .swiper-wrapper {
-      width: 100%;
     }
   }
 `
