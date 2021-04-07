@@ -2,8 +2,8 @@
 
 // ___________________________________________________________________
 
-import React, { useContext, useEffect } from 'react'
-import Marquee from 'react-fast-marquee'
+import React, { useContext, useEffect, useState } from 'react'
+import CoinGecko from 'coingecko-api'
 import Swiper from 'react-id-swiper'
 
 // Context
@@ -18,35 +18,19 @@ import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-const Slider: React.FC<{ children: any }> = ({ children }) => {
+const Slider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const params = {
-    slidesPerView: 3,
+    slidesPerView: 'auto',
     spaceBetween: 0,
     grabCursor: true,
-    // freeMode: true,
+    freeMode: true,
+    rebuildOnUpdate: true,
+    // observer: true,
     loop: true,
     autoplay: {
-      delay: 2500,
+      delay: 5000,
       disableOnInteraction: true
     },
-    breakpoints: {
-      1024: {
-        slidesPerView: 8,
-        spaceBetween: 0
-      },
-      768: {
-        slidesPerView: 8,
-        spaceBetween: 0
-      },
-      640: {
-        slidesPerView: 4,
-        spaceBetween: 0
-      },
-      320: {
-        slidesPerView: 3,
-        spaceBetween: 0
-      }
-    }
   }
   return <Swiper {...params}>{children}</Swiper>
 }
@@ -69,7 +53,7 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
     }
   }
   return (
-    <S.Coin>
+    <>
       <Box flex={1} className="coin__image">
         <img height="18px" src={coin.image} />
       </Box>
@@ -84,28 +68,64 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
           <div className="coin-info__change">{currentChange.toFixed(2)}%</div>
         </Flex>
       </Box>
-    </S.Coin>
+    </>
   )
 }
 
 const CryptoTicker = () => {
-  const { state } = useContext(StoreContext)
-  console.log(state)
+  const CoinGeckoClient = new CoinGecko()
+  const { state, dispatch } = useContext(StoreContext)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const CoinSlider = () =>
-      state.coins.data.map((value, key) => <Coin coin={value} key={key} />)
+    const fetchData = async () => {
+      try {
+        const results = await CoinGeckoClient.coins.markets({
+          vs_currency: 'usd',
+          order: 'name',
+          per_page: 15,
+          page: 1,
+          ids: [
+            'bitcoin',
+            'ethereum',
+            'chainlink',
+            'cosmos',
+            'handshake',
+            'maker',
+            'litecoin',
+            'tezos',
+            'stellar',
+            'monero',
+            'zcash'
+          ],
+          sparkline: false,
+          price_change_percentage: '24h'
+        })
+        setIsLoading(false)
+        dispatch({
+          type: 'FETCH_COINGECKO',
+          payload: results.data
+        })
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    fetchData()
   }, [])
 
   return (
     <S.CryptoTicker>
-      {state.coins.data.length > 0 && (
-        <Marquee gradient={false}>
-          {state.coins.data.map((value, key) => (
-            <Coin coin={value} key={key} />
-          ))}
-        </Marquee>
-      )}
+      <Slider>
+        {!isLoading ? (
+          state.coins.map((value, idx) => (
+            <S.Coin key={idx}>
+              <Coin coin={value} />
+            </S.Coin>
+          ))
+        ) : (
+          <Box pl={theme.gutter.axis}>loading...</Box>
+        )}
+      </Slider>
     </S.CryptoTicker>
   )
 }

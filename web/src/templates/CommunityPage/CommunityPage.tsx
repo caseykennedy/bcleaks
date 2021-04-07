@@ -3,20 +3,16 @@
 // ___________________________________________________________________
 
 import React, { useContext, useEffect, useState } from 'react'
-
+// Context
 import StoreContext from '../../context/StoreContext'
-
 // Utils
 import api from '../../utils/api'
 import isLocalHost from '../../utils/isLocalHost'
-
 // Theme
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box } from '../../components/ui'
-
 // Components
-import ImgMatch from '../../components/ImgMatch'
 import Section from '../../components/Section'
 import CardLeak from '../../components/CardLeak'
 

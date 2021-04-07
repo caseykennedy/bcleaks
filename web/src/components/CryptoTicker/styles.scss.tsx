@@ -14,7 +14,6 @@ export const CryptoTicker = styled(Flex)`
   background: ${theme.colors.black};
   border-bottom: ${theme.border};
   font-size: ${theme.fontSizes[1]};
-  /* padding: 0 ${theme.space[3]}; */
 
   height: ${theme.tickerHeight};
   width: 100%;
@@ -35,12 +34,10 @@ export const Coin = styled(Flex)`
 
   border-right: ${theme.border};
   padding: 0 ${theme.space[3]};
-
-  &:last-child {
-    border-right: none;
-  }
+  max-width: 150px;
 
   @media ${theme.mq.tablet} {
+    max-width: 180px;
     padding: 0 ${theme.space[4]};
   }
 
@@ -76,7 +73,7 @@ export const Coin = styled(Flex)`
     &-info {
       display: flex;
       align-items: center;
-      
+
       font-size: ${theme.fontSizes[0]};
       line-height: 1.35;
 
@@ -88,7 +85,7 @@ export const Coin = styled(Flex)`
         font-family: ${theme.fonts.sans};
         margin-right: ${theme.space[3]};
       }
-      
+
       &__carat {
       }
 
