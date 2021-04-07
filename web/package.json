@@ -62,6 +62,7 @@
     "react": "^16.14.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^16.14.0",
+    "react-fast-marquee": "^1.1.2",
     "react-hamburger-menu": "^1.2.1",
     "react-helmet": "^5.2.1",
     "react-id-swiper": "^3.0.0",

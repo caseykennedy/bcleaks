@@ -2,17 +2,19 @@
 
 // ___________________________________________________________________
 
-import React, { ReactChild, useEffect, useState } from 'react'
-import CoinGecko from 'coingecko-api'
+import React, { useContext, useEffect } from 'react'
+import Marquee from 'react-fast-marquee'
 import Swiper from 'react-id-swiper'
 
+// Context
+import StoreContext from '../../context/StoreContext'
+
 // ui
-import { Box, Flex, Text } from '../ui'
+import { Box, Flex } from '../ui'
 
 // Theme + Styles
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { AnyARecord } from 'dns'
 
 // ___________________________________________________________________
 
@@ -87,48 +89,23 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
 }
 
 const CryptoTicker = () => {
-  const CoinGeckoClient = new CoinGecko()
-  // Fetch Coin data
-  const [data, setData] = useState<CoinNode[]>([])
-
-  console.log(data)
-
-  async function getCoins() {
-    const results = await CoinGeckoClient.coins.markets({
-      vs_currency: 'usd',
-      order: 'name',
-      per_page: 15,
-      page: 1,
-      ids: [
-        'bitcoin',
-        'ethereum',
-        'chainlink',
-        'cosmos',
-        'handshake',
-        'maker',
-        'litecoin',
-        'tezos',
-        'stellar',
-        'monero',
-        'zcash'
-      ],
-      sparkline: false,
-      price_change_percentage: '24h'
-    })
-    setData(results.data)
-  }
+  const { state } = useContext(StoreContext)
+  console.log(state)
 
   useEffect(() => {
-    getCoins()
+    const CoinSlider = () =>
+      state.coins.data.map((value, key) => <Coin coin={value} key={key} />)
   }, [])
 
   return (
     <S.CryptoTicker>
-      <Slider>
-        {data.map((coin, idx) => (
-          <Coin coin={coin} key={idx} />
-        ))}
-      </Slider>
+      {state.coins.data.length > 0 && (
+        <Marquee gradient={false}>
+          {state.coins.data.map((value, key) => (
+            <Coin coin={value} key={key} />
+          ))}
+        </Marquee>
+      )}
     </S.CryptoTicker>
   )
 }

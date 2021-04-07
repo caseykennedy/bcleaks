@@ -15,7 +15,12 @@ type TodoData = {
 type ContextProps = {
   state: {
     posts: FaunaDataQuery[]
-    coins: CoinNode[]
+    coins: {
+      success: boolean
+      message: string
+      code: number
+      data: CoinNode[]
+    }
   }
   dispatch: any
 }

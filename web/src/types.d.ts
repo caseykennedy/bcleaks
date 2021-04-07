@@ -50,7 +50,7 @@ type FaunaDataQuery = {
 }
 
 type FaunaDbPostData = {
-  post: FaunaDbPostQuery
+  post: FaunaDataQuery
 }
 
 type VoterShape = { user: string; vote: number }

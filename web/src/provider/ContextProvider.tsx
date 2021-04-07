@@ -10,7 +10,12 @@ import Context from '../context/StoreContext'
 
 type StateProps = {
   posts: FaunaDataQuery[]
-  coins: CoinNode[]
+  coins: {
+    success: boolean
+    message: string
+    code: number
+    data: CoinNode[]
+  }
 }
 
 type ActionProps = {
@@ -24,7 +29,9 @@ type ProviderProps = {
 
 const initialState = {
   posts: [],
-  coins: []
+  coins: {
+    data: []
+  }
 }
 
 const reducer = (state: StateProps, action: ActionProps) => {
@@ -41,6 +48,40 @@ const reducer = (state: StateProps, action: ActionProps) => {
 
 const ContextProvider: React.FC<ProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  
+  const CoinGeckoClient = new CoinGecko()
+  const getCoins = async () => {
+    const results = await CoinGeckoClient.coins.markets({
+      vs_currency: 'usd',
+      order: 'name',
+      per_page: 15,
+      page: 1,
+      ids: [
+        'bitcoin',
+        'ethereum',
+        'chainlink',
+        'cosmos',
+        'handshake',
+        'maker',
+        'litecoin',
+        'tezos',
+        'stellar',
+        'monero',
+        'zcash'
+      ],
+      sparkline: false,
+      price_change_percentage: '24h'
+    })
+    dispatch({
+      type: 'FETCH_COINGECKO',
+      payload: results
+    })
+  }
+
+  useEffect(() => {
+    getCoins()
+  }, [])
+  
   return (
     <Context.Provider
       value={{
