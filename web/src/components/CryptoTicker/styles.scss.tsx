@@ -3,8 +3,7 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-
-import { Box, Flex } from '../ui'
+import { Flex } from '../ui'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________

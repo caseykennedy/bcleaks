@@ -101,11 +101,11 @@ const CryptoTicker = () => {
           sparkline: false,
           price_change_percentage: '24h'
         })
-        setIsLoading(false)
         dispatch({
           type: 'FETCH_COINGECKO',
           payload: results.data
         })
+        setIsLoading(false)
       } catch (e) {
         console.log(e)
       }
