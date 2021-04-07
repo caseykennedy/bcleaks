@@ -24,9 +24,9 @@ export const CardLeak = styled(Flex)`
 
   transition: ${theme.transition.all};
 
-  &:hover {
+  /* &:hover {
     border-color: ${theme.colors.primary};
-  }
+  } */
 
   @media ${theme.mq.tablet} {
     margin-bottom: ${theme.space[5]};
@@ -38,17 +38,25 @@ export const CardLeak = styled(Flex)`
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    padding-right: ${theme.space[4]};
+    /* padding-right: ${theme.space[4]}; */
     padding-left: ${theme.space[1]};
     width: 100%;
 
     @media ${theme.mq.tablet} {
       flex: 4;
-      padding-right: ${theme.space[5]};
+      /* padding-right: ${theme.space[5]}; */
       padding-left: calc(${theme.space[6]});
     }
 
+    &:hover {
+      .meta svg {
+        fill: ${theme.colors.primary};
+      }
+    }
+
     .meta {
+      display: flex;
+      justify-content: space-between;
       color: ${theme.colors.gray};
       font-family: ${theme.fonts.sans};
       font-size: ${theme.fontSizes[0]};
@@ -57,6 +65,12 @@ export const CardLeak = styled(Flex)`
 
       @media ${theme.mq.tablet} {
         font-size: ${theme.fontSizes[1]};
+      }
+
+      svg {
+        transition: ${theme.transition.all};
+        fill: ${darken(0.1, theme.colors.primary)};
+        width: 12px;
       }
 
       .category {
@@ -86,7 +100,7 @@ export const CardLeak = styled(Flex)`
       color: ${theme.colors.white};
       font-family: ${theme.fonts.sans};
       font-size: calc(${theme.fontSizes[2]} * 1.15);
-      line-height: 1.5;
+      line-height: 1.25;
 
       margin-bottom: calc(${theme.space[1]} / 2);
 
@@ -115,27 +129,25 @@ export const CardLeak = styled(Flex)`
       position: relative;
 
       a {
-        color: ${theme.colors.primary};
-        font-size: ${theme.fontSizes[0]};
+        color: ${darken(0.1, theme.colors.primary)};
+        font-size: ${theme.fontSizes[1]};
+        letter-spacing: 0;
 
         display: -webkit-box;
+        float: left;
         overflow: hidden;
         position: relative;
         text-overflow: ellipsis;
         -webkit-line-clamp: 1; /* number of lines to show */
         -webkit-box-orient: vertical;
 
-        @media ${theme.mq.tablet} {
-          font-size: ${theme.fontSizes[1]};
+        &:hover {
+          color: ${theme.colors.primary};
         }
       }
 
       span {
-        position: absolute;
-        top: 0;
-        right: calc(${theme.space[4]} * -1);
-
-        transition: ${theme.transition.all};
+        margin-left: ${theme.space[4]};
 
         svg {
           fill: ${theme.colors.primary};
@@ -145,12 +157,11 @@ export const CardLeak = styled(Flex)`
     }
 
     .text {
-      color: ${darken (0.05, theme.colors.lightgray)};
+      color: ${darken(0.05, theme.colors.lightgray)};
       font-family: ${theme.fonts.sans};
       font-size: calc(${theme.fontSizes[2]});
       line-height: 1.75;
 
-      margin-top: ${theme.space[3]};
       margin-bottom: ${theme.space[0]};
     }
 

@@ -57,7 +57,6 @@ export const FeaturedArticles = styled(Box)<{ hero?: boolean }>`
       height: 100%;
       width: 100%;
 
-      padding-top: ${theme.space[6]};
       position: relative;
       z-index: 1;
     }
