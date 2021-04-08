@@ -9,7 +9,7 @@ import { darken } from 'polished'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // Elements
-import { Box, Flex } from '../ui'
+import { Flex } from '../ui'
 
 // ___________________________________________________________________
 
@@ -38,13 +38,11 @@ export const CardLeak = styled(Flex)`
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    /* padding-right: ${theme.space[4]}; */
     padding-left: ${theme.space[1]};
     width: 100%;
 
     @media ${theme.mq.tablet} {
       flex: 4;
-      /* padding-right: ${theme.space[5]}; */
       padding-left: calc(${theme.space[6]});
     }
 
@@ -134,7 +132,6 @@ export const CardLeak = styled(Flex)`
         letter-spacing: 0;
 
         display: -webkit-box;
-        float: left;
         overflow: hidden;
         position: relative;
         text-overflow: ellipsis;
@@ -160,7 +157,7 @@ export const CardLeak = styled(Flex)`
       color: ${darken(0.05, theme.colors.lightgray)};
       font-family: ${theme.fonts.sans};
       font-size: calc(${theme.fontSizes[2]});
-      line-height: 1.75;
+      line-height: 1.5;
 
       margin-bottom: ${theme.space[0]};
     }
@@ -190,8 +187,7 @@ export const CardLeak = styled(Flex)`
         @media ${theme.mq.tablet} {
           flex-direction: column;
 
-          font-size: ${theme.fontSizes[3]};
-          letter-spacing: 1.75px;
+          /* font-size: ${theme.fontSizes[3]}; */
 
           margin: ${theme.space[3]} 0 0 ${theme.space[3]};
           position: absolute;
@@ -204,6 +200,7 @@ export const CardLeak = styled(Flex)`
           margin: 0 ${theme.space[3]};
 
           @media ${theme.mq.tablet} {
+            font-size: ${theme.fontSizes[1]};
             margin: ${theme.space[1]} 0;
           }
         }
@@ -220,7 +217,11 @@ export const CardLeak = styled(Flex)`
 
           svg {
             fill: ${theme.colors.gray};
-            width: ${theme.space[3]};
+            width: calc(${theme.space[3]} * 1.25);
+
+            @media ${theme.mq.tablet} {
+              width: ${theme.space[3]};
+            }
           }
 
           &--up {

@@ -62,9 +62,17 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
       </Modal>
 
       <S.Utilities px={theme.gutter.axis} py={1}>
-        <Flex className="date">
-          <GetDate />
-        </Flex>
+        {!isLoggedIn ? (
+          <Flex className="date">
+            <GetDate />
+          </Flex>
+        ) : (
+          <Flex className="user">
+            <Typist cursor={cursorProps}>
+              Howdy, {user.user_metadata.full_name}!
+            </Typist>
+          </Flex>
+        )}
         <Flex className="account">
           {!isLoggedIn ? (
             <>
@@ -73,7 +81,6 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
             </>
           ) : (
             <>
-              <Box className="user">Howdy, {user.user_metadata.full_name}!</Box>
               <Link
                 to={`/user`}
                 activeClassName="active"
@@ -141,6 +148,6 @@ const cursorProps = {
   show: false,
   blink: true,
   element: '|',
-  hideWhenDone: false,
+  hideWhenDone: true,
   hideWhenDoneDelay: 1000
 }

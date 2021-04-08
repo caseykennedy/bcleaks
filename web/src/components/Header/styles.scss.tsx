@@ -104,12 +104,23 @@ export const Utilities = styled(Flex)`
   margin: 0 auto;
   width: 100%;
 
+  .user {
+    display: flex;
+    align-items: center;
+
+    color: ${theme.colors.primary};
+    font-weight: 400;
+    letter-spacing: 0;
+    white-space: nowrap;
+    position: relative;
+  }
+
   .date {
     display: flex;
     align-items: center;
 
     color: ${theme.colors.tertiary};
-    font-size: calc(${theme.fontSizes[1]} / 1.25);
+    font-size: ${theme.fontSizes[1]};
     font-family: ${theme.fonts.display};
     text-transform: uppercase;
 
@@ -120,17 +131,8 @@ export const Utilities = styled(Flex)`
 
   .account {
     flex: 1;
+    display: flex;
     justify-content: flex-end;
-
-    .user {
-      color: ${theme.colors.primary};
-      font-weight: 600;
-      white-space: nowrap;
-
-      border-right: ${theme.border};
-      position: relative;
-      padding: ${theme.space[2]} ${theme.space[4]} ${theme.space[2]} ${theme.space[4]};
-    }
 
     a,
     button {

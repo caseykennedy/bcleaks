@@ -80,5 +80,9 @@ const data = [
   {
     name: 'community',
     link: '/community'
+  },
+  {
+    name: 'store',
+    link: '/store'
   }
 ]

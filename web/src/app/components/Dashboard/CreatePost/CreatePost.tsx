@@ -3,26 +3,19 @@
 // ___________________________________________________________________
 
 import React, { useRef, useState } from 'react'
-import fetch from 'node-fetch'
-import * as Yup from 'yup'
-import { withFormik, FormikProps, FormikErrors, Form, Field } from 'formik'
-
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
-
 // Context
 import { useIdentityContext } from 'react-netlify-identity-widget'
-
 // Utils
 import api from '../../../../utils/api'
-
 // Theme + ui
 import * as S from './styles.scss'
 import theme from '../../../../gatsby-plugin-theme-ui'
 import { Box, Heading, Text } from '../../../../components/ui'
 import Button from '../../../../components/ui/Button'
 import { Input, Select, Textarea } from 'theme-ui'
-
+// Components
 import Icon from '../../../../components/Icons'
 
 // ___________________________________________________________________
