@@ -14,7 +14,7 @@
 - [x] TypeScript
 - [x] Cypress for End-to-End testing
 - [x] [Husky](https://github.com/typicode/husky) & [lint-staged](https://github.com/okonet/lint-staged) for autofix each commit
-- [x] styled-components + styled-system + rebass for styling
+- [x] styled-components + styled-system for styling
 - [x] Polished for cool things
 - [x] Google Analytics support
 - [x] SEO

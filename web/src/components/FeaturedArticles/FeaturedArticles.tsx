@@ -73,7 +73,7 @@ const FeaturedArticles: React.FC<Props> = ({ bg, hero, post }) => {
             <Img
               fluid={{
                 ...post.figure.asset.fluid,
-                aspectRatio: 1.25 / 1
+                aspectRatio: 1.5 / 1
               }}
               objectFit="cover"
               objectPosition="50% 50%"

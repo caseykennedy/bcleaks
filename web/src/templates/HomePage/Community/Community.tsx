@@ -45,11 +45,11 @@ const LeakList = () => {
             type: 'FETCH_FAUNA_POSTS',
             payload: posts
           })
+          setIsLoading(false)
         })
       } catch (e) {
         console.log(e)
       }
-      setIsLoading(false)
     }
     fetchFaunaData()
   }, [])

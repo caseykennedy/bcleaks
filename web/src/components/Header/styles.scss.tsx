@@ -3,11 +3,8 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { lighten } from 'polished'
-
 // Theme
 import theme from '../../gatsby-plugin-theme-ui'
-
 // Elements
 import { Box, Flex } from '../ui'
 
@@ -109,7 +106,7 @@ export const Utilities = styled(Flex)`
     align-items: center;
 
     color: ${theme.colors.primary};
-    font-weight: 400;
+    font-family: ${theme.fonts.body};
     letter-spacing: 0;
     white-space: nowrap;
     position: relative;

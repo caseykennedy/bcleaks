@@ -22,7 +22,9 @@
     "allowJs": true
   },
   "exclude": [
-    "node_modules"
+    ".cache",
+    "node_modules",
+    "public"
   ],
   "include": ["./src/**/*"]
 }

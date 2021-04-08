@@ -16,7 +16,7 @@ export const Videos = styled(Section)`
       align-items: center;
       justify-content: space-between;
 
-      margin-bottom: ${theme.space[6]};
+      margin-bottom: ${theme.space[5]};
       width: 100%;
     }
   }

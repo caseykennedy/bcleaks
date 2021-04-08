@@ -5,15 +5,6 @@
     "tslint-react"
   ],
   "rules": {
-    "prettier": [
-      true,
-      {
-        "trailingComma": "es5",
-        "singleQuote": true,
-        "semi": false,
-        "printWidth": 120
-      }
-    ],
     "no-console": false,
     "no-use-before-declare": false,
     "quotemark": [true, "single", "avoid-escape", "jsx-double"],
@@ -22,7 +13,6 @@
     "import-name": false,
     "jsx-no-multiline-js": false,
     "jsx-no-lambda": false,
-    "object-shorthand-properties-first": false,
-    "forceConsistentCasingInFileNames": true
+    "object-shorthand-properties-first": false
   }
 }

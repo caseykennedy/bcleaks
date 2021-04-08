@@ -39,11 +39,6 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
   const [isNavOpen, setNavOpen] = useState(false)
   const toggleMenu = () => {
     setNavOpen(!isNavOpen)
-    // gtag.event({
-    //   category: 'Header utilities',
-    //   action: 'Click',
-    //   label: 'Header hamburger toggle'
-    // })
   }
   const [dialog, setDialog] = React.useState(false)
 

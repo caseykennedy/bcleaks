@@ -10,7 +10,6 @@ import React, {
   useRef,
   createContext
 } from 'react'
-import { Link } from 'gatsby'
 import moment from 'moment'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
