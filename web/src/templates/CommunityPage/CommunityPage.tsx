@@ -15,17 +15,18 @@ import { Box } from '../../components/ui'
 // Components
 import Section from '../../components/Section'
 import CardLeak from '../../components/CardLeak'
+import { ref } from 'yup'
 
 // ___________________________________________________________________
 
 const LeakList = () => {
   const { state, dispatch } = useContext(StoreContext)
   const [isLoading, setIsLoading] = useState(true)
-
+  
   useEffect(() => {
     const fetchFaunaData = () => {
       try {
-        api.readAll().then((posts: FaunaDataQuery[] | any) => {
+        api.readAll().then((posts: FaunaDataQuery[]) => {
           if (posts.message === 'unauthorized') {
             if (isLocalHost()) {
               alert(
@@ -37,9 +38,12 @@ const LeakList = () => {
               )
             }
           }
+          const sortedLeaks = posts.sort(
+            (a, b) => b.ref['@ref'].id - a.ref['@ref'].id
+          )
           dispatch({
             type: 'FETCH_FAUNA_POSTS',
-            payload: posts
+            payload: sortedLeaks
           })
           setIsLoading(false)
         })
@@ -53,7 +57,7 @@ const LeakList = () => {
   return !isLoading ? (
     <>
       {state.posts.map((post, idx) => (
-        <CardLeak aspectRatio={4 / 3} post={post} key={idx} />
+        <CardLeak post={post} key={idx} />
       ))}
     </>
   ) : (

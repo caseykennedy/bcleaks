@@ -19,7 +19,7 @@ import api from '../../utils/api'
 // Theme + ui
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Heading, Text } from '../ui'
+import { Box, Flex, Text } from '../ui'
 
 // Components
 import Icon from '../Icons'
@@ -68,6 +68,14 @@ const VoteCounter: React.FC<{
     voteCountRef: any
     voteTotalRef: any
   }>({})
+
+  const [hasVoted, setHasVoted] = useState(false)
+  const checkHasVoted = () =>
+    voters.filter(voter => {
+      if (voter.user === user!.user_metadata.full_name) {
+        setHasVoted(true)
+      }
+    })
 
   // const hasMatch = voters.filter(function(value) {
   //   return value.recordId == valueId
@@ -146,6 +154,7 @@ const VoteCounter: React.FC<{
       onVote(voteState)
     }
     componentJustMounted.current = false
+    checkHasVoted()
   }, [userVote, onVote])
 
   const memoizedValue = useMemo(

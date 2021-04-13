@@ -45,7 +45,7 @@ export const CardPost = styled(Flex)<{ inline?: boolean }>`
     @media ${theme.mq.tablet} {
       padding: ${p =>
         !p.inline
-          ? `${theme.space[3]} ${theme.space[4]}`
+          ? `${theme.space[3]}`
           : `0 0 ${theme.space[5]} ${theme.space[5]}`};
     }
 
