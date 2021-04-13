@@ -6,7 +6,7 @@
 }
 
 [data-reach-dialog-overlay] {
-  background: hsla(0, 0%, 0%, 0.5);
+  background: hsla(0, 0%, 0%, 0.9);
   position: fixed;
   top: 0;
   right: 0;
@@ -22,13 +22,12 @@
 }
 
 [data-reach-dialog-content] {
-  /* width: 90vw; */ /* disabled for mobile */
-  margin: 10vh auto;
+  width: 94vw;
+  margin: 10vw auto;
   background: black;
   border: 1px solid #808080 !important;
-  border-radius: 4px !important;
+  border-radius: 3px !important;
   padding: 6rem 1rem 1.5rem 1rem;
-  margin: 1rem;
   outline: 0;
 }
 

@@ -16,7 +16,6 @@ import { Box, Flex } from '../ui'
 export const CardPost = styled(Flex)<{ inline?: boolean }>`
   display: flex;
   align-items: flex-start;
-  /* justify-content: stretch; */
   flex-direction: ${p => (!p.inline ? `column` : `row-reverse`)};
 
   border-bottom: ${theme.border};

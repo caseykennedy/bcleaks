@@ -23,7 +23,7 @@ const LeakList = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const fetchFaunaData = async () => {
+    const fetchFaunaData = () => {
       try {
         api.readAll().then((posts: FaunaDataQuery[] | any) => {
           if (posts.message === 'unauthorized') {
