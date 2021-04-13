@@ -69,13 +69,13 @@ const VoteCounter: React.FC<{
     voteTotalRef: any
   }>({})
 
-  const [hasVoted, setHasVoted] = useState(false)
-  const checkHasVoted = () =>
-    voters.filter(voter => {
-      if (voter.user === user!.user_metadata.full_name) {
-        setHasVoted(true)
-      }
-    })
+  // const [hasVoted, setHasVoted] = useState(false)
+  // const checkHasVoted = () =>
+  //   voters.filter(voter => {
+  //     if (voter.user === user!.user_metadata.full_name) {
+  //       setHasVoted(true)
+  //     }
+  //   })
 
   // const hasMatch = voters.filter(function(value) {
   //   return value.recordId == valueId
@@ -154,7 +154,6 @@ const VoteCounter: React.FC<{
       onVote(voteState)
     }
     componentJustMounted.current = false
-    checkHasVoted()
   }, [userVote, onVote])
 
   const memoizedValue = useMemo(
