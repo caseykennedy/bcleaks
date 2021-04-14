@@ -13,28 +13,30 @@ import { Box, Text } from '../../components/ui'
 
 // Sections
 import FeaturedArticles from '../../components/FeaturedArticles'
+import FeaturedVideo from '../../components/FeaturedVideo'
 import Hero from './Hero'
 import Videos from './Videos'
 import Articles from './Articles'
 import Community from './Community'
 
 // Data
-import usePost from '../../hooks/usePost'
+import useVideo from '../../hooks/useVideo'
 
 // ___________________________________________________________________
 
 const HomePage: React.FC = () => {
-  const posts = usePost()
-  const heroPost = posts.filter(post => post.node.featured)
-  console.log(heroPost[0].node)
+  const videos = useVideo()
   return (
     <S.HomePage>
       <Box width={1} overflow="hidden">
-        <FeaturedArticles
-          bg={theme.colors.black}
-          post={heroPost[0].node}
-          hero={false}
-        />
+        {videos.slice(2, 3).map(({ node: post }, key) => (
+          <FeaturedVideo
+            bg={theme.colors.black}
+            post={post}
+            hero={false}
+            key={key}
+          />
+        ))}
       </Box>
       <Videos />
       <Box
@@ -49,7 +51,7 @@ const HomePage: React.FC = () => {
       </Box>
       <Articles />
       <Box
-        bg="black"
+        bg="background"
         px={theme.gutter.axis}
         py={6}
         style={{ borderTop: theme.border }}

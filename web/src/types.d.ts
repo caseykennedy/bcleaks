@@ -86,6 +86,7 @@ type PostData = {
 }
 
 type PostQuery = {
+  videoUrl: string
   _rawExcerpt: string
   _rawBody: string
   _id: string

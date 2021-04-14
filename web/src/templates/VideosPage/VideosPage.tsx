@@ -7,14 +7,14 @@ import React, { useState } from 'react'
 // Theme
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex } from '../../components/ui'
+import { Flex } from '../../components/ui'
 import { Grid } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
 import CardPost from '../../components/CardPost'
-import CardSlider from '../../components/CardSlider'
 import FilterNav from '../../components/FilterNav'
+import FeaturedVideo from '../../components/FeaturedVideo'
 
 // Data
 import useVideo from '../../hooks/useVideo'
@@ -48,15 +48,11 @@ const VideosPage = () => {
   }
   return (
     <S.VideosPage>
-      <Section bg="black" border={true} overflow="hidden">
-        <CardSlider pagination={false} slidesPerView={2}>
-          {videos.slice(0, 1).map(({ node: post }, idx) => (
-            <Flex key={idx}>
-              <CardPost post={post} video={true} key={idx} />
-            </Flex>
-          ))}
-        </CardSlider>
-      </Section>
+      <FeaturedVideo
+        bg={theme.colors.black}
+        post={videos[0].node}
+        hero={false}
+      />
 
       <FilterNav
         setFilteredItems={setFilteredItems}
@@ -67,7 +63,7 @@ const VideosPage = () => {
         <Grid columns={[1, 2, 3]} gap={theme.space[4]}>
           {items.map(({ node: post }, idx) => (
             <Flex key={idx}>
-              <CardPost post={post} video={true} small={true} />
+              <CardPost post={post} video={true} small={false} />
             </Flex>
           ))}
         </Grid>

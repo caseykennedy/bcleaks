@@ -14,6 +14,20 @@ import theme from '../../gatsby-plugin-theme-ui'
 export const VideosPage = styled(Box)`
   width: 100%;
 
+  .hero {
+    display: flex;
+
+    width: 100%;
+
+    &__video {
+      flex: 2;
+    }
+
+    &__meta {
+      flex: 1;
+    }
+  }
+
   .swiper-container {
     overflow: visible;
     /* padding-bottom: ${theme.space[7]}; */

@@ -67,7 +67,7 @@ const LeakList = () => {
 
 const Community = () => {
   return (
-    <S.Community bg="secondary">
+    <S.Community bg="black">
       <Section bg="" overflow="hidden">
         <Flex
           justifyContent="space-between"
