@@ -44,20 +44,15 @@ const VoteCounter: React.FC<{
   totalVotes: number
   voters: VoterShape[]
 }> = ({ id, onVote, totalVotes, voters }) => {
+  const componentJustMounted = useRef<boolean>(true)
+  const { isLoggedIn, user } = useIdentityContext()
+
   const initialState = {
     userVote: 0,
     voteTotal: totalVotes,
     isClicked: false,
     isUpVote: false,
     isDownVote: false
-  }
-
-  const { isLoggedIn, user } = useIdentityContext()
-  let username: string
-  if (isLoggedIn) {
-    username = user!.user_metadata.full_name
-  } else {
-    username = ''
   }
 
   const MAXIMUM_USER_VOTE = 50000000
@@ -68,6 +63,14 @@ const VoteCounter: React.FC<{
     voteCountRef: any
     voteTotalRef: any
   }>({})
+
+  
+  let username: string
+  if (isLoggedIn) {
+    username = user!.user_metadata.full_name
+  } else {
+    username = ''
+  }
 
   const [hasVotedUp, setHasVotedUp] = useState(false)
   const [hasVotedDown, setHasVotedDown] = useState(false)
@@ -148,7 +151,6 @@ const VoteCounter: React.FC<{
       })
   }
 
-  const componentJustMounted = useRef<boolean>(true)
   useEffect(() => {
     if (!componentJustMounted.current) {
       onVote(voteState)
