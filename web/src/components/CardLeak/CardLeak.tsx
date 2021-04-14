@@ -69,17 +69,17 @@ const VoteCounter: React.FC<{
     voteTotalRef: any
   }>({})
 
-  // const [hasVoted, setHasVoted] = useState(false)
-  // const checkHasVoted = () =>
-  //   voters.filter(voter => {
-  //     if (voter.user === user!.user_metadata.full_name) {
-  //       setHasVoted(true)
-  //     }
-  //   })
-
-  // const hasMatch = voters.filter(function(value) {
-  //   return value.recordId == valueId
-  // })
+  const [hasVotedUp, setHasVotedUp] = useState(false)
+  const [hasVotedDown, setHasVotedDown] = useState(false)
+  const checkHasVoted = () =>
+    voters.filter(voter => {
+      if (voter.user === user!.user_metadata.full_name && voter.vote === 1) {
+        setHasVotedUp(true)
+      }
+      if (voter.user === user!.user_metadata.full_name && voter.vote === -1) {
+        setHasVotedDown(true)
+      }
+    })
 
   const setRef = useCallback(node => {
     if (node !== null) {
@@ -154,6 +154,7 @@ const VoteCounter: React.FC<{
       onVote(voteState)
     }
     componentJustMounted.current = false
+    checkHasVoted()
   }, [userVote, onVote])
 
   const memoizedValue = useMemo(
@@ -171,7 +172,7 @@ const VoteCounter: React.FC<{
           onClick={handleVoteUp}
           className={`vote-arrow  vote-arrow--up  ${
             userVote === 1 ? 'active' : ''
-          }`}
+          } ${hasVotedUp && 'active'}`}
           disabled={isLoggedIn && userVote !== 1 ? false : true}
           aria-label="upvote post"
         >
@@ -184,7 +185,7 @@ const VoteCounter: React.FC<{
           onClick={handleVoteDown}
           className={`vote-arrow  vote-arrow--down  ${
             userVote === -1 ? 'active' : ''
-          }`}
+          } ${hasVotedDown && 'active'}`}
           disabled={isLoggedIn && userVote !== -1 ? false : true}
           aria-label="downvote post"
         >
