@@ -5,13 +5,14 @@
 // Libraries
 import React from 'react'
 import ResponsiveEmbed from 'react-responsive-embed'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 // Theme + UI
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex, Text, Heading } from '../../../components/ui'
-import { Grid } from 'theme-ui'
 import Pill from '../../../components/ui/Pill'
+import { Grid } from 'theme-ui'
 
 // Components
 import SEO from '../../../components/SEO'
@@ -23,7 +24,6 @@ import PostMeta from '../../../components/PostMeta'
 import Source from '../../../components/Source'
 import Icon from '../../../components/Icons'
 import Button from '../../../components/ui/Button'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 // Hooks
 import useVideo from '../../../hooks/useVideo'

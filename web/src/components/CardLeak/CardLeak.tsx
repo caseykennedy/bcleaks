@@ -136,7 +136,7 @@ const VoteCounter: React.FC<{
     api
       .castVote(id, {
         votes: voteDownReducer,
-        voters: [{ user: username, vote: userVote - 1 }]
+        voters: voters.concat({ user: username, vote: userVote - 1 })
       })
       .then(response => {
         console.log('API response', response)
