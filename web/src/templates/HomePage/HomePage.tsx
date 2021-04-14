@@ -4,17 +4,15 @@
 
 import React from 'react'
 
-// Theme + Styles
+// Theme + UI
+import { Box, Text } from '../../components/ui'
 import theme from '../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
 
-// UI
-import { Box, Text } from '../../components/ui'
+// Components
+import FeaturedVideo from '../../components/FeaturedVideo'
 
 // Sections
-import FeaturedArticles from '../../components/FeaturedArticles'
-import FeaturedVideo from '../../components/FeaturedVideo'
-import Hero from './Hero'
 import Videos from './Videos'
 import Articles from './Articles'
 import Community from './Community'
