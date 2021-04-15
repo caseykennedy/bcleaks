@@ -64,7 +64,6 @@ const VoteCounter: React.FC<{
     voteTotalRef: any
   }>({})
 
-  
   let username: string
   if (isLoggedIn) {
     username = user!.user_metadata.full_name
@@ -76,11 +75,13 @@ const VoteCounter: React.FC<{
   const [hasVotedDown, setHasVotedDown] = useState(false)
   const checkHasVoted = () =>
     voters.filter(voter => {
-      if (voter.user === user!.user_metadata.full_name && voter.vote === 1) {
-        setHasVotedUp(true)
-      }
-      if (voter.user === user!.user_metadata.full_name && voter.vote === -1) {
-        setHasVotedDown(true)
+      if (isLoggedIn) {
+        if (voter.user === user!.user_metadata.full_name && voter.vote === 1) {
+          setHasVotedUp(true)
+        }
+        if (voter.user === user!.user_metadata.full_name && voter.vote === -1) {
+          setHasVotedDown(true)
+        }
       }
     })
 
