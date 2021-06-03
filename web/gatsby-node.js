@@ -1,9 +1,15 @@
 // Template pages
 
+const { paginate } = require('gatsby-awesome-pagination')
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   const PostTemplate = require.resolve('./src/templates/Post/Article/index.tsx')
   const VideoTemplate = require.resolve('./src/templates/Post/Video/index.tsx')
+
+  const ArticlesTemplate = require.resolve(
+    './src/templates/ArticlesPage/ArticlesPage.tsx'
+  )
 
   // Articles
   // ___________________________________________________________________
@@ -84,6 +90,14 @@ exports.createPages = ({ graphql, actions }) => {
     if (result.errors) {
       Promise.reject(result.errors)
     }
+    // Create your paginated pages
+    paginate({
+      createPage, // The Gatsby `createPage` function
+      items: result.data.posts.edges, // An array of objects
+      itemsPerPage: 10, // How many items you want per page
+      pathPrefix: '/articles', // Creates pages like `/blog`, `/blog/2`, etc
+      component: ArticlesTemplate // Just like `createPage()`
+    })
     result.data.posts.edges.forEach(edge => {
       createPage({
         path: `/articles/${edge.node.slug.current}`,

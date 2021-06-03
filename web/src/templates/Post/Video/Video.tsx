@@ -64,9 +64,13 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
         )}
 
         <Section border={true}>
-          {post.videoUrl && (
-            <ResponsiveEmbed src={post.videoUrl} allowFullScreen={true} />
-          )}
+          <Flex width={1}>
+            <Box flex={[1, 1, 0.75]} width={1} mb={0}>
+              {post.videoUrl && (
+                <ResponsiveEmbed src={post.videoUrl} allowFullScreen={true} />
+              )}
+            </Box>
+          </Flex>
         </Section>
 
         <Section bg="background" border={true}>

@@ -123,7 +123,9 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
                 <Symbol />
               </Box>
               <Flex className="logo-lettermark">
-                <Lettermark />
+                <Text fontSize={`calc(${theme.fontSizes[2]} * 1.25)`} letterSpacing={-1}>
+                  BLOCKCHAIN LEAKS
+                </Text>
               </Flex>
             </S.Logo>
           </Link>

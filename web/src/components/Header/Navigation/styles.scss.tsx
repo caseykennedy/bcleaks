@@ -49,7 +49,7 @@ export const Nav = styled.nav`
       left: 0;
       z-index: 0;
 
-      transition: width 0.222s ease-in-out;
+      transition: width 0.15s ease-in-out;
     }
 
     &.active,

@@ -14,7 +14,7 @@ const Figure = (props: any) => {
   )
 
   return (
-    <Box as="figure" my={6} mx={[4, 6]}>
+    <Box as="figure" my={7}>
       {props.asset && <Img fluid={fluidProps} alt={props.alt} />}
       <figcaption>{props.caption}</figcaption>
     </Box>

@@ -3,6 +3,7 @@
 // ___________________________________________________________________
 
 import React, { useState } from 'react'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 // Theme
 import * as S from './styles.scss'
@@ -20,12 +21,17 @@ import usePost from '../../hooks/usePost'
 
 // ___________________________________________________________________
 
-const ArticlesPage = () => {
+type Props = {
+  data: PostShape
+  pageContext: any
+}
+
+const ArticlesPage = ({ data, pageContext }: Props) => {
   const posts = usePost()
   const heroPost = posts[0].node
 
   // Filter posts
-  const [items, setItems] = useState(posts)
+  const [items, setItems] = useState(data.posts.edges)
   // const [pillActive, setPillActive] = useState(false)
   const setFilteredItems = (category: string) => {
     setItems(
@@ -77,8 +83,90 @@ const ArticlesPage = () => {
           ))}
         </Box>
       </Section>
+      <Section>
+        <Link to={pageContext.previousPagePath}>Previous</Link>
+        <Link to={pageContext.nextPagePath}>Next</Link>
+      </Section>
     </S.ArticlesPage>
   )
 }
 
 export default ArticlesPage
+
+export const data = graphql`
+  query($skip: Int!, $limit: Int!) {
+    posts: allSanityPost(
+      sort: { order: DESC, fields: publishedAt }
+      skip: $skip
+      limit: $limit
+    ) {
+      edges {
+        node {
+          title
+          _rawExcerpt
+          _rawBody
+          _id
+          publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
+          slug {
+            current
+          }
+          tags {
+            tag
+          }
+          featured
+          figure {
+            asset {
+              fluid(maxWidth: 800) {
+                srcWebp
+                srcSetWebp
+                srcSet
+                src
+                sizes
+                base64
+                aspectRatio
+              }
+            }
+          }
+          categories {
+            title
+          }
+          authors {
+            name
+            role
+            avatar {
+              asset {
+                fluid(maxWidth: 600) {
+                  aspectRatio
+                  base64
+                  sizes
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                }
+              }
+            }
+          }
+          sources {
+            title
+            url
+          }
+        }
+        previous {
+          slug {
+            current
+          }
+          title
+          _rawExcerpt
+        }
+        next {
+          slug {
+            current
+          }
+          title
+          _rawExcerpt
+        }
+      }
+    }
+  }
+`

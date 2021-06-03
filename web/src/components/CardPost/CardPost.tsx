@@ -33,7 +33,10 @@ const CardPost: React.FC<Props> = ({
 }) => {
   const pagePrefix = !video ? `articles` : `videos`
   return (
-    <Link to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}>
+    <Link
+      to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}
+      style={{ width: `100%` }}
+    >
       <S.CardPost inline={inline}>
         <Box width={!inline ? 1 : 1 / 3}>
           <Box className="bg">

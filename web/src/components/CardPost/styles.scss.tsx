@@ -74,7 +74,7 @@ export const CardPost = styled(Flex)<{ inline?: boolean }>`
 
     position: relative;
     transform: matrix(1, 0, 0, 1, 0, 0);
-    transition: all 0.222s ease-in-out 0s;
+    transition: all 0.15s ease-in-out 0s;
   }
 
   &:hover {

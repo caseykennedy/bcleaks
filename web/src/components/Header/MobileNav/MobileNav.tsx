@@ -5,7 +5,6 @@
 
 import React from 'react'
 import { Link } from 'gatsby'
-import { useTransition } from 'react-spring'
 
 import theme from '../../../gatsby-plugin-theme-ui'
 import * as S from './styles.scss'
@@ -14,8 +13,10 @@ import { Box, Text } from '../../ui'
 // ___________________________________________________________________
 
 type LinkProps = {
-  item: any
-  transition: any
+  item: {
+    name: string
+    link: string
+  }
   handleExitOnClick: () => any
 }
 
@@ -24,9 +25,9 @@ type NavLinksProps = {
   open: boolean
 }
 
-const NavLink = ({ item, transition, handleExitOnClick }: LinkProps) => {
+const NavLink = ({ item, handleExitOnClick }: LinkProps) => {
   return (
-    <S.NavLink style={transition} onClick={handleExitOnClick}>
+    <S.NavLink onClick={handleExitOnClick}>
       <Box className="nav-mobile-sub">
         <Link to={item.link} className="nav-mobile__link">
           {item.name}
@@ -37,28 +38,10 @@ const NavLink = ({ item, transition, handleExitOnClick }: LinkProps) => {
 }
 
 const MobileNav: React.FC<NavLinksProps> = ({ handleExitOnClick, open }) => {
-  const navTransitions = useTransition(open ? data : [], item => item.name, {
-    from: {
-      opacity: 0
-    },
-    enter: {
-      opacity: 1
-    },
-    leave: {
-      opacity: 0
-    },
-    trail: 160,
-    unique: true
-  })
   return (
     <S.MobileNav>
-      {navTransitions.map(({ item, key, props }) => (
-        <NavLink
-          key={key}
-          transition={props}
-          handleExitOnClick={handleExitOnClick}
-          item={item}
-        />
+      {data.map((item, key) => (
+        <NavLink key={key} handleExitOnClick={handleExitOnClick} item={item} />
       ))}
     </S.MobileNav>
   )

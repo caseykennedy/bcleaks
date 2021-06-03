@@ -38,9 +38,19 @@ export const Article = styled.div`
   }
 
   .utilities {
+    background: ${theme.colors.black};
+    border: ${theme.border};
+    border-radius: ${theme.borderRadius};
+    padding: ${theme.space[4]};
+
     @media ${theme.mq.tablet} {
       position: sticky;
       top: calc(${theme.headerHeight} + ${theme.space[5]});
+    }
+
+    @media ${theme.mq.desktop} {
+      /* margin-top: ${theme.space[6]}; */
+      margin-right: ${theme.space[6]};
     }
   }
 `
@@ -51,14 +61,11 @@ export const PageTitle = styled(Box)`
   justify-content: space-between;
 
   background: ${theme.colors.black};
-  /* height: ${theme.tickerHeight}; */
   width: 100%;
-
-  @media ${theme.mq.tablet} {
-  }
 
   .pillbox {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: flex-end;
 
@@ -66,9 +73,5 @@ export const PageTitle = styled(Box)`
     margin-left: ${theme.space[4]};
     padding: ${theme.space[2]} 0 ${theme.space[2]} ${theme.space[2]};
     width: 100%;
-
-    @media ${theme.mq.tablet} {
-      padding: ${theme.space[3]} 0 ${theme.space[3]} ${theme.space[3]};
-    }
   }
 `

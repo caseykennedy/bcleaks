@@ -30,7 +30,7 @@ import PrevNext from '../PrevNext'
 // Data
 import usePost from '../../../hooks/usePost'
 import useSiteSettings from '../../../hooks/useSiteSettings'
- 
+
 // ___________________________________________________________________
 
 const Article: React.FC<PostContextShape> = ({ pageContext }) => {
@@ -66,62 +66,67 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
         )}
 
         <Section bg="black" border={true}>
-          <Box width={1} mb={0}>
-            <Text as="p" className="text--small  text--uppercase">
-              {post.publishedAt}
-            </Text>
+          <Flex width={1}>
+            <Box flex={[1, 0.75]} width={1} mb={0}>
+              <Text as="p" className="text--small  text--uppercase">
+                {post.publishedAt}
+              </Text>
 
-            <Heading as="h1" mb={4} className="text--xxl  text--uppercase">
-              {post.title}
-            </Heading>
+              <Heading as="h1" mb={4} className="text--xxl  text--uppercase">
+                {post.title}
+              </Heading>
 
-            <Flex flexDirection={[`column`, `row`]}>
-              <Box flex={[1, 2]}>
-                <Text fontFamily="sans" fontSize={2}>
-                  {post._rawExcerpt && (
-                    <BlockContent blocks={post._rawExcerpt || []} />
-                  )}
-                </Text>
-              </Box>
-
-              
-            </Flex>
-          </Box>
+              <Flex flexDirection={[`column`, `row`]}>
+                <Box flex={[1, 2]}>
+                  <Text fontFamily="sans" fontSize={2}>
+                    {post._rawExcerpt && (
+                      <BlockContent blocks={post._rawExcerpt || []} />
+                    )}
+                  </Text>
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
         </Section>
 
-        <Box bg="black" width={1}>
-          <Box width={1} maxWidth={theme.maxWidth}>
-            {post.figure && (
-              <>
-                <Img
-                  fluid={{
-                    ...post.figure.asset.fluid,
-                    aspectRatio: 16 / 9
-                  }}
-                  objectFit="cover"
-                  objectPosition="50% 50%"
-                  alt={post.figure.alt}
-                  className="article__img"
-                />
+        <Section bg="black" pt={0} pl={0} pb={0} pr={0}>
+          <Flex width={1}>
+            <Box flex={[1]} width={1} mb={0}>
+              {post.figure && (
+                <>
+                  <Img
+                    fluid={{
+                      ...post.figure.asset.fluid,
+                      aspectRatio: 16 / 9
+                    }}
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                    alt={post.figure.alt}
+                    className="article__img"
+                  />
 
-                {post.figure.caption && (
-                  <Text
-                    as="figcaption"
-                    color="tertiary"
-                    fontSize={0}
-                    p={theme.gutter.axis}
-                  >
-                    {post.figure.caption}
-                  </Text>
-                )}
-              </>
-            )}
-          </Box>
-        </Box>
+                  {post.figure.caption && (
+                    <Text
+                      as="figcaption"
+                      color="tertiary"
+                      fontSize={0}
+                      p={theme.gutter.axis}
+                    >
+                      {post.figure.caption}
+                    </Text>
+                  )}
+                </>
+              )}
+            </Box>
+          </Flex>
+        </Section>
 
         <Section border={true}>
           <Flex flexDirection="column">
-            <Flex flexDirection={[`column`, `row`]} position="relative">
+            <Flex
+              flexDirection={[`column`, `column`, `row`]}
+              position="relative"
+            >
               <Box flex={1} mb={4} width={1}>
                 <Box className="utilities">
                   <PostMeta
@@ -131,10 +136,15 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                   />
 
                   {post.sources[0] && (
-                    <Flex mt={5} mb={4}>
-                      <AnchorLink offset={theme.headerHeight} href={`#sources`}>
+                    <Flex mt={5}>
+                      <AnchorLink
+                        offset={theme.headerHeight}
+                        href={`#sources`}
+                        style={{ width: `100%` }}
+                      >
                         <Button bg="transparent" color={theme.colors.tertiary}>
-                          <Icon name="document" /> View Sources
+                          View Sources
+                          <Icon name="document" />
                         </Button>
                       </AnchorLink>
                     </Flex>

@@ -33,6 +33,12 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://www.blockchainleaks.com`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
         id: config.googleTagID,
@@ -128,7 +134,8 @@ module.exports = {
         display: 'standalone',
         icon: 'src/favicon.png'
       }
-    }
+    },
+    'gatsby-plugin-webpack-bundle-analyser-v2'
   ]
 }
 

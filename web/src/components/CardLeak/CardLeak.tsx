@@ -33,20 +33,26 @@ type CardLeakProps = {
   video?: boolean
 }
 
-// ___________________________________________________________________
-
-const MediumClapContext = createContext({})
-const { Provider } = MediumClapContext
-
-const VoteCounter: React.FC<{
+type VoteCounterProps = {
   id: string
   onVote: any
   totalVotes: number
   voters: VoterShape[]
-}> = ({ id, onVote, totalVotes, voters }) => {
-  const componentJustMounted = useRef<boolean>(true)
-  const { isLoggedIn, user } = useIdentityContext()
+}
 
+const MediumClapContext = createContext({})
+const { Provider } = MediumClapContext
+
+const MAXIMUM_USER_VOTE = 50000000
+
+// ___________________________________________________________________
+
+const VoteCounter: React.FC<VoteCounterProps> = ({
+  id,
+  onVote,
+  totalVotes,
+  voters
+}) => {
   const initialState = {
     userVote: 0,
     voteTotal: totalVotes,
@@ -55,15 +61,8 @@ const VoteCounter: React.FC<{
     isDownVote: false
   }
 
-  const MAXIMUM_USER_VOTE = 50000000
-  const [voteState, setVoteState] = useState(initialState)
-  const { userVote, voteTotal, isClicked, isUpVote, isDownVote } = voteState
-  const [{ voteRef, voteCountRef, voteTotalRef }, setRefState] = useState<{
-    voteRef: any
-    voteCountRef: any
-    voteTotalRef: any
-  }>({})
-
+  // Check if logged in
+  const { isLoggedIn, user } = useIdentityContext()
   let username: string
   if (isLoggedIn) {
     username = user!.user_metadata.full_name
@@ -71,19 +70,16 @@ const VoteCounter: React.FC<{
     username = ''
   }
 
+  const componentJustMounted = useRef<boolean>(true)
+  const [voteState, setVoteState] = useState(initialState)
+  const { userVote, voteTotal, isClicked, isUpVote, isDownVote } = voteState
+  const [{ voteRef, voteCountRef, voteTotalRef }, setRefState] = useState<{
+    voteRef: any
+    voteCountRef: any
+    voteTotalRef: any
+  }>({})
   const [hasVotedUp, setHasVotedUp] = useState(false)
   const [hasVotedDown, setHasVotedDown] = useState(false)
-  const checkHasVoted = () =>
-    voters.filter(voter => {
-      if (isLoggedIn) {
-        if (voter.user === user!.user_metadata.full_name && voter.vote === 1) {
-          setHasVotedUp(true)
-        }
-        if (voter.user === user!.user_metadata.full_name && voter.vote === -1) {
-          setHasVotedDown(true)
-        }
-      }
-    })
 
   const setRef = useCallback(node => {
     if (node !== null) {
@@ -93,6 +89,13 @@ const VoteCounter: React.FC<{
       }))
     }
   }, [])
+  const memoizedValue = useMemo(
+    () => ({
+      ...voteState,
+      setRef
+    }),
+    [voteState, setRef]
+  )
 
   // Handle the up vote
   const handleVoteUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -152,6 +155,18 @@ const VoteCounter: React.FC<{
       })
   }
 
+  const checkHasVoted = () =>
+    voters.filter(voter => {
+      if (isLoggedIn) {
+        if (voter.user === user!.user_metadata.full_name && voter.vote === 1) {
+          setHasVotedUp(true)
+        }
+        if (voter.user === user!.user_metadata.full_name && voter.vote === -1) {
+          setHasVotedDown(true)
+        }
+      }
+    })
+
   useEffect(() => {
     if (!componentJustMounted.current) {
       onVote(voteState)
@@ -159,14 +174,6 @@ const VoteCounter: React.FC<{
     componentJustMounted.current = false
     checkHasVoted()
   }, [userVote, onVote])
-
-  const memoizedValue = useMemo(
-    () => ({
-      ...voteState,
-      setRef
-    }),
-    [voteState, setRef]
-  )
 
   return (
     <Provider value={memoizedValue}>

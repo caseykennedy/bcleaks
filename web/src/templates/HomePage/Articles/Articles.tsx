@@ -26,19 +26,6 @@ const Articles = () => {
   const heroPost = posts[0].node
   return (
     <S.Articles>
-      <Section bg="" overflow="hidden">
-        <Flex
-          justifyContent="space-between"
-          width={1}
-          className="articles__header"
-        >
-          <Heading fontFamily="display" className="text--lg  text--uppercase">
-            Articles
-          </Heading>
-          <Link to={`/articles`}>View All</Link>
-        </Flex>
-      </Section>
-
       <Box width={1} overflow="hidden">
         <FeaturedArticles bg={theme.colors.black} post={heroPost} />
       </Box>
@@ -49,14 +36,10 @@ const Articles = () => {
           width={1}
           className="articles__header"
         >
-          <Heading
-            as="h4"
-            fontFamily="display"
-            mb={0}
-            className="text--uppercase"
-          >
-            Latest
+          <Heading fontFamily="display" className="text--lg  text--uppercase">
+            Articles
           </Heading>
+          <Link to={`/articles`}>View All</Link>
         </Flex>
 
         <Box width={[1, 1, 6 / 8]} className="articles__main">

@@ -4,7 +4,6 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { animated } from 'react-spring'
 
 // Theme
 import theme from '../../gatsby-plugin-theme-ui'
@@ -93,7 +92,7 @@ export const Box = styled.div<ElementProps>`
 
 Box.displayName = 'Box'
 
-export const AnimatedBox = styled(animated.div)<ElementProps>`
+export const AnimatedBox = styled.div<ElementProps>`
   box-sizing: border-box;
 
   ${space}
@@ -133,7 +132,7 @@ export const Flex = styled.div<ElementProps>`
 
 Flex.displayName = 'Flex'
 
-export const AnimatedFlex = styled(animated.div)<ElementProps>`
+export const AnimatedFlex = styled.div<ElementProps>`
   display: flex;
 
   ${space}
