@@ -9,6 +9,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
 import { Box, Flex, Heading, Text } from '../../components/ui'
+import Button from '../../components/ui/Button'
 
 // Components
 import Section from '../../components/Section'
@@ -83,9 +84,22 @@ const ArticlesPage = ({ data, pageContext }: Props) => {
           ))}
         </Box>
       </Section>
+
       <Section>
-        <Link to={pageContext.previousPagePath}>Previous</Link>
-        <Link to={pageContext.nextPagePath}>Next</Link>
+        <S.Pagination width={[1, 1, 6 / 8]}>
+          <Box flex={1} mr={3}>
+            {pageContext.previousPagePath && (
+              <Link to={pageContext.previousPagePath}>
+                <Button>Previous</Button>
+              </Link>
+            )}
+          </Box>
+          <Box flex={1} ml={3}>
+            <Link to={pageContext.nextPagePath}>
+              <Button>Next</Button>
+            </Link>
+          </Box>
+        </S.Pagination>
       </Section>
     </S.ArticlesPage>
   )
