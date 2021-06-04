@@ -15,9 +15,12 @@ export const Videos = styled(Section)`
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      margin-bottom: ${theme.space[5]};
+      margin-bottom: ${theme.space[6]};
       width: 100%;
+
+      @media ${theme.mq.tablet} {
+        margin-bottom: ${theme.space[5]};
+      }
     }
   }
 `

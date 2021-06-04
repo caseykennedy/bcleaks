@@ -12,6 +12,16 @@ import { Box, Flex } from '../../../components/ui'
 export const Community = styled(Box)`
   border-top: ${theme.border};
 
-  @media ${theme.mq.tablet} {
+  .articles {
+    &__header {
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: ${theme.space[4]};
+      width: 100%;
+
+      @media ${theme.mq.tablet} {
+        margin-bottom: 0;
+      }
+    }
   }
 `

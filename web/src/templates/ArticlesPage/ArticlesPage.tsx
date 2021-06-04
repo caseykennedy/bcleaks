@@ -95,9 +95,11 @@ const ArticlesPage = ({ data, pageContext }: Props) => {
             )}
           </Box>
           <Box flex={1} ml={3}>
-            <Link to={pageContext.nextPagePath}>
-              <Button>Next</Button>
-            </Link>
+            {pageContext.nextPagePath && (
+              <Link to={pageContext.nextPagePath}>
+                <Button>Next</Button>
+              </Link>
+            )}
           </Box>
         </S.Pagination>
       </Section>
