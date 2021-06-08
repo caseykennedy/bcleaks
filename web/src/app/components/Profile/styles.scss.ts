@@ -34,7 +34,7 @@ export const Profile = styled(Flex)`
 
   .btn {
     &--logout {
-      span {
+      svg {
         transform: rotate(180deg);
       }
     }

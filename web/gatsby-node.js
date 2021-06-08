@@ -1,38 +1,107 @@
-// Template pages
+// gatsby-node.js
+
+// Log out information after a build is done
+exports.onPostBuild = ({ reporter }) => {
+  reporter.info(`Your Gatsby site has been built!`)
+}
 
 const { paginate } = require('gatsby-awesome-pagination')
 
-exports.createPages = ({ graphql, actions }) => {
+// Category Pages
+// ___________________________________________________________________
+async function createCategoryPages(graphql, actions) {
+  // Get Gatsby‘s method for creating new pages
   const { createPage } = actions
-  const PostTemplate = require.resolve('./src/templates/Post/Article/index.tsx')
-  const VideoTemplate = require.resolve('./src/templates/Post/Video/index.tsx')
-
-  const ArticlesTemplate = require.resolve(
-    './src/templates/ArticlesPage/ArticlesPage.tsx'
+  const CategoryTemplate = require.resolve(
+    './src/templates/ArticleCategoryPage/ArticleCategoryPage.tsx'
   )
 
-  // Articles
-  // ___________________________________________________________________
-  const post = graphql(`
+  // Query Gatsby‘s GraphAPI for all the categories that come from Sanity
+  // You can query this API on http://localhost:8000/___graphql
+  const result = await graphql(`
     {
-      posts: allSanityPost(sort: { order: DESC, fields: publishedAt }) {
-        edges {
-          node {
+      allSanityPostCategory {
+        nodes {
+          id
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `)
+  // If there are any errors in the query, cancel the build and tell us
+  if (result.errors) throw result.errors
+  // Let‘s gracefully handle if allSanityCategory is null
+  const postNodes = (result.data.allSanityPostCategory || {}).nodes || []
+
+  postNodes
+    // Loop through the category nodes, but don't return anything
+    .forEach(node => {
+      // Desctructure the id and slug fields for each category
+      const { id, slug = {} } = node
+      // If there isn't a slug, we want to do nothing
+      if (!slug) return
+      // Make the URL with the current slug
+      const path = `/articles/${slug.current}`
+      // Create the page using the URL path and the template file, and pass down the id
+      // that we can use to query for the right category in the template file
+      createPage({
+        path,
+        component: CategoryTemplate,
+        context: { id }
+      })
+    })
+}
+
+// Article Post Pages
+// ___________________________________________________________________
+async function createArticlePostPages(graphql, actions) {
+  // Get Gatsby‘s method for creating new pages
+  const { createPage } = actions
+  const PostTemplate = require.resolve('./src/templates/Post/Article/index.tsx')
+
+  // Query Gatsby‘s GraphAPI for all the categories that come from Sanity
+  // You can query this API on http://localhost:8000/___graphql
+  const result = await graphql(`
+    {
+      allSanityPost(sort: { order: DESC, fields: publishedAt }) {
+        nodes {
+          title
+          _rawExcerpt
+          _rawBody
+          _id
+          publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
+          slug {
+            current
+          }
+          tags {
+            tag
+          }
+          figure {
+            alt
+            asset {
+              fluid(maxWidth: 800) {
+                srcWebp
+                srcSetWebp
+                srcSet
+                src
+                sizes
+                base64
+                aspectRatio
+              }
+            }
+            caption
+          }
+          categories {
             title
-            _rawExcerpt
-            _rawBody
-            _id
-            publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
-            slug {
-              current
-            }
-            tags {
-              tag
-            }
-            figure {
-              alt
+          }
+          authors {
+            name
+            role
+            avatar {
               asset {
-                fluid(maxWidth: 800) {
+                fluid(maxWidth: 300) {
                   srcWebp
                   srcSetWebp
                   srcSet
@@ -42,98 +111,90 @@ exports.createPages = ({ graphql, actions }) => {
                   aspectRatio
                 }
               }
-              caption
-            }
-            categories {
-              title
-            }
-            authors {
-              name
-              role
-              avatar {
-                asset {
-                  fluid(maxWidth: 300) {
-                    srcWebp
-                    srcSetWebp
-                    srcSet
-                    src
-                    sizes
-                    base64
-                    aspectRatio
-                  }
-                }
-              }
-            }
-            sources {
-              title
-              url
             }
           }
-          previous {
-            slug {
-              current
-            }
+          sources {
             title
-            _rawExcerpt
-          }
-          next {
-            slug {
-              current
-            }
-            title
-            _rawExcerpt
+            url
           }
         }
       }
     }
-  `).then(result => {
-    if (result.errors) {
-      Promise.reject(result.errors)
-    }
-    // Create your paginated pages
-    paginate({
-      createPage, // The Gatsby `createPage` function
-      items: result.data.posts.edges, // An array of objects
-      itemsPerPage: 15, // How many items you want per page
-      pathPrefix: '/articles', // Creates pages like `/blog`, `/blog/2`, etc
-      component: ArticlesTemplate // Just like `createPage()`
-    })
-    result.data.posts.edges.forEach(edge => {
+  `)
+  // If there are any errors in the query, cancel the build and tell us
+  if (result.errors) throw result.errors
+  // Let‘s gracefully handle if allSanityCatgogy is null
+  const postNodes = (result.data.allSanityPost || {}).nodes || []
+
+  postNodes
+    // Loop through the category nodes, but don't return anything
+    .forEach(node => {
+      // Desctructure the id and slug fields for each category
+      const { id, slug = {} } = node
+      // If there isn't a slug, we want to do nothing
+      if (!slug) return
+      // Make the URL with the current slug
+      const path = `/articles/${slug.current}`
+      // Create the page using the URL path and the template file, and pass down the id
+      // that we can use to query for the right category in the template file
       createPage({
-        path: `/articles/${edge.node.slug.current}`,
+        path,
         component: PostTemplate,
         context: {
-          slug: edge.node.slug.current,
-          post: edge.node,
-          next: edge.next,
-          prev: edge.previous
+          post: node
         }
       })
     })
-  })
+}
 
-  // Department pages
-  // ___________________________________________________________________
-  const video = graphql(`
+// Video Post Pages
+// ___________________________________________________________________
+async function createVideoPostPages(graphql, actions) {
+  // Get Gatsby‘s method for creating new pages
+  const { createPage } = actions
+  const VideoTemplate = require.resolve('./src/templates/Post/Video/index.tsx')
+
+  // Query Gatsby‘s GraphAPI for all the categories that come from Sanity
+  // You can query this API on http://localhost:8000/___graphql
+  const result = await graphql(`
     {
-      posts: allSanityVideo(sort: { order: DESC, fields: publishedAt }) {
-        edges {
-          node {
-            videoUrl
+      allSanityVideo(sort: { order: DESC, fields: publishedAt }) {
+        nodes {
+          videoUrl
+          title
+          _rawBody
+          _id
+          publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
+          slug {
+            current
+          }
+          tags {
+            tag
+          }
+          figure {
+            alt
+            asset {
+              fluid(maxWidth: 800) {
+                srcWebp
+                srcSetWebp
+                srcSet
+                src
+                sizes
+                base64
+                aspectRatio
+              }
+            }
+            caption
+          }
+          categories {
             title
-            _rawBody
-            _id
-            publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
-            slug {
-              current
-            }
-            tags {
-              tag
-            }
-            figure {
-              alt
+          }
+          authors {
+            name
+            role
+            avatar {
               asset {
-                fluid(maxWidth: 800) {
+                fluid(maxWidth: 300) {
                   srcWebp
                   srcSetWebp
                   srcSet
@@ -143,66 +204,75 @@ exports.createPages = ({ graphql, actions }) => {
                   aspectRatio
                 }
               }
-              caption
-            }
-            categories {
-              title
-            }
-            authors {
-              name
-              role
-              avatar {
-                asset {
-                  fluid(maxWidth: 300) {
-                    srcWebp
-                    srcSetWebp
-                    srcSet
-                    src
-                    sizes
-                    base64
-                    aspectRatio
-                  }
-                }
-              }
-            }
-            sources {
-              title
-              url
             }
           }
-          previous {
-            slug {
-              current
-            }
+          sources {
             title
-          }
-          next {
-            slug {
-              current
-            }
-            title
+            url
           }
         }
       }
     }
-  `).then(result => {
-    if (result.errors) {
-      Promise.reject(result.errors)
-    }
-    result.data.posts.edges.forEach(edge => {
+  `)
+  // If there are any errors in the query, cancel the build and tell us
+  if (result.errors) throw result.errors
+  // Let‘s gracefully handle if allSanityCatgogy is null
+  const postNodes = (result.data.allSanityVideo || {}).nodes || []
+
+  postNodes
+    // Loop through the category nodes, but don't return anything
+    .forEach(node => {
+      // Desctructure the id and slug fields for each category
+      const { id, slug = {} } = node
+      // If there isn't a slug, we want to do nothing
+      if (!slug) return
+      // Make the URL with the current slug
+      const path = `/videos/${slug.current}`
+      // Create the page using the URL path and the template file, and pass down the id
+      // that we can use to query for the right category in the template file
       createPage({
-        path: `/videos/${edge.node.slug.current}`,
+        path,
         component: VideoTemplate,
         context: {
-          slug: edge.node.slug.current,
-          post: edge.node,
-          next: edge.next,
-          prev: edge.previous
+          post: node
         }
       })
     })
-  })
+}
 
-  // Return a Promise which will wait for all queries to resolve
-  return Promise.all([post, video])
+// Create Pages
+// ___________________________________________________________________
+exports.createPages = async ({ graphql, actions }) => {
+  await createCategoryPages(graphql, actions)
+  await createArticlePostPages(graphql, actions)
+  await createVideoPostPages(graphql, actions)
+}
+
+// Category Resolvers
+// ___________________________________________________________________
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    SanityPostCategory: {
+      posts: {
+        type: ['SanityPost'],
+        resolve(source, args, context, info) {
+          return context.nodeModel.runQuery({
+            type: 'SanityPost',
+            query: {
+              filter: {
+                categories: {
+                  elemMatch: {
+                    _id: {
+                      eq: source._id
+                    }
+                  }
+                }
+              }
+            }
+          })
+        }
+      }
+    }
+  }
+  createResolvers(resolvers)
 }

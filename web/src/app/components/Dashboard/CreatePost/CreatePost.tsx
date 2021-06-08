@@ -178,8 +178,10 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           </option>
           <option value="altcoin">Altcoin</option>
           <option value="bitcoin">Bitcoin</option>
+          <option value="cryptoPicks">Crypto Picks</option>
           <option value="defi">DeFi</option>
           <option value="ethereum">Ethereum</option>
+          <option value="investigations">Investigations</option>
         </Select>
 
         <Button

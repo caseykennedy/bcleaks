@@ -1,4 +1,4 @@
-// ArticlesPage Styles:
+// ArticleCategoryPage Styles:
 
 // ___________________________________________________________________
 
@@ -11,7 +11,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-export const ArticlesPage = styled(Box)`
+export const ArticleCategoryPage = styled(Box)`
   width: 100%;
 
   @media ${theme.mq.tablet} {
