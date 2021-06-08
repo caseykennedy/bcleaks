@@ -7,9 +7,9 @@ exports.onPostBuild = ({ reporter }) => {
 
 const { paginate } = require('gatsby-awesome-pagination')
 
-// Category Pages
+// Article Category Pages
 // ___________________________________________________________________
-async function createCategoryPages(graphql, actions) {
+async function createArticleCategoryPages(graphql, actions) {
   // Get Gatsby‘s method for creating new pages
   const { createPage } = actions
   const CategoryTemplate = require.resolve(
@@ -44,6 +44,53 @@ async function createCategoryPages(graphql, actions) {
       if (!slug) return
       // Make the URL with the current slug
       const path = `/articles/${slug.current}`
+      // Create the page using the URL path and the template file, and pass down the id
+      // that we can use to query for the right category in the template file
+      createPage({
+        path,
+        component: CategoryTemplate,
+        context: { id }
+      })
+    })
+}
+
+// Video Category Pages
+// ___________________________________________________________________
+async function createVideoCategoryPages(graphql, actions) {
+  // Get Gatsby‘s method for creating new pages
+  const { createPage } = actions
+  const CategoryTemplate = require.resolve(
+    './src/templates/VideoCategoryPage/VideoCategoryPage.tsx'
+  )
+
+  // Query Gatsby‘s GraphAPI for all the categories that come from Sanity
+  // You can query this API on http://localhost:8000/___graphql
+  const result = await graphql(`
+    {
+      allSanityPostCategory {
+        nodes {
+          id
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `)
+  // If there are any errors in the query, cancel the build and tell us
+  if (result.errors) throw result.errors
+  // Let‘s gracefully handle if allSanityCategory is null
+  const postNodes = (result.data.allSanityPostCategory || {}).nodes || []
+
+  postNodes
+    // Loop through the category nodes, but don't return anything
+    .forEach(node => {
+      // Desctructure the id and slug fields for each category
+      const { id, slug = {} } = node
+      // If there isn't a slug, we want to do nothing
+      if (!slug) return
+      // Make the URL with the current slug
+      const path = `/videos/${slug.current}`
       // Create the page using the URL path and the template file, and pass down the id
       // that we can use to query for the right category in the template file
       createPage({
@@ -243,7 +290,8 @@ async function createVideoPostPages(graphql, actions) {
 // Create Pages
 // ___________________________________________________________________
 exports.createPages = async ({ graphql, actions }) => {
-  await createCategoryPages(graphql, actions)
+  await createArticleCategoryPages(graphql, actions)
+  await createVideoCategoryPages(graphql, actions)
   await createArticlePostPages(graphql, actions)
   await createVideoPostPages(graphql, actions)
 }
@@ -258,6 +306,25 @@ exports.createResolvers = ({ createResolvers }) => {
         resolve(source, args, context, info) {
           return context.nodeModel.runQuery({
             type: 'SanityPost',
+            query: {
+              filter: {
+                categories: {
+                  elemMatch: {
+                    _id: {
+                      eq: source._id
+                    }
+                  }
+                }
+              }
+            }
+          })
+        }
+      },
+      videos: {
+        type: ['SanityVideo'],
+        resolve(source, args, context, info) {
+          return context.nodeModel.runQuery({
+            type: 'SanityVideo',
             query: {
               filter: {
                 categories: {

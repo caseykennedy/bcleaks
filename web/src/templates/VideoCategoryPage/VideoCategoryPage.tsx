@@ -1,4 +1,4 @@
-// Article Category Page:
+// Video Category Page:
 
 // ___________________________________________________________________
 
@@ -8,13 +8,12 @@ import { graphql } from 'gatsby'
 // Theme
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Heading, Text } from 'theme-ui'
+import { Box, Flex, Grid, Heading, Text } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
 import CardPost from '../../components/CardPost'
 import CatNav from '../../components/CatNav'
-
 
 // ___________________________________________________________________
 
@@ -23,7 +22,7 @@ type Props = {
     category: {
       description: any
       title: any
-      posts: PostQuery[]
+      videos: VideoQuery[]
     }
   }
   pageContext: {
@@ -31,11 +30,12 @@ type Props = {
   }
 }
 
-const ArticleCategoryPage: React.FC<Props> = ({ pageContext, data }) => {
-  const [posts,] = useState(data.category.posts || [])
+const VideoCategoryPage: React.FC<Props> = ({ pageContext, data }) => {
+  const [videos] = useState(data.category.videos || [])
+
   return (
-    <S.ArticleCategoryPage>
-      <CatNav postType="articles" />
+    <S.VideoCategoryPage>
+      <CatNav postType="videos" />
 
       <Section>
         <Heading
@@ -44,40 +44,35 @@ const ArticleCategoryPage: React.FC<Props> = ({ pageContext, data }) => {
           sx={{ fontFamily: `display` }}
           className="text--lg  text--uppercase"
         >
-          {data.category.title} articles
+          {data.category.title} videos
         </Heading>
       </Section>
 
-      <Section border={true} pt={0}>
-        <Flex>
-          <Box sx={{ flex: [1, 1, 6 / 8], width: `100%` }}>
-            {posts.map((post, idx) => (
-              <CardPost
-                aspectRatio={4 / 3}
-                post={post}
-                inline={true}
-                key={idx}
-              />
-            ))}
-          </Box>
-        </Flex>
+      <Section border={true}>
+        <Grid columns={[1, 2, 3]} gap={theme.space[4]}>
+          {videos.map((post, idx) => (
+            <Flex key={idx}>
+              <CardPost post={post} video={true} small={false} />
+            </Flex>
+          ))}
+        </Grid>
       </Section>
-    </S.ArticleCategoryPage>
+    </S.VideoCategoryPage>
   )
 }
 
-export default ArticleCategoryPage
+export default VideoCategoryPage
 
 // ___________________________________________________________________
 
 export const query = graphql`
-  query ArticleCategoryTemplateQuery($id: String!) {
+  query VideoCategoryTemplateQuery($id: String!) {
     category: sanityPostCategory(id: { eq: $id }) {
       description
       title
-      posts {
+      videos {
+        videoUrl
         title
-        _rawExcerpt
         _rawBody
         _id
         publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
@@ -87,8 +82,8 @@ export const query = graphql`
         tags {
           tag
         }
-        featured
         figure {
+          alt
           asset {
             fluid(maxWidth: 800) {
               srcWebp
@@ -120,10 +115,6 @@ export const query = graphql`
               }
             }
           }
-        }
-        sources {
-          title
-          url
         }
       }
     }

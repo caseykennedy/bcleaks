@@ -18,7 +18,7 @@ type Props = {
   aspectRatio?: number
   bg?: any
   inline?: boolean
-  post: PostQuery
+  post: PostQuery | VideoQuery
   small?: boolean
   video?: boolean
 }

@@ -51,10 +51,12 @@ export const PageTitle = styled(Box)`
   justify-content: space-between;
 
   background: ${theme.colors.black};
+  border-top: ${theme.border};
   /* height: ${theme.tickerHeight}; */
   width: 100%;
 
-  @media ${theme.mq.tablet} {
+  h4 {
+    white-space: nowrap;
   }
 
   .pillbox {

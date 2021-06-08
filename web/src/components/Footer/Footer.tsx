@@ -104,7 +104,7 @@ const Bulletin = () => {
             </Flex>
           </Flex>
 
-          <Flex>
+          {/* <Flex>
             <Box
               as="a"
               href="https://www.youtube.com/channel/UCHop-jpf-huVT1IYw79ymPw"
@@ -123,7 +123,7 @@ const Bulletin = () => {
             >
               follow
             </Box>
-          </Flex>
+          </Flex> */}
         </Box>
       </Flex>
     </S.Bulletin>

@@ -13,7 +13,7 @@ import { Box, Flex, Heading, Text } from '../../components/ui'
 import Section from '../../components/Section'
 import CardPost from '../../components/CardPost'
 import FeaturedArticles from '../../components/FeaturedArticles'
-import FilterNav from '../../components/FilterNav'
+import CatNav from '../../components/CatNav'
 
 // Data
 import usePost from '../../hooks/usePost'
@@ -24,37 +24,12 @@ const ArticlesPage = () => {
   const posts = usePost()
   const heroPost = posts[0].node
   const [items, setItems] = useState(posts)
-
-  // // Filter posts
-  // // const [pillActive, setPillActive] = useState(false)
-  // const setFilteredItems = (category: string) => {
-  //   setItems(
-  //     posts.filter(item => {
-  //       if (item.node.categories[0].title.includes(category)) {
-  //         return item
-  //       }
-  //       if (
-  //         item.node.categories[1] &&
-  //         item.node.categories[1].title.includes(category)
-  //       ) {
-  //         return item
-  //       }
-  //     })
-  //   )
-  // }
-  // // Reset / Show all
-  // const resetFilteredItems = () => {
-  //   setItems(posts)
-  // }
   
   return (
     <S.ArticlesPage>
       <FeaturedArticles bg={theme.colors.black} post={heroPost} />
 
-      {/* <FilterNav
-        setFilteredItems={setFilteredItems}
-        resetFilteredItems={resetFilteredItems}
-      /> */}
+      <CatNav postType="articles" />
 
       <Section>
         <Flex

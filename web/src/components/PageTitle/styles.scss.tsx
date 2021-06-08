@@ -1,33 +1,12 @@
-// Video Styles:
+// Filter Nav Styles:
 
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import Section from '../../../components/Section'
-import theme from '../../../gatsby-plugin-theme-ui'
-import { Box, Flex } from '../../../components/ui'
+import theme from '../../gatsby-plugin-theme-ui'
+import { Box } from '../ui'
 
 // ___________________________________________________________________
-
-export const Video = styled.div`
-  background: ${theme.colors.black};
-
-  .swiper-container {
-    overflow: visible;
-    padding-bottom: ${theme.space[7]};
-  }
-
-  img {
-    background: ${theme.colors.white};
-  }
-
-  .utilities {
-    @media ${theme.mq.tablet} {
-      position: sticky;
-      top: calc(${theme.headerHeight} + ${theme.space[5]});
-    }
-  }
-`
 
 export const PageTitle = styled(Box)`
   display: flex;
@@ -35,12 +14,8 @@ export const PageTitle = styled(Box)`
   justify-content: space-between;
 
   background: ${theme.colors.black};
-  border-top: ${theme.border};
+  border-bottom: ${theme.border};
   width: 100%;
-
-  h4 {
-    white-space: nowrap;
-  }
 
   .pillbox {
     display: flex;

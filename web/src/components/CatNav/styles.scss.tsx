@@ -1,4 +1,4 @@
-// Filter Nav Styles:
+// Category Nav Styles:
 
 // ___________________________________________________________________
 
@@ -8,7 +8,7 @@ import { Box } from '../ui'
 
 // ___________________________________________________________________
 
-export const FilterNav = styled(Box)`
+export const CatNav = styled(Box)`
   align-items: center;
   justify-content: space-between;
 

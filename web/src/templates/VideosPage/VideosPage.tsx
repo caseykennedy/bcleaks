@@ -7,13 +7,12 @@ import React, { useState } from 'react'
 // Theme
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Flex } from '../../components/ui'
-import { Grid } from 'theme-ui'
+import { Flex, Grid } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
 import CardPost from '../../components/CardPost'
-import FilterNav from '../../components/FilterNav'
+import CatNav from '../../components/CatNav'
 import FeaturedVideo from '../../components/FeaturedVideo'
 
 // Data
@@ -54,10 +53,7 @@ const VideosPage = () => {
         hero={false}
       />
 
-      <FilterNav
-        setFilteredItems={setFilteredItems}
-        resetFilteredItems={resetFilteredItems}
-      />
+      <CatNav postType="videos" />
 
       <Section>
         <Grid columns={[1, 2, 3]} gap={theme.space[4]}>

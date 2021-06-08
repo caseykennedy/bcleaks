@@ -26,10 +26,10 @@ export type LayoutProps = {
   // mainRef: React.RefObject<HTMLDivElement>
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, location }) => {
   // Ref <main> to lock body for modal/overlay
   const mainRef = useRef<HTMLDivElement>(null)
-  const [dialog, setDialog] = React.useState(false)
+  const showTicker = location && location.pathname === '/'
 
   // eslint-disable-next-line no-console
   console.log(
@@ -39,7 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <S.Wrapper>
       <Header mainRef={mainRef} />
-      <CryptoTicker />
+      {showTicker && <CryptoTicker />}
       <S.Main ref={mainRef}>{children}</S.Main>
       <Footer />
     </S.Wrapper>

@@ -78,7 +78,7 @@ export const CardPost = styled(Flex)<{ inline?: boolean }>`
   }
 
   &:hover {
-    border-color: ${p => (!p.inline ? 'inherit' : theme.colors.primary)};
+    border-color: ${theme.colors.primary};
 
     .figure {
       border-color: ${theme.colors.primary};
