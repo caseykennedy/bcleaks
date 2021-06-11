@@ -29,7 +29,7 @@ export const Header = styled(Flex)`
   }
 
   background: ${theme.colors.background};
-  border-bottom: ${theme.border};
+  /* border-bottom: ${theme.border}; */
   margin: 0 auto;
   position: sticky;
   top: 0;

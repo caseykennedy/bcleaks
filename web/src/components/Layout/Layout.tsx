@@ -47,18 +47,3 @@ const Layout: React.FC<LayoutProps> = ({ children, location }) => {
 }
 
 export default Layout
-
-// ___________________________________________________________________
-
-// export const withLayout = <P extends object>(
-//   WrappedComponent: React.ComponentType<P>
-// ) =>
-//   class WithLayout extends React.Component<P & LayoutProps> {
-//     render() {
-//       return (
-//         <Layout location={this.props.location}>
-//           <WrappedComponent {...this.props} />
-//         </Layout>
-//       )
-//     }
-//   }

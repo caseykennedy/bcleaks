@@ -2,7 +2,7 @@
 
 // ___________________________________________________________________
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 
 // Theme
@@ -14,7 +14,8 @@ import { Box, Flex, Heading, Text } from 'theme-ui'
 import Section from '../../components/Section'
 import CardPost from '../../components/CardPost'
 import CatNav from '../../components/CatNav'
-
+import Button from '../../components/ui/Button'
+import Icon from '../../components/Icons'
 
 // ___________________________________________________________________
 
@@ -32,7 +33,36 @@ type Props = {
 }
 
 const ArticleCategoryPage: React.FC<Props> = ({ pageContext, data }) => {
-  const [posts,] = useState(data.category.posts || [])
+  const [posts] = useState(data.category.posts || [])
+  // State for the list
+  const [list, setList] = useState([...posts.slice(0, 15)])
+  // State to trigger oad more
+  const [loadMore, setLoadMore] = useState(false)
+  // State of whether there is more to load
+  const [hasMore, setHasMore] = useState(posts.length > 15)
+  // Load more button click
+  const handleLoadMore = () => {
+    setLoadMore(true)
+  }
+
+  // Handle loading more articles
+  useEffect(() => {
+    if (loadMore && hasMore) {
+      const currentLength = list.length
+      const isMore = currentLength < posts.length
+      const nextResults = isMore
+        ? posts.slice(currentLength, currentLength + 15)
+        : []
+      setList([...list, ...nextResults])
+      setLoadMore(false)
+    }
+  }, [loadMore, hasMore]) // eslint-disable-line
+
+  // Check if there is more
+  useEffect(() => {
+    const isMore = list.length < posts.length
+    setHasMore(isMore)
+  }, [list]) // eslint-disable-line
   return (
     <S.ArticleCategoryPage>
       <CatNav postType="articles" />
@@ -44,14 +74,14 @@ const ArticleCategoryPage: React.FC<Props> = ({ pageContext, data }) => {
           sx={{ fontFamily: `display` }}
           className="text--lg  text--uppercase"
         >
-          {data.category.title} articles
+          {data.category.title}
         </Heading>
       </Section>
 
       <Section border={true} pt={0}>
         <Flex>
           <Box sx={{ flex: [1, 1, 6 / 8], width: `100%` }}>
-            {posts.map((post, idx) => (
+            {list.map((post, idx) => (
               <CardPost
                 aspectRatio={4 / 3}
                 post={post}
@@ -61,6 +91,14 @@ const ArticleCategoryPage: React.FC<Props> = ({ pageContext, data }) => {
             ))}
           </Box>
         </Flex>
+
+        <Box mt={6}>
+          {hasMore && (
+            <Button onClick={handleLoadMore}>
+              Load More <Icon name="plus" />
+            </Button>
+          )}
+        </Box>
       </Section>
     </S.ArticleCategoryPage>
   )
