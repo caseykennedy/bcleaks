@@ -35,7 +35,6 @@ export const PageTitle = styled(Box)`
   justify-content: space-between;
 
   background: ${theme.colors.black};
-  border-top: ${theme.border};
   width: 100%;
 
   h4 {

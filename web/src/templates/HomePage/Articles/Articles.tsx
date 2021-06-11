@@ -30,7 +30,7 @@ const Articles = () => {
         <FeaturedArticles bg={theme.colors.black} post={heroPost} />
       </Box>
 
-      <Section border={true}>
+      <Section>
         <Flex
           justifyContent="space-between"
           width={1}

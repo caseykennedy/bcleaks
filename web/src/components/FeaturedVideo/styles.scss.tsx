@@ -13,7 +13,7 @@ import Section from '../Section'
 // ___________________________________________________________________
 
 export const FeaturedVideo = styled(Box)<{ hero?: boolean }>`
-  border-top: ${theme.border};
+  border-bottom: ${theme.border};
 
   .featured {
     &__inner {

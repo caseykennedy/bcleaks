@@ -35,11 +35,11 @@ type Props = {
 const ArticleCategoryPage: React.FC<Props> = ({ pageContext, data }) => {
   const [posts] = useState(data.category.posts || [])
   // State for the list
-  const [list, setList] = useState([...posts.slice(0, 15)])
+  const [list, setList] = useState([...posts.slice(0, 10)])
   // State to trigger oad more
   const [loadMore, setLoadMore] = useState(false)
   // State of whether there is more to load
-  const [hasMore, setHasMore] = useState(posts.length > 15)
+  const [hasMore, setHasMore] = useState(posts.length > 10)
   // Load more button click
   const handleLoadMore = () => {
     setLoadMore(true)
@@ -51,7 +51,7 @@ const ArticleCategoryPage: React.FC<Props> = ({ pageContext, data }) => {
       const currentLength = list.length
       const isMore = currentLength < posts.length
       const nextResults = isMore
-        ? posts.slice(currentLength, currentLength + 15)
+        ? posts.slice(currentLength, currentLength + 10)
         : []
       setList([...list, ...nextResults])
       setLoadMore(false)

@@ -11,6 +11,15 @@ import { Box, Flex } from '../ui'
 // ___________________________________________________________________
 
 export const Header = styled(Flex)`
+  background: ${theme.colors.background};
+  border-bottom: ${theme.border};
+  margin: 0 auto;
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  z-index: 999999;
+
   .inner {
     display: flex;
     align-items: center;
@@ -27,15 +36,6 @@ export const Header = styled(Flex)`
       padding-left: ${theme.space[5]};
     }
   }
-
-  background: ${theme.colors.background};
-  /* border-bottom: ${theme.border}; */
-  margin: 0 auto;
-  position: sticky;
-  top: 0;
-
-  width: 100%;
-  z-index: 999999;
 `
 
 export const Menu = styled(Flex)`

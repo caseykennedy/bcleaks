@@ -133,7 +133,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
                     <Flex mt={5} mb={4}>
                       <AnchorLink offset={theme.headerHeight} href={`#sources`}>
                         <Button bg="transparent" color={theme.colors.tertiary}>
-                          <Icon name="document" /> View Sources
+                          View Sources <Icon name="document" />
                         </Button>
                       </AnchorLink>
                     </Flex>

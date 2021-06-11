@@ -11,7 +11,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 export const CryptoTicker = styled(Flex)`
   align-items: center;
   background: ${theme.colors.black};
-  /* border-bottom: ${theme.border}; */
+  border-bottom: ${theme.border};
   font-size: ${theme.fontSizes[1]};
 
   height: ${theme.tickerHeight};
