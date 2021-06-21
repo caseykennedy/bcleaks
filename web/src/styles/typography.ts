@@ -159,6 +159,10 @@ const Typography = css`
     transition: ${theme.transition.all};
 
     text-transform: capitalize;
+
+    strong {
+      font-weight: ${theme.fontWeights.regular};
+    }
   }
 
   .text--xxxl {

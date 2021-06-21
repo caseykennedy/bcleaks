@@ -47,7 +47,7 @@ const serializers = {
 
         case 'a':
           return (
-            <a rel="noopener" target="_blank">
+            <a rel="nofollow" target="_blank">
               {props.children}
             </a>
           )

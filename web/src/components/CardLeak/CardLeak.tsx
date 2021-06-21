@@ -257,7 +257,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
 
           {post.data.linkUrl && (
             <Box width={1} className="link-url">
-              <a href={post.data.linkUrl} target="_blank">
+              <a href={post.data.linkUrl} rel="nofollow" target="_blank">
                 {post.data.linkUrl}
               </a>
             </Box>
