@@ -219,19 +219,19 @@ const CardLeak: React.FC<CardLeakProps> = ({
 
   // Highlight the category pill
   let pillColor
-  if (categories[0].title === 'Altcoin') {
+  if (post.data.category === 'Altcoin') {
     pillColor = theme.colors.blue
-  } else if (categories[0].title === 'Bitcoin') {
+  } else if (post.data.category === 'Bitcoin') {
     pillColor = theme.colors.orange
-  } else if (categories[0].title === 'Crypto Picks') {
+  } else if (post.data.category === 'Crypto Picks') {
     pillColor = theme.colors.pink
-  } else if (categories[0].title === 'DeFi') {
+  } else if (post.data.category === 'DeFi') {
     pillColor = theme.colors.yellow
-  } else if (categories[0].title === 'Ethereum') {
+  } else if (post.data.category === 'Ethereum') {
     pillColor = theme.colors.purple
-  } else if (categories[0].title === 'Investigations') {
+  } else if (post.data.category === 'Investigations') {
     pillColor = theme.colors.gray
-  } else if (categories[0].title === 'Live Streams') {
+  } else if (post.data.category === 'Live Streams') {
     pillColor = theme.colors.white
   } else {
     pillColor = theme.colors.tertiary
