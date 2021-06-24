@@ -111,7 +111,7 @@ const CryptoTicker = () => {
       }
     }
     fetchData()
-  })
+  }, [])
 
   return (
     <S.CryptoTicker>
