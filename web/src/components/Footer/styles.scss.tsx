@@ -74,7 +74,7 @@ export const Bulletin = styled(Box)`
   }
 
   .bulletin {
-    &__newsletter {
+    &__newsletter-form {
       flex: 1;
       border-bottom: ${theme.border};
       margin-bottom: ${theme.space[6]};
