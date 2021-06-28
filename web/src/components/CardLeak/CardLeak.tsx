@@ -19,7 +19,7 @@ import api from '../../utils/api'
 // Theme + ui
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Text } from '../ui'
+import { Box, Flex, Text } from 'theme-ui'
 
 // Components
 import Icon from '../Icons'
@@ -256,24 +256,28 @@ const CardLeak: React.FC<CardLeakProps> = ({
               </Box>
             </Box>
 
-            {post.data.linkUrl && <Icon name="external-link" />}
+            {post.data.linkUrl && (
+              <a href={post.data.linkUrl} rel="nofollow" target="_blank">
+                <Icon name="external-link" />
+              </a>
+            )}
           </Flex>
 
           <Text className="title">{post.data.title && post.data.title}</Text>
 
           {post.data.linkUrl && (
-            <Box width={1} className="link-url">
+            <Box sx={{ width: `100%` }} className="link-url">
               <a href={post.data.linkUrl} rel="nofollow" target="_blank">
                 {post.data.linkUrl}
               </a>
             </Box>
           )}
 
-          {post.data.text && (
+          {/* {post.data.text && (
             <Text as="p" className="text">
               {post.data.text}
             </Text>
-          )}
+          )} */}
         </Box>
 
         <Flex className="utilities">

@@ -6,7 +6,8 @@ import React from 'react'
 
 // Theme
 import * as S from './styles.scss'
-import { Box } from '../../components/ui'
+import theme from '../../gatsby-plugin-theme-ui'
+import { Box, Flex } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
@@ -17,11 +18,12 @@ import LeakList from '../../components/LeakList'
 const CommunityPage = () => {
   return (
     <S.CommunityPage>
-      <Section>
-        <Box width={[1, 1, 2 / 3]}>
+      <Flex p={theme.gutter.axis}>
+        <Box mr={[0, 0, 5]} sx={{ flex: 1 }}>
           <LeakList />
         </Box>
-      </Section>
+        <Box sx={{ display: [`none`, `none`, `block`], width: [`312px`] }} />
+      </Flex>
     </S.CommunityPage>
   )
 }

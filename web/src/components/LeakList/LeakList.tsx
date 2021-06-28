@@ -9,7 +9,7 @@ import isLocalHost from '../../utils/isLocalHost'
 // Context
 import StoreContext from '../../context/StoreContext'
 // ui
-import { Box } from '../ui'
+import { Grid } from 'theme-ui'
 // Components
 import CardLeak from '../../components/CardLeak'
 
@@ -52,12 +52,14 @@ const LeakList = () => {
 
   return !isLoading ? (
     <>
-      {state.posts.map((post, idx) => (
-        <CardLeak post={post} key={idx} />
-      ))}
+      <Grid columns={1} gap={4}>
+        {state.posts.map((post, idx) => (
+          <CardLeak post={post} key={idx} />
+        ))}
+      </Grid>
     </>
   ) : (
-    <Box>loading...</Box>
+    <div>loading...</div>
   )
 }
 

@@ -9,7 +9,7 @@ import { darken } from 'polished'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // Elements
-import { Flex } from '../ui'
+import { Flex } from 'theme-ui'
 
 // ___________________________________________________________________
 
@@ -43,7 +43,7 @@ export const CardLeak = styled(Flex)`
 
     @media ${theme.mq.tablet} {
       flex: 4;
-      padding-left: calc(${theme.space[6]});
+      padding-left: calc(${theme.space[5]});
     }
 
     &:hover {
@@ -97,8 +97,8 @@ export const CardLeak = styled(Flex)`
     .title {
       color: ${theme.colors.white};
       font-family: ${theme.fonts.sans};
-      font-size: calc(${theme.fontSizes[2]} * 1.15);
-      line-height: 1.25;
+      font-size: calc(${theme.fontSizes[2]});
+      line-height: 1.5;
 
       margin-bottom: calc(${theme.space[1]} / 2);
 
@@ -109,7 +109,7 @@ export const CardLeak = styled(Flex)`
       -webkit-box-orient: vertical;
 
       @media ${theme.mq.tablet} {
-        font-size: calc(${theme.fontSizes[3]});
+      font-size: calc(${theme.fontSizes[2]} * 1.25);
         -webkit-line-clamp: 4; /* number of lines to show */
       }
 
@@ -128,8 +128,8 @@ export const CardLeak = styled(Flex)`
 
       a {
         color: ${darken(0.1, theme.colors.primary)};
-        font-size: ${theme.fontSizes[1]};
-        letter-spacing: 0;
+        font-size: calc(${theme.fontSizes[1]} / 1.15);
+        letter-spacing: -0.5px;
 
         display: -webkit-box;
         overflow: hidden;
