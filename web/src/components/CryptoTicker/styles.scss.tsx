@@ -3,12 +3,12 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { Flex } from 'theme-ui'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-export const CryptoTicker = styled(Flex)`
+export const CryptoTicker = styled.div`
+  display: flex;
   align-items: center;
   background: ${theme.colors.black};
   border-bottom: ${theme.border};
@@ -26,7 +26,7 @@ export const CryptoTicker = styled(Flex)`
   }
 `
 
-export const Coin = styled(Flex)`
+export const Coin = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;

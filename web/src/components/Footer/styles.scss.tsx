@@ -4,12 +4,12 @@
 
 import styled from 'styled-components'
 import { darken } from 'polished'
-import { Box, Flex } from 'theme-ui'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
 
-export const Footer = styled(Flex)`
+export const Footer = styled.div`
+  display: flex;
   align-items: flex-end;
   flex-direction: row;
   flex-wrap: wrap;
@@ -55,7 +55,7 @@ export const Footer = styled(Flex)`
   }
 `
 
-export const Bulletin = styled(Box)`
+export const Bulletin = styled.div`
   background: ${theme.colors.black};
   border-top: ${theme.border};
   width: 100%;
@@ -179,7 +179,8 @@ export const Bulletin = styled(Box)`
   }
 `
 
-export const Social = styled(Flex)`
+export const Social = styled.div`
+  display: flex;
   border-top: ${theme.border};
   background: ${theme.colors.black};
 

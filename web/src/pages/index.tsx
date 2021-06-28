@@ -5,11 +5,9 @@
 // Libraries
 import React from 'react'
 
-// Elements
-import { AnimatedBox } from '../components/ui'
-
 // Components
 import SEO from '../components/SEO'
+import CryptoTicker from '../components/CryptoTicker'
 import HomePage from '../templates/HomePage'
 
 // ___________________________________________________________________
@@ -18,9 +16,8 @@ const Index = () => {
   return (
     <>
       <SEO />
-      <AnimatedBox>
-        <HomePage />
-      </AnimatedBox>
+      <CryptoTicker />
+      <HomePage />
     </>
   )
 }
