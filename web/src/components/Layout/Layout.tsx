@@ -7,6 +7,7 @@ import React, { useRef } from 'react'
 // Components
 import Header from '../Header'
 import Footer from '../Footer'
+import CryptoTicker from '../CryptoTicker'
 
 // Styles + Theme
 import * as S from './styles.scss'
@@ -38,6 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children, location }) => {
   return (
     <S.Wrapper>
       <Header mainRef={mainRef} />
+      {showTicker && <CryptoTicker />}
       <S.Main ref={mainRef}>{children}</S.Main>
       <Footer />
     </S.Wrapper>

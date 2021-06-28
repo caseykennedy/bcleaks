@@ -10,7 +10,7 @@ import Swiper from 'react-id-swiper'
 import StoreContext from '../../context/StoreContext'
 
 // ui
-import { Box } from '../ui'
+import { Box } from 'theme-ui'
 
 // Theme + Styles
 import * as S from './styles.scss'
@@ -30,7 +30,7 @@ const Slider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     autoplay: {
       delay: 5000,
       disableOnInteraction: true
-    },
+    }
   }
   return <Swiper {...params}>{children}</Swiper>
 }
@@ -54,10 +54,10 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
   }
   return (
     <>
-      <div className="coin__image">
+      <Box className="coin__image">
         <img height="18px" src={coin.image} />
-      </div>
-      <div className="coin__details">
+      </Box>
+      <Box sx={{ flex: 3 }}>
         <div className="coin-title">
           <div className="coin-title__name">{coinName}</div>
           {/* <div className="coin-title__marker">24h</div> */}
@@ -67,7 +67,7 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
           <div className="coin-info__carat">{carat}</div>
           <div className="coin-info__change">{currentChange.toFixed(2)}%</div>
         </div>
-      </div>
+      </Box>
     </>
   )
 }
@@ -122,7 +122,7 @@ const CryptoTicker = () => {
             </S.Coin>
           ))
         ) : (
-          <Box pl={theme.gutter.axis}>loading...</Box>
+          <div className="is-loading">loading...</div>
         )}
       </Slider>
     </S.CryptoTicker>

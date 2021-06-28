@@ -24,6 +24,14 @@ export const CryptoTicker = styled.div`
     .swiper-wrapper {
     }
   }
+
+  .is-loading {
+    padding-left: ${theme.space[4]};
+
+    @media ${theme.mq.tablet} {
+      padding-left: ${theme.space[5]};
+    }
+  }
 `
 
 export const Coin = styled.div`
