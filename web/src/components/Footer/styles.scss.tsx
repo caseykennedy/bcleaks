@@ -4,7 +4,7 @@
 
 import styled from 'styled-components'
 import { darken } from 'polished'
-import { Box, Flex } from '../ui'
+import { Box, Flex } from 'theme-ui'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
@@ -74,7 +74,7 @@ export const Bulletin = styled(Box)`
   }
 
   .bulletin {
-    &__newsletter-form {
+    &__newsletter {
       flex: 1;
       border-bottom: ${theme.border};
       margin-bottom: ${theme.space[6]};

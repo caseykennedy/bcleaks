@@ -10,7 +10,7 @@ import Swiper from 'react-id-swiper'
 import StoreContext from '../../context/StoreContext'
 
 // ui
-import { Box, Flex } from '../ui'
+import { Box } from '../ui'
 
 // Theme + Styles
 import * as S from './styles.scss'
@@ -54,20 +54,20 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
   }
   return (
     <>
-      <Box flex={1} className="coin__image">
+      <div className="coin__image">
         <img height="18px" src={coin.image} />
-      </Box>
-      <Box flex={3}>
-        <Flex className="coin-title">
+      </div>
+      <div className="coin__details">
+        <div className="coin-title">
           <div className="coin-title__name">{coinName}</div>
           {/* <div className="coin-title__marker">24h</div> */}
-        </Flex>
-        <Flex color={color} className="coin-info">
+        </div>
+        <div color={color} className="coin-info">
           <div className="coin-info__price">${currentPrice.toFixed(2)}</div>
           <div className="coin-info__carat">{carat}</div>
           <div className="coin-info__change">{currentChange.toFixed(2)}%</div>
-        </Flex>
-      </Box>
+        </div>
+      </div>
     </>
   )
 }
@@ -94,7 +94,6 @@ const CryptoTicker = () => {
             'maker',
             'litecoin',
             'tezos',
-            'stellar',
             'monero',
             'zcash'
           ],
@@ -111,7 +110,7 @@ const CryptoTicker = () => {
       }
     }
     fetchData()
-  }, [])
+  })
 
   return (
     <S.CryptoTicker>

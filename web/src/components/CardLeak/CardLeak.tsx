@@ -231,8 +231,6 @@ const CardLeak: React.FC<CardLeakProps> = ({
     pillColor = theme.colors.purple
   } else if (post.data.category === 'Investigations') {
     pillColor = theme.colors.gray
-  } else if (post.data.category === 'Live Streams') {
-    pillColor = theme.colors.white
   } else {
     pillColor = theme.colors.tertiary
   }

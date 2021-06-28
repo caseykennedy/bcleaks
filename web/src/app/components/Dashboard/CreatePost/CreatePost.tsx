@@ -176,12 +176,12 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           <option value="" disabled={true} selected={true}>
             choose a category
           </option>
-          <option value="altcoin">Altcoin</option>
-          <option value="bitcoin">Bitcoin</option>
-          <option value="cryptoPicks">Crypto Picks</option>
-          <option value="defi">DeFi</option>
-          <option value="ethereum">Ethereum</option>
-          <option value="investigations">Investigations</option>
+          <option value="Altcoin">Altcoin</option>
+          <option value="Bitcoin">Bitcoin</option>
+          <option value="Crypto Picks">Crypto Picks</option>
+          <option value="DeFi">DeFi</option>
+          <option value="Ethereum">Ethereum</option>
+          <option value="Investigations">Investigations</option>
         </Select>
 
         <Button

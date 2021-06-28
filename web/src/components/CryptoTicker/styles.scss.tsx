@@ -3,7 +3,7 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { Flex } from '../ui'
+import { Flex } from 'theme-ui'
 import theme from '../../gatsby-plugin-theme-ui'
 
 // ___________________________________________________________________
@@ -46,7 +46,12 @@ export const Coin = styled(Flex)`
       margin-right: ${theme.space[3]};
     }
 
+    &__details {
+      flex: 3;
+    }
+
     &-title {
+      display: flex;
       color: ${theme.colors.gray};
       font-family: ${theme.fonts.sans};
       font-size: ${theme.fontSizes[1]};

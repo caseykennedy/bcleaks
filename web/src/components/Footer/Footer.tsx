@@ -37,7 +37,7 @@ const Bulletin = () => {
         <Box
           px={theme.gutter.axis}
           py={[5, 5, 6]}
-          className="bulletin__newsletter-form"
+          className="bulletin__newsletter"
         >
           <Heading fontFamily="Rubik" className="text--md  text--uppercase">
             Join the newletter
