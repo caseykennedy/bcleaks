@@ -3,6 +3,7 @@
 // ___________________________________________________________________
 
 import React, { useRef } from 'react'
+import { withPrefix } from 'gatsby'
 
 // Components
 import Header from '../Header'
@@ -29,7 +30,7 @@ export type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children, location }) => {
   // Ref <main> to lock body for modal/overlay
   const mainRef = useRef<HTMLDivElement>(null)
-  const showTicker = location && location.pathname === '/'
+  const showTicker = location && location.pathname === withPrefix('/')
 
   // eslint-disable-next-line no-console
   console.log(

@@ -9,9 +9,6 @@ import Swiper from 'react-id-swiper'
 // Context
 import StoreContext from '../../context/StoreContext'
 
-// ui
-import { Box } from 'theme-ui'
-
 // Theme + Styles
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
@@ -54,10 +51,10 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
   }
   return (
     <>
-      <Box className="coin__image">
+      <div className="coin__image">
         <img height="18px" src={coin.image} />
-      </Box>
-      <Box sx={{ flex: 3 }}>
+      </div>
+      <div className="coin__detail">
         <div className="coin-title">
           <div className="coin-title__name">{coinName}</div>
           {/* <div className="coin-title__marker">24h</div> */}
@@ -67,7 +64,7 @@ const Coin: React.FC<{ coin: any }> = ({ coin }) => {
           <div className="coin-info__carat">{carat}</div>
           <div className="coin-info__change">{currentChange.toFixed(2)}%</div>
         </div>
-      </Box>
+      </div>
     </>
   )
 }

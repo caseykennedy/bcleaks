@@ -54,7 +54,7 @@ export const Coin = styled.div`
       margin-right: ${theme.space[3]};
     }
 
-    &__details {
+    &__detail {
       flex: 3;
     }
 

@@ -12,9 +12,8 @@ import { Link, withPrefix } from 'gatsby'
 // Theme + UI
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Heading, Text } from '../ui'
+import { Box, Flex, Heading, Text, Input } from 'theme-ui'
 import Button from '../ui/Button'
-import { Input } from 'theme-ui'
 
 import Icon from '../Icons'
 import Symbol from '../Symbol'
@@ -34,20 +33,21 @@ const Bulletin = () => {
   return (
     <S.Bulletin>
       <Flex className="inner">
-        <Box
-          px={theme.gutter.axis}
-          py={[5, 5, 6]}
-          className="bulletin__newsletter"
-        >
-          <Heading fontFamily="Rubik" className="text--md  text--uppercase">
+        <Box p={theme.gutter.axis} className="bulletin__newsletter">
+          <Heading
+            mb={3}
+            sx={{ fontFamily: `Rubik` }}
+            className="text--md  text--uppercase"
+          >
             Join the newletter
           </Heading>
-          <Flex
+          <Box
             as="form"
             name="eOn Newsletter Signup Form"
             method="POST"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
+            sx={{ display: `flex` }}
           >
             <input type="hidden" name="bot-field" />
             <input
@@ -81,24 +81,35 @@ const Bulletin = () => {
             >
               subscribe
             </button>
-          </Flex>
+          </Box>
 
-          <Text as="p" mt={3} width={[1, 1, 2 / 3]} className="text--small">
+          <Text
+            as="p"
+            mt={3}
+            sx={{ width: [`100%`, `100%`, `75%`] }}
+            className="text--small"
+          >
             By signing up, you agree to our <Link to={`/terms`}>Terms</Link> and
             that you have read our <Link to={`/terms`}>Privacy Policy</Link>.
           </Text>
         </Box>
 
-        <Box px={theme.gutter.axis} py={[5, 5, 6]} className="bulletin__social">
-          <Flex width={1} justifyContent="space-between" mb={4} flexWrap="wrap">
-            <Box
-              as="img"
-              width="175px"
-              src={checkUsOut}
-              alt="BC Leaks Podcast"
-            />
+        <Box p={theme.gutter.axis} className="bulletin__social">
+          <Flex
+            sx={{
+              justifyContent: `space-between`,
+              flexWrap: `wrap`,
+              width: `100%`
+            }}
+          >
+            <Box sx={{ width: `175px` }}>
+              <img src={checkUsOut} alt="BC Leaks Podcast" />
+            </Box>
 
-            <Flex flexDirection="column" justifyContent="flex-end" pl={4}>
+            <Flex
+              pl={4}
+              sx={{ flexDirection: `column`, justifyContent: `flex-end` }}
+            >
               <Icon name="youtube" color="white" />
               <Icon name="twitter" color="white" />
             </Flex>
@@ -130,60 +141,11 @@ const Bulletin = () => {
   )
 }
 
-const Social = () => {
-  return (
-    <S.Social>
-      <Flex className="inner">
-        <Box px={theme.gutter.axis} py={[5, 5, 6]} className="social__links">
-          <Flex width={1} justifyContent="space-between" mb={4} flexWrap="wrap">
-            <Box
-              as="img"
-              width="175px"
-              src={checkUsOut}
-              alt="BC Leaks Podcast"
-            />
-
-            <Flex justifyContent="flex-end" pl={4}>
-              youtube
-              <br />
-              twitter
-            </Flex>
-          </Flex>
-
-          <Flex>
-            <button>subscribe</button>
-            <button>Follow</button>
-          </Flex>
-        </Box>
-
-        <Flex px={theme.gutter.axis} py={[5, 5, 6]} className="social__podcast">
-          <Box mr={6}>
-            <Heading fontFamily="Rubik" className="text--md  text--uppercase">
-              Support us
-            </Heading>
-            <Text as="p">Donate to our hard-hitting crypto news outlet.</Text>
-
-            <Flex>
-              <Button bg="transparent" color={theme.colors.primary}>
-                <Icon name="arrow" /> Donate
-              </Button>
-            </Flex>
-          </Box>
-
-          <Box>
-            {/* <Box as="img" width="300px" src={podFig} alt="BC Leaks Podcast" /> */}
-          </Box>
-        </Flex>
-      </Flex>
-    </S.Social>
-  )
-}
-
 const Footer: React.FC = () => {
-  const isUserPath = isBrowser && location.pathname === withPrefix('/user')
+  // const isUserPath = isBrowser && location.pathname === withPrefix('/user')
   return (
     <>
-      {!isUserPath && <Bulletin />}
+      <Bulletin />
       <S.Footer as="footer">
         <Box>
           <a href="">FAQs</a>

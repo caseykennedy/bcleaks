@@ -97,7 +97,7 @@ export const CardLeak = styled(Flex)`
     .title {
       color: ${theme.colors.white};
       font-family: ${theme.fonts.sans};
-      font-size: calc(${theme.fontSizes[2]});
+      font-size: calc(${theme.fontSizes[2]} * 1.15);
       line-height: 1.5;
 
       margin-bottom: calc(${theme.space[1]} / 2);
@@ -156,10 +156,21 @@ export const CardLeak = styled(Flex)`
     .text {
       color: ${darken(0.05, theme.colors.lightgray)};
       font-family: ${theme.fonts.sans};
-      font-size: calc(${theme.fontSizes[2]});
+      font-size: calc(${theme.fontSizes[1]});
       line-height: 1.5;
 
       margin-bottom: ${theme.space[0]};
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* number of lines to show */
+      -webkit-box-orient: vertical;
+
+      @media ${theme.mq.tablet} {
+        font-size: calc(${theme.fontSizes[2]});
+        -webkit-line-clamp: 2; /* number of lines to show */
+      }
     }
 
     .utilities {

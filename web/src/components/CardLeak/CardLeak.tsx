@@ -273,11 +273,11 @@ const CardLeak: React.FC<CardLeakProps> = ({
             </Box>
           )}
 
-          {/* {post.data.text && (
+          {post.data.text && (
             <Text as="p" className="text">
               {post.data.text}
             </Text>
-          )} */}
+          )}
         </Box>
 
         <Flex className="utilities">

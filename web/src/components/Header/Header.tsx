@@ -119,7 +119,7 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
             aria-label="BC Leaks, back to home"
           >
             <S.Logo>
-              <Box className="logo-symbol">
+              <Box className="logo-symbol" onClick={toggleMenu}>
                 <Symbol />
               </Box>
               <Flex className="logo-lettermark">
