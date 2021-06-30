@@ -6,7 +6,7 @@
 
 import React from 'react'
 
-import IconStyle from './styles.scss'
+import * as S from './styles.scss'
 
 // Icons
 // TODO: alphabetize
@@ -17,6 +17,7 @@ import Twitter from './SVG/Twitter'
 import NextArrow from './SVG/NextArrow'
 import Logout from './SVG/Logout'
 import Carat from './SVG/Carat'
+import Comment from './SVG/Comment'
 
 import Document from './SVG/Document'
 import Download from './SVG/Download'
@@ -28,127 +29,140 @@ import ListView from './SVG/ListView'
 import Pdf from './SVG/Pdf'
 import Plus from './SVG/Plus'
 import Pin from './SVG/Pin'
+import Share from './SVG/Share'
 
 import Youtube from './SVG/Youtube'
 
 // ___________________________________________________________________
 
 type Props = {
-  name: string
   className?: string
   color?: string
   fas?: string
+  name: string
 }
 
-const Icon: React.FC<Props> = ({ name, className, color, fas }) => {
+const Icon: React.FC<Props> = ({ className, color, fas, name }) => {
   switch (name) {
     case 'arrow':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <NextArrow />
-        </IconStyle>
+        </S.Icon>
       )
     case 'carat':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Carat />
-        </IconStyle>
+        </S.Icon>
+      )
+    case 'comment':
+      return (
+        <S.Icon color={color} className={className}>
+          <Comment />
+        </S.Icon>
       )
     case 'document':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Document />
-        </IconStyle>
+        </S.Icon>
       )
     case 'download':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Download />
-        </IconStyle>
+        </S.Icon>
       )
     case 'external-link':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <ExternalLink />
-        </IconStyle>
+        </S.Icon>
       )
     case 'facebook':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Facebook />
-        </IconStyle>
+        </S.Icon>
       )
     case 'gridView':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <GridView />
-        </IconStyle>
+        </S.Icon>
       )
     case 'hamburger':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Hamburger />
-        </IconStyle>
+        </S.Icon>
       )
     case 'instagram':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Instagram />
-        </IconStyle>
+        </S.Icon>
       )
     case 'listView':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <ListView />
-        </IconStyle>
+        </S.Icon>
       )
     case 'login':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Logout />
-        </IconStyle>
+        </S.Icon>
       )
     case 'logout':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Logout />
-        </IconStyle>
+        </S.Icon>
       )
     case 'pdf':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Pdf />
-        </IconStyle>
+        </S.Icon>
       )
     case 'plus':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Plus />
-        </IconStyle>
+        </S.Icon>
       )
     case 'pin':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Pin />
-        </IconStyle>
+        </S.Icon>
+      )
+    case 'share':
+      return (
+        <S.Icon color={color} className={className}>
+          <Share />
+        </S.Icon>
       )
     case 'twitter':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Twitter />
-        </IconStyle>
+        </S.Icon>
       )
     case 'youtube':
       return (
-        <IconStyle color={color} className={className}>
+        <S.Icon color={color} className={className}>
           <Youtube />
-        </IconStyle>
+        </S.Icon>
       )
     default:
       return (
-        <IconStyle color={color} className="ico">
+        <S.Icon color={color} className="ico">
           <i className={fas ? `fas fa-${name}` : `fas fab fa-${name}`} />
-        </IconStyle>
+        </S.Icon>
       )
   }
 }

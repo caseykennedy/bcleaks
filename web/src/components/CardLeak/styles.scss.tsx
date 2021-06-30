@@ -24,9 +24,9 @@ export const CardLeak = styled(Flex)`
 
   transition: ${theme.transition.all};
 
-  /* &:hover {
+  &:hover {
     border-color: ${theme.colors.primary};
-  } */
+  }
 
   @media ${theme.mq.tablet} {
     margin-bottom: ${theme.space[5]};
@@ -109,7 +109,7 @@ export const CardLeak = styled(Flex)`
       -webkit-box-orient: vertical;
 
       @media ${theme.mq.tablet} {
-      font-size: calc(${theme.fontSizes[2]} * 1.25);
+        font-size: calc(${theme.fontSizes[2]} * 1.25);
         -webkit-line-clamp: 4; /* number of lines to show */
       }
 
@@ -182,8 +182,26 @@ export const CardLeak = styled(Flex)`
       font-family: ${theme.fonts.sans};
       font-size: ${theme.fontSizes[1]};
 
-      margin-top: ${theme.space[4]};
+      margin-top: ${theme.space[5]};
       width: 100%;
+
+      &__item {
+        transition: color ${theme.transition.global};
+
+        span svg {
+          fill: ${theme.colors.darkgray};
+          margin-right: ${theme.space[2]};
+          width: 12px;
+        }
+
+        &:hover {
+          color: ${theme.colors.gray};
+
+          span svg {
+            fill: ${theme.colors.gray};
+          }
+        }
+      }
 
       .vote {
         display: flex;
@@ -197,8 +215,6 @@ export const CardLeak = styled(Flex)`
 
         @media ${theme.mq.tablet} {
           flex-direction: column;
-
-          /* font-size: ${theme.fontSizes[3]}; */
 
           margin: ${theme.space[3]} 0 0 ${theme.space[3]};
           position: absolute;
@@ -250,10 +266,6 @@ export const CardLeak = styled(Flex)`
             &:disabled,
             &[disabled] {
               cursor: default;
-
-              /* svg {
-                fill: ${theme.colors.primary};
-              } */
             }
           }
 
@@ -272,10 +284,6 @@ export const CardLeak = styled(Flex)`
             &:disabled,
             &[disabled] {
               cursor: default;
-
-              /* svg {
-                fill: ${theme.colors.purple};
-              } */
             }
           }
         }

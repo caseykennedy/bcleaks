@@ -11,7 +11,7 @@ import theme from '../../gatsby-plugin-theme-ui'
 // Begin Styles
 // ___________________________________________________________________
 
-const IconStyle = styled.span`
+export const Icon = styled.span`
   font-size: 1rem;
   line-height: 0;
   display: inline-flex;
@@ -26,5 +26,3 @@ const IconStyle = styled.span`
     transition: ${theme.transition.all};
   }
 `
-
-export default IconStyle

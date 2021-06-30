@@ -289,11 +289,15 @@ const CardLeak: React.FC<CardLeakProps> = ({
             voters={post.data.voters}
           />
 
-          <Flex mr={5} className="comments">
-            comments
+          <Flex mr={4} className="utilities__item">
+            <Icon name="comment" />
+            7 comments
           </Flex>
 
-          <Flex className="share">share</Flex>
+          <Flex className="utilities__item">
+            <Icon name="share" />
+            share
+          </Flex>
         </Flex>
       </Flex>
 

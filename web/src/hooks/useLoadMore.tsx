@@ -1,4 +1,5 @@
 // useLoadMore hook
+// Hook for slicing and loading more items from an array
 
 import React, { useState, useEffect, useCallback } from 'react'
 
