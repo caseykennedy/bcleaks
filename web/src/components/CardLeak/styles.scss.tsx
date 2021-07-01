@@ -16,9 +16,9 @@ import { Flex } from 'theme-ui'
 export const CardLeak = styled(Flex)`
   display: flex;
 
+  background: ${theme.colors.background};
   border: ${theme.border};
-  margin-bottom: ${theme.space[4]};
-  padding: ${theme.space[2]};
+  /* padding: ${theme.space[2]}; */
   position: relative;
   width: 100%;
 
@@ -28,22 +28,25 @@ export const CardLeak = styled(Flex)`
     border-color: ${theme.colors.primary};
   }
 
-  @media ${theme.mq.tablet} {
-    margin-bottom: ${theme.space[5]};
+  /* @media ${theme.mq.tablet} {
     padding: ${theme.space[3]};
-  }
+  } */
 
   .content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    padding-left: ${theme.space[1]};
+
+    background: ${theme.colors.black};
+    padding: ${theme.space[2]};
     width: 100%;
 
     @media ${theme.mq.tablet} {
+      border-left: ${theme.border};
       flex: 4;
-      padding-left: calc(${theme.space[5]});
+      margin-left: calc(${theme.space[5]} * 1.4);
+      padding: ${theme.space[3]} ${theme.space[3]} ${theme.space[3]} ${theme.space[4]};
     }
 
     &:hover {
@@ -99,8 +102,6 @@ export const CardLeak = styled(Flex)`
       font-family: ${theme.fonts.sans};
       font-size: calc(${theme.fontSizes[2]} * 1.15);
       line-height: 1.5;
-
-      margin-bottom: calc(${theme.space[1]} / 2);
 
       overflow: hidden;
       text-overflow: ellipsis;
@@ -211,14 +212,15 @@ export const CardLeak = styled(Flex)`
         color: ${theme.colors.white};
         font-weight: 600;
 
-        margin: 0 ${theme.space[4]} 0 0;
+        padding: 0 ${theme.space[4]} 0 0;
 
         @media ${theme.mq.tablet} {
           flex-direction: column;
 
-          margin: ${theme.space[3]} 0 0 ${theme.space[3]};
+          padding: ${theme.space[2]};
           position: absolute;
           top: 0;
+          bottom: 0;
           left: 0;
         }
 
@@ -239,16 +241,13 @@ export const CardLeak = styled(Flex)`
 
           background: ${theme.colors.black};
           border: none;
+          border-radius: ${theme.borderRadius};
           outline: 0;
           padding: ${theme.space[2]};
 
           svg {
-            fill: ${theme.colors.gray};
-            width: calc(${theme.space[3]} * 1.25);
-
-            @media ${theme.mq.tablet} {
-              width: ${theme.space[3]};
-            }
+            fill: ${theme.colors.darkgray};
+            width: 14px;
           }
 
           &--up {

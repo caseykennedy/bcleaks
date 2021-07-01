@@ -263,7 +263,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
             )}
           </Flex>
 
-          <Text className="title">{post.data.title && post.data.title}</Text>
+          <Text pr={[0, 5]} className="title">{post.data.title && post.data.title}</Text>
 
           {post.data.linkUrl && (
             <Box sx={{ width: `100%` }} className="link-url">
@@ -274,7 +274,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
           )}
 
           {post.data.text && (
-            <Text as="p" className="text">
+            <Text as="p" pr={[0, 5]} className="text">
               {post.data.text}
             </Text>
           )}

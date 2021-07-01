@@ -119,11 +119,14 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
             aria-label="BC Leaks, back to home"
           >
             <S.Logo>
-              <Box className="logo-symbol" onClick={toggleMenu}>
+              <Box className="logo-symbol" onClick={() => setNavOpen(false)}>
                 <Symbol />
               </Box>
               <Flex className="logo-lettermark">
-                <Text fontSize={`calc(${theme.fontSizes[2]} * 1.25)`} letterSpacing={-1}>
+                <Text
+                  fontSize={`calc(${theme.fontSizes[2]} * 1.25)`}
+                  letterSpacing={-1}
+                >
                   BLOCKCHAIN LEAKS
                 </Text>
               </Flex>

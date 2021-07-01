@@ -58,7 +58,7 @@
     "gatsby-transformer-sharp": "^2.9.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
-    "netlify-cli": "^3.39.1",
+    "netlify-cli": "^3.39.4",
     "node-fetch": "^2.6.1",
     "polished": "^3.6.7",
     "react": "^16.14.0",
