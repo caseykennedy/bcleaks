@@ -6,7 +6,7 @@ const q = faunadb.query
 exports.handler = async (event, context) => {
   /* configure faunaDB Client with our secret */
   const client = new faunadb.Client({
-    secret: process.env.FAUNADB_SECRET
+    secret: process.env.GATSBY_FAUNADB_SECRET
   })
   /* parse the string body into a useable JS object */
   const data = JSON.parse(event.body)

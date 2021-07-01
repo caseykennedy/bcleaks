@@ -86,7 +86,7 @@ module.exports = {
       options: {
         // The secret for the key you're using to connect to your Fauna database.
         // You can generate on of these in the "Security" tab of your Fauna Console.
-        secret: process.env.FAUNADB_SECRET,
+        secret: process.env.GATSBY_FAUNADB_SECRET,
         // The name of the index you want to query
         // You can create an index in the "Indexes" tab of your Fauna Console.
         index: `all_posts`,

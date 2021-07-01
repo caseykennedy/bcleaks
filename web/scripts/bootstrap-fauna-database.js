@@ -8,16 +8,16 @@ const q = faunadb.query
 console.log(chalk.cyan('Creating your FaunaDB Database...\n'))
 
 // 1. Check for required enviroment variables
-if (!process.env.FAUNADB_SECRET) {
+if (!process.env.GATSBY_FAUNADB_SECRET) {
   console.log(
-    chalk.yellow('Required FAUNADB_SECRET enviroment variable not found.')
+    chalk.yellow('Required GATSBY_FAUNADB_SECRET enviroment variable not found.')
   )
   if (insideNetlify) {
     console.log(
       `Visit https://app.netlify.com/sites/YOUR_SITE_HERE/settings/deploys`
     )
     console.log(
-      'and set a `FAUNADB_SECRET` value in the "Build environment variables" section'
+      'and set a `GATSBY_FAUNADB_SECRET` value in the "Build environment variables" section'
     )
     process.exit(1)
   }
@@ -33,7 +33,7 @@ if (!process.env.FAUNADB_SECRET) {
         console.log('Please supply a faunaDB server key')
         process.exit(1)
       }
-      createFaunaDB(process.env.FAUNADB_SECRET).then(() => {
+      createFaunaDB(process.env.GATSBY_FAUNADB_SECRET).then(() => {
         console.log('Database created')
       })
     })
@@ -41,8 +41,8 @@ if (!process.env.FAUNADB_SECRET) {
 }
 
 // Has var. Do the thing
-if (process.env.FAUNADB_SECRET) {
-  createFaunaDB(process.env.FAUNADB_SECRET).then(() => {
+if (process.env.GATSBY_FAUNADB_SECRET) {
+  createFaunaDB(process.env.GATSBY_FAUNADB_SECRET).then(() => {
     console.log('Database created')
   })
 }
