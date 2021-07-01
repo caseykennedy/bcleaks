@@ -8,7 +8,6 @@ import { withPrefix } from 'gatsby'
 // Components
 import Header from '../Header'
 import Footer from '../Footer'
-import CryptoTicker from '../CryptoTicker'
 
 // Styles + Theme
 import * as S from './styles.scss'
@@ -30,7 +29,6 @@ export type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children, location }) => {
   // Ref <main> to lock body for modal/overlay
   const mainRef = useRef<HTMLDivElement>(null)
-  const showTicker = location && location.pathname === withPrefix('/')
 
   // eslint-disable-next-line no-console
   console.log(
@@ -40,7 +38,6 @@ const Layout: React.FC<LayoutProps> = ({ children, location }) => {
   return (
     <S.Wrapper>
       <Header mainRef={mainRef} />
-      {showTicker && <CryptoTicker />}
       <S.Main ref={mainRef}>{children}</S.Main>
       <Footer />
     </S.Wrapper>
