@@ -13,8 +13,10 @@ import { getPostId } from '../../../../utils/helpers'
 import * as S from './styles.scss'
 import theme from '../../../../gatsby-plugin-theme-ui'
 import { Box, Text } from '../../../../components/ui'
-
 import Icon from '../../../../components/Icons'
+
+import { useQuery } from '@apollo/react-hooks'
+import { gql } from 'apollo-boost'
 
 import {
   IdentityModal,
@@ -22,6 +24,24 @@ import {
 } from 'react-netlify-identity-widget'
 
 // ___________________________________________________________________
+
+const GET_POSTS_BY_AUTHOR = gql`
+  query($author: String!) {
+    getPostsByAuthor(author: $author) {
+      postId
+      author
+      category
+      createdOn
+      linkUrl
+      postType
+      slug
+      text
+      title
+      voters
+      votes
+    }
+  }
+`
 
 const Posts = () => {
   const { user }: any = useIdentityContext()
@@ -52,6 +72,15 @@ const Posts = () => {
   useEffect(() => {
     fetchFaunaData()
   }, [])
+
+  const { loading, data, error } = useQuery(GET_POSTS_BY_AUTHOR, {
+    variables: {
+      author: user.user_metadata.full_name
+    }
+  })
+  console.log(loading)
+  console.log(error)
+  console.log(data)
 
   const DeletePost: React.FC<{ postId: string }> = ({ postId }) => {
     const handleDeletePost = (

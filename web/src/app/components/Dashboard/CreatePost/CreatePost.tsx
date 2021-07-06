@@ -17,6 +17,7 @@ import Button from '../../../../components/ui/Button'
 import { Input, Select, Textarea } from 'theme-ui'
 // Components
 import Icon from '../../../../components/Icons'
+import { PageTitle } from '@/templates/Post/Article/styles.scss'
 
 // ___________________________________________________________________
 
@@ -32,7 +33,7 @@ type PostShape = {
   slug: string
 }
 
-const currentDate = new Date().toLocaleString()
+// const currentDate = new Date().toLocaleString()
 
 const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   postType
@@ -50,14 +51,19 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
 
+  const titleToSlug = title
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '')
+
   // Todo data
   const myPost = {
     author: user.user_metadata.full_name,
     category: `${category}`,
-    createdOn: currentDate,
+    createdOn: new Date().toString(),
     linkUrl: `${linkUrl}`,
     postType: `${postType}`,
-    slug: title,
+    slug: titleToSlug,
     text: `${text}`,
     title: `${title}`,
     voters: [],

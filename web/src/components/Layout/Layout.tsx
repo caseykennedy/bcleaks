@@ -3,7 +3,6 @@
 // ___________________________________________________________________
 
 import React, { useRef } from 'react'
-import { withPrefix } from 'gatsby'
 
 // Components
 import Header from '../Header'
@@ -20,13 +19,13 @@ export type LayoutProps = {
   children: React.ReactNode
   isShowing?: boolean
   toggleOverlay?: () => void
-  location?: {
-    pathname: string
-  }
+  // location?: {
+  //   pathname: string
+  // }
   // mainRef: React.RefObject<HTMLDivElement>
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, location }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Ref <main> to lock body for modal/overlay
   const mainRef = useRef<HTMLDivElement>(null)
 

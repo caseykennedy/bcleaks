@@ -5,6 +5,7 @@
 import React from 'react'
 import { navigate } from 'gatsby'
 import moment from 'moment'
+import { format } from 'date-fns'
 import {
   useIdentityContext,
   IdentityModal
@@ -55,7 +56,7 @@ const Profile = () => {
                 Member since:
                 <br />
                 {user.created_at &&
-                  moment(user.created_at).format('MMMM Do YYYY')}
+                  format(new Date(user.created_at), 'MMMM Do yyyy')}
               </Text>
             </>
           )}

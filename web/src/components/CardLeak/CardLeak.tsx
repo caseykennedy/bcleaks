@@ -11,6 +11,7 @@ import React, {
   createContext
 } from 'react'
 import moment from 'moment'
+import { formatDistanceToNow } from 'date-fns'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
 // Utils
@@ -250,7 +251,9 @@ const CardLeak: React.FC<CardLeakProps> = ({
               {post.data.createdOn &&
                 moment(post.data.createdOn)
                   .startOf('day')
-                  .fromNow()}{' '}
+                  .fromNow()}
+              {/* {post.data.createdOn &&
+                formatDistanceToNow(new Date(post.data.createdOn)} */}
               <Box as="span" className="user">
                 by u/{post.data.author && post.data.author}
               </Box>
@@ -263,7 +266,9 @@ const CardLeak: React.FC<CardLeakProps> = ({
             )}
           </Flex>
 
-          <Text pr={[0, 5]} className="title">{post.data.title && post.data.title}</Text>
+          <Text pr={[0, 5]} className="title">
+            {post.data.title && post.data.title}
+          </Text>
 
           {post.data.linkUrl && (
             <Box sx={{ width: `100%` }} className="link-url">
@@ -290,8 +295,7 @@ const CardLeak: React.FC<CardLeakProps> = ({
           />
 
           <Flex mr={4} className="utilities__item">
-            <Icon name="comment" />
-            7 comments
+            <Icon name="comment" />7 comments
           </Flex>
 
           <Flex className="utilities__item">

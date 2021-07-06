@@ -1,6 +1,7 @@
-// gatsby-browser
+// gatsby-ssr
 
 import React from 'react'
+import { client } from './src/client'
 import Layout from './src/components/Layout'
 
 // Styles + Theme
@@ -10,6 +11,7 @@ import GlobalStyles from './src/styles/global'
 // Providers
 import ContextProvider from './src/provider/ContextProvider'
 import { ThemeProvider } from 'styled-components'
+import { ApolloProvider } from '@apollo/react-hooks'
 
 // ___________________________________________________________________
 
@@ -27,7 +29,9 @@ export const wrapPageElement = ({ element, props }) => {
 export const wrapRootElement = ({ element }) => {
   return (
     <ContextProvider>
-      <ThemeProvider theme={theme}>{element}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <ApolloProvider client={client}>{element}</ApolloProvider>
+      </ThemeProvider>
     </ContextProvider>
   )
 }
