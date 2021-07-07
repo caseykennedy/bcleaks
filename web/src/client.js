@@ -6,7 +6,7 @@ import fetch from 'isomorphic-fetch'
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: '/.netlify/functions-src/apollo-graphql'
+    uri: '/.netlify/functions/apollo-graphql'
   }),
   fetch
 })

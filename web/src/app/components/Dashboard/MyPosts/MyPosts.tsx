@@ -25,23 +25,23 @@ import {
 
 // ___________________________________________________________________
 
-const GET_POSTS_BY_AUTHOR = gql`
-  query($author: String!) {
-    getPostsByAuthor(author: $author) {
-      postId
-      author
-      category
-      createdOn
-      linkUrl
-      postType
-      slug
-      text
-      title
-      voters
-      votes
-    }
-  }
-`
+// const GET_POSTS_BY_AUTHOR = gql`
+//   query($author: String!s) {
+//     getPostsByAuthor(author: $author) {
+//       postId
+//       author
+//       category
+//       createdOn
+//       linkUrl
+//       postType
+//       slug
+//       text
+//       title
+//       voters
+//       votes
+//     }
+//   }
+// `
 
 const Posts = () => {
   const { user }: any = useIdentityContext()
@@ -73,14 +73,14 @@ const Posts = () => {
     fetchFaunaData()
   }, [])
 
-  const { loading, data, error } = useQuery(GET_POSTS_BY_AUTHOR, {
-    variables: {
-      author: user.user_metadata.full_name
-    }
-  })
-  console.log(loading)
-  console.log(error)
-  console.log(data)
+  // const { loading, data, error } = useQuery(GET_POSTS_BY_AUTHOR, {
+  //   variables: {
+  //     author: user.user_metadata.full_name
+  //   }
+  // })
+  // console.log(loading)
+  // console.log(error)
+  // console.log(data)
 
   const DeletePost: React.FC<{ postId: string }> = ({ postId }) => {
     const handleDeletePost = (

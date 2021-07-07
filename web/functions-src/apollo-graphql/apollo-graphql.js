@@ -1,4 +1,3 @@
-require('dotenv').config()
 const faunadb = require('faunadb')
 const { ApolloServer, gql } = require('apollo-server-lambda')
 
@@ -49,6 +48,7 @@ const typeDefs = gql`
     ): CreatedPost
     deletePostById(postId: String!): DeletedPost
     updatePostById(postId: String!): UpdatedPost
+    castVoteById(postId: String!, voters: String!, votes: Int): CastVote
   }
 
   ## COMMENTS
@@ -85,7 +85,12 @@ const typeDefs = gql`
     text: String
     title: String
     voters: String
-    votes: Number
+    votes: Int
+  }
+
+  type VoterShape {
+    user: String
+    vote: Int
   }
 
   type DeletedPost {
@@ -93,7 +98,11 @@ const typeDefs = gql`
   }
 
   type UpdatedPost {
-    postId: string
+    postId: String
+  }
+
+  type CastVote {
+    postId: String
   }
 
   type CreatedPost {
@@ -123,7 +132,7 @@ const resolvers = {
     },
 
     // GET COMMENT BY SLUG
-    getCommentBySlug: async (root, args, context) => {
+    getCommentsBySlug: async (root, args, context) => {
       const results = await client.query(
         q.Paginate(q.Match(q.Index(GET_COMMENTS_BY_SLUG_INDEX), args.slug))
       )

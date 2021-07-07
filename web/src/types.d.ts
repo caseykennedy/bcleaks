@@ -44,6 +44,12 @@ type CoinNode = {
 // Fauna DB Post shape
 // ___________________________________________________________________
 
+type GetPostsByAuthor = {
+  data: {
+    getPostsByAuthor: FaunaDbPostShape[]
+  }
+}
+
 type FaunaDataQuery = {
   data: FaunaDbPostShape
   ref: any

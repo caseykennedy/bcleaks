@@ -9,7 +9,6 @@ import React from 'react'
 import SEO from '../components/SEO'
 import Section from '../components/Section'
 
-
 // Data
 import useSiteSettings from '../hooks/useSiteSettings'
 
