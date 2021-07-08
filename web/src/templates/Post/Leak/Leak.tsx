@@ -51,49 +51,51 @@ const Leak: React.FC<Props> = ({ slug }) => {
   console.log(error)
   console.log(data?.postsBySlug[0])
 
-  // const pageContext = data?.postsBySlug[0] || []
-
-  return (
+  return loading ? (
+    <Box>
+      <Text as="p">loading...</Text>
+    </Box>
+  ) : (
     <>
-      {/* <SEO
+      <SEO
         article={true}
-        title={`${pageContext.title && pageContext.title} | ${
+        title={`${data?.postsBySlug[0].title} | ${
           siteSettings.titleShort
         }`}
-        desc={`${pageContext.text && pageContext.text}`}
+        desc={`${data?.postsBySlug[0].text}`}
         pathname={`/community/${slug}`}
       />
       <S.Leak>
         <S.PageTitle p={theme.gutter.axis}>
           <Heading as="h4" color="white" mb={0} className="text--uppercase">
-            {pageContext.category && pageContext.category}
+            {data?.postsBySlug[0].category}
           </Heading>
         </S.PageTitle>
 
         <Section bg="secondary" border={true} overflow="hidden">
-          <Heading as="h3">{pageContext.title && pageContext.title}</Heading>
+          <Heading as="h3">{data?.postsBySlug[0].title}</Heading>
           <Text as="p">
-            {pageContext.createdOn &&
-              moment(pageContext.createdOn)
+            {data?.postsBySlug[0].createdOn &&
+              moment(data?.postsBySlug[0].createdOn)
                 .startOf('day')
                 .fromNow()}
           </Text>
 
-          {pageContext.linkUrl && (
+          {data?.postsBySlug[0].linkUrl && (
             <Box sx={{ width: `100%` }} className="link-url">
-              <a href={pageContext.linkUrl} rel="nofollow" target="_blank">
-                {pageContext.linkUrl}
+              <a href={data?.postsBySlug[0].linkUrl} rel="nofollow" target="_blank">
+                {data?.postsBySlug[0].linkUrl}
               </a>
             </Box>
           )}
 
-          {pageContext.text && (
+          {data?.postsBySlug[0].text && (
             <Text as="p" pr={[0, 5]} className="text">
-              {pageContext.text}
+              {data?.postsBySlug[0].text}
             </Text>
           )}
         </Section>
-      </S.Leak> */}
+      </S.Leak>
     </>
   )
 }
