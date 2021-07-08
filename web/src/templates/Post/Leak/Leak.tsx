@@ -40,7 +40,7 @@ const Leak: React.FC<Props> = ({ slug }) => {
   console.log(error)
   console.log(data)
 
-  const pageContext = data.getPostsBySlug[0]
+  const pageContext = data.getPostsBySlug[0] || {}
 
   return (
     <>
