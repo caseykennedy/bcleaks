@@ -29,22 +29,33 @@ interface Props
     slug: string
   }> {}
 
+interface IPostsBySlugData {
+  postsBySlug: FaunaDbPostShape[]
+}
+
+interface IPostsBySlugVars {
+  slug: string
+}
+
 const Leak: React.FC<Props> = ({ slug }) => {
   const siteSettings = useSiteSettings()
-  const { loading, data, error } = useQuery(GET_POSTS_BY_SLUG, {
-    variables: {
-      slug: `${slug}`
+  const { loading, data, error } = useQuery<IPostsBySlugData, IPostsBySlugVars>(
+    GET_POSTS_BY_SLUG,
+    {
+      variables: {
+        slug: `${slug}`
+      }
     }
-  })
+  )
   console.log(loading)
   console.log(error)
-  console.log(data)
+  console.log(data?.postsBySlug[0])
 
-  const pageContext = data.getPostsBySlug[0] || {}
+  // const pageContext = data?.postsBySlug[0] || []
 
   return (
     <>
-      <SEO
+      {/* <SEO
         article={true}
         title={`${pageContext.title && pageContext.title} | ${
           siteSettings.titleShort
@@ -67,7 +78,7 @@ const Leak: React.FC<Props> = ({ slug }) => {
                 .startOf('day')
                 .fromNow()}
           </Text>
-          
+
           {pageContext.linkUrl && (
             <Box sx={{ width: `100%` }} className="link-url">
               <a href={pageContext.linkUrl} rel="nofollow" target="_blank">
@@ -82,7 +93,7 @@ const Leak: React.FC<Props> = ({ slug }) => {
             </Text>
           )}
         </Section>
-      </S.Leak>
+      </S.Leak> */}
     </>
   )
 }

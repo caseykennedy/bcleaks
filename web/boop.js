@@ -227,7 +227,7 @@ module.exports = {
 
   // GET POSTS BY SLUG
   getPostsBySlug: async () => {
-    const slug = 'title-to-slug-test'
+    const slug = 'some-test-post'
     const results = await client.query(
       q.Paginate(q.Match(q.Index('get-posts-by-slug'), slug))
     )

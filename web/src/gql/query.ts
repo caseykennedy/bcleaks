@@ -25,7 +25,7 @@ export const GET_POSTS_BY_AUTHOR = gql`
 
 export const GET_POSTS_BY_SLUG = gql`
   query($slug: String!) {
-    getPostsBySlug(slug: $slug) {
+    postsBySlug: getPostsBySlug(slug: $slug) {
       postId
       author
       category
