@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build && cd functions-src/apollo-graphql && yarn"
+  command = "npm run build"
   functions = "functions-src"
   publish = "public/"
 
