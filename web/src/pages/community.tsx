@@ -1,27 +1,8 @@
-// Community page
-
-// ___________________________________________________________________
-
-// Libraries
-import React from 'react'
-
-// Components
-import SEO from '../components/SEO'
-import CommunityPage from '../templates/CommunityPage'
-
-// Data
-import useSiteSettings from '../hooks/useSiteSettings'
-
-// ___________________________________________________________________
-
-const Community = () => {
-  const site = useSiteSettings()
-  return (
-    <>
-      <SEO pathname={`/community`} title={`Community | ${site.titleShort}`} />
-      <CommunityPage />
-    </>
-  )
-}
+import Community from '../community'
 
 export default Community
+
+// `src/user` is not "special", it is re-exported by `src/pages/user.js`
+// and contains all the clientside dynamic App pages that we dont want to be statically generated.
+// `src/pages/user.js` skips the static generation process because of `gatsby-plugin-create-client-paths`
+// configured in `gatsby-config.js`

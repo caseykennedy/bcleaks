@@ -53,7 +53,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/user/*`] },
+      options: { prefixes: [`/community/*`, `/user/*`] },
     },
     {
       resolve: `gatsby-plugin-netlify-identity`,

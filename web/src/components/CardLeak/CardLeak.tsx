@@ -10,6 +10,7 @@ import React, {
   useRef,
   createContext
 } from 'react'
+import { Link } from 'gatsby'
 import moment from 'moment'
 import { formatDistanceToNow } from 'date-fns'
 import { useIdentityContext } from 'react-netlify-identity-widget'
@@ -267,7 +268,9 @@ const CardLeak: React.FC<CardLeakProps> = ({
           </Flex>
 
           <Text pr={[0, 5]} className="title">
-            {post.data.title && post.data.title}
+            <Link to={`/community/${post.data.slug}`}>
+              {post.data.title && post.data.title}
+            </Link>
           </Text>
 
           {post.data.linkUrl && (

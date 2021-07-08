@@ -3,6 +3,7 @@
 // ___________________________________________________________________
 
 import React from 'react'
+import { RouteComponentProps } from '@reach/router'
 
 // Theme
 import * as S from './styles.scss'
@@ -15,7 +16,9 @@ import LeakList from '../../components/LeakList'
 
 // ___________________________________________________________________
 
-const CommunityPage = () => {
+interface Props extends RouteComponentProps {}
+
+const CommunityPage: React.FC<Props> = () => {
   return (
     <S.CommunityPage>
       <Flex p={theme.gutter.axis}>
