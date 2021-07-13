@@ -26,7 +26,11 @@ const Comment: React.FC<Props> = ({ commentId, slug, date, name, comment }) => {
   return (
     <Box sx={{ border: theme.border, mb: 4, p: 4 }}>
       <Box>
-        <Text as="p" sx={{ color: 'gray', lineHeight: 1.15 }} className="text--sm">
+        <Text
+          as="p"
+          sx={{ color: 'gray', lineHeight: 1.15 }}
+          className="text--sm"
+        >
           <Box as="span" sx={{ color: 'text' }}>
             {name}
           </Box>{' '}
@@ -40,7 +44,10 @@ const Comment: React.FC<Props> = ({ commentId, slug, date, name, comment }) => {
       <Flex pt={[5, 6]}>
         <Text
           as="p"
-          sx={{ fontSize: `calc(${theme.fontSizes[2]} * 1.15)`, lineHeight: 1.15 }}
+          sx={{
+            fontSize: `calc(${theme.fontSizes[2]} * 1.15)`,
+            lineHeight: 1.15
+          }}
         >
           {comment}
         </Text>

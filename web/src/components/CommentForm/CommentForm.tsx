@@ -20,6 +20,9 @@ import {
   Label,
   Spinner
 } from 'theme-ui'
+import Button from '../ui/Button'
+
+import Icon from '../Icons'
 
 import { CREATE_COMMENT } from '../../gql/mutation'
 import { useIdentityContext } from 'react-netlify-identity-widget'
@@ -33,14 +36,9 @@ type Props = {
 const NAME_FIELD = 'name'
 const COMMENT_FIELD = 'comment'
 
-const initialValues = {
-  name: '',
-  comment: ''
-}
-
 const schema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'Name must be at least 3 characters')
+    .min(2, 'Name must be at least 2 characters')
     .required('Please enter your name'),
   comment: Yup.string()
     .min(10, 'Comment must be at least 10 characters')
@@ -49,6 +47,11 @@ const schema = Yup.object().shape({
 
 const CommentForm: React.FC<Props> = ({ slug }) => {
   const { isLoggedIn, user }: any = useIdentityContext()
+  const initialValues = {
+    name: user?.user_metadata.full_name,
+    comment: ''
+  }
+
   const [isFormSent, setIsFormSent] = useState(false)
   const [isFormError, setIsFormError] = useState(false)
   const [createComment, { loading, error }] = useMutation(CREATE_COMMENT)
@@ -112,12 +115,9 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                         {...field}
                         name={NAME_FIELD}
                         placeholder="Enter your name"
-                        value={values.name}
+                        value={user?.user_metadata.full_name}
                         onChange={handleChange}
-                        sx={{
-                          display: 'none',
-                          visibility: 'hidden'
-                        }}
+                        type="hidden"
                       />
                       <ErrorMessage
                         name={NAME_FIELD}
@@ -152,6 +152,7 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                       <Textarea
                         {...field}
                         name={COMMENT_FIELD}
+                        rows={4}
                         placeholder="Enter your comment"
                         value={values.comment}
                         onChange={handleChange}
@@ -165,8 +166,7 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                         render={() => (
                           <Text
                             as="small"
-                            variant="styles.small"
-                            sx={{ color: 'error', position: 'absolute' }}
+                            sx={{ color: 'red', position: 'absolute' }}
                           >
                             {errors.comment}
                           </Text>
@@ -179,34 +179,12 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                 <Flex
                   sx={{
                     alignItems: 'center',
-                    justifyContent: 'flex-end'
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start'
                   }}
                 >
-                  <Box
-                    sx={{
-                      mr: 2
-                    }}
-                  >
-                    {isFormSent && (
-                      <Text
-                        as="small"
-                        variant="styles.small"
-                        sx={{ color: 'primary' }}
-                      >
-                        Comment sent ok!
-                      </Text>
-                    )}
-                    {isFormError && (
-                      <Text
-                        as="small"
-                        variant="styles.small"
-                        sx={{ color: 'red' }}
-                      >
-                        Ooops, there's been an error!
-                      </Text>
-                    )}
-                  </Box>
-                  <button
+                  <Button
+                    as="button"
                     type="submit"
                     disabled={
                       isSubmitting ||
@@ -218,13 +196,29 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                   >
                     {isSubmitting ? (
                       <>
-                        Submitting
-                        <Spinner variant="styles.spinner" sx={{ ml: 3 }} />
+                        processing...
+                        <Spinner p={3} />
                       </>
                     ) : (
-                      'Submit'
+                      <>
+                        Submit
+                        <Icon name="carat" />
+                      </>
                     )}
-                  </button>
+                  </Button>
+
+                  <Box>
+                    {isFormSent && (
+                      <Text as="small" sx={{ color: 'primary' }}>
+                        Great success!
+                      </Text>
+                    )}
+                    {isFormError && (
+                      <Text as="small" sx={{ color: 'red' }}>
+                        Error, error, errorrrr.
+                      </Text>
+                    )}
+                  </Box>
                 </Flex>
               </Form>
             )

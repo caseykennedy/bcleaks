@@ -11,28 +11,32 @@ import { Box } from 'theme-ui'
 
 export const CommentForm = styled(Box)`
   .btn {
-    background: ${darken(0.1, theme.colors.primary)};
-    border: none;
-    border-color: ${theme.colors.primary};
-    border-radius: 0;
-    cursor: pointer;
-
-    padding: ${theme.space[3]} ${theme.space[5]};
-    text-transform: uppercase;
-
-    transition: ${theme.transition.all};
-
-    &:hover {
-      background: ${theme.colors.primary};
+    span svg {
+      width: 8px;
     }
+  }
 
-    &:disabled {
-      background: ${theme.colors.gray};
-      cursor: not-allowed;
-    }
+  form {
+    input,
+    textarea,
+    select {
+      background: transparent;
+      border: 0;
+      border: ${theme.border};
 
-    @media ${theme.mq.desktop} {
-      margin-top: 0;
+      font-size: ${theme.fontSizes[2]};
+      margin: 0 0 ${theme.space[4]} 0;
+      padding: ${theme.space[2]} ${theme.space[2]};
+      width: 100%;
+
+      &:focus {
+        border-color: ${theme.colors.primary};
+        outline: none;
+      }
+
+      &::placeholder {
+        color: ${theme.colors.tertiary};
+      }
     }
   }
 `

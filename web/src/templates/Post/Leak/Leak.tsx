@@ -72,36 +72,36 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
         </S.PageTitle>
 
         <Section bg="secondary" border={true} maxWidth={theme.leakWidth}>
-        <Text as="p" mb={4} className="text--sm">
-              {data?.postsBySlug[0].createdOn &&
-                formatDistanceToNowStrict(
-                  new Date(data?.postsBySlug[0].createdOn),
-                  {
-                    addSuffix: true
-                  }
-                )}
+          <Text as="p" mb={4} className="text--sm">
+            {data?.postsBySlug[0].createdOn &&
+              formatDistanceToNowStrict(
+                new Date(data?.postsBySlug[0].createdOn),
+                {
+                  addSuffix: true
+                }
+              )}
+          </Text>
+          <Heading as="h2" mb={[5, 6]}>
+            {data?.postsBySlug[0].title}
+          </Heading>
+
+          {data?.postsBySlug[0].linkUrl && (
+            <Box sx={{ width: `100%` }} className="link-url">
+              <a
+                href={data?.postsBySlug[0].linkUrl}
+                rel="nofollow"
+                target="_blank"
+              >
+                {data?.postsBySlug[0].linkUrl}
+              </a>
+            </Box>
+          )}
+
+          {data?.postsBySlug[0].text && (
+            <Text as="p" pr={[0, 5]} className="text">
+              {data?.postsBySlug[0].text}
             </Text>
-            <Heading as="h2" mb={[5, 6]}>
-              {data?.postsBySlug[0].title}
-            </Heading>
-
-            {data?.postsBySlug[0].linkUrl && (
-              <Box sx={{ width: `100%` }} className="link-url">
-                <a
-                  href={data?.postsBySlug[0].linkUrl}
-                  rel="nofollow"
-                  target="_blank"
-                >
-                  {data?.postsBySlug[0].linkUrl}
-                </a>
-              </Box>
-            )}
-
-            {data?.postsBySlug[0].text && (
-              <Text as="p" pr={[0, 5]} className="text">
-                {data?.postsBySlug[0].text}
-              </Text>
-            )}
+          )}
         </Section>
 
         <CommentList slug={slug} />

@@ -15,6 +15,7 @@ type ButtonProps = {
   bg?: string
   color?: string
   fill?: string
+  width?: string
 }
 
 const Button = styled(Flex)<ButtonProps>`
@@ -37,6 +38,10 @@ const Button = styled(Flex)<ButtonProps>`
   height: ${theme.btnHeight};
   width: 100%;
 
+  @media ${theme.mq.tablet} {
+    width: ${p => (p.width ? p.width : '100%')};
+  }
+
   span svg {
     fill: ${theme.colors.gray};
     stroke: ${theme.colors.gray};
@@ -55,15 +60,18 @@ const Button = styled(Flex)<ButtonProps>`
     color: ${theme.colors.primary};
 
     span svg {
-      fill: ${theme.colors.primary};
       stroke: ${theme.colors.primary};
     }
   }
 
   &:disabled {
-    background: ${theme.colors.tertiary};
-    border-color: ${theme.colors.tertiary};
-    color: ${theme.colors.white};
+    border-color: ${theme.colors.darkgray};
+    color: ${theme.colors.darkgray};
+    cursor: not-allowed;
+    
+    span svg {
+      stroke: ${theme.colors.darkgray};
+    }
   }
 
   &:active {

@@ -49,27 +49,26 @@ const CommentList: React.FC<Props> = ({ slug }) => {
       }
     }
   )
-  console.log(loading)
-  console.log(error)
-  console.log(data)
+  // console.log(loading)
+  // console.log(error)
+  // console.log(data)
 
-  return loading ? (
-    <Box>
-      <Text as="p">loading...</Text>
-    </Box>
-  ) : (
+  return (
     <S.CommentList>
       <Section bg={theme.colors.black} border={true} maxWidth={theme.leakWidth}>
         <CommentForm slug={'some-test-post'} />
       </Section>
 
       <Section border={true} maxWidth={theme.leakWidth}>
-        {data &&
-          data.getCommentsBySlug.map((comment, index) => (
+        {loading ? (
+          <Text>loading...</Text>
+        ) : (
+          data?.getCommentsBySlug.map((comment, index) => (
             <Box key={index}>
               <Comment {...comment} />
             </Box>
-          ))}
+          ))
+        )}
       </Section>
     </S.CommentList>
   )

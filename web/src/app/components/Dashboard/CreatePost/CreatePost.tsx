@@ -5,16 +5,20 @@
 import React, { useRef, useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
+
 // Context
 import { useIdentityContext } from 'react-netlify-identity-widget'
+
 // Utils
 import api from '../../../../utils/api'
+
 // Theme + ui
 import * as S from './styles.scss'
 import theme from '../../../../gatsby-plugin-theme-ui'
 import { Box, Heading, Text } from '../../../../components/ui'
 import Button from '../../../../components/ui/Button'
 import { Input, Select, Textarea } from 'theme-ui'
+
 // Components
 import Icon from '../../../../components/Icons'
 import { PageTitle } from '@/templates/Post/Article/styles.scss'
@@ -95,7 +99,7 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
       })
       .catch(error => {
         setError('FUNCTION ERROR')
-        alert('Error, error, errrrrooorrrrrrrr.')
+        alert('Error, error, errorrrr.')
         console.log('ERROR')
         console.log('API error:', error)
       })
