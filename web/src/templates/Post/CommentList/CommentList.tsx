@@ -9,7 +9,7 @@ import { useQuery } from '@apollo/react-hooks'
 // Theme + UI
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
-import { Box, Flex, Divider, Text, Heading } from 'theme-ui'
+import { Box, Flex, Grid, Text, Heading } from 'theme-ui'
 
 // Components
 import Button from '../../../components/ui/Button'
@@ -56,19 +56,21 @@ const CommentList: React.FC<Props> = ({ slug }) => {
   return (
     <S.CommentList>
       <Section bg={theme.colors.black} border={true} maxWidth={theme.leakWidth}>
-        <CommentForm slug={'some-test-post'} />
+        <CommentForm slug={slug} />
       </Section>
 
       <Section border={true} maxWidth={theme.leakWidth}>
-        {loading ? (
-          <Text>loading...</Text>
-        ) : (
-          data?.getCommentsBySlug.map((comment, index) => (
-            <Box key={index}>
-              <Comment {...comment} />
-            </Box>
-          ))
-        )}
+        <Grid columns={1} gap={theme.gutter.axis}>
+          {loading ? (
+            <Text>loading...</Text>
+          ) : (
+            data?.getCommentsBySlug.map((comment, index) => (
+              <Fragment key={index}>
+                <Comment {...comment} />
+              </Fragment>
+            ))
+          )}
+        </Grid>
       </Section>
     </S.CommentList>
   )

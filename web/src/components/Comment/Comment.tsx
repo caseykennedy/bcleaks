@@ -24,7 +24,7 @@ const QUOTE_ICON_SIZE = 32
 
 const Comment: React.FC<Props> = ({ commentId, slug, date, name, comment }) => {
   return (
-    <Box sx={{ border: theme.border, mb: 4, p: 4 }}>
+    <Box sx={{ border: theme.border, p: 4 }}>
       <Box>
         <Text
           as="p"
