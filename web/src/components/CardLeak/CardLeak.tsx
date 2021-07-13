@@ -11,7 +11,6 @@ import React, {
   createContext
 } from 'react'
 import { Link } from 'gatsby'
-import moment from 'moment'
 import { formatDistanceToNow } from 'date-fns'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
@@ -248,13 +247,11 @@ const CardLeak: React.FC<CardLeakProps> = ({
                 <span className="text--uppercasee">
                   {post.data.category && post.data.category}
                 </span>
-              </Box>{' '}
+              </Box>
               {post.data.createdOn &&
-                moment(post.data.createdOn)
-                  .startOf('day')
-                  .fromNow()}
-              {/* {post.data.createdOn &&
-                formatDistanceToNow(new Date(post.data.createdOn)} */}
+                formatDistanceToNow(new Date(post.data.createdOn), {
+                  addSuffix: true
+                })}{' '}
               <Box as="span" className="user">
                 by u/{post.data.author && post.data.author}
               </Box>
@@ -307,12 +304,6 @@ const CardLeak: React.FC<CardLeakProps> = ({
           </Flex>
         </Flex>
       </Flex>
-
-      {/* {post.data.linkUrl && (
-        <Box className="figure">
-          <img src={post.data.linkUrl} alt="alt" height="100%" width="100%" />
-        </Box>
-      )} */}
     </S.CardLeak>
   )
 }

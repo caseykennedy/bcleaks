@@ -4,7 +4,6 @@
 
 import React from 'react'
 import { navigate } from 'gatsby'
-import moment from 'moment'
 import { format } from 'date-fns'
 import {
   useIdentityContext,

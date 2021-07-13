@@ -17,13 +17,13 @@ module.exports = {
 
   // CREATE COMMENT
   createComment: async () => {
-    const slug = '/posts/some-post'
-    const name = 'some name'
-    const comment = 'some comment'
+    const slug = 'chico-cryptos-first-post'
+    const name = 'handy fan'
+    const comment = 'Handshake is the best!'
     const results = await client.query(
       q.Create(q.Collection(COMMENT_COLLECTION_NAME), {
         data: {
-          isApproved: false,
+          isApproved: true,
           slug: slug,
           date: new Date().toString(),
           name: name,

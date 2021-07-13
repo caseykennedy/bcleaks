@@ -61,7 +61,6 @@ export const GET_COMMENTS_BY_SLUG = gql`
   query($slug: String!) {
     getCommentsBySlug(slug: $slug) {
       commentId
-      isApproved
       slug
       date
       name

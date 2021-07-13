@@ -226,7 +226,7 @@ const Typography = css`
 
   h5,
   .text--sm {
-    font-size: ${theme.fontSizes[2]};
+    font-size: calc(${theme.fontSizes[1]});
   }
 
   .text--xs {

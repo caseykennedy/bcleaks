@@ -1,5 +1,7 @@
 // Theme / Design system:
 
+import { darken } from 'polished'
+
 // Types
 // ___________________________________________________________________
 
@@ -28,6 +30,7 @@ type ThemeShape = {
   strokeWidth: string
   maxWidth: string
   siteWidth: string
+  leakWidth: string | string[] | number | number[]
   logoWidth: string
   headerHeight: string
   tickerHeight: string
@@ -99,7 +102,7 @@ const theme: ThemeShape = {
     lightgray: '#e1e1e1',
     gray: '#C4C4c4',
     darkgray: '#545454',
-    
+
     moss: '#a8ffdc',
     blue: '#1be8ff',
     pink: '#f700de',
@@ -112,20 +115,20 @@ const theme: ThemeShape = {
   // ___________________________________________________________________
 
   space: [
-    '0',                     // 0
-    'var(--space-xxs)',      // 1
-    'var(--space-xs)',       // 2
-    'var(--space-sm)',       // 3
-    'var(--space-md)',       // 4
-    'var(--space-lg)',       // 5
-    'var(--space-xl)',       // 6
-    'var(--space-xxl)',      // 7
-    '7rem',                  // 8
-    '10rem',                 // 9
-    '12rem',                 // 10
-    '14rem',                 // 11
-    '16rem',                 // 12
-    '18rem'                  // 13
+    '0', // 0
+    'var(--space-xxs)', // 1
+    'var(--space-xs)', // 2
+    'var(--space-sm)', // 3
+    'var(--space-md)', // 4
+    'var(--space-lg)', // 5
+    'var(--space-xl)', // 6
+    'var(--space-xxl)', // 7
+    '7rem', // 8
+    '10rem', // 9
+    '12rem', // 10
+    '14rem', // 11
+    '16rem', // 12
+    '18rem' // 13
   ],
 
   // Left/Right gutter
@@ -136,7 +139,6 @@ const theme: ThemeShape = {
     vertical: [4, 5, 5],
     axis: [4, 5, 5]
   },
-
 
   // Typography
   // ___________________________________________________________________
@@ -173,11 +175,12 @@ const theme: ThemeShape = {
 
   maxWidth: '1280px',
   siteWidth: '100%',
+  leakWidth: ['100%', '100%', '75%'],
 
   logoWidth: '',
   headerHeight: '64px',
   tickerHeight: '50px',
-  
+
   btnHeight: '48px',
   iconWidth: '18px',
 
@@ -227,7 +230,7 @@ const theme: ThemeShape = {
 
       // Letter spacing
       headingLetterSpacing: 'var(--heading-letter-spacing)',
-      baseLetterSpacing: 'var(--body-letter-spacing)',
+      baseLetterSpacing: 'var(--body-letter-spacing)'
     },
     space: {
       xxs: 'var(--space-xxs)',

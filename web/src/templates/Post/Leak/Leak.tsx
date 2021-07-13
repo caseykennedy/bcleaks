@@ -6,7 +6,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { RouteComponentProps } from '@reach/router'
-import moment from 'moment'
+import { formatDistanceToNowStrict } from 'date-fns'
 
 // Theme + UI
 import * as S from './styles.scss'
@@ -17,6 +17,7 @@ import { Box, Flex, Text, Heading } from 'theme-ui'
 import Button from '../../../components/ui/Button'
 import SEO from '../../../components/SEO'
 import Section from '../../../components/Section'
+import CommentList from '../CommentList'
 
 // Data
 import useSiteSettings from '../../../hooks/useSiteSettings'
@@ -29,17 +30,17 @@ interface Props
     slug: string
   }> {}
 
-interface IPostsBySlugData {
+type QueryData = {
   postsBySlug: FaunaDbPostShape[]
 }
 
-interface IPostsBySlugVars {
+type QueryVars = {
   slug: string
 }
 
-const Leak: React.FC<Props> = ({ slug }) => {
+const Leak: React.FC<Props> = ({ slug = '404' }) => {
   const siteSettings = useSiteSettings()
-  const { loading, data, error } = useQuery<IPostsBySlugData, IPostsBySlugVars>(
+  const { loading, data, error } = useQuery<QueryData, QueryVars>(
     GET_POSTS_BY_SLUG,
     {
       variables: {
@@ -59,9 +60,7 @@ const Leak: React.FC<Props> = ({ slug }) => {
     <>
       <SEO
         article={true}
-        title={`${data?.postsBySlug[0].title} | ${
-          siteSettings.titleShort
-        }`}
+        title={`${data?.postsBySlug[0].title} | ${siteSettings.titleShort}`}
         desc={`${data?.postsBySlug[0].text}`}
         pathname={`/community/${slug}`}
       />
@@ -72,29 +71,40 @@ const Leak: React.FC<Props> = ({ slug }) => {
           </Heading>
         </S.PageTitle>
 
-        <Section bg="secondary" border={true} overflow="hidden">
-          <Heading as="h3">{data?.postsBySlug[0].title}</Heading>
-          <Text as="p">
-            {data?.postsBySlug[0].createdOn &&
-              moment(data?.postsBySlug[0].createdOn)
-                .startOf('day')
-                .fromNow()}
-          </Text>
-
-          {data?.postsBySlug[0].linkUrl && (
-            <Box sx={{ width: `100%` }} className="link-url">
-              <a href={data?.postsBySlug[0].linkUrl} rel="nofollow" target="_blank">
-                {data?.postsBySlug[0].linkUrl}
-              </a>
-            </Box>
-          )}
-
-          {data?.postsBySlug[0].text && (
-            <Text as="p" pr={[0, 5]} className="text">
-              {data?.postsBySlug[0].text}
+        <Section bg="secondary" border={true} maxWidth={theme.leakWidth}>
+        <Text as="p" mb={4} className="text--sm">
+              {data?.postsBySlug[0].createdOn &&
+                formatDistanceToNowStrict(
+                  new Date(data?.postsBySlug[0].createdOn),
+                  {
+                    addSuffix: true
+                  }
+                )}
             </Text>
-          )}
+            <Heading as="h2" mb={[5, 6]}>
+              {data?.postsBySlug[0].title}
+            </Heading>
+
+            {data?.postsBySlug[0].linkUrl && (
+              <Box sx={{ width: `100%` }} className="link-url">
+                <a
+                  href={data?.postsBySlug[0].linkUrl}
+                  rel="nofollow"
+                  target="_blank"
+                >
+                  {data?.postsBySlug[0].linkUrl}
+                </a>
+              </Box>
+            )}
+
+            {data?.postsBySlug[0].text && (
+              <Text as="p" pr={[0, 5]} className="text">
+                {data?.postsBySlug[0].text}
+              </Text>
+            )}
         </Section>
+
+        <CommentList slug={slug} />
       </S.Leak>
     </>
   )
