@@ -44,10 +44,7 @@ const Comment: React.FC<Props> = ({ commentId, slug, date, name, comment }) => {
       <Flex pt={[5, 6]}>
         <Text
           as="p"
-          sx={{
-            fontSize: `calc(${theme.fontSizes[2]} * 1.15)`,
-            lineHeight: 1.15
-          }}
+          className="text--sm"
         >
           {comment}
         </Text>

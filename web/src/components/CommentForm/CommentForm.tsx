@@ -41,6 +41,7 @@ const schema = Yup.object().shape({
     .required('Please enter your name'),
   comment: Yup.string()
     .min(3, 'Comment must be at least 3 characters')
+    .max(300, 'Comment must not exceed 200 characters')
     .required('Please enter a comment')
 })
 
@@ -197,6 +198,7 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                         {...field}
                         name={COMMENT_FIELD}
                         rows={3}
+                        maxLength={300}
                         placeholder="Enter your comment"
                         value={values.comment}
                         onChange={handleChange}
