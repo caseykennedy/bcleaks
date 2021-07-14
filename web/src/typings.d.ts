@@ -12,6 +12,7 @@ declare module 'react-id-swiper'
 declare module 'react-responsive-embed'
 declare module 'coingecko-api'
 declare module 'gatsby-source-sanity'
+declare module 'gatsby-plugin-modal-routing'
 
 function createRef<T>(): RefObject<T>
 interface RefObject<T> {

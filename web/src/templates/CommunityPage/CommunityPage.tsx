@@ -22,10 +22,10 @@ const CommunityPage: React.FC<Props> = () => {
   return (
     <S.CommunityPage>
       <Flex p={theme.gutter.axis}>
-        <Box mr={[0, 0, 5]} sx={{ flex: 1 }}>
+        <Box mr={[0, 0]} sx={{ flex: 1 }}>
           <LeakList />
         </Box>
-        <Box sx={{ display: [`none`, `none`, `block`], width: [`312px`] }} />
+        {/* <Box sx={{ display: [`none`, `none`, `block`], width: [`312px`] }} /> */}
       </Flex>
     </S.CommunityPage>
   )

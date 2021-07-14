@@ -1,7 +1,5 @@
 // CommentForm Component:
 
-// ___________________________________________________________________
-
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { Form, Formik, Field, ErrorMessage } from 'formik'
@@ -25,6 +23,7 @@ import Button from '../ui/Button'
 import Icon from '../Icons'
 
 import { CREATE_COMMENT } from '../../gql/mutation'
+import { GET_COMMENTS_BY_SLUG } from '../../gql/query'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
 // ___________________________________________________________________
@@ -41,7 +40,7 @@ const schema = Yup.object().shape({
     .min(2, 'Name must be at least 2 characters')
     .required('Please enter your name'),
   comment: Yup.string()
-    .min(3, 'Comment must be at least 10 characters')
+    .min(3, 'Comment must be at least 3 characters')
     .required('Please enter a comment')
 })
 
@@ -84,7 +83,52 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                 slug: `${slug}`,
                 name: values.name,
                 comment: values.comment
-              }
+              },
+              // Provide a fake response of the mutation response
+              optimisticResponse: {
+                createComment: {
+                  __typename: 'Comment',
+                  name: values.name,
+                  comment: values.comment
+                }
+              },
+
+              // update: (proxy, response) => {
+              //   // Read the data from our cache for this query.
+              //   const previousData = proxy.readQuery({
+              //     query: GET_COMMENTS_BY_SLUG,
+              //     variables: {
+              //       slug: `${slug}`
+              //     }
+              //   })
+
+              //   // Write our data back to the cache with the new todo in it
+              //   proxy.writeQuery({
+              //     query: GET_COMMENTS_BY_SLUG,
+              //     variables: {
+              //       slug: `${slug}`
+              //     },
+              //     data: {
+              //       ...previousData,
+              //       comments: [
+              //         response.data.createComment,
+              //         ...previousData.comments
+              //       ]
+              //     }
+              //   })
+              // },
+
+              // Refetch queries after mutation finishes successfully
+              refetchQueries: [
+                {
+                  query: GET_COMMENTS_BY_SLUG,
+                  variables: {
+                    slug: `${slug}`
+                  }
+                }
+              ],
+              // Wait for the refetched queries to be completed, before resolving the mutation
+              awaitRefetchQueries: true
             })
               .then(() => {
                 resetForm()

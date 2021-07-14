@@ -48,6 +48,7 @@
     "gatsby-plugin-create-client-paths": "^2.7.0",
     "gatsby-plugin-google-tagmanager": "^3.8.0",
     "gatsby-plugin-manifest": "^2.9.1",
+    "gatsby-plugin-modal-routing": "^1.2.0",
     "gatsby-plugin-netlify": "^2.8.0",
     "gatsby-plugin-netlify-identity": "0.0.3",
     "gatsby-plugin-nprogress": "^2.7.0",

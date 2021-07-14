@@ -69,6 +69,7 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
+    `gatsby-plugin-modal-routing`,
     {
       resolve: 'gatsby-source-sanity',
       options: {

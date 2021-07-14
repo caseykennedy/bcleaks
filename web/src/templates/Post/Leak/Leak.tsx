@@ -4,9 +4,11 @@
 
 // Libraries
 import React from 'react'
+import { Link } from 'gatsby'
 import { useQuery } from '@apollo/react-hooks'
 import { RouteComponentProps } from '@reach/router'
 import { formatDistanceToNowStrict } from 'date-fns'
+import { ModalRoutingContext } from 'gatsby-plugin-modal-routing'
 
 // Theme + UI
 import * as S from './styles.scss'
@@ -53,9 +55,20 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
   console.log(data?.postsBySlug[0])
 
   return loading ? (
-    <Box>
-      <Text as="p">loading...</Text>
-    </Box>
+    <ModalRoutingContext.Consumer>
+      {({ modal, closeTo }) => (
+        <Box>
+          {modal ? (
+            <Link to={closeTo}>Close</Link>
+          ) : (
+            <header>
+              <h1>Website Title</h1>
+            </header>
+          )}
+          <Text as="p">loading...</Text>
+        </Box>
+      )}
+    </ModalRoutingContext.Consumer>
   ) : (
     <>
       <SEO
