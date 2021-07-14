@@ -24,7 +24,7 @@ const QUOTE_ICON_SIZE = 32
 
 const Comment: React.FC<Props> = ({ commentId, slug, date, name, comment }) => {
   return (
-    <Box sx={{ border: theme.border, p: 4 }}>
+    <Box sx={{ border: theme.border, p: [3, 4] }}>
       <Box>
         <Text
           as="p"
@@ -34,7 +34,7 @@ const Comment: React.FC<Props> = ({ commentId, slug, date, name, comment }) => {
           <Box as="span" sx={{ color: 'text' }}>
             {name}
           </Box>{' '}
-          •{' '}
+          —{' '}
           {formatDistanceToNowStrict(new Date(date), {
             addSuffix: true
           })}

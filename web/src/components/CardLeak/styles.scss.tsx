@@ -91,10 +91,6 @@ export const CardLeak = styled(Flex)`
           font-size: ${theme.fontSizes[1]};
         }
       }
-
-      .user {
-        text-decoration: underline;
-      }
     }
 
     .title {

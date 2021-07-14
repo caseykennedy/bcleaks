@@ -26,15 +26,6 @@ export const Header = styled(Flex)`
     justify-content: space-between;
 
     width: 100%;
-    padding-left: ${theme.space[4]};
-
-    @media ${theme.mq.tablet} {
-      padding-left: ${theme.space[5]};
-    }
-
-    @media ${theme.mq.desktop} {
-      padding-left: ${theme.space[5]};
-    }
   }
 `
 

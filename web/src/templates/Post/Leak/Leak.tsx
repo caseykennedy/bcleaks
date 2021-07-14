@@ -72,21 +72,34 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
         </S.PageTitle>
 
         <Section bg="secondary" border={true} maxWidth={theme.leakWidth}>
-          <Text as="p" mb={4} className="text--sm">
-            {data?.postsBySlug[0].createdOn &&
-              formatDistanceToNowStrict(
-                new Date(data?.postsBySlug[0].createdOn),
-                {
-                  addSuffix: true
-                }
-              )}
-          </Text>
-          <Heading as="h2" mb={[5, 6]}>
+          <Flex sx={{ justifyContent: 'space-between', mb: 4 }}>
+            <Box as="p" color="text" className="text--small">
+              by {data?.postsBySlug[0].author}
+            </Box>
+
+            <Text as="p" color="tertiary" className="text--small">
+              {data?.postsBySlug[0].createdOn &&
+                formatDistanceToNowStrict(
+                  new Date(data?.postsBySlug[0].createdOn),
+                  {
+                    addSuffix: true
+                  }
+                )}
+            </Text>
+          </Flex>
+
+          <Heading as="h1" mb={[5, 6]} className="text--lg">
             {data?.postsBySlug[0].title}
           </Heading>
 
+          {data?.postsBySlug[0].text && (
+            <Text as="p" pr={[0, 5]} className="text">
+              {data?.postsBySlug[0].text}
+            </Text>
+          )}
+
           {data?.postsBySlug[0].linkUrl && (
-            <Box sx={{ width: `100%` }} className="link-url">
+            <Box sx={{ mt: 4, width: `100%` }} className="link-url">
               <a
                 href={data?.postsBySlug[0].linkUrl}
                 rel="nofollow"
@@ -95,12 +108,6 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
                 {data?.postsBySlug[0].linkUrl}
               </a>
             </Box>
-          )}
-
-          {data?.postsBySlug[0].text && (
-            <Text as="p" pr={[0, 5]} className="text">
-              {data?.postsBySlug[0].text}
-            </Text>
           )}
         </Section>
 

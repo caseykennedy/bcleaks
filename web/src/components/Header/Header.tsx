@@ -97,7 +97,7 @@ const Header: React.FC<HeaderShape> = ({ mainRef }) => {
         </Flex>
       </S.Utilities>
 
-      <S.Header as="header">
+      <S.Header as="header" pl={theme.gutter.axis}>
         <Flex className="inner">
           <S.Toggle onClick={toggleMenu} aria-label="toggle menu">
             <HamburgerMenu

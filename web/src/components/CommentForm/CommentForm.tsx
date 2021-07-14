@@ -41,7 +41,7 @@ const schema = Yup.object().shape({
     .min(2, 'Name must be at least 2 characters')
     .required('Please enter your name'),
   comment: Yup.string()
-    .min(10, 'Comment must be at least 10 characters')
+    .min(3, 'Comment must be at least 10 characters')
     .required('Please enter a comment')
 })
 
@@ -152,7 +152,7 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                       <Textarea
                         {...field}
                         name={COMMENT_FIELD}
-                        rows={4}
+                        rows={3}
                         placeholder="Enter your comment"
                         value={values.comment}
                         onChange={handleChange}

@@ -11,8 +11,9 @@ import React, {
   createContext
 } from 'react'
 import { Link } from 'gatsby'
-import { formatDistanceToNow } from 'date-fns'
+import { formatDistanceToNowStrict } from 'date-fns'
 import { useIdentityContext } from 'react-netlify-identity-widget'
+import { useQuery } from '@apollo/react-hooks'
 
 // Utils
 import api from '../../utils/api'
@@ -24,6 +25,9 @@ import { Box, Flex, Text } from 'theme-ui'
 
 // Components
 import Icon from '../Icons'
+
+// Data
+import { GET_COMMENTS_BY_SLUG } from '../../gql/query'
 
 // ___________________________________________________________________
 
@@ -39,6 +43,20 @@ type VoteCounterProps = {
   onVote: any
   totalVotes: number
   voters: VoterShape[]
+}
+
+type QueryData = {
+  getCommentsBySlug: {
+    commentId: string
+    slug: string
+    date: string
+    name: string
+    comment: string
+  }[]
+}
+
+type QueryVars = {
+  slug: string
 }
 
 const MediumClapContext = createContext({})
@@ -213,6 +231,15 @@ const CardLeak: React.FC<CardLeakProps> = ({
   small,
   video
 }) => {
+  const { loading, data, error } = useQuery<QueryData, QueryVars>(
+    GET_COMMENTS_BY_SLUG,
+    {
+      variables: {
+        slug: post.data.slug
+      }
+    }
+  )
+  const totalComments = data && data?.getCommentsBySlug.length
   const [totalVotes, setTotalVotes] = useState(0)
   const onVote = (countTotal: number) => {
     setTotalVotes(countTotal)
@@ -249,11 +276,12 @@ const CardLeak: React.FC<CardLeakProps> = ({
                 </span>
               </Box>
               {post.data.createdOn &&
-                formatDistanceToNow(new Date(post.data.createdOn), {
+                formatDistanceToNowStrict(new Date(post.data.createdOn), {
                   addSuffix: true
                 })}{' '}
-              <Box as="span" className="user">
-                by u/{post.data.author && post.data.author}
+              by{' '}
+              <Box as="span" color="text">
+                {post.data.author && post.data.author}
               </Box>
             </Box>
 
@@ -295,7 +323,8 @@ const CardLeak: React.FC<CardLeakProps> = ({
           />
 
           <Flex mr={4} className="utilities__item">
-            <Icon name="comment" />7 comments
+            <Icon name="comment" />
+            {totalComments} comments
           </Flex>
 
           <Flex className="utilities__item">

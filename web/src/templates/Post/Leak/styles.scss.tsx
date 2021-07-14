@@ -3,7 +3,7 @@
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import Section from '../../../components/Section'
+import { darken } from 'polished'
 import theme from '../../../gatsby-plugin-theme-ui'
 import { Box, Flex } from 'theme-ui'
 
@@ -41,6 +41,27 @@ export const Leak = styled.div`
     @media ${theme.mq.tablet} {
       position: sticky;
       top: calc(${theme.headerHeight} + ${theme.space[5]});
+    }
+  }
+
+  .link-url {
+    position: relative;
+
+    a {
+      color: ${darken(0.1, theme.colors.primary)};
+      font-size: calc(${theme.fontSizes[1]} / 1.15);
+      letter-spacing: -0.5px;
+
+      display: -webkit-box;
+      overflow: hidden;
+      position: relative;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1; /* number of lines to show */
+      -webkit-box-orient: vertical;
+
+      &:hover {
+        color: ${theme.colors.primary};
+      }
     }
   }
 `
