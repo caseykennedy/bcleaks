@@ -60,7 +60,7 @@ const CommentList: React.FC<Props> = ({ slug }) => {
       </Section>
 
       <Section border={true} maxWidth={theme.leakWidth}>
-        <Grid columns={1} gap={theme.gutter.axis}>
+        <Grid columns={1} gap={3}>
           {loading ? (
             <Text>loading...</Text>
           ) : (

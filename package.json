@@ -2,7 +2,7 @@
   "private": false,
   "name": "bc-leaks-gatsby-sanity-combo",
   "version": "1.0.0",
-  "author": "Sanity <hello@sanity.io>",
+  "author": "Casey Kennedy <caseykennedy.hns.to>",
   "engines": {
     "node": "10.x"
   },

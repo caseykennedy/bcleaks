@@ -9,7 +9,7 @@ import isLocalHost from '../../utils/isLocalHost'
 // Context
 import StoreContext from '../../context/StoreContext'
 // ui
-import { Grid } from 'theme-ui'
+import { Flex, Grid, Spinner } from 'theme-ui'
 // Components
 import CardLeak from '../../components/CardLeak'
 
@@ -60,7 +60,9 @@ const LeakList = () => {
       </Grid>
     </>
   ) : (
-    <div>loading...</div>
+    <Flex sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
+      loading... <Spinner py={3} />
+    </Flex>
   )
 }
 

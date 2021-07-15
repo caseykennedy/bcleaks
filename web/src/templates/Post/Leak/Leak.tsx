@@ -8,12 +8,11 @@ import { Link } from 'gatsby'
 import { useQuery } from '@apollo/react-hooks'
 import { RouteComponentProps } from '@reach/router'
 import { formatDistanceToNowStrict } from 'date-fns'
-import { ModalRoutingContext } from 'gatsby-plugin-modal-routing'
 
 // Theme + UI
 import * as S from './styles.scss'
 import theme from '../../../gatsby-plugin-theme-ui'
-import { Box, Flex, Text, Heading } from 'theme-ui'
+import { Box, Flex, Text, Heading, Spinner } from 'theme-ui'
 
 // Components
 import Button from '../../../components/ui/Button'
@@ -54,22 +53,7 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
   console.log(error)
   console.log(data?.postsBySlug[0])
 
-  return loading ? (
-    <ModalRoutingContext.Consumer>
-      {({ modal, closeTo }) => (
-        <Box>
-          {modal ? (
-            <Link to={closeTo}>Close</Link>
-          ) : (
-            <header>
-              <h1>Website Title</h1>
-            </header>
-          )}
-          <Text as="p">loading...</Text>
-        </Box>
-      )}
-    </ModalRoutingContext.Consumer>
-  ) : (
+  return (
     <>
       <SEO
         article={true}
@@ -78,53 +62,65 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
         pathname={`/community/${slug}`}
       />
       <S.Leak>
-        <S.PageTitle p={theme.gutter.axis}>
-          <Heading as="h4" color="white" mb={0} className="text--uppercase">
-            {data?.postsBySlug[0].category}
-          </Heading>
-        </S.PageTitle>
+        {loading || error ? (
+          <Section bg="black">
+            <Flex
+              sx={{ alignItems: 'center', justifyContent: 'space-between' }}
+            >
+              loading... <Spinner p={3} />
+            </Flex>
+          </Section>
+        ) : (
+          <>
+            <S.PageTitle p={theme.gutter.axis}>
+              <Heading as="h4" color="white" mb={0} className="text--uppercase">
+                {data?.postsBySlug[0].category}
+              </Heading>
+            </S.PageTitle>
 
-        <Section bg="secondary" border={true} maxWidth={theme.leakWidth}>
-          <Flex sx={{ justifyContent: 'space-between', mb: 4 }}>
-            <Box as="p" color="text" className="text--small">
-              by {data?.postsBySlug[0].author}
-            </Box>
+            <Section bg="secondary" border={true} maxWidth={theme.leakWidth}>
+              <Flex sx={{ justifyContent: 'space-between', mb: 4 }}>
+                <Box as="p" color="text" className="text--small">
+                  by {data?.postsBySlug[0].author}
+                </Box>
 
-            <Text as="p" color="tertiary" className="text--small">
-              {data?.postsBySlug[0].createdOn &&
-                formatDistanceToNowStrict(
-                  new Date(data?.postsBySlug[0].createdOn),
-                  {
-                    addSuffix: true
-                  }
-                )}
-            </Text>
-          </Flex>
+                <Text as="p" color="tertiary" className="text--small">
+                  {data?.postsBySlug[0].createdOn &&
+                    formatDistanceToNowStrict(
+                      new Date(data?.postsBySlug[0].createdOn),
+                      {
+                        addSuffix: true
+                      }
+                    )}
+                </Text>
+              </Flex>
 
-          <Heading as="h1" mb={[5, 6]} className="text--lg">
-            {data?.postsBySlug[0].title}
-          </Heading>
+              <Heading as="h1" mb={[5, 6]} className="text--lg">
+                {data?.postsBySlug[0].title}
+              </Heading>
 
-          {data?.postsBySlug[0].text && (
-            <Text as="p" pr={[0, 5]} className="text">
-              {data?.postsBySlug[0].text}
-            </Text>
-          )}
+              {data?.postsBySlug[0].text && (
+                <Text as="p" pr={[0, 5]} className="text">
+                  {data?.postsBySlug[0].text}
+                </Text>
+              )}
 
-          {data?.postsBySlug[0].linkUrl && (
-            <Box sx={{ mt: 4, width: `100%` }} className="link-url">
-              <a
-                href={data?.postsBySlug[0].linkUrl}
-                rel="nofollow"
-                target="_blank"
-              >
-                {data?.postsBySlug[0].linkUrl}
-              </a>
-            </Box>
-          )}
-        </Section>
+              {data?.postsBySlug[0].linkUrl && (
+                <Box sx={{ mt: 4, width: `100%` }} className="link-url">
+                  <a
+                    href={data?.postsBySlug[0].linkUrl}
+                    rel="nofollow"
+                    target="_blank"
+                  >
+                    {data?.postsBySlug[0].linkUrl}
+                  </a>
+                </Box>
+              )}
+            </Section>
 
-        <CommentList slug={slug} />
+            <CommentList slug={slug} />
+          </>
+        )}
       </S.Leak>
     </>
   )

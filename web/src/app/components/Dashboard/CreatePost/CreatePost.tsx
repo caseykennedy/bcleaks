@@ -17,7 +17,7 @@ import * as S from './styles.scss'
 import theme from '../../../../gatsby-plugin-theme-ui'
 import { Box, Heading, Text } from '../../../../components/ui'
 import Button from '../../../../components/ui/Button'
-import { Input, Select, Textarea } from 'theme-ui'
+import { Input, Select, Textarea, Spinner } from 'theme-ui'
 
 // Components
 import Icon from '../../../../components/Icons'
@@ -201,8 +201,15 @@ const CreatePostForm: React.FC<{ postType: 'link' | 'text' }> = ({
           type="submit"
           value="submit"
         >
-          {loading ? 'processing...' : 'submit'}
-          <Icon name="carat" />
+          {loading ? (
+            <>
+              processing... <Spinner p={3} />
+            </>
+          ) : (
+            <>
+              submit <Icon name="carat" />
+            </>
+          )}
         </Button>
       </fieldset>
       <pre>{error}</pre>
