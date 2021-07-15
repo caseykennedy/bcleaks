@@ -1,9 +1,0 @@
-[build]
-  command = "npm run build && cd functions-src/apollo-graphql && npm install"
-  functions = "functions-src"
-  publish = "public/"
-
-# [[redirects]]
-#   from = "/user/*"
-#   to = "/user.html"
-#   status = 200
