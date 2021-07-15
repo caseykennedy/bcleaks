@@ -106,7 +106,7 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
               )}
 
               {data?.postsBySlug[0].linkUrl && (
-                <Box sx={{ mt: 4, width: `100%` }} className="link-url">
+                <Box className="link-url">
                   <a
                     href={data?.postsBySlug[0].linkUrl}
                     rel="nofollow"

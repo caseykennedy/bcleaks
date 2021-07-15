@@ -45,11 +45,13 @@ export const Leak = styled.div`
   }
 
   .link-url {
+    margin-top: ${theme.space[2]};
     position: relative;
+    width: 100%;
 
     a {
       color: ${darken(0.1, theme.colors.primary)};
-      font-size: calc(${theme.fontSizes[1]} / 1.15);
+      font-size: ${theme.fontSizes[1]};
       letter-spacing: -0.5px;
 
       display: -webkit-box;

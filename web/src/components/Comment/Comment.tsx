@@ -24,32 +24,25 @@ const QUOTE_ICON_SIZE = 32
 
 const Comment: React.FC<Props> = ({ commentId, slug, date, name, comment }) => {
   return (
-    <Box sx={{ border: theme.border, p: [3, 4] }}>
-      <Box>
-        <Text
-          as="p"
-          sx={{ color: 'gray', lineHeight: 1.15 }}
-          className="text--sm"
-        >
-          <Box as="span" sx={{ color: 'text' }}>
-            {name}
-          </Box>{' '}
-          —{' '}
+    <S.Comment>
+      <Flex className="meta  text--xs">
+        <Flex className="meta__user">
+          <Flex className="avatar" />
+          <Text>{name}</Text>
+        </Flex>
+        <Text>
           {formatDistanceToNowStrict(new Date(date), {
             addSuffix: true
           })}
         </Text>
-      </Box>
+      </Flex>
 
-      <Flex pt={[5, 6]}>
-        <Text
-          as="p"
-          className="text--sm"
-        >
+      <Flex mt={5} p={3}>
+        <Text as="p" sx={{ color: 'gray', fontSize: [2] }}>
           {comment}
         </Text>
       </Flex>
-    </Box>
+    </S.Comment>
   )
 }
 

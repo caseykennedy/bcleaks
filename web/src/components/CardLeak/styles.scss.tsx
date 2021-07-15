@@ -122,6 +122,7 @@ export const CardLeak = styled(Flex)`
 
     .link-url {
       position: relative;
+      z-index: 9999;
 
       a {
         color: ${darken(0.1, theme.colors.primary)};
@@ -183,6 +184,7 @@ export const CardLeak = styled(Flex)`
       width: 100%;
 
       &__item {
+        color: ${theme.colors.tertiary};
         transition: color ${theme.transition.global};
 
         span svg {
@@ -192,10 +194,10 @@ export const CardLeak = styled(Flex)`
         }
 
         &:hover {
-          color: ${theme.colors.gray};
+          color: ${theme.colors.primary};
 
           span svg {
-            fill: ${theme.colors.gray};
+            fill: ${theme.colors.primary};
           }
         }
       }

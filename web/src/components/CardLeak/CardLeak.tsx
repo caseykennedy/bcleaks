@@ -292,11 +292,19 @@ const CardLeak: React.FC<CardLeakProps> = ({
             )}
           </Flex>
 
-          <Text pr={[0, 5]} className="title">
+          <Text pr={[0, 5]} pb={1} className="title">
             <Link to={`/community/${post.data.slug}`}>
               {post.data.title && post.data.title}
             </Link>
           </Text>
+
+          {post.data.text && (
+            <Link to={`/community/${post.data.slug}`}>
+              <Text as="p" pr={[0, 5]} className="text">
+                {post.data.text}
+              </Text>
+            </Link>
+          )}
 
           {post.data.linkUrl && (
             <Box sx={{ width: `100%` }} className="link-url">
@@ -304,12 +312,6 @@ const CardLeak: React.FC<CardLeakProps> = ({
                 {post.data.linkUrl}
               </a>
             </Box>
-          )}
-
-          {post.data.text && (
-            <Text as="p" pr={[0, 5]} className="text">
-              {post.data.text}
-            </Text>
           )}
         </Box>
 
@@ -322,10 +324,12 @@ const CardLeak: React.FC<CardLeakProps> = ({
             voters={post.data.voters}
           />
 
-          <Flex mr={4} className="utilities__item">
-            <Icon name="comment" />
-            {totalComments} comments
-          </Flex>
+          <Link to={`/community/${post.data.slug}`}>
+            <Flex mr={4} className="utilities__item">
+              <Icon name="comment" />
+              {totalComments} comments
+            </Flex>
+          </Link>
 
           <Flex className="utilities__item">
             <Icon name="share" />

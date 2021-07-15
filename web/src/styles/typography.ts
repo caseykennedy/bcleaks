@@ -226,11 +226,12 @@ const Typography = css`
 
   h5,
   .text--sm {
-    font-size: calc(${theme.fontSizes[1]});
+    font-size: ${theme.fontSizes[2]};
   }
 
   .text--xs {
-    font-size: ${theme.root.font.xs};
+    font-size: ${theme.fontSizes[1]};
+    line-height: 1.15;
   }
 
   p,

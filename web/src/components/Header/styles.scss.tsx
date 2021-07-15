@@ -43,10 +43,10 @@ export const Menu = styled(Flex)`
 
 export const Logo = styled(Flex)`
   align-items: center;
-  padding: ${theme.space[1]} ${theme.space[5]} ${theme.space[1]} 0;
+  padding: ${theme.space[1]} ${theme.space[3]} ${theme.space[1]} 0;
 
   @media ${theme.mq.tablet} {
-    padding: 0 ${theme.space[5]} 0 0;
+    padding: 0 ${theme.space[4]} 0 0;
   }
 
   .logo {
