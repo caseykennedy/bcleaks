@@ -2,4 +2,4 @@
   base = "web/"
   command = "npm run build && cd functions-src/apollo-graphql && npm install"
   functions = "functions-src"
-  publish = "public"
+  publish = "web/public"
