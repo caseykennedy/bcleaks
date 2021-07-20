@@ -150,6 +150,7 @@ const CommentForm: React.FC<Props> = ({ slug }) => {
                   {(field: any) => (
                     <Box
                       sx={{
+                        color: 'primary',
                         mb: 2
                       }}
                     >
