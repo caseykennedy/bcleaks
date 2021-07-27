@@ -2,4 +2,14 @@
   base = "web/"
   command = "npm run build && cd functions-src/apollo-graphql && npm install"
   functions = "functions-src"
-  publish = "public"
+  publish = "public/"
+
+[functions]
+  # Directory with serverless functions, including background functions,
+  # to deploy. This is relative to the base directory if one has been set, 
+  # or the root directory if a base hasn’t been set.
+  directory = "functions-src/"
+  
+[[plugins]]
+  # Installs the Lighthouse Build Plugin for all deploy contexts
+  package = "@netlify/plugin-lighthouse"
