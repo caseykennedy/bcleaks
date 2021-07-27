@@ -257,7 +257,7 @@ const CardLeak: React.FC<CardLeakProps> = ({ post }) => {
   const [totalVotes, setTotalVotes] = useState(0)
   const [isCopied, setIsCopied] = useState(false)
 
-  const totalComments = data && data?.getCommentsBySlug.length
+  const totalComments = data?.getCommentsBySlug.length
   const shareSlug = `${site.url}/${slug}`
 
   // Set total vote count
