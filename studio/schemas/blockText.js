@@ -1,3 +1,5 @@
+import { FaExternalLinkAlt } from 'react-icons/fa'
+
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -32,7 +34,34 @@ export default {
           { title: 'Code', value: 'code' }
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
-        annotations: []
+        annotations: [
+          {
+            title: 'External Link',
+            name: 'link',
+            type: 'object',
+            blockEditor: {
+              icon: FaExternalLinkAlt
+            },
+            fields: [
+              {
+                title: 'URL',
+                name: 'href',
+                type: 'url',
+                validation: Rule =>
+                  Rule.uri({
+                    allowRelative: true,
+                    scheme: ['https', 'http', 'mailto', 'tel']
+                  })
+              },
+              {
+                title: 'Open in new tab',
+                name: 'blank',
+                description: 'Read https://css-tricks.com/use-target_blank/',
+                type: 'boolean'
+              }
+            ]
+          }
+        ]
       }
     }
   ]

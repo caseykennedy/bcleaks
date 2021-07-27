@@ -63,12 +63,16 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
       />
       <S.Leak>
         {loading || error ? (
-          <Flex p={theme.gutter.axis}>
-            <Flex
-              sx={{ alignItems: 'center', justifyContent: 'space-between' }}
-            >
-              loading... <Spinner p={3} />
-            </Flex>
+          <Flex
+            sx={{
+              alignItems: 'center',
+              bg: 'black',
+              justifyContent: 'space-between',
+              p: theme.gutter.axis,
+              width: '100%'
+            }}
+          >
+            loading... <Spinner p={3} />
           </Flex>
         ) : (
           <>

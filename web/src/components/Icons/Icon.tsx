@@ -5,32 +5,27 @@
 // ___________________________________________________________________
 
 import React from 'react'
-
 import * as S from './styles.scss'
 
 // Icons
-// TODO: alphabetize
-import Hamburger from './SVG/Hamburger'
-import Facebook from './SVG/Facebook'
-import Instagram from './SVG/Instagram'
-import Twitter from './SVG/Twitter'
-import NextArrow from './SVG/NextArrow'
-import Logout from './SVG/Logout'
 import Carat from './SVG/Carat'
 import Comment from './SVG/Comment'
-
 import Document from './SVG/Document'
 import Download from './SVG/Download'
 import ExternalLink from './SVG/ExternalLink'
-
+import Facebook from './SVG/Facebook'
 import GridView from './SVG/GridView'
+import Hamburger from './SVG/Hamburger'
+import Instagram from './SVG/Instagram'
+import Link from './SVG/Link'
 import ListView from './SVG/ListView'
-
+import Logout from './SVG/Logout'
+import NextArrow from './SVG/NextArrow'
 import Pdf from './SVG/Pdf'
 import Plus from './SVG/Plus'
 import Pin from './SVG/Pin'
 import Share from './SVG/Share'
-
+import Twitter from './SVG/Twitter'
 import Youtube from './SVG/Youtube'
 
 // ___________________________________________________________________
@@ -102,6 +97,12 @@ const Icon: React.FC<Props> = ({ className, color, fas, name }) => {
       return (
         <S.Icon color={color} className={className}>
           <Instagram />
+        </S.Icon>
+      )
+    case 'link':
+      return (
+        <S.Icon color={color} className={className}>
+          <Link />
         </S.Icon>
       )
     case 'listView':

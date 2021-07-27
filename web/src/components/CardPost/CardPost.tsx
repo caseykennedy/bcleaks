@@ -34,7 +34,7 @@ const CardPost: React.FC<Props> = ({
   const pagePrefix = !video ? `articles` : `videos`
   return (
     <Link
-      to={`/${pagePrefix}/${post.slug.current && post.slug.current}`}
+      to={`/${pagePrefix}/${post.slug && post.slug.current}`}
       style={{ width: `100%` }}
     >
       <S.CardPost inline={inline}>

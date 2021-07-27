@@ -1,14 +1,11 @@
-// Featured Articles Styles:
+// Featured Videos Styles:
 
 // ___________________________________________________________________
 
 import styled from 'styled-components'
-import { darken } from 'polished'
 
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex } from '../ui'
-
-import Section from '../Section'
+import { Box } from 'theme-ui'
 
 // ___________________________________________________________________
 

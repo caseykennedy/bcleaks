@@ -8,7 +8,7 @@ import { RouteComponentProps } from '@reach/router'
 // Theme
 import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex } from 'theme-ui'
+import { Box, Flex, Text } from 'theme-ui'
 
 // Components
 import Section from '../../components/Section'
@@ -22,10 +22,12 @@ const CommunityPage: React.FC<Props> = () => {
   return (
     <S.CommunityPage>
       <Flex p={theme.gutter.axis}>
-        <Box mr={[0, 0]} sx={{ flex: 1 }}>
+        <Box mr={[0, 5]} sx={{ flex: 1 }}>
           <LeakList />
         </Box>
-        {/* <Box sx={{ display: [`none`, `none`, `block`], width: [`312px`] }} /> */}
+        <Box sx={{ border: theme.border, display: [`none`, `none`, `block`], p: 4, width: [`312px`] }}>
+          <Text as="p" sx={{color: 'darkgray', fontSize: 2}}>Your ad here.</Text>
+        </Box>
       </Flex>
     </S.CommunityPage>
   )

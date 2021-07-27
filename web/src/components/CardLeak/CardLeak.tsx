@@ -11,6 +11,7 @@ import React, {
   createContext
 } from 'react'
 import { Link } from 'gatsby'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { formatDistanceToNowStrict } from 'date-fns'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 import { useQuery } from '@apollo/react-hooks'
@@ -27,15 +28,13 @@ import { Box, Flex, Text } from 'theme-ui'
 import Icon from '../Icons'
 
 // Data
+import useSiteSettings from '../../hooks/useSiteSettings'
 import { GET_COMMENTS_BY_SLUG } from '../../gql/query'
 
 // ___________________________________________________________________
 
 type CardLeakProps = {
-  aspectRatio?: number
   post: FaunaDataQuery
-  small?: boolean
-  video?: boolean
 }
 
 type VoteCounterProps = {
@@ -59,10 +58,10 @@ type QueryVars = {
   slug: string
 }
 
-const MediumClapContext = createContext({})
-const { Provider } = MediumClapContext
+const VoteContext = createContext({})
+const { Provider } = VoteContext
 
-const MAXIMUM_USER_VOTE = 50000000
+const MAXIMUM_USER_VOTE = 500000
 
 // ___________________________________________________________________
 
@@ -89,6 +88,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     username = ''
   }
 
+  // Handle vote state
   const componentJustMounted = useRef<boolean>(true)
   const [voteState, setVoteState] = useState(initialState)
   const { userVote, voteTotal, isClicked, isUpVote, isDownVote } = voteState
@@ -199,7 +199,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
       <Flex className="vote">
         <button
           onClick={handleVoteUp}
-          className={`vote-arrow  vote-arrow--up  ${
+          className={`vote__arrow  vote__arrow--up  ${
             userVote === 1 ? 'active' : ''
           } ${hasVotedUp && 'active'}`}
           disabled={isLoggedIn && userVote !== 1 ? false : true}
@@ -208,11 +208,11 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
           <Icon name="arrow" />
         </button>
 
-        <Flex className="vote-count">{voteTotal}</Flex>
+        <Flex className="vote__count">{voteTotal}</Flex>
 
         <button
           onClick={handleVoteDown}
-          className={`vote-arrow  vote-arrow--down  ${
+          className={`vote__arrow  vote__arrow--down  ${
             userVote === -1 ? 'active' : ''
           } ${hasVotedDown && 'active'}`}
           disabled={isLoggedIn && userVote !== -1 ? false : true}
@@ -225,12 +225,25 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
   )
 }
 
-const CardLeak: React.FC<CardLeakProps> = ({
-  aspectRatio,
-  post,
-  small,
-  video
-}) => {
+const CardLeak: React.FC<CardLeakProps> = ({ post }) => {
+  // Destructure post
+  const {
+    author,
+    category,
+    createdOn,
+    linkUrl,
+    postType,
+    slug,
+    text,
+    title,
+    votes,
+    voters
+  } = post.data
+
+  // Get site settings
+  const site = useSiteSettings()
+
+  // Query comments by slug
   const { loading, data, error } = useQuery<QueryData, QueryVars>(
     GET_COMMENTS_BY_SLUG,
     {
@@ -239,103 +252,142 @@ const CardLeak: React.FC<CardLeakProps> = ({
       }
     }
   )
-  const totalComments = data && data?.getCommentsBySlug.length
+
+  // Setup state & constants
   const [totalVotes, setTotalVotes] = useState(0)
+  const [isCopied, setIsCopied] = useState(false)
+
+  const totalComments = data && data?.getCommentsBySlug.length
+  const shareSlug = `${site.url}/${slug}`
+
+  // Set total vote count
   const onVote = (countTotal: number) => {
     setTotalVotes(countTotal)
   }
 
+  // Toggle share dropdown
+  const [isShareActive, setShareActive] = useState(false)
+  const ToggleShareDropdown = () => {
+    setShareActive(!isShareActive)
+  }
+
+  // On copy share link
+  const onCopyShareLink = () => {
+    setIsCopied(true)
+    setTimeout(() => {
+      setIsCopied(false)
+    }, 1500)
+  }
+
   // Highlight the category pill
   let pillColor
-  if (post.data.category === 'Altcoin') {
+  if (category === 'Altcoin') {
     pillColor = theme.colors.blue
-  } else if (post.data.category === 'Bitcoin') {
+  } else if (category === 'Bitcoin') {
     pillColor = theme.colors.orange
-  } else if (post.data.category === 'Crypto Picks') {
+  } else if (category === 'Crypto Picks') {
     pillColor = theme.colors.pink
-  } else if (post.data.category === 'DeFi') {
+  } else if (category === 'DeFi') {
     pillColor = theme.colors.yellow
-  } else if (post.data.category === 'Ethereum') {
+  } else if (category === 'Ethereum') {
     pillColor = theme.colors.purple
-  } else if (post.data.category === 'Investigations') {
+  } else if (category === 'Investigations') {
     pillColor = theme.colors.gray
   } else {
     pillColor = theme.colors.tertiary
   }
 
+  const Utilities = () => {
+    return (
+      <Flex className="utilities">
+        <VoteCounter
+          id={post.ref['@ref'].id}
+          onVote={onVote}
+          totalVotes={votes}
+          voters={voters}
+        />
+
+        <Link to={`/community/${slug}`}>
+          <Flex mr={4} className="utilities__item">
+            <Icon name="comment" className="icon" />
+            {totalComments} comments
+          </Flex>
+        </Link>
+
+        <Flex
+          mr={4}
+          className="utilities__item  share"
+          onClick={ToggleShareDropdown}
+        >
+          <Icon name="share" className="icon" />
+          share
+          <Box className={`share__dropdown  ${isShareActive && 'visible'}`}>
+            <Box className="share__link">
+              <CopyToClipboard text={shareSlug} onCopy={onCopyShareLink}>
+                <span>
+                  <Icon name="link" /> copy link
+                </span>
+              </CopyToClipboard>
+            </Box>
+            <Box className="share__link">
+              <a href={`//twitter.com/share?url=${shareSlug}`} target="_blank">
+                <Icon name="twitter" /> Twitter
+              </a>
+            </Box>
+          </Box>
+        </Flex>
+
+        {isCopied && <Text sx={{ color: 'primary' }}>copied!</Text>}
+      </Flex>
+    )
+  }
+
   return (
     <S.CardLeak>
-      <Flex className="content">
+      <Flex className="inner">
         <Box>
           <Flex className="meta">
             <Box>
               <Box as="span" bg={pillColor} className="category">
                 c/
-                <span className="text--uppercasee">
-                  {post.data.category && post.data.category}
-                </span>
+                <span className="text--uppercasee">{category}</span>
               </Box>
-              {post.data.createdOn &&
-                formatDistanceToNowStrict(new Date(post.data.createdOn), {
+              {createdOn &&
+                formatDistanceToNowStrict(new Date(createdOn), {
                   addSuffix: true
                 })}{' '}
               by{' '}
               <Box as="span" color="text">
-                {post.data.author && post.data.author}
+                {author}
               </Box>
             </Box>
 
-            {post.data.linkUrl && (
-              <a href={post.data.linkUrl} rel="nofollow" target="_blank">
-                <Icon name="external-link" />
-              </a>
-            )}
+            <a href={linkUrl} rel="nofollow" target="_blank">
+              <Icon name="external-link" />
+            </a>
           </Flex>
 
           <Text pr={[0, 5]} pb={1} className="title">
-            <Link to={`/community/${post.data.slug}`}>
-              {post.data.title && post.data.title}
-            </Link>
+            <Link to={`/community/${slug}`}>{title}</Link>
           </Text>
 
-          {post.data.text && (
-            <Link to={`/community/${post.data.slug}`}>
+          {text && (
+            <Link to={`/community/${slug}`}>
               <Text as="p" pr={[0, 5]} className="text">
-                {post.data.text}
+                {text}
               </Text>
             </Link>
           )}
 
-          {post.data.linkUrl && (
+          {linkUrl && (
             <Box sx={{ width: `100%` }} className="link-url">
-              <a href={post.data.linkUrl} rel="nofollow" target="_blank">
-                {post.data.linkUrl}
+              <a href={linkUrl} rel="nofollow" target="_blank">
+                {linkUrl}
               </a>
             </Box>
           )}
         </Box>
-
-        <Flex className="utilities">
-          <VoteCounter
-            id={post.ref['@ref'].id}
-            // id="0101010101101100010"
-            onVote={onVote}
-            totalVotes={post.data.votes}
-            voters={post.data.voters}
-          />
-
-          <Link to={`/community/${post.data.slug}`}>
-            <Flex mr={4} className="utilities__item">
-              <Icon name="comment" />
-              {totalComments} comments
-            </Flex>
-          </Link>
-
-          <Flex className="utilities__item">
-            <Icon name="share" />
-            share
-          </Flex>
-        </Flex>
+        <Utilities />
       </Flex>
     </S.CardLeak>
   )
