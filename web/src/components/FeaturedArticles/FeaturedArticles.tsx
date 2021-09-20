@@ -39,7 +39,7 @@ const FeaturedArticles: React.FC<Props> = ({ bg, hero, post }) => {
           <Flex className="featured__content">
             <Box width={1}>
               <Heading as="h1" mb={1} className="text--xl  text--uppercase">
-                <Link to={`/articles/${post.slug.current}`}>{post.title}</Link>
+                <Link to={`/articles/${post.slug?.current}`}>{post.title}</Link>
               </Heading>
               {post.tags && (
                 <Flex mb={6} width={1}>

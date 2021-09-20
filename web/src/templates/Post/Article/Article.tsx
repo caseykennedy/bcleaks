@@ -35,6 +35,7 @@ import useSiteSettings from '../../../hooks/useSiteSettings'
 const Article: React.FC<PostContextShape> = ({ pageContext }) => {
   const post = pageContext.post
   const posts = usePost()
+  const cleanedPosts = posts.filter(p => p.node.slug)
   const siteSettings = useSiteSettings()
   return (
     <>
@@ -196,7 +197,7 @@ const Article: React.FC<PostContextShape> = ({ pageContext }) => {
 
           <Box width={1}>
             <CardSlider pagination={true} slidesPerView={3}>
-              {posts.slice(0, 6).map(({ node: post }, idx) => (
+              {cleanedPosts.slice(0, 6).map(({ node: post }, idx) => (
                 <Flex key={idx}>
                   <CardLeak post={post} small={true} />
                 </Flex>

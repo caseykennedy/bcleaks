@@ -25,10 +25,11 @@ type Props = {}
 
 const Hero: React.FC<Props> = () => {
   const posts = usePost()
+  const cleanedPosts = posts.filter(p => p.node.slug)
   return (
     <S.Hero>
       <Flex className="hero__inner">
-        {posts.slice(1, 3).map(({ node: post }, idx) => (
+        {cleanedPosts.slice(1, 3).map(({ node: post }, idx) => (
           <Box flex={1} p={theme.gutter.axis} className="panel" key={idx}>
             <Box width={1}>
               {post.tags && (
