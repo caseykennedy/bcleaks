@@ -34,6 +34,7 @@ import useSiteSettings from '../../../hooks/useSiteSettings'
 const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
   const post = pageContext.post
   const videos = useVideo()
+  const filteredVideos = videos.filter(v => v.node.videoUrl)
   const siteSettings = useSiteSettings()
   return (
     <>
@@ -148,7 +149,7 @@ const Video: React.FC<VideoContextShape> = ({ pageContext }) => {
           </Heading>
           <Box width={1}>
             <CardSlider pagination={true} slidesPerView={3}>
-              {videos.slice(0, 4).map(({ node: post }, idx) => (
+              {filteredVideos.slice(0, 4).map(({ node: post }, idx) => (
                 <Box key={idx}>
                   <CardLeak post={post} small={true} video={true} />
                 </Box>

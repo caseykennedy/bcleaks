@@ -27,7 +27,7 @@ const VideosPage = () => {
   const filteredVideos = videos.filter(v => v.node.videoUrl)
   // State for the list
   const [list, setList] = useState([...filteredVideos.slice(0, 15)])
-  // State to trigger oad more
+  // State to trigger load more
   const [loadMore, setLoadMore] = useState(false)
   // State of whether there is more to load
   const [hasMore, setHasMore] = useState(filteredVideos.length > 15)

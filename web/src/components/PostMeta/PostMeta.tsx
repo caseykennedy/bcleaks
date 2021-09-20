@@ -6,10 +6,11 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image/withIEPolyfill'
+import { format } from 'date-fns'
 
 // import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Text } from 'theme-ui'
+import { Box, Flex, Text } from '../ui'
 
 // ___________________________________________________________________
 

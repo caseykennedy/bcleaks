@@ -17,7 +17,7 @@ const usePost = () => {
             _rawExcerpt
             _rawBody
             _id
-            publishedAt(formatString: "MMM. DD, YYYY | hh:mma")
+            publishedAt(formatString: "MMM. DD, YYYY")
             slug {
               current
             }
