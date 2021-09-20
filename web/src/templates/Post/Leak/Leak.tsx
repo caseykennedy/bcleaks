@@ -49,9 +49,9 @@ const Leak: React.FC<Props> = ({ slug = '404' }) => {
       }
     }
   )
-  console.log(loading)
-  console.log(error)
-  console.log(data?.postsBySlug[0])
+  // console.log(loading)
+  // console.log(error)
+  // console.log(data?.postsBySlug[0])
 
   return (
     <>
