@@ -25,8 +25,17 @@ const CommunityPage: React.FC<Props> = () => {
         <Box mr={[0, 5]} sx={{ flex: 1 }}>
           <LeakList />
         </Box>
-        <Box sx={{ border: theme.border, display: [`none`, `none`, `block`], p: 4, width: [`312px`] }}>
-          <Text as="p" sx={{color: 'darkgray', fontSize: 2}}>Your ad here.</Text>
+        <Box
+          sx={{
+            border: theme.border,
+            display: [`none`, `none`, `block`],
+            p: 4,
+            width: [`312px`]
+          }}
+        >
+          <Text as="p" sx={{ color: 'darkgray', fontSize: 2 }}>
+            Your ad here.
+          </Text>
         </Box>
       </Flex>
     </S.CommunityPage>

@@ -2,7 +2,7 @@
 
 // ___________________________________________________________________
 
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import Context from '../context/StoreContext'
 
 // ___________________________________________________________________

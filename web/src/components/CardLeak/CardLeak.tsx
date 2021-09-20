@@ -1,7 +1,5 @@
 // Card Leak
 
-// ___________________________________________________________________
-
 import React, {
   useState,
   useEffect,
@@ -60,10 +58,7 @@ type QueryVars = {
 
 const VoteContext = createContext({})
 const { Provider } = VoteContext
-
 const MAXIMUM_USER_VOTE = 500000
-
-// ___________________________________________________________________
 
 const VoteCounter: React.FC<VoteCounterProps> = ({
   id,

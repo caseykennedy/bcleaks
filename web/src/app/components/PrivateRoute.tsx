@@ -2,10 +2,10 @@ import React from 'react'
 import { navigate } from 'gatsby'
 import { useIdentityContext } from 'react-netlify-identity-widget'
 
-type Props = {
-  component: () => JSX.Element
-  pathname: any
-}
+// type Props = {
+//   component: () => JSX.Element
+//   pathname: any
+// }
 
 const PrivateRoute = (props: any) => {
   const { isLoggedIn } = useIdentityContext()

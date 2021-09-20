@@ -9,7 +9,7 @@ import Img from 'gatsby-image/withIEPolyfill'
 
 // import * as S from './styles.scss'
 import theme from '../../gatsby-plugin-theme-ui'
-import { Box, Flex, Text } from '../ui'
+import { Box, Flex, Text } from 'theme-ui'
 
 // ___________________________________________________________________
 
@@ -27,19 +27,20 @@ const PostMeta: React.FC<MetaShape> = ({
   publishedAt
 }) => {
   let pillColor
-  if (categories[0].title === 'Altcoin') {
+  const hasCategory = categories[0]?.title
+  if (hasCategory === 'Altcoin') {
     pillColor = theme.colors.blue
-  } else if (categories[0].title === 'Bitcoin') {
+  } else if (hasCategory === 'Bitcoin') {
     pillColor = theme.colors.orange
-  } else if (categories[0].title === 'Crypto Picks') {
+  } else if (hasCategory === 'Crypto Picks') {
     pillColor = theme.colors.pink
-  } else if (categories[0].title === 'DeFi') {
+  } else if (hasCategory === 'DeFi') {
     pillColor = theme.colors.yellow
-  } else if (categories[0].title === 'Ethereum') {
+  } else if (hasCategory === 'Ethereum') {
     pillColor = theme.colors.purple
-  } else if (categories[0].title === 'Investigations') {
+  } else if (hasCategory === 'Investigations') {
     pillColor = theme.colors.gray
-  } else if (categories[0].title === 'Live Streams') {
+  } else if (hasCategory === 'Live Streams') {
     pillColor = theme.colors.white
   } else {
     pillColor = theme.colors.tertiary
@@ -66,7 +67,7 @@ const PostMeta: React.FC<MetaShape> = ({
         </Text>
         by <strong>{authors && authors.name}</strong> in{' '}
         <Box as="span" bg={pillColor} className="category">
-          {categories && categories[0].title}
+          {categories[0]?.title}
         </Box>
       </Box>
     </Meta>

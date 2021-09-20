@@ -5,7 +5,6 @@ export default {
   title: 'Advertisement',
   type: 'document',
   icon: MdFiberManualRecord,
-  liveEdit: false,
   fields: [
     {
       name: 'title',

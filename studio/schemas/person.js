@@ -5,7 +5,6 @@ export default {
   title: "Person",
   type: "document",
   icon: MdPerson,
-  liveEdit: false,
   fields: [
     {
       name: "name",

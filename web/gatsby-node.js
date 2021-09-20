@@ -5,8 +5,6 @@ exports.onPostBuild = ({ reporter }) => {
   reporter.info(`Your Gatsby site has been built!`)
 }
 
-const { paginate } = require('gatsby-awesome-pagination')
-
 // Article Category Pages
 // ___________________________________________________________________
 async function createArticleCategoryPages(graphql, actions) {

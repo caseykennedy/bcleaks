@@ -4,14 +4,6 @@ import React from 'react'
 
 // ___________________________________________________________________
 
-type TodoData = {
-  author: string
-  body: string
-  postType: string
-  title: string
-  votes: number
-}
-
 type ContextProps = {
   state: {
     posts: FaunaDataQuery[]

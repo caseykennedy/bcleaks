@@ -19,6 +19,11 @@
     "dashboard-widget-netlify",
     "asset-source-unsplash"
   ],
+  "env": {
+    "development": {
+      "plugins": ["@sanity/vision"]
+    }
+  },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
@@ -31,6 +36,22 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./src/dashboardConfig.js"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "app/documentActions"
+    },
+    {
+      "implements": "part:@sanity/base/document-badges/resolver",
+      "path": "app/documentBadges"
+    },
+    {
+      "implements": "part:@sanity/base/tool",
+      "path": "app/tools/board"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "app/variableOverrides.css"
     }
   ]
 }

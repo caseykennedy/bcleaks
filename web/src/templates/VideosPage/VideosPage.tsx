@@ -24,12 +24,13 @@ import useVideo from '../../hooks/useVideo'
 
 const VideosPage = () => {
   const videos = useVideo()
+  const filteredVideos = videos.filter(v => v.node.videoUrl)
   // State for the list
-  const [list, setList] = useState([...videos.slice(0, 15)])
+  const [list, setList] = useState([...filteredVideos.slice(0, 15)])
   // State to trigger oad more
   const [loadMore, setLoadMore] = useState(false)
   // State of whether there is more to load
-  const [hasMore, setHasMore] = useState(videos.length > 15)
+  const [hasMore, setHasMore] = useState(filteredVideos.length > 15)
   // Load more button click
   const handleLoadMore = () => {
     setLoadMore(true)
@@ -39,9 +40,9 @@ const VideosPage = () => {
   useEffect(() => {
     if (loadMore && hasMore) {
       const currentLength = list.length
-      const isMore = currentLength < videos.length
+      const isMore = currentLength < filteredVideos.length
       const nextResults = isMore
-        ? videos.slice(currentLength, currentLength + 15)
+        ? filteredVideos.slice(currentLength, currentLength + 15)
         : []
       setList([...list, ...nextResults])
       setLoadMore(false)
@@ -50,14 +51,14 @@ const VideosPage = () => {
 
   // Check if there is more
   useEffect(() => {
-    const isMore = list.length < videos.length
+    const isMore = list.length < filteredVideos.length
     setHasMore(isMore)
   }, [list]) // eslint-disable-line
   return (
     <S.VideosPage>
       <FeaturedVideo
         bg={theme.colors.black}
-        post={videos[0].node}
+        post={filteredVideos[0].node}
         hero={false}
       />
 

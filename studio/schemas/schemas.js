@@ -17,6 +17,7 @@ import siteSettings from './siteSettings'
 import source from './source'
 import tag from './tag'
 import video from './video'
+import workflowMetadata from './workflow/metadata'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -40,6 +41,7 @@ export default createSchema({
     source,
     tag,
     video,
+    workflowMetadata,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

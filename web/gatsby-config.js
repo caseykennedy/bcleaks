@@ -6,7 +6,7 @@ const config = require('./config')
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
 // Netlify instance for Identity
-const netlifyInstance = "https://bcleaks.netlify.app"
+const netlifyInstance = 'https://bcleaks.netlify.app'
 
 // Get Sanity config
 const {
@@ -28,15 +28,15 @@ module.exports = {
     ogLanguage: config.ogLanguage,
     author: config.author,
     twitter: config.userTwitter,
-    facebook: config.ogSiteName,
+    facebook: config.ogSiteName
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
-        siteUrl: `https://www.blockchainleaks.com`,
-      },
+        siteUrl: `https://www.blockchainleaks.com`
+      }
     },
     {
       resolve: 'gatsby-plugin-google-tagmanager',
@@ -53,13 +53,13 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/community/*`, `/user/*`] },
+      options: { prefixes: [`/community/*`, `/user/*`] }
     },
     {
       resolve: `gatsby-plugin-netlify-identity`,
       options: {
-        url: netlifyInstance,
-      },
+        url: netlifyInstance
+      }
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
@@ -97,7 +97,7 @@ module.exports = {
     //     // This is the name under which your data will appear in Gatsby GraphQL queries
     //     // The following will create queries called `allBird` and `bird`.
     //     type: "faunaDb",
-    //     // If you need to limit the number of documents returned, you can specify a 
+    //     // If you need to limit the number of documents returned, you can specify a
     //     // maximum number to read.
     //     size: 100
     //   },
