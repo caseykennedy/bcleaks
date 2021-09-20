@@ -25,10 +25,11 @@ type Props = {}
 
 const Hero: React.FC<Props> = () => {
   const posts = usePost()
+  const featuredPost = posts.filter(p => p.node.featured)
   return (
     <S.Hero bg="black" pt={[6, 7, 8]}>
       <div className="hero__inner">
-        {posts.slice(3, 4).map(({ node: post }, idx) => (
+        {featuredPost.slice(0, 1).map(({ node: post }, idx) => (
           <Box width={[1]} key={idx}>
             <Box width={[1, 2 / 3]}>
               <Heading as="h1" className="text--uppercase">

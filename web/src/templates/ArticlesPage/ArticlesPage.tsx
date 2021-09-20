@@ -25,6 +25,7 @@ import usePost from '../../hooks/usePost'
 const ArticlesPage = () => {
   const posts = usePost()
   const cleanedPosts = posts.filter(p => p.node.slug)
+  const featuredPosts = posts.filter(p => p.node.featured)  
   const [items, setItems] = useState(cleanedPosts)
   // State for the list
   const [list, setList] = useState([...cleanedPosts.slice(0, 10)])
@@ -58,7 +59,7 @@ const ArticlesPage = () => {
 
   return (
     <S.ArticlesPage>
-      <FeaturedArticles bg={theme.colors.black} post={cleanedPosts[0].node} />
+      <FeaturedArticles bg={theme.colors.black} post={featuredPosts[0].node} />
 
       <CatNav postType="articles" />
 

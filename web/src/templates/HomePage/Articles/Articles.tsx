@@ -23,11 +23,11 @@ import usePost from '../../../hooks/usePost'
 
 const Articles = () => {
   const posts = usePost()
-  const heroPost = posts.filter(p => p.node.slug)
+  const cleanedPosts = posts.filter(p => p.node.slug)
   return (
     <S.Articles>
       <Box width={1} overflow="hidden">
-        <FeaturedArticles bg={theme.colors.black} post={heroPost[0].node} />
+        <FeaturedArticles bg={theme.colors.black} post={cleanedPosts[0].node} />
       </Box>
 
       <Section>
@@ -44,7 +44,7 @@ const Articles = () => {
 
         <Box width={[1, 1, 6 / 8]} className="articles__main">
           <Box>
-            {posts.slice(1, 7).map(({ node: post }, idx) => (
+            {cleanedPosts.slice(1, 7).map(({ node: post }, idx) => (
               <CardPost
                 aspectRatio={4 / 3}
                 post={post}

@@ -26,6 +26,7 @@ import useAdvertisement from '../../hooks/useAdvertisement'
 
 const HomePage: React.FC = () => {
   const videos = useVideo()
+  const filteredVideos = videos.filter(v => v.node.videoUrl)
   const ads = useAdvertisement()
   const [ad, setAd] = useState()
 
@@ -39,7 +40,7 @@ const HomePage: React.FC = () => {
   return (
     <S.HomePage>
       <Box width={1} overflow="hidden">
-        {videos.slice(2, 3).map(({ node: post }, key) => (
+        {filteredVideos.slice(2, 3).map(({ node: post }, key) => (
           <FeaturedVideo
             bg={theme.colors.black}
             post={post}
