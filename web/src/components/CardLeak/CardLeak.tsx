@@ -1,5 +1,7 @@
 // Card Leak
 
+// ___________________________________________________________________
+
 import React, {
   useState,
   useEffect,
@@ -136,6 +138,10 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     e.preventDefault()
     const voteUpReducer =
       userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal
+    setVoteState({
+      userVote: userVote + 1,
+      voteTotal: voteUpReducer
+    })
     try {
       // update it!
       api
@@ -149,10 +155,6 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
         .then(response => {
           console.log('API response', response)
           // set app state
-          setVoteState({
-            userVote: userVote + 1,
-            voteTotal: voteUpReducer
-          })
           console.log('up vote')
         })
         .catch(error => {
@@ -168,8 +170,12 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault()
-    const voteDownReducer = userVote > MINIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
-
+    const voteDownReducer =
+      userVote > MINIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
+    setVoteState({
+      userVote: userVote - 1,
+      voteTotal: voteDownReducer
+    })
     try {
       // update it!
       api
@@ -183,10 +189,6 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
         .then(response => {
           console.log('API response', response)
           // set app state
-          setVoteState({
-            userVote: userVote - 1,
-            voteTotal: voteDownReducer
-          })
           console.log('down vote')
         })
         .catch(error => {
@@ -256,6 +258,7 @@ const CardLeak: React.FC<CardLeakProps> = ({ post }) => {
       }
     }
   )
+  console.log('GET_COMMENTS_BY_SLUG', error)
 
   // Setup state & constants
   const [totalVotes, setTotalVotes] = useState(0)
