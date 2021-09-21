@@ -58,7 +58,8 @@ type QueryVars = {
 
 const VoteContext = createContext({})
 const { Provider } = VoteContext
-const MAXIMUM_USER_VOTE = 500000
+const MAXIMUM_USER_VOTE = 1
+const MINIMUM_USER_VOTE = -1
 
 const VoteCounter: React.FC<VoteCounterProps> = ({
   id,
@@ -66,16 +67,6 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
   totalVotes,
   voters
 }) => {
-  const initialState = {
-    userVote: 0,
-    voteTotal: totalVotes
-  }
-  const initialVoteState = {
-    voteRef: null,
-    voteCountRef: 0,
-    voteTotalRef: 0
-  }
-
   // Check if logged in
   const { isLoggedIn, user } = useIdentityContext()
   let username: string
@@ -85,6 +76,22 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     username = ''
   }
 
+  // Find the current user in voter array
+  const currentUser = voters.filter(
+    voter => voter.user === user!.user_metadata.full_name
+  )
+  const currentUserVote = currentUser[0] ? currentUser[0].vote : 0
+
+  const initialState = {
+    userVote: currentUserVote,
+    voteTotal: totalVotes
+  }
+  const initialVoteState = {
+    voteRef: null,
+    voteCountRef: 0,
+    voteTotalRef: 0
+  }
+
   // Handle vote state
   const componentJustMounted = useRef<boolean>(true)
   const [voteState, setVoteState] = useState(initialState)
@@ -92,8 +99,6 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
   const [{ voteRef, voteCountRef, voteTotalRef }, setRefState] = useState(
     initialVoteState
   )
-  const [hasVotedUp, setHasVotedUp] = useState(false)
-  const [hasVotedDown, setHasVotedDown] = useState(false)
 
   const setRef = useCallback(node => {
     if (node !== null) {
@@ -111,100 +116,87 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     [voteState, setRef]
   )
 
-  // Remove the current voter from voter array
-  const removeCurrentVoter = voters.filter(
-    voter => voter.user !== user!.user_metadata.full_name
-  )
-
-  // Check if the user has voted
-  const checkHasVoted = () =>
-    voters.filter(voter => {
-      const checkUser = voter.user === user!.user_metadata.full_name
-      if (isLoggedIn) {
-        if (checkUser && voter.vote === 1) {
-          setHasVotedUp(true)
-        }
-        if (checkUser && voter.vote === -1) {
-          setHasVotedDown(true)
-        }
-        if (checkUser && voter.vote === 0) {
-          setHasVotedUp(false)
-          setHasVotedDown(false)
-        }
-      }
-    })
-
-  // Handle the up vote
-  const handleVoteUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault()
-    const voteUpReducer =
-      userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal
-    console.log('removeCurrentVoter:', removeCurrentVoter)
-    setVoteState({
-      userVote: Math.min(userVote + 1, MAXIMUM_USER_VOTE),
-      voteTotal: voteUpReducer
-    })
-    // update it!
-    api
-      .castVote(id, {
-        votes: voteUpReducer,
-        voters: removeCurrentVoter.concat({
-          user: username,
-          vote: userVote + 1
-        })
-      })
-      .then(response => {
-        console.log('API response', response)
-        // set app state
-        setHasVotedUp(true)
-        setHasVotedDown(false)
-      })
-      .catch(error => {
-        console.log('ERROR')
-        console.log('API error:', error)
-      })
-  }
-  // Handle the down vote
-  const handleVoteDown = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault()
-    const voteDownReducer =
-      userVote < MAXIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
-    console.log('removeCurrentVoter:', removeCurrentVoter)
-    setVoteState({
-      userVote: Math.min(userVote - 1, MAXIMUM_USER_VOTE),
-      voteTotal: voteDownReducer
-    })
-    // update it!
-    api
-      .castVote(id, {
-        votes: voteDownReducer,
-        voters: removeCurrentVoter.concat({
-          user: username,
-          vote: userVote - 1
-        })
-      })
-      .then(response => {
-        console.log('API response', response)
-        // set app state
-        setHasVotedUp(false)
-        setHasVotedDown(true)
-      })
-      .catch(error => {
-        console.log('ERROR')
-        console.log('API error:', error)
-      })
-  }
-
   useEffect(() => {
     if (!componentJustMounted.current) {
       onVote(voteState)
     }
     componentJustMounted.current = false
-
-    checkHasVoted()
   }, [userVote, onVote])
+  // console.log('userVote', userVote)
+
+  // Remove the current voter from voter array
+  const removeCurrentVoter = voters.filter(
+    voter => voter.user !== user!.user_metadata.full_name
+  )
+
+  // Handle the up vote
+  const handleVoteUp = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault()
+    const voteUpReducer =
+      userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal
+    try {
+      // update it!
+      api
+        .castVote(id, {
+          votes: voteUpReducer,
+          voters: removeCurrentVoter.concat({
+            user: username,
+            vote: userVote + 1
+          })
+        })
+        .then(response => {
+          console.log('API response', response)
+          // set app state
+          setVoteState({
+            userVote: userVote + 1,
+            voteTotal: voteUpReducer
+          })
+          console.log('up vote')
+        })
+        .catch(error => {
+          console.log('ERROR')
+          console.log('API error:', error)
+        })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  // Handle the down vote
+  const handleVoteDown = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault()
+    const voteDownReducer = userVote > MINIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
+
+    try {
+      // update it!
+      api
+        .castVote(id, {
+          votes: voteDownReducer,
+          voters: removeCurrentVoter.concat({
+            user: username,
+            vote: userVote - 1
+          })
+        })
+        .then(response => {
+          console.log('API response', response)
+          // set app state
+          setVoteState({
+            userVote: userVote - 1,
+            voteTotal: voteDownReducer
+          })
+          console.log('down vote')
+        })
+        .catch(error => {
+          console.log('ERROR')
+          console.log('API error:', error)
+        })
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   return (
     <Provider value={memoizedValue}>
@@ -212,7 +204,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
         <button
           onClick={handleVoteUp}
           className={`vote__arrow  vote__arrow--up  ${
-            hasVotedUp ? 'active' : ''
+            userVote === 1 ? 'active' : ''
           }`}
           disabled={isLoggedIn && userVote !== 1 ? false : true}
           aria-label="upvote post"
@@ -225,7 +217,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
         <button
           onClick={handleVoteDown}
           className={`vote__arrow  vote__arrow--down  ${
-            hasVotedDown ? 'active' : ''
+            userVote === -1 ? 'active' : ''
           }`}
           disabled={isLoggedIn && userVote !== -1 ? false : true}
           aria-label="downvote post"
