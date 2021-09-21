@@ -68,18 +68,13 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
 }) => {
   const initialState = {
     userVote: 0,
-    voteTotal: totalVotes,
-    isClicked: false,
-    isUpVote: false,
-    isDownVote: false
+    voteTotal: totalVotes
   }
   const initialVoteState = {
     voteRef: null,
     voteCountRef: 0,
     voteTotalRef: 0
   }
-
-  // console.log(totalVotes)
 
   // Check if logged in
   const { isLoggedIn, user } = useIdentityContext()
@@ -93,12 +88,10 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
   // Handle vote state
   const componentJustMounted = useRef<boolean>(true)
   const [voteState, setVoteState] = useState(initialState)
-  const { userVote, voteTotal, isClicked, isUpVote, isDownVote } = voteState
-  const [{ voteRef, voteCountRef, voteTotalRef }, setRefState] = useState<{
-    voteRef: any
-    voteCountRef: any
-    voteTotalRef: any
-  }>(initialVoteState)
+  const { userVote, voteTotal } = voteState
+  const [{ voteRef, voteCountRef, voteTotalRef }, setRefState] = useState(
+    initialVoteState
+  )
   const [hasVotedUp, setHasVotedUp] = useState(false)
   const [hasVotedDown, setHasVotedDown] = useState(false)
 
@@ -118,28 +111,53 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     [voteState, setRef]
   )
 
+  // Remove the current voter from voter array
+  const removeCurrentVoter = voters.filter(
+    voter => voter.user !== user!.user_metadata.full_name
+  )
+
+  // Check if the user has voted
+  const checkHasVoted = () =>
+    voters.filter(voter => {
+      const checkUser = voter.user === user!.user_metadata.full_name
+      if (isLoggedIn) {
+        if (checkUser && voter.vote === 1) {
+          setHasVotedUp(true)
+        }
+        if (checkUser && voter.vote === -1) {
+          setHasVotedDown(true)
+        }
+        if (checkUser && voter.vote === 0) {
+          setHasVotedUp(false)
+          setHasVotedDown(false)
+        }
+      }
+    })
+
   // Handle the up vote
   const handleVoteUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     const voteUpReducer =
       userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal
+    console.log('removeCurrentVoter:', removeCurrentVoter)
     setVoteState({
       userVote: Math.min(userVote + 1, MAXIMUM_USER_VOTE),
-      voteTotal: voteUpReducer,
-      isClicked: true,
-      isDownVote: false,
-      isUpVote: true
+      voteTotal: voteUpReducer
     })
-
     // update it!
     api
       .castVote(id, {
         votes: voteUpReducer,
-        voters: voters.concat({ user: username, vote: userVote + 1 })
+        voters: removeCurrentVoter.concat({
+          user: username,
+          vote: userVote + 1
+        })
       })
       .then(response => {
         console.log('API response', response)
         // set app state
+        setHasVotedUp(true)
+        setHasVotedDown(false)
       })
       .catch(error => {
         console.log('ERROR')
@@ -153,22 +171,25 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     e.preventDefault()
     const voteDownReducer =
       userVote < MAXIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
+    console.log('removeCurrentVoter:', removeCurrentVoter)
     setVoteState({
       userVote: Math.min(userVote - 1, MAXIMUM_USER_VOTE),
-      voteTotal: voteDownReducer,
-      isClicked: true,
-      isDownVote: true,
-      isUpVote: false
+      voteTotal: voteDownReducer
     })
     // update it!
     api
       .castVote(id, {
         votes: voteDownReducer,
-        voters: voters.concat({ user: username, vote: userVote - 1 })
+        voters: removeCurrentVoter.concat({
+          user: username,
+          vote: userVote - 1
+        })
       })
       .then(response => {
         console.log('API response', response)
         // set app state
+        setHasVotedUp(false)
+        setHasVotedDown(true)
       })
       .catch(error => {
         console.log('ERROR')
@@ -176,23 +197,12 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
       })
   }
 
-  const checkHasVoted = () =>
-    voters.filter(voter => {
-      if (isLoggedIn) {
-        if (voter.user === user!.user_metadata.full_name && voter.vote === 1) {
-          setHasVotedUp(true)
-        }
-        if (voter.user === user!.user_metadata.full_name && voter.vote === -1) {
-          setHasVotedDown(true)
-        }
-      }
-    })
-
   useEffect(() => {
     if (!componentJustMounted.current) {
       onVote(voteState)
     }
     componentJustMounted.current = false
+
     checkHasVoted()
   }, [userVote, onVote])
 
@@ -202,8 +212,8 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
         <button
           onClick={handleVoteUp}
           className={`vote__arrow  vote__arrow--up  ${
-            userVote === 1 ? 'active' : ''
-          } ${hasVotedUp && 'active'}`}
+            hasVotedUp ? 'active' : ''
+          }`}
           disabled={isLoggedIn && userVote !== 1 ? false : true}
           aria-label="upvote post"
         >
@@ -215,8 +225,8 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
         <button
           onClick={handleVoteDown}
           className={`vote__arrow  vote__arrow--down  ${
-            userVote === -1 ? 'active' : ''
-          } ${hasVotedDown && 'active'}`}
+            hasVotedDown ? 'active' : ''
+          }`}
           disabled={isLoggedIn && userVote !== -1 ? false : true}
           aria-label="downvote post"
         >
@@ -344,7 +354,7 @@ const CardLeak: React.FC<CardLeakProps> = ({ post }) => {
             </Box>
           )}
         </Box>
-        
+
         <Flex className="utilities">
           <VoteCounter
             id={post.ref['@ref'].id}
