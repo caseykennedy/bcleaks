@@ -74,45 +74,45 @@ const CryptoTicker = () => {
   const { state, dispatch } = useContext(StoreContext)
   const [isLoading, setIsLoading] = useState(true)
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const results = await CoinGeckoClient.coins.markets({
-  //         vs_currency: 'usd',
-  //         order: 'name',
-  //         per_page: 15,
-  //         page: 1,
-  //         ids: [
-  //           'bitcoin',
-  //           'ethereum',
-  //           'chainlink',
-  //           'cosmos',
-  //           'handshake',
-  //           'maker',
-  //           'litecoin',
-  //           'tezos',
-  //           'monero',
-  //           'zcash'
-  //         ],
-  //         sparkline: false,
-  //         price_change_percentage: '24h'
-  //       })
-  //       dispatch({
-  //         type: 'FETCH_COINGECKO',
-  //         payload: results.data
-  //       })
-  //       setIsLoading(false)
-  //     } catch (e) {
-  //       console.log(e)
-  //     }
-  //   }
-  //   fetchData()
-  // })
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const results = await CoinGeckoClient.coins.markets({
+          vs_currency: 'usd',
+          order: 'name',
+          per_page: 15,
+          page: 1,
+          ids: [
+            'bitcoin',
+            'ethereum',
+            'chainlink',
+            'cosmos',
+            'handshake',
+            'maker',
+            'litecoin',
+            'tezos',
+            'monero',
+            'zcash'
+          ],
+          sparkline: false,
+          price_change_percentage: '24h'
+        })
+        dispatch({
+          type: 'FETCH_COINGECKO',
+          payload: results.data
+        })
+        setIsLoading(false)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    fetchData()
+  })
 
   return (
     <S.CryptoTicker>
       <Slider>
-        {/* {!isLoading ? (
+        {!isLoading ? (
           state.coins.map((value, idx) => (
             <S.Coin key={idx}>
               <Coin coin={value} />
@@ -120,8 +120,7 @@ const CryptoTicker = () => {
           ))
         ) : (
           <div className="is-loading">loading...</div>
-        )} */}
-        <div className="is-loading">loading...</div>
+        )}
       </Slider>
     </S.CryptoTicker>
   )
