@@ -3,3 +3,9 @@
   command = "npm run build && cd functions-src/apollo-graphql && npm install"
   functions = "functions-src"
   publish = "public"
+
+  [[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"

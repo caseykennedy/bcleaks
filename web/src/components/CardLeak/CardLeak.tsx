@@ -82,6 +82,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
   const currentUser = voters.filter(
     voter => voter.user === user!.user_metadata.full_name
   )
+  // Get that users vote
   const currentUserVote = currentUser[0] ? currentUser[0].vote : 0
 
   const initialState = {
@@ -124,7 +125,6 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     }
     componentJustMounted.current = false
   }, [userVote, onVote])
-  // console.log('userVote', userVote)
 
   // Remove the current voter from voter array
   const removeCurrentVoter = voters.filter(
