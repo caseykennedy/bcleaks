@@ -70,7 +70,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
   voters
 }) => {
   // Check if logged in
-  const { isLoggedIn, user } = useIdentityContext()
+  const { isLoggedIn, user }: any = useIdentityContext()
   let username: string
   if (isLoggedIn) {
     username = user!.user_metadata.full_name
@@ -80,7 +80,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
 
   // Find the current user in voter array
   const currentUser = voters.filter(
-    voter => voter.user === user!.user_metadata.full_name
+    voter => voter.user === username
   )
   // Get that users vote
   const currentUserVote = currentUser[0] ? currentUser[0].vote : 0
@@ -128,7 +128,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
 
   // Remove the current voter from voter array
   const removeCurrentVoter = voters.filter(
-    voter => voter.user !== user!.user_metadata.full_name
+    voter => voter.user !== username
   )
 
   // Handle the up vote
@@ -258,7 +258,6 @@ const CardLeak: React.FC<CardLeakProps> = ({ post }) => {
       }
     }
   )
-  console.log('GET_COMMENTS_BY_SLUG', error)
 
   // Setup state & constants
   const [totalVotes, setTotalVotes] = useState(0)
