@@ -59,7 +59,7 @@ const ArticlesPage = () => {
 
   return (
     <S.ArticlesPage>
-      <FeaturedArticles bg={theme.colors.black} post={featuredPosts[0].node} />
+      <FeaturedArticles bg={theme.colors.black} post={featuredPosts[1].node} />
 
       <CatNav postType="articles" />
 

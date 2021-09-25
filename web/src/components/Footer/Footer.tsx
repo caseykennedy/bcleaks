@@ -35,7 +35,7 @@ const Bulletin = () => {
       <Flex className="inner">
         <Box p={theme.gutter.axis} className="bulletin__newsletter">
           <Heading
-            mb={3}
+            mb={4}
             sx={{ fontFamily: `Rubik` }}
             className="text--md  text--uppercase"
           >

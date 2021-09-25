@@ -18,6 +18,7 @@ import { useQuery } from '@apollo/react-hooks'
 
 // Utils
 import api from '../../utils/api'
+import { getPostId } from '../../utils/helpers'
 
 // Theme + ui
 import * as S from './styles.scss'
@@ -79,9 +80,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
   }
 
   // Find the current user in voter array
-  const currentUser = voters.filter(
-    voter => voter.user === username
-  )
+  const currentUser = voters.filter(voter => voter.user === username)
   // Get that users vote
   const currentUserVote = currentUser[0] ? currentUser[0].vote : 0
 
@@ -127,9 +126,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
   }, [userVote, onVote])
 
   // Remove the current voter from voter array
-  const removeCurrentVoter = voters.filter(
-    voter => voter.user !== username
-  )
+  const removeCurrentVoter = voters.filter(voter => voter.user !== username)
 
   // Handle the up vote
   const handleVoteUp = async (
@@ -351,7 +348,7 @@ const CardLeak: React.FC<CardLeakProps> = ({ post }) => {
 
         <Flex className="utilities">
           <VoteCounter
-            id={post.ref['@ref'].id}
+            id={getPostId(post)}
             onVote={onVote}
             totalVotes={votes}
             voters={voters}
