@@ -127,6 +127,8 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
 
   // Remove the current voter from voter array
   const removeCurrentVoter = voters.filter(voter => voter.user !== username)
+  const increment = userVote + 1
+  const decrement = userVote - 1
 
   // Handle the up vote
   const handleVoteUp = async (
@@ -136,7 +138,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     const voteUpReducer =
       userVote < MAXIMUM_USER_VOTE ? voteTotal + 1 : voteTotal
     setVoteState({
-      userVote: userVote + 1,
+      userVote: increment,
       voteTotal: voteUpReducer
     })
     try {
@@ -146,7 +148,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
           votes: voteUpReducer,
           voters: removeCurrentVoter.concat({
             user: username,
-            vote: userVote + 1
+            vote: increment
           })
         })
         .then(response => {
@@ -170,7 +172,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
     const voteDownReducer =
       userVote > MINIMUM_USER_VOTE ? voteTotal - 1 : voteTotal
     setVoteState({
-      userVote: userVote - 1,
+      userVote: decrement,
       voteTotal: voteDownReducer
     })
     try {
@@ -180,7 +182,7 @@ const VoteCounter: React.FC<VoteCounterProps> = ({
           votes: voteDownReducer,
           voters: removeCurrentVoter.concat({
             user: username,
-            vote: userVote - 1
+            vote: decrement
           })
         })
         .then(response => {

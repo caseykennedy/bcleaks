@@ -43,7 +43,7 @@ const Bulletin = () => {
           </Heading>
           <Box
             as="form"
-            name="eOn Newsletter Signup Form"
+            name="Join the list"
             method="POST"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
@@ -53,7 +53,7 @@ const Bulletin = () => {
             <input
               type="hidden"
               name="form-name"
-              value="eOn Newsletter Signup Form"
+              value="Join the list"
             />
 
             <label htmlFor="email" style={{ display: 'none' }}>
