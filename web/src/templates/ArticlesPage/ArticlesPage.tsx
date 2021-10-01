@@ -24,15 +24,14 @@ import usePost from '../../hooks/usePost'
 
 const ArticlesPage = () => {
   const posts = usePost()
-  const cleanedPosts = posts.filter(p => p.node.slug)
   const featuredPosts = posts.filter(p => p.node.featured)  
-  const [items, setItems] = useState(cleanedPosts)
+  const [items, setItems] = useState(posts)
   // State for the list
-  const [list, setList] = useState([...cleanedPosts.slice(0, 10)])
+  const [list, setList] = useState([...posts.slice(0, 10)])
   // State to trigger oad more
   const [loadMore, setLoadMore] = useState(false)
   // State of whether there is more to load
-  const [hasMore, setHasMore] = useState(cleanedPosts.length > 10)
+  const [hasMore, setHasMore] = useState(posts.length > 10)
   // Load more button click
   const handleLoadMore = () => {
     setLoadMore(true)
@@ -42,9 +41,9 @@ const ArticlesPage = () => {
   useEffect(() => {
     if (loadMore && hasMore) {
       const currentLength = list.length
-      const isMore = currentLength < cleanedPosts.length
+      const isMore = currentLength < posts.length
       const nextResults = isMore
-        ? cleanedPosts.slice(currentLength, currentLength + 10)
+        ? posts.slice(currentLength, currentLength + 10)
         : []
       setList([...list, ...nextResults])
       setLoadMore(false)
@@ -53,7 +52,7 @@ const ArticlesPage = () => {
 
   // Check if there is more
   useEffect(() => {
-    const isMore = list.length < cleanedPosts.length
+    const isMore = list.length < posts.length
     setHasMore(isMore)
   }, [list]) // eslint-disable-line
 

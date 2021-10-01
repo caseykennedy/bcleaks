@@ -22,7 +22,6 @@ import useVideo from '../../../hooks/useVideo'
 
 const Videos = () => {
   const videos = useVideo()
-  const filteredVideos = videos.filter(v => v.node.videoUrl)
   return (
     <S.Videos bg="background" overflow="hidden">
       <Flex className="videos__header">
@@ -35,7 +34,7 @@ const Videos = () => {
 
       <Box className="videos__posts">
         <CardSlider pagination={false} slidesPerView={3}>
-          {filteredVideos.slice(0, 3).map(({ node: post }, idx) => (
+          {videos.slice(0, 3).map(({ node: post }, idx) => (
             <Flex key={idx}>
               <CardLeak post={post} video={true} small={true} />
             </Flex>
